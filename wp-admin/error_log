@@ -1,0 +1,41 @@
+[15-Jul-2016 17:46:57 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[15-Jul-2016 17:49:57 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[15-Jul-2016 17:51:21 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[15-Jul-2016 17:52:52 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[15-Jul-2016 21:47:01 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[15-Jul-2016 22:36:51 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[15-Jul-2016 22:41:08 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[15-Jul-2016 22:56:15 UTC] PHP Fatal error:  Call to undefined function wp_roles() in /home/penton7/public_html/sandbox/MarketingOpps/wp-includes/class-wp-user.php on line 479
+[16-Jul-2016 18:13:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[16-Jul-2016 18:13:50 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[16-Jul-2016 18:14:13 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[16-Jul-2016 18:15:11 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[16-Jul-2016 18:16:38 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[16-Jul-2016 19:41:04 UTC] PHP Fatal error:  Call to a member function add_field() on a non-object in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 893
+[16-Jul-2016 19:41:05 UTC] PHP Fatal error:  Call to a member function add_field() on a non-object in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 893
+[16-Jul-2016 19:51:32 UTC] PHP Fatal error:  Call to a member function add_field() on a non-object in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 589
+[16-Jul-2016 19:51:34 UTC] PHP Fatal error:  Call to a member function add_field() on a non-object in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 589
+[16-Jul-2016 19:55:26 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[16-Jul-2016 19:56:19 UTC] PHP Notice:  Array to string conversion in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[16-Jul-2016 19:56:23 UTC] PHP Notice:  Array to string conversion in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[16-Jul-2016 20:21:39 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:02:48 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:05:11 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:09:12 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:09:16 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:30:05 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:48:25 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:48:27 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:50:06 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:50:39 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:52:48 UTC] PHP Notice:  Undefined index: _cmb2_decription_textarea in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2-admin-extension/includes/class-meta-box.php on line 250
+[18-Jul-2016 20:52:53 UTC] PHP Notice:  Undefined index: _cmb2_decription_textarea in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2-admin-extension/includes/class-meta-box.php on line 250
+[18-Jul-2016 20:52:54 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2/includes/CMB2_hookup.php on line 340
+[18-Jul-2016 20:52:54 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 20:52:59 UTC] PHP Notice:  Undefined index: _cmb2_decription_textarea in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2-admin-extension/includes/class-meta-box.php on line 250
+[18-Jul-2016 20:52:59 UTC] PHP Notice:  Undefined index: _cmb2_decription_textarea in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2-admin-extension/includes/class-meta-box.php on line 250
+[18-Jul-2016 20:53:09 UTC] PHP Notice:  Undefined index: _cmb2_decription_textarea in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2-admin-extension/includes/class-meta-box.php on line 250
+[18-Jul-2016 20:53:24 UTC] PHP Notice:  Undefined index: _cmb2_decription_textarea in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/cmb2-admin-extension/includes/class-meta-box.php on line 250
+[18-Jul-2016 20:54:50 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
+[18-Jul-2016 21:05:33 UTC] PHP Fatal error:  Call to a member function add_field() on a non-object in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 865
+[18-Jul-2016 22:41:06 UTC] PHP Parse error:  syntax error, unexpected ''' (T_ENCAPSED_AND_WHITESPACE) in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 399
