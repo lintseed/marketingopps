@@ -1,0 +1,48 @@
+<?php
+  
+  $latestNew = $this->feed['news'][0];
+?>
+<div id="cjt-statcs-metabox-news">
+	<span class="cjt_dw_latestnewstitle"><?php echo cssJSToolbox::getText('Latest News:') ?> <a target="_blank" href="<?php echo $latestNew['link'] ?>"><?php echo $latestNew['title'] ?></a></span>
+	<p class="cjt_dw_description"><?php echo $latestNew['description'] ?></p>
+</div>
+<hr />
+<div>
+	<table id="cjt-statcs-metabox">
+		<thead>
+			<tr>
+				<th colspan="2"><strong><?php echo cssJSToolbox::getText('Total') ?></strong></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?php echo cssJSToolbox::getText('Active Code Blocks') ?></td>
+				<td><strong><?php echo $this->activeBlocks ?></strong></td>
+			</tr>
+			<tr>
+				<td><?php echo cssJSToolbox::getText('Active Metabox Code Blocks') ?></td>
+				<td><strong><?php echo $this->activeMetaboxBlocks ?></strong></td>
+			</tr>
+			<tr>
+				<td><?php echo cssJSToolbox::getText('Inactive Code Blocks') ?></td>
+				<td><strong><?php echo $this->inactiveBlocks ?></strong></td>
+			</tr>
+			<tr>
+				<td><?php echo cssJSToolbox::getText('Inactive Metabox Code Blocks') ?></td>
+				<td><strong><?php echo $this->inactiveMetaboxBlocks ?></strong></td>
+			</tr>
+			<tr>
+				<td><?php echo cssJSToolbox::getText('Code Templates') ?></td>
+				<td><strong><?php echo $this->templates ?></strong></td>
+			</tr>
+			<tr>
+				<td><?php echo cssJSToolbox::getText('Script Packages') ?></td>
+				<td><strong><?php echo $this->scriptsPackage ?></strong></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<hr />
+<div id="cjt-statcs-metabox-info">
+	<span id="support-us"><?php echo cssJSToolbox::getText('Support us by purchasing') ?>: <a target="_blank" href="http://css-javascript-toolbox.com/cjte-developer/">CJTe Developer</a></span>
+</div>

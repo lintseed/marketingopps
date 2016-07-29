@@ -39,3 +39,8 @@
 [18-Jul-2016 20:54:50 UTC] PHP Notice:  Undefined index: desc in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/CMB2-Date-Range-Field-master/wds-cmb2-date-range-field.php on line 132
 [18-Jul-2016 21:05:33 UTC] PHP Fatal error:  Call to a member function add_field() on a non-object in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 865
 [18-Jul-2016 22:41:06 UTC] PHP Parse error:  syntax error, unexpected ''' (T_ENCAPSED_AND_WHITESPACE) in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 399
+[27-Jul-2016 18:04:04 UTC] PHP Warning:  Creating default object from empty value in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/role-scoper/admin/groups.php on line 76
+[27-Jul-2016 18:04:10 UTC] PHP Warning:  Creating default object from empty value in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/role-scoper/admin/groups.php on line 76
+[27-Jul-2016 18:04:15 UTC] PHP Warning:  Creating default object from empty value in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/role-scoper/admin/groups.php on line 76
+[27-Jul-2016 18:21:12 UTC] PHP Warning:  Creating default object from empty value in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/role-scoper/admin/groups.php on line 76
+[28-Jul-2016 16:21:23 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 900

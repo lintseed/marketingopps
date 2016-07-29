@@ -444,6 +444,23 @@ if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/CMB2/init.php';
 }
 
+
+
+/**
+ * Remove Posts & Pages from Dashboard as to not confuse the Authors
+ *
+ */
+function remove_menus () {
+global $menu;
+	$restricted = array(__('Posts'),  __('Pages'));
+	end ($menu);
+	while (prev($menu)){
+		$value = explode(' ',$menu[key($menu)][0]);
+		if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
+	}
+}
+add_action('admin_menu', 'remove_menus');
+
 /**
  * Conditionally displays a metabox when used as a callback in the 'show_on_cb' cmb2_box parameter
  *
@@ -506,6 +523,17 @@ function cmb2_sample_metaboxes() {
 			'options'          => array(
 					'available' => __( '<span style="color:green">Available</span>', 'cmb2' ),
 					'sold'   => __( '<strong style="color: #ff0000;">Sold</strong>', 'cmb2' ),
+			),
+	) );
+	// Featured
+		$cmb->add_field( array(
+			'name'             => '✩ Featured Opportunity?',
+			'id'               => $prefix . 'featured',
+			'type'             => 'radio',
+			'show_option_none' => false,
+			'options'          => array(
+					'featured' => __( 'Yes', 'cmb2' ),
+					'normal'   => __( 'No', 'cmb2' ),
 			),
 	) );
 		// Sponsorship Level
@@ -852,3 +880,32 @@ function opps_register_theme_options_metabox() {
 	) );
 
 }
+
+
+
+// PLAYTIME
+function slug_get_post_meta_cb( $object, $field_name, $request ) {
+	return get_post_meta( $object[ 'id' ], $field_name );
+}
+ 
+function slug_update_post_meta_cb( $value, $object, $field_name ) {
+	return update_post_meta( $object[ 'id' ], $field_name, $value );
+}
+
+add_action( 'rest_api_init', function() {
+ register_api_field( 'opportunity',
+    array('opps_level','opps_type'),
+    array(
+       'get_callback'    => 'slug_get_post_meta_cb',
+       'update_callback' => 'slug_update_post_meta_cb',
+       'schema'          => null,
+    )
+ );
+ 
+});
+
+
+
+
+
+
