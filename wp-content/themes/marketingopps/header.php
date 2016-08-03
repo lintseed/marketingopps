@@ -18,6 +18,12 @@
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
+	<link rel="apple-touch-icon" sizes="180x180" href="/sandbox/MarketingOpps/wp-content/themes/marketingopps/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="/sandbox/MarketingOpps/wp-content/themes/marketingopps/favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/sandbox/MarketingOpps/wp-content/themes/marketingopps/favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="/sandbox/MarketingOpps/wp-content/themes/marketingopps/favicons/manifest.json">
+	<link rel="mask-icon" href="/sandbox/MarketingOpps/wp-content/themes/marketingopps/favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="theme-color" content="#ffffff">
 	<?php wp_head(); ?>
 </head>
 

@@ -450,16 +450,15 @@ if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
  * Remove Posts & Pages from Dashboard as to not confuse the Authors
  *
  */
-function remove_menus () {
-global $menu;
-	$restricted = array(__('Posts'),  __('Pages'));
-	end ($menu);
-	while (prev($menu)){
-		$value = explode(' ',$menu[key($menu)][0]);
-		if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
-	}
+
+function remove_menus(){
+  remove_menu_page( 'edit.php' );                   //Posts
+  remove_menu_page( 'edit.php?post_type=page' );    //Pages
+  remove_menu_page( 'edit-comments.php' );          //Comments
+//  remove_menu_page( 'themes.php' );                 //Appearance
 }
-add_action('admin_menu', 'remove_menus');
+add_action( 'admin_menu', 'remove_menus' );
+
 
 /**
  * Conditionally displays a metabox when used as a callback in the 'show_on_cb' cmb2_box parameter
@@ -485,11 +484,12 @@ function opps_show_if_front_page( $cmb ) {
  */
 function opps_hide_if_no_cats( $field ) {
 	// Don't show this field if not in the cats category
-	if ( ! has_tag( 'cats', $field->object_id ) ) {
+	if ( ! has_tag( 'iot-emerge-2016', $field->object_id ) ) {
 		return false;
 	}
 	return true;
 }
+
 
 
 add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
@@ -520,6 +520,7 @@ function cmb2_sample_metaboxes() {
 			'id'               => $prefix . 'status',
 			'type'             => 'radio',
 			'show_option_none' => false,
+			'show_on_cb' => 'opps_hide_if_no_cats',
 			'options'          => array(
 					'available' => __( '<span style="color:green">Available</span>', 'cmb2' ),
 					'sold'   => __( '<strong style="color: #ff0000;">Sold</strong>', 'cmb2' ),
