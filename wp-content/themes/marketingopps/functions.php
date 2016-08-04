@@ -452,7 +452,7 @@ if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
  */
 
 function remove_menus(){
-  remove_menu_page( 'edit.php' );                   //Posts
+//  remove_menu_page( 'edit.php' );                   //Posts
   remove_menu_page( 'edit.php?post_type=page' );    //Pages
   remove_menu_page( 'edit-comments.php' );          //Comments
 //  remove_menu_page( 'themes.php' );                 //Appearance
@@ -892,7 +892,7 @@ function slug_get_post_meta_cb( $object, $field_name, $request ) {
 function slug_update_post_meta_cb( $value, $object, $field_name ) {
 	return update_post_meta( $object[ 'id' ], $field_name, $value );
 }
-
+/*
 add_action( 'rest_api_init', function() {
  register_api_field( 'opportunity',
     array('opps_level','opps_type'),
@@ -904,9 +904,23 @@ add_action( 'rest_api_init', function() {
  );
  
 });
+*/
 
 
+add_action( 'admin_menu', 'my_admin_menu' );
 
+function my_admin_menu() {
+	add_menu_page( 'Events', 'Events', 'manage_options', 'events-admin.php', 'events_admin', 'dashicons-tickets', 1 );
+}
+
+function events_admin() {
+	?>
+	<div class="wrap">
+		<h2>Events</h2>
+		<p>hello</p>
+	</div>
+	<?php
+}
 
 
 
