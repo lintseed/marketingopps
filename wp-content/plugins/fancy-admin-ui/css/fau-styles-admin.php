@@ -31,6 +31,10 @@ color:<?php echo $fau_secondary; ?>
 #adminmenu {
 margin:0
 }
+.menu-icon-opportunity .wp-menu-name {
+	font-size: 16px;
+	font-weight: bold;
+}
 .plugin-update-tr.active td, .plugins .active th.check-column {
 	border-color: <?php echo $fau_secondary; ?> !important;
 }
