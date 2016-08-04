@@ -21,9 +21,10 @@ padding-top:46px!important
 	pointer-events: none;
   cursor: default;
 }
-#wp-admin-bar-site-name a:hover,
+#wp-admin-bar-site-name a.ab-item:hover,
 #wpadminbar #wp-admin-bar-site-name a.ab-item:hover {
-	background: none !important;
+	background-color: none !important;
+	border: 1px solid yellow;
 }
 #wp-admin-bar-site-name ul {
 	display: none !important;

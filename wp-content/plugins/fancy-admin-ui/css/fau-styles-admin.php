@@ -32,7 +32,7 @@ color:<?php echo $fau_secondary; ?>
 margin:0
 }
 .menu-icon-opportunity .wp-menu-name {
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: bold;
 }
 .plugin-update-tr.active td, .plugins .active th.check-column {

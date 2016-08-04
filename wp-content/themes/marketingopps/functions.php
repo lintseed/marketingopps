@@ -892,46 +892,14 @@ function slug_get_post_meta_cb( $object, $field_name, $request ) {
 function slug_update_post_meta_cb( $value, $object, $field_name ) {
 	return update_post_meta( $object[ 'id' ], $field_name, $value );
 }
-/*
-function change_post_menu_label() {
-    global $menu;
-    global $submenu;
-    echo "<pre>";
-    print_r($menu);
-    print_r($submenu);
-    echo "</pre>";
-    $submenu['edit.php'][15][0] = 'Status'; // Change name for categories
-    $submenu['edit.php'][16][0] = 'Labels'; // Change name for tags
-}
-add_action( 'admin_menu', 'change_post_menu_label' );
-*/
-function change_post_menu_label() {
-    global $menu;
-    global $submenu;
-    $submenu['edit.php?post_type=opportunity'][15][0] = 'Events'; // Change name for categories
-    echo '';
-}
-
-function change_cat_meta_box() {
-		global $wp_meta_boxes;
-		unset( $wp_meta_boxes['opportunity']['side']['core']['categorydiv'] );
-		add_meta_box('categorydiv',
-		__('Event'),
-		'post_categories_meta_box',
-		'opportunity',
-		'side',
-		'low');
-}
 
 function renameCategory() {
     global $wp_taxonomies;
-
     $cat = $wp_taxonomies['category'];
     $cat->label = 'Events';
     $cat->label = 'Events';
     $cat->labels->singular_name = 'Event';
     $cat->labels->plural_name = 'Events';
-    
     $cat->labels->menu_name = 'Events';
     $cat->labels->all_items = 'All Events';
     $cat->labels->edit_item = 'Edit Event';
@@ -947,14 +915,13 @@ function renameCategory() {
     $cat->add_or_remove_items = 'Add or remove events';
     $cat->choose_from_most_used ='Choose from the most used events';
     $cat->not_found = 'No events found.';
-    
-    
+
     $cat->labels->name = $cat->label;
     $cat->labels->menu_name = $cat->label;
 }
 add_action('init', 'renameCategory');
-add_action( 'add_meta_boxes', 'change_cat_meta_box', 0 );
-add_action( 'admin_menu', 'change_post_menu_label' );
+//add_action( 'add_meta_boxes', 'change_cat_meta_box', 0 );
+//add_action( 'admin_menu', 'change_post_menu_label' );
     
     
 /*
