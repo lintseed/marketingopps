@@ -58,3 +58,31 @@
 [04-Aug-2016 18:28:15 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 940
 [04-Aug-2016 18:28:56 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 940
 [04-Aug-2016 18:30:15 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 940
+[05-Aug-2016 16:33:39 UTC] PHP Fatal error:  Cannot use object of type WP_Error as array in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/plugins/css-javascript-toolbox/framework/wordpress/feed.php on line 54
+[08-Aug-2016 03:52:46 UTC] PHP Parse error:  syntax error, unexpected end of file, expecting ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 514
+[08-Aug-2016 15:53:37 UTC] PHP Parse error:  syntax error, unexpected 'function' (T_FUNCTION) in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 937
+[08-Aug-2016 15:53:38 UTC] PHP Parse error:  syntax error, unexpected 'function' (T_FUNCTION) in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 937
+[08-Aug-2016 15:53:40 UTC] PHP Parse error:  syntax error, unexpected 'function' (T_FUNCTION) in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 937
+[08-Aug-2016 15:53:50 UTC] PHP Parse error:  syntax error, unexpected 'function' (T_FUNCTION) in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 937
+[08-Aug-2016 16:29:56 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:30:11 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:30:26 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:30:41 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:30:56 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:30:59 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:31:12 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:31:26 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:31:27 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:31:33 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:31:42 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:31:57 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:32:12 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:32:27 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:32:42 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[08-Aug-2016 16:32:48 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 669
+[11-Aug-2016 16:14:56 UTC] PHP Parse error:  syntax error, unexpected ''' (T_ENCAPSED_AND_WHITESPACE) in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 310
+[11-Aug-2016 16:16:49 UTC] PHP Parse error:  syntax error, unexpected ''' (T_ENCAPSED_AND_WHITESPACE) in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 310
+[11-Aug-2016 16:17:12 UTC] PHP Parse error:  syntax error, unexpected ''' (T_ENCAPSED_AND_WHITESPACE) in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 310
+[11-Aug-2016 17:20:25 UTC] PHP Fatal error:  Call to undefined function twentysixteen_fonts_url() in /home/penton7/public_html/sandbox/MarketingOpps/wp-content/themes/marketingopps/functions.php on line 125
+[11-Aug-2016 18:05:58 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'admin_style' not found or invalid function name in /home/penton7/public_html/sandbox/MarketingOpps/wp-includes/plugin.php on line 525
+[11-Aug-2016 18:07:44 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'admin_styles' not found or invalid function name in /home/penton7/public_html/sandbox/MarketingOpps/wp-includes/plugin.php on line 525

@@ -1,0 +1,26 @@
+/* Dashboard Widgets Suite - Dashboard Styles */
+
+.wp-admin .dws-subtitle {
+	padding-left: 5px; color: #ccc; font-size: 90%; font-weight: lighter;
+	}
+.wp-admin #screen-options-wrap .dws-subtitle {
+	display: none;
+	}
+.wp-admin .dws-hidden {
+	display: none;
+	}
+.wp-admin .dws-color-good {
+	color: #339900;
+	}
+.wp-admin .dws-color-fair {
+	color: #ff9933;
+	}
+.wp-admin .dws-color-warn {
+	color: #dcb66b;
+	}
+.wp-admin .dws-color-poor {
+	color: #cc3300;
+	}
+.wp-admin .dws-color-grey {
+	color: #999;
+	}

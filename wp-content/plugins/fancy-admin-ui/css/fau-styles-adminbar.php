@@ -21,10 +21,10 @@ padding-top:46px!important
 	pointer-events: none;
   cursor: default;
 }
-#wp-admin-bar-site-name a.ab-item:hover,
-#wpadminbar #wp-admin-bar-site-name a.ab-item:hover {
+#wpadminbar ul li#wp-admin-bar-site-name:hover,
+#wpadminbar ul li#wp-admin-bar-site-name:hover > a {
 	background-color: none !important;
-	border: 1px solid yellow;
+	background: transparent !important;
 }
 #wp-admin-bar-site-name ul {
 	display: none !important;
@@ -45,10 +45,12 @@ height:auto
 color:#FFF
 }
 #wpadminbar {
-	padding-left: 110px;
 	background-image:url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/themes/marketingopps/images/penton_wht.png);
 	background-repeat: no-repeat;
 	background-position: 10px 7px;
+}
+.quicklinks {
+	padding-left: 110px !important;
 }
 
 #wp-admin-bar-comments,

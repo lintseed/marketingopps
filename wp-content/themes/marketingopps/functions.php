@@ -453,42 +453,79 @@ if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
 
 function remove_menus(){
   remove_menu_page( 'edit.php' );                   //Posts
-  remove_menu_page( 'edit.php?post_type=page' );    //Pages
+//  remove_menu_page( 'edit.php?post_type=page' );    //Pages
   remove_menu_page( 'edit-comments.php' );          //Comments
 //  remove_menu_page( 'themes.php' );                 //Appearance
 }
 add_action( 'admin_menu', 'remove_menus' );
 
 
+
 /**
- * Conditionally displays a metabox when used as a callback in the 'show_on_cb' cmb2_box parameter
+ * Conditionally displays meta boxes as defined per parent cat
  *
- * @param  CMB2 object $cmb CMB2 object
- *
- * @return bool             True if metabox should show
+ * Using JS to display instead...
  */
-function opps_show_if_front_page( $cmb ) {
-	// Don't show this metabox if it's not the front page template
-	if ( $cmb->object_id !== get_option( 'page_on_front' ) ) {
-		return false;
-	}
-	return true;
+ /*
+add_action( 'init', 'cmb2_category_post' );
+function cmb2_category_post() {
+	$post_id = $_GET['post'];
+	$categories = get_the_category($post_id);
+	if ( in_category(27,$post_id) ) { add_action( 'cmb2_admin_init', 'cmb2_register_iot' ); }
+}
+*/
+
+/**
+ * Move category boxes into an include
+ */
+add_action( 'cmb2_admin_init', 'cmb2_register_iot' );
+function cmb2_register_iot() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'iot_metabox',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+ 		$cmb->add_field( array(
+        'name'    => 'IoT Level',
+        'id'      => 'opp_level',
+        'type'    => 'select',
+        'default' => 'gold',
+        'options' => array(
+            'gold' => 'Gold',
+            'silver' => 'Silver',
+        ),
+    ) );   
+     $cmb->add_field( array(
+        'name'    => 'IoT Type',
+        'id'      => 'opp_type',
+        'type'    => 'select',
+        'default' => 'marketing',
+        'options' => array(
+            'marketing' => 'Marketing',
+            'events' => 'Events',
+        ),
+    ) );   
 }
 
 /**
- * Conditionally displays a field when used as a callback in the 'show_on_cb' field parameter
- *
- * @param  CMB2_Field object $field Field object
- *
- * @return bool                     True if metabox should show
+ * And/or can we handle this via the dom
  */
-function opps_hide_if_no_cats( $field ) {
-	// Don't show this field if not in the cats category
-	if ( ! has_tag( 'iot-emerge-2016', $field->object_id ) ) {
-		return false;
-	}
-	return true;
+function add_admin_scripts( $hook ) {
+    global $post;
+    if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
+        if ( 'opportunity' === $post->post_type ) {     
+            wp_enqueue_script(  'myscript', get_stylesheet_directory_uri().'/js/myscript.js' );
+        }
+    }
 }
+// Update CSS within in Admin
+function add_admin_styles() {
+  wp_enqueue_style('admin-styles', get_template_directory_uri().'/css/admin.css');
+}
+add_action('admin_enqueue_scripts', 'add_admin_styles');
+add_action( 'admin_enqueue_scripts', 'add_admin_scripts', 10, 1 );
+
+
 
 
 
@@ -497,6 +534,9 @@ add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
  * Define the metabox and field configurations.
  */
 function cmb2_sample_metaboxes() {
+
+
+//  added enable/disabLe radio
 
     // Start with an underscore to hide fields from custom fields list
     $prefix = 'opps_';
@@ -511,7 +551,7 @@ function cmb2_sample_metaboxes() {
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
-        // 'cmb_styles' => false, // false to disable the CMB stylesheet
+        'cmb_styles' => iot_types, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default
     ) );
     // Sold?
@@ -520,7 +560,7 @@ function cmb2_sample_metaboxes() {
 			'id'               => $prefix . 'status',
 			'type'             => 'radio',
 			'show_option_none' => false,
-			'show_on_cb' => 'opps_hide_if_no_cats',
+//			'show_on_cb' => 'opps_hide_if_no_cats',
 			'options'          => array(
 					'available' => __( '<span style="color:green">Available</span>', 'cmb2' ),
 					'sold'   => __( '<strong style="color: #ff0000;">Sold</strong>', 'cmb2' ),
@@ -551,6 +591,7 @@ function cmb2_sample_metaboxes() {
 			),
 		) );
 		// Sponsorship Type
+		/*
 		$cmb->add_field( array(
 			'name'             => __( 'Sponsorship Type', 'cmb2' ),
 			'id'               => $prefix . 'type',
@@ -568,8 +609,12 @@ function cmb2_sample_metaboxes() {
 				'influence_opp' => __( 'Influence Partner', 'cmb2' ),
 				'innovation_opp' => __( 'Innovation Partner', 'cmb2' ),
 				'growth_opp' => __( 'Growth Partner', 'cmb2' ),
+				'onsite_opp' => __( 'Onsite Opportunity', 'cmb2' ),
+				'traffic_opp' => __( 'Booth Traffic', 'cmb2' ),
+				'package_opp' => __( 'Package Opportunity', 'cmb2' ),
 			),
 		) );
+		*/
 		// look @ column option for these fields or before_row, etc.
 		// Current Quantity Available
 		$cmb->add_field( array(
@@ -593,15 +638,17 @@ function cmb2_sample_metaboxes() {
 			'type'    => 'text',
 		) );
 		// Maximum Cost
+		/*
 		$cmb->add_field( array(
 			'name'    => 'Maximum Cost',
 			'id'      => 'max_cost',
 			'type'    => 'text',
 		) );
+		*/
 		// Cost Override
 		$cmb->add_field( array(
 			'name'    => 'Total Cost',
-			'desc'    => 'Value overrides min-max price values.',
+			'desc'    => 'Value overrides min-max price values. Display a cost range here.',
 			'id'      => 'total_cost',
 			'type'    => 'text',
 		) );	
@@ -649,6 +696,7 @@ function cmb2_sample_metaboxes() {
 			'id'      => 'contact_2',
 			'type'    => 'text'
 		) );
+		/*
 		$cmb->add_field( array(
 	    'name'    => 'Sort Order',
 			'id'      => 'sort',
@@ -657,8 +705,9 @@ function cmb2_sample_metaboxes() {
 			'options'          => array(
 				'?' => __( '?' )
 			),
+			
 		) );		
-		
+		*/
 	
 	$cmb = new_cmb2_box( array(
 			'id'            => 'admin_notes',
@@ -884,8 +933,10 @@ function opps_register_theme_options_metabox() {
 
 
 
-// PLAYTIME
-function slug_get_post_meta_cb( $object, $field_name, $request ) {
+/**
+ * trim the fat
+ */
+ function slug_get_post_meta_cb( $object, $field_name, $request ) {
 	return get_post_meta( $object[ 'id' ], $field_name );
 }
  
@@ -920,23 +971,31 @@ function renameCategory() {
     $cat->labels->menu_name = $cat->label;
 }
 add_action('init', 'renameCategory');
+
+
+remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+
+
+//Remove dashboard widgets
+function remove_dashboard_meta() {
+        $user = wp_get_current_user();
+        if (!$user -> has_cap ('manage_options'))
+        remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+        remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
+        remove_meta_box( 'dashboard_primary', 'dashboard', 'normal' );
+        remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
+        remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+        remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
+        remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+        remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+        remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
+        remove_meta_box( 'cjt-statistics', 'dashboard', 'normal');
+} add_action( 'admin_init', 'remove_dashboard_meta' ); 
+
 //add_action( 'add_meta_boxes', 'change_cat_meta_box', 0 );
 //add_action( 'admin_menu', 'change_post_menu_label' );
     
     
-/*
-add_action( 'rest_api_init', function() {
- register_api_field( 'opportunity',
-    array('opps_level','opps_type'),
-    array(
-       'get_callback'    => 'slug_get_post_meta_cb',
-       'update_callback' => 'slug_update_post_meta_cb',
-       'schema'          => null,
-    )
- );
- 
-});
-*/
 
 /*
 add_action( 'admin_menu', 'my_admin_menu' );

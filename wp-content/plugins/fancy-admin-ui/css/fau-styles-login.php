@@ -25,15 +25,15 @@ background: #fff url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/theme
 }
 
 .login h1 a {
-	width: 135px;
-	height: 55px;
+	width: 190px;
+	height: 52px;
 	margin-bottom: 10px;
-	background: url(http://sponsortool.penton.com/site-files/sponsortool.penton.com/files/logo.png) 0 0 no-repeat;
+	background: url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/themes/marketingopps/images/penton.png) top right no-repeat;
 }
 .login h1:after {
 	display: block;
 	margin-bottom: 30px;
-	content: 'Sponsorship Opportunities';
+	content: 'Opportunities';
 	color: #2B2011;
 	font-size: 18px;
 	font-weight: bold;
