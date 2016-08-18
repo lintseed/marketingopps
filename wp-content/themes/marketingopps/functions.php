@@ -479,14 +479,55 @@ function cmb2_category_post() {
  * Move category boxes into an include
  */
 add_action( 'cmb2_admin_init', 'cmb2_register_iot' );
+add_action( 'cmb2_admin_init', 'cmb2_register_naturalproducts' );
+add_action( 'cmb2_admin_init', 'cmb2_register_worldtea' );
+
 function cmb2_register_iot() {
 	$cmb = new_cmb2_box( array(
         'id'           => 'iot_metabox',
+        'classes'    => 'options-box',
+        'classes_cb' => 'yourprefix_add_some_classes',
         'title'        => 'Opportunity Options',
         'object_types' => array( 'opportunity', ), // Post type
     ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'default' => 'marketing',
+        'options' => array(
+            'signature' => 'Signature Opportunities',
+            'marketing' => 'Marketing Assets',
+            'premier' => 'Premier Assets',
+        ),
+    ) );   
+}
+
+function cmb2_register_naturalproducts() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'naturalproducts_metabox',
+        'classes'    => 'options-box',
+        'classes_cb' => 'yourprefix_add_some_classes',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'default' => 'marketing',
+        'options' => array(
+            'marketing' => 'Marketing',
+            'awareness' => 'Awareness',
+            'sampling' => 'Sampling',
+            'event' => 'Event',
+            'Exclusive' => 'Exclusive',
+        ),
+    ) );   
  		$cmb->add_field( array(
-        'name'    => 'IoT Level',
+        'name'    => 'Level',
         'id'      => 'opp_level',
         'type'    => 'select',
         'default' => 'gold',
@@ -494,17 +535,29 @@ function cmb2_register_iot() {
             'gold' => 'Gold',
             'silver' => 'Silver',
         ),
-    ) );   
-     $cmb->add_field( array(
-        'name'    => 'IoT Type',
+    ) );
+}
+
+function cmb2_register_worldtea() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'worldtea_metabox',
+        'classes'    => 'options-box',
+        'title'        => 'Opportunity Options',	
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
         'id'      => 'opp_type',
-        'type'    => 'select',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
         'default' => 'marketing',
         'options' => array(
+            'package' => 'Package',
             'marketing' => 'Marketing',
-            'events' => 'Events',
+            'brandawareness' => 'Brand Awareness',
+            'leadgen' => 'Lead Generation',
         ),
-    ) );   
+    ) );
 }
 
 /**
@@ -536,7 +589,6 @@ add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
 function cmb2_sample_metaboxes() {
 
 
-//  added enable/disabLe radio
 
     // Start with an underscore to hide fields from custom fields list
     $prefix = 'opps_';
@@ -552,7 +604,6 @@ function cmb2_sample_metaboxes() {
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
         'cmb_styles' => iot_types, // false to disable the CMB stylesheet
-        // 'closed'     => true, // Keep the metabox closed by default
     ) );
     // Sold?
 		$cmb->add_field( array(
@@ -560,10 +611,22 @@ function cmb2_sample_metaboxes() {
 			'id'               => $prefix . 'status',
 			'type'             => 'radio',
 			'show_option_none' => false,
-//			'show_on_cb' => 'opps_hide_if_no_cats',
+			'default' => 'available',
 			'options'          => array(
 					'available' => __( '<span style="color:green">Available</span>', 'cmb2' ),
 					'sold'   => __( '<strong style="color: #ff0000;">Sold</strong>', 'cmb2' ),
+			),
+	) );
+	// Enabled?
+	$cmb->add_field( array(
+			'name'             => 'Enabled',
+			'id'               => $prefix . 'enabled',
+			'type'             => 'radio',
+			'show_option_none' => false,
+			'default' => 'enabled',
+			'options'          => array(
+					'enabled' => __( 'Enabled', 'cmb2' ),
+					'disabled'   => __( 'Disabled', 'cmb2' ),
 			),
 	) );
 	// Featured
@@ -572,49 +635,12 @@ function cmb2_sample_metaboxes() {
 			'id'               => $prefix . 'featured',
 			'type'             => 'radio',
 			'show_option_none' => false,
+			'default' => 'normal',
 			'options'          => array(
 					'featured' => __( 'Yes', 'cmb2' ),
 					'normal'   => __( 'No', 'cmb2' ),
 			),
 	) );
-		// Sponsorship Level
-		$cmb->add_field( array(
-			'name'             => __( 'Sponsorship Level', 'cmb2' ),
-			'id'               => $prefix . 'level',
-			'type'             => 'select',
-			'show_option_none' => true,
-			'options'          => array(
-				'platinum' => __( 'Platinum', 'cmb2' ),
-				'gold' => __( 'Gold', 'cmb2' ),
-				'silver' => __( 'Silver', 'cmb2' ),
-				'bronze' => __( 'Bronze', 'cmb2' ),
-			),
-		) );
-		// Sponsorship Type
-		/*
-		$cmb->add_field( array(
-			'name'             => __( 'Sponsorship Type', 'cmb2' ),
-			'id'               => $prefix . 'type',
-			'type'             => 'select',
-			'show_option_none' => true,
-			'options'          => array(
-				'marketing_opp' => __( 'Marketing Opportunity', 'cmb2' ),
-				'exclusive_opp' => __( 'Exclusive Opportunity', 'cmb2' ),
-				'digital_opp' => __( 'Digital Opportunity', 'cmb2' ),
-				'brand_opp' => __( 'Brand Awareness', 'cmb2' ),
-				'lead_opp' => __( 'Lead Generation', 'cmb2' ),
-				'community_opp' => __( 'Community', 'cmb2' ),
-				'events_opp' => __( 'Events', 'cmb2' ),
-				'sampling_opp' => __( 'Product Sampling', 'cmb2' ),
-				'influence_opp' => __( 'Influence Partner', 'cmb2' ),
-				'innovation_opp' => __( 'Innovation Partner', 'cmb2' ),
-				'growth_opp' => __( 'Growth Partner', 'cmb2' ),
-				'onsite_opp' => __( 'Onsite Opportunity', 'cmb2' ),
-				'traffic_opp' => __( 'Booth Traffic', 'cmb2' ),
-				'package_opp' => __( 'Package Opportunity', 'cmb2' ),
-			),
-		) );
-		*/
 		// look @ column option for these fields or before_row, etc.
 		// Current Quantity Available
 		$cmb->add_field( array(
@@ -722,14 +748,14 @@ function cmb2_sample_metaboxes() {
 	$cmb->add_field( array(
     'name' => 'Fulfillment Notes',
     'desc' => 'field description (optional)',
-    'default' => 'standard value (optional)',
+    'default' => '',
     'id' => 'fulfillment',
     'type' => 'textarea_small'
 	) );
 	$cmb->add_field( array(
     'name' => 'Venue Information',
     'desc' => 'field description (optional)',
-    'default' => 'standard value (optional)',
+    'default' => '',
     'id' => 'venue_info',
     'type' => 'textarea_small'
 	) );

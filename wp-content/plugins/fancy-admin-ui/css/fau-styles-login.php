@@ -27,7 +27,7 @@ background: #fff url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/theme
 .login h1 a {
 	width: 190px;
 	height: 52px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	background: url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/themes/marketingopps/images/penton.png) top right no-repeat;
 }
 .login h1:after {
@@ -35,7 +35,7 @@ background: #fff url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/theme
 	margin-bottom: 30px;
 	content: 'Opportunities';
 	color: #2B2011;
-	font-size: 18px;
+	font-size: 28px;
 	font-weight: bold;
 }
 .login label {
