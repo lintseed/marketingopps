@@ -998,8 +998,8 @@ function remove_dashboard_meta() {
         remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
         remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
         remove_meta_box( 'cjt-statistics', 'dashboard', 'normal');
-} add_action( 'admin_init', 'remove_dashboard_meta' ); 
-
+}
+add_action( 'admin_init', 'remove_dashboard_meta' ); 
 //add_action( 'add_meta_boxes', 'change_cat_meta_box', 0 );
 //add_action( 'admin_menu', 'change_post_menu_label' );
     
