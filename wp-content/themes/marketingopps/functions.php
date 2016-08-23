@@ -659,22 +659,15 @@ function cmb2_sample_metaboxes() {
 		// look @ column option for these fields or before_row, etc.
 		// Minimum Cost
 		$cmb->add_field( array(
-			'name'    => 'Minimum Cost',
+			'name'    => 'Cost',
 			'id'      => 'min_cost',
-			'type'    => 'text',
+			'type'    => 'text_money',
+			'desc' => 'Please enter a numeric cost. Do not include commas or dollar signs.',
 		) );
-		// Maximum Cost
-		/*
-		$cmb->add_field( array(
-			'name'    => 'Maximum Cost',
-			'id'      => 'max_cost',
-			'type'    => 'text',
-		) );
-		*/
 		// Cost Override
 		$cmb->add_field( array(
-			'name'    => 'Total Cost',
-			'desc'    => 'Value overrides min-max price values. Display a cost range here.',
+			'name'    => 'Text Cost',
+			'desc'    => 'This value overrides the above value. Enter a range or include any necessary descriptors.',
 			'id'      => 'total_cost',
 			'type'    => 'text',
 		) );	
@@ -722,18 +715,7 @@ function cmb2_sample_metaboxes() {
 			'id'      => 'contact_2',
 			'type'    => 'text'
 		) );
-		/*
-		$cmb->add_field( array(
-	    'name'    => 'Sort Order',
-			'id'      => 'sort',
-			'type'             => 'select',
-			'show_option_none' => true,
-			'options'          => array(
-				'?' => __( '?' )
-			),
-			
-		) );		
-		*/
+
 	
 	$cmb = new_cmb2_box( array(
 			'id'            => 'admin_notes',
