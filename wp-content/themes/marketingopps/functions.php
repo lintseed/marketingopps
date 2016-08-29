@@ -161,26 +161,6 @@ function twentysixteen_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Content Bottom 1', 'twentysixteen' ),
-		'id'            => 'sidebar-2',
-		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'twentysixteen' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Content Bottom 2', 'twentysixteen' ),
-		'id'            => 'sidebar-3',
-		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'twentysixteen' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
 }
 add_action( 'widgets_init', 'twentysixteen_widgets_init' );
 
@@ -485,21 +465,19 @@ add_action( 'cmb2_admin_init', 'cmb2_register_worldtea' );
 function cmb2_register_iot() {
 	$cmb = new_cmb2_box( array(
         'id'           => 'iot_metabox',
-        'classes'    => 'options-box',
-        'classes_cb' => 'yourprefix_add_some_classes',
+        'classes'    => 'options-box types-levels',
         'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
+        'object_types' => array( 'opportunity'), // Post type
     ) );
     $cmb->add_field( array(
         'name'    => 'Type',
-        'id'      => 'opp_type',
+        'id'      => 'opp_type_iot',
         'type'    => 'multicheck',
         'select_all_button' => false,
-        'default' => 'marketing',
         'options' => array(
-            'signature' => 'Signature Opportunities',
-            'marketing' => 'Marketing Assets',
-            'premier' => 'Premier Assets',
+            'Signature Opportunities' => 'Signature Opportunities' ,
+            'Marketing Assets' => 'Marketing Assets',
+            'Premier Assets' => 'Premier Assets',
         ),
     ) );   
 }
@@ -507,30 +485,28 @@ function cmb2_register_iot() {
 function cmb2_register_naturalproducts() {
 	$cmb = new_cmb2_box( array(
         'id'           => 'naturalproducts_metabox',
-        'classes'    => 'options-box',
-        'classes_cb' => 'yourprefix_add_some_classes',
+        'classes'    => 'options-box types-levels',
         'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
+        'object_types' => array( 'opportunity' ), // Post type
     ) );
     $cmb->add_field( array(
         'name'    => 'Type',
-        'id'      => 'opp_type',
+        'id'      => 'opp_type_np',
         'type'    => 'multicheck',
         'select_all_button' => false,
-        'default' => 'marketing',
         'options' => array(
-            'marketing' => 'Marketing',
-            'awareness' => 'Awareness',
-            'sampling' => 'Sampling',
-            'event' => 'Event',
+            'Marketing' => 'Marketing',
+            'Awareness' => 'Awareness',
+            'Sampling' => 'Sampling',
+            'Event' => 'Event',
             'Exclusive' => 'Exclusive',
         ),
     ) );   
  		$cmb->add_field( array(
         'name'    => 'Level',
-        'id'      => 'opp_level',
+        'id'      => 'opp_level_np',
         'type'    => 'select',
-        'default' => 'gold',
+        'show_option_none' => true,
         'options' => array(
             'gold' => 'Gold',
             'silver' => 'Silver',
@@ -541,21 +517,20 @@ function cmb2_register_naturalproducts() {
 function cmb2_register_worldtea() {
 	$cmb = new_cmb2_box( array(
         'id'           => 'worldtea_metabox',
-        'classes'    => 'options-box',
+        'classes'    => 'options-box types-levels',
         'title'        => 'Opportunity Options',	
         'object_types' => array( 'opportunity', ), // Post type
     ) );
     $cmb->add_field( array(
         'name'    => 'Type',
-        'id'      => 'opp_type',
+        'id'      => 'opp_type_wt',
         'type'    => 'multicheck',
         'select_all_button' => false,
-        'default' => 'marketing',
         'options' => array(
-            'package' => 'Package',
-            'marketing' => 'Marketing',
-            'brandawareness' => 'Brand Awareness',
-            'leadgen' => 'Lead Generation',
+            'Package' => 'Package',
+            'Marketing' => 'Marketing',
+            'Brand Awareness' => 'Brand Awareness',
+            'Lead Generation' => 'Lead Generation',
         ),
     ) );
 }
@@ -579,7 +554,29 @@ add_action('admin_enqueue_scripts', 'add_admin_styles');
 add_action( 'admin_enqueue_scripts', 'add_admin_scripts', 10, 1 );
 
 
-
+/**
+ * Unserialize arrays for JSON ouput
+ */
+class unserialize_php_arrays_before_sending_json {
+    function __construct() {
+      add_action( 'json_api_import_wp_post',
+      array( $this, 'json_api_import_wp_post' ), 10, 2 );
+    }
+	function json_api_import_wp_post( $JSON_API_Post, $wp_post ) {
+		foreach ( $JSON_API_Post->custom_fields as $key => $custom_field ) {
+			if (is_array($custom_field)) {
+				$unserialized_array = array();
+				foreach($custom_field as $field_key => $field_value) {
+					$unserialized_array[$field_key] = maybe_unserialize( $field_value );
+				}
+				$JSON_API_Post->custom_fields->$key = $unserialized_array;
+			} else {
+				$JSON_API_Post->custom_fields->$key = maybe_unserialize( $custom_field );
+			}
+		}
+	}
+}
+new unserialize_php_arrays_before_sending_json();
 
 
 add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
@@ -591,13 +588,13 @@ function cmb2_sample_metaboxes() {
 
 
     // Start with an underscore to hide fields from custom fields list
-    $prefix = 'opps_';
+    $prefix = 'opp_';
 
     /**
      * Initiate the metabox
      */
     $cmb = new_cmb2_box( array(
-        'id'            => 'opp_details',
+        'id'            => $prefix . 'details',
         'title'         => __( 'Opportunity Details', 'cmb2' ),
         'object_types'  => array( 'opportunity', ), // Post type
         'context'       => 'normal',
@@ -607,38 +604,32 @@ function cmb2_sample_metaboxes() {
     ) );
     // Sold?
 		$cmb->add_field( array(
-			'name'             => 'Status',
-			'id'               => $prefix . 'status',
-			'type'             => 'radio',
-			'show_option_none' => false,
-			'default' => 'available',
+			'name'             => '<strong style="color: #ff0000;">Sold</strong>',
+			'id'               => $prefix . 'sold',
+			'type'             => 'checkbox',
+			'default' => '',
 			'options'          => array(
-					'available' => __( '<span style="color:green">Available</span>', 'cmb2' ),
-					'sold'   => __( '<strong style="color: #ff0000;">Sold</strong>', 'cmb2' ),
+					'sold'   => __( 'sold', 'cmb2' ),
 			),
 	) );
 	// Enabled?
 	$cmb->add_field( array(
-			'name'             => 'Enabled',
+			'name'             => '<span style="color:green">Enabled</span>',
 			'id'               => $prefix . 'enabled',
-			'type'             => 'radio',
-			'show_option_none' => false,
+			'type'             => 'checkbox',
 			'default' => 'enabled',
 			'options'          => array(
 					'enabled' => __( 'Enabled', 'cmb2' ),
-					'disabled'   => __( 'Disabled', 'cmb2' ),
 			),
 	) );
 	// Featured
 		$cmb->add_field( array(
-			'name'             => '✩ Featured Opportunity?',
+			'name'             => '<span style="color:#ffcd00">✩</span> Featured Opportunity?',
 			'id'               => $prefix . 'featured',
-			'type'             => 'radio',
-			'show_option_none' => false,
-			'default' => 'normal',
+			'type'             => 'checkbox',
+			'default' => '',
 			'options'          => array(
-					'featured' => __( 'Yes', 'cmb2' ),
-					'normal'   => __( 'No', 'cmb2' ),
+					'featured' => __( 'Featured', 'cmb2' ),
 			),
 	) );
 		// look @ column option for these fields or before_row, etc.
@@ -646,49 +637,60 @@ function cmb2_sample_metaboxes() {
 		$cmb->add_field( array(
 			'name'    => '<u>Current</u> Quantity Available',
 			'default' => '',
-			'id'      => 'current_quantity',
+			'id'      => $prefix . 'current_quantity',
 			'type'    => 'text',
 		) );
 		// Totle Quantity Available
 		$cmb->add_field( array(
 			'name'    => '<u>Total</u> Quantity Available',
 			'default' => '',
-			'id'      => 'total_quantity',
+			'id'      => $prefix . 'total_quantity',
 			'type'    => 'text',
 		) );
 		// look @ column option for these fields or before_row, etc.
-		// Minimum Cost
+		// Numeric Cost
 		$cmb->add_field( array(
 			'name'    => 'Cost',
-			'id'      => 'min_cost',
+			'id'      => $prefix . 'numeric_cost',
 			'type'    => 'text_money',
-			'desc' => 'Please enter a numeric cost. Do not include commas or dollar signs.',
 		) );
 		// Cost Override
 		$cmb->add_field( array(
 			'name'    => 'Text Cost',
 			'desc'    => 'This value overrides the above value. Enter a range or include any necessary descriptors.',
-			'id'      => 'total_cost',
+			'id'      => $prefix . 'total_cost',
 			'type'    => 'text',
 		) );	
 		$cmb->add_field( array(
 	    'name'    => 'Sponsor Logo Paths',
 			'desc'    => 'Please enter the full URL for each sponsor logo stored in the Sponsor Tool. If one does not exist, please use the upload tool below.',
-			'id'      => 'logos_paths',
+			'id'      => $prefix . 'logos_paths',
 			'type'    => 'text',
 			'repeatable' => true,
 		) );
 		$cmb->add_field( array(
 	    'name'    => 'Upload Sponsor Logos',
 			'desc'    => 'Upload sponsor logos when there is not already a logo on file.',
-			'id'      => 'sponsor_logos',
+			'id'      => $prefix . 'sponsor_logos',
 			'type'    => 'file_list',
+			'options' => array(
+        'url' => true,
+    	),
+			'repeatable' => true
+		) );
+		$cmb->add_field( array(
+	    'name'    => 'Images',
+			'id'      => $prefix . 'images',
+			'type'    => 'file_list',
+			'options' => array(
+        'url' => true,
+    	),
 			'repeatable' => true
 		) );
 		$cmb->add_field( array(
 	    'name'    => 'Supporting Document',
 			'desc'    => 'Upload a file or enter a URL.',
-			'id'      => 'document',
+			'id'      => $prefix . 'document',
 			'type'    => 'file',
 			// Optional:
 			'options' => array(
@@ -700,25 +702,25 @@ function cmb2_sample_metaboxes() {
 		) );
 		$cmb->add_field( array(
 			'name' => 'Sale Deadline',
-			'id'   => 'deadline',
+			'id'   => $prefix . 'deadline',
 			'type' => 'text_date',
 			// 'timezone_meta_key' => 'wiki_test_timezone',
 			// 'date_format' => 'l jS \of F Y',
 		) );
 		$cmb->add_field( array(
 	    'name'    => 'Contact Information',
-			'id'      => 'contact',
+			'id'      => $prefix . 'contact',
 			'type'    => 'text'
 		) );
 		$cmb->add_field( array(
 	    'name'    => 'Contact Information #2',
-			'id'      => 'contact_2',
+			'id'      => $prefix . 'contact_2',
 			'type'    => 'text'
 		) );
 
 	
 	$cmb = new_cmb2_box( array(
-			'id'            => 'admin_notes',
+			'id'            => $prefix . 'admin_notes',
 			'title'         => __( 'Admin Notes', 'cmb2' ),
 			'object_types'  => array( 'opportunity', ), // Post type
 			'context'       => 'normal',
@@ -731,14 +733,14 @@ function cmb2_sample_metaboxes() {
     'name' => 'Fulfillment Notes',
     'desc' => 'field description (optional)',
     'default' => '',
-    'id' => 'fulfillment',
+    'id' => $prefix . 'fulfillment',
     'type' => 'textarea_small'
 	) );
 	$cmb->add_field( array(
     'name' => 'Venue Information',
     'desc' => 'field description (optional)',
     'default' => '',
-    'id' => 'venue_info',
+    'id' => $prefix . 'venue_info',
     'type' => 'textarea_small'
 	) );
 	//	1500 Characters
@@ -788,7 +790,6 @@ add_action( 'cmb2_admin_init', 'opps_register_repeatable_group_field_metabox' );
  */
 function opps_register_repeatable_group_field_metabox() {
 	$prefix = 'opps_group_';
-
 	/**
 	 * Repeatable Field Groups
 	 */
@@ -797,7 +798,6 @@ function opps_register_repeatable_group_field_metabox() {
 		'title'        => __( 'Repeating Field Group', 'cmb2' ),
 		'object_types' => array( 'page', ),
 	) );
-
 	// $group_field_id is the field id string, so in this case: $prefix . 'demo'
 	$group_field_id = $cmb_group->add_field( array(
 		'id'          => $prefix . 'demo',
@@ -811,7 +811,6 @@ function opps_register_repeatable_group_field_metabox() {
 			// 'closed'     => true, // true to have the groups closed by default
 		),
 	) );
-
 	/**
 	 * Group fields works the same, except ids only need
 	 * to be unique to the group. Prefix is not needed.
@@ -824,26 +823,22 @@ function opps_register_repeatable_group_field_metabox() {
 		'type'       => 'text',
 		// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 	) );
-
 	$cmb_group->add_group_field( $group_field_id, array(
 		'name'        => __( 'Description', 'cmb2' ),
 		'description' => __( 'Write a short description for this entry', 'cmb2' ),
 		'id'          => 'description',
 		'type'        => 'textarea_small',
 	) );
-
 	$cmb_group->add_group_field( $group_field_id, array(
 		'name' => __( 'Entry Image', 'cmb2' ),
 		'id'   => 'image',
 		'type' => 'file',
 	) );
-
 	$cmb_group->add_group_field( $group_field_id, array(
 		'name' => __( 'Image Caption', 'cmb2' ),
 		'id'   => 'image_caption',
 		'type' => 'text',
 	) );
-
 }
 
 add_action( 'cmb2_admin_init', 'opps_register_taxonomy_metabox' );

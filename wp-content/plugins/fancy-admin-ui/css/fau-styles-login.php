@@ -28,7 +28,7 @@ background: #fff url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/theme
 	width: 190px;
 	height: 52px;
 	margin-bottom: 20px;
-	background: url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/themes/marketingopps/images/penton.png) top right no-repeat;
+	background: url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/themes/marketingopps/images/penton.png) top center no-repeat;
 }
 .login h1:after {
 	display: block;
