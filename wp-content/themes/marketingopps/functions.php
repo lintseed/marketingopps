@@ -433,12 +433,11 @@ if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
 
 function remove_menus(){
   remove_menu_page( 'edit.php' );                   //Posts
-//  remove_menu_page( 'edit.php?post_type=page' );    //Pages
+	remove_menu_page( 'edit.php?post_type=page' );    //Pages
   remove_menu_page( 'edit-comments.php' );          //Comments
-//  remove_menu_page( 'themes.php' );                 //Appearance
+	remove_menu_page( 'themes.php' );                 //Appearance
 }
 add_action( 'admin_menu', 'remove_menus' );
-
 
 
 /**
@@ -475,9 +474,9 @@ function cmb2_register_iot() {
         'type'    => 'multicheck',
         'select_all_button' => false,
         'options' => array(
+            'Marketing Assets' => 'Marketing Assets',        
             'Signature Opportunities' => 'Signature Opportunities' ,
-            'Marketing Assets' => 'Marketing Assets',
-            'Premier Assets' => 'Premier Assets',
+            'Premier Sponsorships' => 'Premier Sponsorships',
         ),
     ) );   
 }
@@ -489,6 +488,7 @@ function cmb2_register_naturalproducts() {
         'title'        => 'Opportunity Options',
         'object_types' => array( 'opportunity' ), // Post type
     ) );
+    /* no types for EE 17
     $cmb->add_field( array(
         'name'    => 'Type',
         'id'      => 'opp_type_np',
@@ -501,15 +501,18 @@ function cmb2_register_naturalproducts() {
             'Event' => 'Event',
             'Exclusive' => 'Exclusive',
         ),
-    ) );   
+    ) );   */
  		$cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_np',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
+            'platinum' => 'Platinum',
             'gold' => 'Gold',
             'silver' => 'Silver',
+            'marketing' => 'Marketing',
+            'Title Sponsor' => 'Title Sponsor', 
         ),
     ) );
 }
@@ -652,12 +655,14 @@ function cmb2_sample_metaboxes() {
 		$cmb->add_field( array(
 			'name'    => 'Cost',
 			'id'      => $prefix . 'numeric_cost',
+			'desc'    => 'Enter the minimum value for price sorting.',
 			'type'    => 'text_money',
+			'sanitization_cb' => 'sanitize_numeric',
 		) );
 		// Cost Override
 		$cmb->add_field( array(
 			'name'    => 'Text Cost',
-			'desc'    => 'This value overrides the above value. Enter a range or include any necessary descriptors.',
+			'desc'    => 'Enter a price range or include any necessary descriptors here.',
 			'id'      => $prefix . 'total_cost',
 			'type'    => 'text',
 		) );	
@@ -689,16 +694,23 @@ function cmb2_sample_metaboxes() {
 		) );
 		$cmb->add_field( array(
 	    'name'    => 'Supporting Document',
-			'desc'    => 'Upload a file or enter a URL.',
+			'desc'    => 'Upload a file or enter a URL',
 			'id'      => $prefix . 'document',
-			'type'    => 'file',
-			// Optional:
-			'options' => array(
-					'url' => true,
-			),
-			'text'    => array(
-					'add_upload_file_text' => 'Add File' // Change upload button text. Default: "Add or Upload File"
-			),
+			'type'    => 'file_list',
+			'text' => array(
+        'add_upload_files_text' => 'Add Files', // default: "Add or Upload Files"
+        'remove_image_text' => 'Remove Images', // default: "Remove Image"
+        'file_text' => 'File:', // default: "File:"
+        'file_download_text' => 'Download', // default: "Download"
+        'remove_text' => 'Remove', // default: "Remove"
+    	),
+		) );
+		$cmb->add_field( array(
+	    'name'    => 'Supporting Document Labels',
+			'desc'    => 'Please enter a label for each document uploaded',
+			'id'      => $prefix . 'documentLabel',
+			'type'    => 'text',
+			'repeatable'  => true,
 		) );
 		$cmb->add_field( array(
 			'name' => 'Sale Deadline',
@@ -918,6 +930,8 @@ function opps_register_theme_options_metabox() {
 			'value' => array( $option_key )
 		),
 	) );
+	
+
 
 	/**
 	 * Options fields ids only need
@@ -932,6 +946,12 @@ function opps_register_theme_options_metabox() {
 		'default' => '#ffffff',
 	) );
 
+}
+
+function	sanitize_numeric($value, $field_args, $field) {
+	$value = preg_replace('/[\$,]/', '', $value);
+	$sanitized_value = floatval($value);
+	return $sanitized_value;
 }
 
 

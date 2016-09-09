@@ -1,0 +1,7 @@
+#dashboard-widgets-wrap:before {
+	content: 'Please select an opportunity to create or edit from the left menu. Please remember to assign your opportunities to an event!';
+	padding: 10px 20px 20px 10px;
+}
+#dashboard-widgets {
+	display: none;
+}

@@ -19,17 +19,17 @@ get_header(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header class="entry-header">
-						<?php the_title( '<h1 class="entry-title">OPPS OPPPS HAHAHAHAAHA', '</h1>' ); ?>
+						<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 					</header><!-- .entry-header -->
 
 					<div class="entry-content">
+
 						<?php
 
-						//	print_r(maybe_unserialize(get_post_meta(get_the_ID(), 'opp_type_iot', true)));
-
-
+//						print_r(maybe_unserialize(get_post_meta(get_the_ID(), 'opp_type_iot', true)));
 							print_r(get_post_meta(get_the_ID(), 'opp_images', true));
 							print_r(get_post_meta(get_the_ID(), 'opp_logos_paths', true));
+							print_r(get_post_meta(get_the_ID(), 'opp_document', true));
 							
 							?>
 					</div><!-- .entry-content -->
