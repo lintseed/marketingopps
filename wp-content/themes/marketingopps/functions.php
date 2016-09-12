@@ -460,6 +460,7 @@ function cmb2_category_post() {
 add_action( 'cmb2_admin_init', 'cmb2_register_iot' );
 add_action( 'cmb2_admin_init', 'cmb2_register_naturalproducts' );
 add_action( 'cmb2_admin_init', 'cmb2_register_worldtea' );
+add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
 
 function cmb2_register_iot() {
 	$cmb = new_cmb2_box( array(
@@ -508,10 +509,10 @@ function cmb2_register_naturalproducts() {
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
-            'platinum' => 'Platinum',
-            'gold' => 'Gold',
-            'silver' => 'Silver',
-            'marketing' => 'Marketing',
+            'Platinum' => 'Platinum',
+            'Gold' => 'Gold',
+            'Silver' => 'Silver',
+            'Marketing' => 'Marketing',
             'Title Sponsor' => 'Title Sponsor', 
         ),
     ) );
@@ -534,6 +535,39 @@ function cmb2_register_worldtea() {
             'Marketing' => 'Marketing',
             'Brand Awareness' => 'Brand Awareness',
             'Lead Generation' => 'Lead Generation',
+        ),
+    ) );
+}
+
+function cmb2_register_nbj() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'nbj_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',	
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type_nbj',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+            'Brand' => 'Brand',
+            'Exclusive' => 'Exclusive',
+            'Event' => 'Event',
+            'Lead Generation' => 'Lead Generation',
+        ),
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_nbj',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+            'Premier Platinum' => 'Premier Platinum',
+            'Platinum' => 'Platinum',
+            'Gold' => 'Gold',
+            'Silver' => 'Silver',
         ),
     ) );
 }

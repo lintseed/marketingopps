@@ -10,6 +10,7 @@
 		
 		var naturalProducts = $('#in-category-29');	
 			var ee16 = $('#in-category-11');
+			var nbj17 = $('#in-category-31');
  	
  		/* Edit opps */
  		/* But first, hide them (possible from cmb2?) */
@@ -21,6 +22,8 @@
 			$('#naturalproducts_metabox').show();
 		} else if (tea17.is(':checked') || teaParent.is(':checked')) {
 			$('#worldtea_metabox').show();
+		} else if (nbj17.is(':checked') ) {
+			$('#nbj_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -36,6 +39,9 @@
 			} else if (tea17.is(':checked') || teaParent.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#worldtea_metabox').show();
+			} else if (nbj17.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#nbj_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}
