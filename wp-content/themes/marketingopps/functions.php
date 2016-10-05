@@ -458,6 +458,7 @@ function cmb2_category_post() {
  * Move category boxes into an include
  */
 add_action( 'cmb2_admin_init', 'cmb2_register_iot' );
+add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_naturalproducts' );
 add_action( 'cmb2_admin_init', 'cmb2_register_worldtea' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
@@ -480,6 +481,41 @@ function cmb2_register_iot() {
             'Premier Sponsorships' => 'Premier Sponsorships',
         ),
     ) );   
+}
+
+function cmb2_register_waste() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'waste_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity'), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type_waste',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+          'Event' => 'Event',
+					'Package' => 'Package',
+					'Brand Exposure' => 'Brand Exposure',
+					'Mobile App' => 'Mobile App',
+					'A-la-carte' => 'A-la-carte',
+					'Marketing' => 'Marketing'
+        ),
+    ) ); 
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_waste',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+            'Platinum' => 'Platinum',
+            'Silver' => 'Silver',
+            'Bronze' => 'Bronze',
+            'Green' => 'Green',
+        ),
+    ) );
 }
 
 function cmb2_register_naturalproducts() {
@@ -669,6 +705,15 @@ function cmb2_sample_metaboxes() {
 					'featured' => __( 'Featured', 'cmb2' ),
 			),
 	) );
+	// Current Quantity Available
+		$cmb->add_field( array(
+			'name'    => 'Excerpt',
+			'desc'    => 'Will display above the content. Provide one paragraph of text, do not include HTML',
+			'default' => '',
+			'id'      => $prefix . 'excerpt',
+			'sanitization_cb' => 'sanitize_html',
+			'type'    => 'textarea',
+		) );
 		// look @ column option for these fields or before_row, etc.
 		// Current Quantity Available
 		$cmb->add_field( array(
@@ -987,7 +1032,20 @@ function	sanitize_numeric($value, $field_args, $field) {
 	$sanitized_value = floatval($value);
 	return $sanitized_value;
 }
-
+/**
+ * Handles sanitization for the wiki_custom_escaping_and_sanitization field.
+ * Ensures a field's value is greater than 100 or nothing.
+ *
+ * @param  mixed      $value      The unsanitized value from the form.
+ * @param  array      $field_args Array of field arguments.
+ * @param  CMB2_Field $field      The field object
+ *
+ * @return mixed                  Sanitized value to be stored.
+ */
+function sanitize_html( $value, $field_args, $field ) {
+		$sanitized_value = strip_tags($value);
+  	return  $sanitized_value;
+}
 
 
 /**
