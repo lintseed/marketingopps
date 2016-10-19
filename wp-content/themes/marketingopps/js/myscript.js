@@ -14,7 +14,10 @@
 			
 		var wasteParent = $('#in-category-36');	
 			var waste17 = $('#in-category-37');
- 	
+ 
+ 		var industryParent = $('#in-category-39');	
+ 			var mtce17 = $('#in-category-38');	
+
  		/* Edit opps */
  		/* But first, hide them (possible from cmb2?) */
  		$('.types-levels').parents('div.postbox').hide();
@@ -29,6 +32,8 @@
 			$('#nbj_metabox').show();
 		} else if (waste17.is(':checked') ) {
 			$('#waste_metabox').show();
+		} else if (mtce17.is(':checked') ) {
+			$('#mtce_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -50,6 +55,9 @@
 			} else if (waste17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#waste_metabox').show();
+			} else if (mtce17.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#mtce_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}

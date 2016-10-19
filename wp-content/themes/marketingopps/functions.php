@@ -462,6 +462,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_naturalproducts' );
 add_action( 'cmb2_admin_init', 'cmb2_register_worldtea' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
+add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
 
 function cmb2_register_iot() {
 	$cmb = new_cmb2_box( array(
@@ -604,6 +605,30 @@ function cmb2_register_nbj() {
             'Platinum' => 'Platinum',
             'Gold' => 'Gold',
             'Silver' => 'Silver',
+        ),
+    ) );
+}
+
+
+function cmb2_register_mtce() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'mtce_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',	
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_mtce',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+            '1 - Premium' => '1 - Premium',
+            '2 - Content Related' => '2 - Content Related',
+            '3 - Hospitality' => '3 - Hospitality',
+            '4 - Product Branded' => '4 - Product Branded',
+            '5 - Exhibit Hall' => '5 - Exhibit Hall',
+            '6 - Tech-Focused' => '6 - Tech-Focused',
         ),
     ) );
 }
