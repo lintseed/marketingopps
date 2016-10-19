@@ -623,12 +623,12 @@ function cmb2_register_mtce() {
         'type'    => 'multicheck',
         'select_all_button' => false,
         'options' => array(
-            '1 - Premium' => '1 - Premium',
-            '2 - Content Related' => '2 - Content Related',
-            '3 - Hospitality' => '3 - Hospitality',
-            '4 - Product Branded' => '4 - Product Branded',
-            '5 - Exhibit Hall' => '5 - Exhibit Hall',
-            '6 - Tech-Focused' => '6 - Tech-Focused',
+            'Premium' => 'Premium',
+            'Content Related' => 'Content Related',
+            'Hospitality' => 'Hospitality',
+            'Product Branded' => 'Product Branded',
+            'Exhibit Hall' => 'Exhibit Hall',
+            'Tech-Focused' => 'Tech-Focused',
         ),
     ) );
 }
