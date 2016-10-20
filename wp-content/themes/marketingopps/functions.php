@@ -440,210 +440,25 @@ function remove_menus(){
 add_action( 'admin_menu', 'remove_menus' );
 
 
-/**
- * Conditionally displays meta boxes as defined per parent cat
- *
- * Using JS to display instead...
- */
- /*
-add_action( 'init', 'cmb2_category_post' );
-function cmb2_category_post() {
-	$post_id = $_GET['post'];
-	$categories = get_the_category($post_id);
-	if ( in_category(27,$post_id) ) { add_action( 'cmb2_admin_init', 'cmb2_register_iot' ); }
-}
-*/
+
 
 /**
- * Move category boxes into an include
+ * Opportunity Meta
+ * Conditionally displays meta boxes per selected category
  */
-add_action( 'cmb2_admin_init', 'cmb2_register_iot' );
-add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
-add_action( 'cmb2_admin_init', 'cmb2_register_naturalproducts' );
-add_action( 'cmb2_admin_init', 'cmb2_register_worldtea' );
-add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
-add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
-
-function cmb2_register_iot() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'iot_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity'), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_iot',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Marketing Assets' => 'Marketing Assets',        
-            'Signature Opportunities' => 'Signature Opportunities' ,
-            'Premier Sponsorships' => 'Premier Sponsorships',
-        ),
-    ) );   
-}
-
-function cmb2_register_waste() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'waste_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity'), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_waste',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-          'Event' => 'Event',
-					'Package' => 'Package',
-					'Brand Exposure' => 'Brand Exposure',
-					'Mobile App' => 'Mobile App',
-					'A-la-carte' => 'A-la-carte',
-					'Marketing' => 'Marketing'
-        ),
-    ) ); 
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_waste',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-            'Platinum' => 'Platinum',
-            'Silver' => 'Silver',
-            'Bronze' => 'Bronze',
-            'Green' => 'Green',
-        ),
-    ) );
-}
-
-function cmb2_register_naturalproducts() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'naturalproducts_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity' ), // Post type
-    ) );
-    /* no types for EE 17
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_np',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Marketing' => 'Marketing',
-            'Awareness' => 'Awareness',
-            'Sampling' => 'Sampling',
-            'Event' => 'Event',
-            'Exclusive' => 'Exclusive',
-        ),
-    ) );   */
- 		$cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_np',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-            'Platinum' => 'Platinum',
-            'Gold' => 'Gold',
-            'Silver' => 'Silver',
-            'Marketing' => 'Marketing',
-            'Title Sponsor' => 'Title Sponsor', 
-        ),
-    ) );
-}
-
-function cmb2_register_worldtea() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'worldtea_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',	
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_wt',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Package' => 'Package',
-            'Marketing' => 'Marketing',
-            'Brand Awareness' => 'Brand Awareness',
-            'Lead Generation' => 'Lead Generation',
-        ),
-    ) );
-}
-
-function cmb2_register_nbj() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'nbj_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',	
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_nbj',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Brand' => 'Brand',
-            'Exclusive' => 'Exclusive',
-            'Event' => 'Event',
-            'Lead Generation' => 'Lead Generation',
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_nbj',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Premier Platinum' => 'Premier Platinum',
-            'Platinum' => 'Platinum',
-            'Gold' => 'Gold',
-            'Silver' => 'Silver',
-        ),
-    ) );
-}
-
-
-function cmb2_register_mtce() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'mtce_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',	
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_mtce',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Premium' => 'Premium',
-            'Content Related' => 'Content Related',
-            'Hospitality' => 'Hospitality',
-            'Product Branded' => 'Product Branded',
-            'Exhibit Hall' => 'Exhibit Hall',
-            'Tech-Focused' => 'Tech-Focused',
-        ),
-    ) );
-}
-
-/**
- * And/or can we handle this via the dom
- */
+require get_template_directory() . '/inc/event-metaboxes.php';
+/* Hook into posts to do the thing... */
 function add_admin_scripts( $hook ) {
     global $post;
     if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
         if ( 'opportunity' === $post->post_type ) {     
-            wp_enqueue_script(  'myscript', get_stylesheet_directory_uri().'/js/myscript.js' );
+            wp_enqueue_script(  'eventboxes', get_stylesheet_directory_uri().'/js/eventboxes.js' );
         }
     }
 }
+
+
+
 // Update CSS within in Admin
 function add_admin_styles() {
   wp_enqueue_style('admin-styles', get_template_directory_uri().'/css/admin.css');
