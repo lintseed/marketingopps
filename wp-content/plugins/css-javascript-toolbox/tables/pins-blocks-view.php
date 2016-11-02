@@ -64,7 +64,13 @@ class CJTPinsBlockSQLView extends CJTSQLView
 	*/
 	public function __toString() 
 	{
-		
+		# In case of Error at $this->makeBlocksQuery dont processed
+        if ( $this->blocksQuery === FALSE )
+        {
+            return '';
+        }
+        
+        
 		$filters = $this->query->filter;
 		$customPins = $this->customPins;
 		
@@ -95,8 +101,16 @@ class CJTPinsBlockSQLView extends CJTSQLView
 	public function exec() 
 	{
 		
-		# Note: OBJECT_K get unique blocks as they will override each others
-		$blocks = $this->driver->select( $this, OBJECT_K );
+        $blocks = array();
+        $query = ( string ) $this;
+        
+        # It will return empty query, in case of error
+        if ( $query )
+        {
+            # Note: OBJECT_K get unique blocks as they will override each others
+            $blocks = $this->driver->select( $query, OBJECT_K );            
+        }
+
 		
 		return $blocks;
 	}
@@ -160,10 +174,27 @@ class CJTPinsBlockSQLView extends CJTSQLView
 		// build custom pins filter.
 		$customPins = array();
 		
+        global $wp_query;
+        
 		foreach ( $filters->customPins as $pinFilter ) 
 		{
+            
 			$pinFilter = (object) $pinFilter;
 			$pins = implode( ',', $pinFilter->pins );
+            
+            // Scan Pins, sometime if happened to be empty
+            // The Wordpress request that carry $pins to be empty is not yet
+            // known, we simply now need to discard that request 
+            // as user's server error log file filled with this error
+            // and users complains about it all the time
+            if ( ! $pins )
+            {
+                
+                $this->blocksQuery = FALSE;
+                
+                return $this;
+            }
+            
 			$customPins[ ] = "( ( blocks.`pinPoint` & {$pinFilter->flag} ) AND ( pins.pin = '{$pinFilter->pin}' ) AND ( pins.`value` IN ( {$pins} ) ) )";
 		}
 		

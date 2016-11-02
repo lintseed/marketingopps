@@ -3,7 +3,7 @@
 Plugin Name: CSS & JavaScript Toolbox
 Plugin URI: http://css-javascript-toolbox.com/
 Description: CJT Plugin for WordPress to easily add custom CSS and JavaScript to individual pages
-Version: 8.2
+Version: 8.3.1
 Author: Wipeout Media
 Author URI: http://css-javascript-toolbox.com
 License:
@@ -14,57 +14,32 @@ The remaining portions of the Software ("Proprietary Portion"), which includes a
 */
 
 // Disallow direct access.
-defined('ABSPATH') or die("Access denied");
-
-define('CJTOOLBOX_PHP_VERSION_MIN', '5.3');
-
-register_activation_hook( __FILE__, 'css_js_toolbox_activate' );
-
-function css_js_toolbox_activate( $wp = '3.1', $php = CJTOOLBOX_PHP_VERSION_MIN )
-{
-    global $wp_version;
-    if ( version_compare( PHP_VERSION, $php, '<' ) )
-        $flag = 'PHP';
-    elseif
-        ( version_compare( $wp_version, $wp, '<' ) )
-        $flag = 'WordPress';
-    else
-        return;
-    $version = 'PHP' == $flag ? $php : $wp;
-    deactivate_plugins( basename( __FILE__ ) );
-    wp_die('<p>The <strong>CSS & JavaScript Toolbox</strong> plugin requires '.$flag.'  version '.$version.' or greater. Please contact support of your hosting to upgrade PHP.</p>','Plugin Activation Error',  array( 'response'=>200, 'back_link'=>TRUE ) );
-}
-
-if ( version_compare( PHP_VERSION, CJTOOLBOX_PHP_VERSION_MIN, '<' ) )
-{
-	add_action( 'admin_notices', create_function( '', "echo '<div class=\"error\"><p>".sprintf(__('CSS & JavaScript Toolbox plugin requires PHP %s to function properly. Please contact support your hosting to upgrade PHP', 'css-js-toolbox'), CJTOOLBOX_PHP_VERSION_MIN) . "</p></div>';" ) );
-  return;
-}
+defined( 'ABSPATH' ) or die( 'Access denied' );
 
 
 /** * */
-define('CJTOOLBOX_PLUGIN_BASE', basename(dirname(__FILE__)) . '/' . basename(__FILE__));
+define( 'CJTOOLBOX_PLUGIN_BASE', basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ) );
 
 /** * */
-define('CJTOOLBOX_PLUGIN_FILE', __FILE__);
+define( 'CJTOOLBOX_PLUGIN_FILE', __FILE__ );
 
 /** CJT Name */
-define('CJTOOLBOX_NAME', plugin_basename(dirname(__FILE__)));
+define( 'CJTOOLBOX_NAME', plugin_basename( dirname( __FILE__ ) ) );
 
 /** CJT Text Domain used for localize texts */
-define('CJTOOLBOX_TEXT_DOMAIN', CJTOOLBOX_NAME);  
+define( 'CJTOOLBOX_TEXT_DOMAIN', CJTOOLBOX_NAME );  
 
 /**  */
-define('CJTOOLBOX_LANGUAGES', CJTOOLBOX_NAME . '/locals/languages/');
+define( 'CJTOOLBOX_LANGUAGES', CJTOOLBOX_NAME . '/locals/languages/' );
 
 /** CJT Absoulte path */
-define('CJTOOLBOX_PATH', dirname(__FILE__));
+define( 'CJTOOLBOX_PATH', dirname( __FILE__ ) );
 
 /** Dont use!! @deprecated */
-define('CJTOOLBOX_INCLUDE_PATH', CJTOOLBOX_PATH . '/framework'); 
+define( 'CJTOOLBOX_INCLUDE_PATH', CJTOOLBOX_PATH . '/framework' ); 
 
 /** Access Points  path */
-define('CJTOOLBOX_ACCESS_POINTS', CJTOOLBOX_PATH . '/access.points');
+define( 'CJTOOLBOX_ACCESS_POINTS', CJTOOLBOX_PATH . '/access.points' );
 
 /** Frmaework path */
 define('CJTOOLBOX_FRAMEWORK', CJTOOLBOX_INCLUDE_PATH); // Alias to include path!
@@ -81,9 +56,9 @@ require_once CJTOOLBOX_FRAMEWORK . '/events/hookable.interface.php';
 require_once CJTOOLBOX_FRAMEWORK . '/events/hookable.class.php';
 
 // Initialize events engine/system!
-CJTWordpressEvents::__init(array('hookType' => CJTWordpressEvents::HOOK_ACTION));
-CJTWordpressEvents::$paths['subjects']['core'] = CJTOOLBOX_FRAMEWORK . '/events/subjects';
-CJTWordpressEvents::$paths['observers']['core'] = CJTOOLBOX_FRAMEWORK . '/events/observers';
+CJTWordpressEvents::__init( array( 'hookType' => CJTWordpressEvents::HOOK_ACTION ) );
+CJTWordpressEvents::$paths[ 'subjects' ][ 'core' ] = CJTOOLBOX_FRAMEWORK . '/events/subjects';
+CJTWordpressEvents::$paths[ 'observers' ][ 'core' ] = CJTOOLBOX_FRAMEWORK . '/events/observers';
 
 /**
 * CJT Plugin interface.
@@ -100,13 +75,21 @@ CJTWordpressEvents::$paths['observers']['core'] = CJTOOLBOX_FRAMEWORK . '/events
 * @author Ahmed Said
 * @version 6
 */
-class CJTPlugin extends CJTHookableClass {
+class CJTPlugin extends CJTHookableClass 
+{
 
 	/**
 	* 
 	*/
 	const DB_VERSION = '1.6';
 	
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    CONST ENV_PHP_MIN_VERSION = '5.3';
+    
 	/**
 	* 
 	*/
@@ -115,7 +98,7 @@ class CJTPlugin extends CJTHookableClass {
 	/**
 	* 
 	*/
-	const VERSION = '8.2'	;
+	const VERSION = '8.3.1'	;
 	
 	/**
 	* 
@@ -167,61 +150,60 @@ class CJTPlugin extends CJTHookableClass {
 	* 	
 	* @var mixed
 	*/
-	protected $onloaddbversion = array('parameters' => array('dbVersion'));
+	protected $onloaddbversion = array( 'parameters' => array( 'dbVersion' ) );
 	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $onimportbasefile = array('parameters' => array('file'));
+	protected $onimportcontroller = array( 'parameters' => array( 'file' ) );
 	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $onimportcontroller = array('parameters' => array('file'));
+	protected $onimportmodel  = array( 'parameters' => array( 'file' ) );
 	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $onimportmodel  = array('parameters' => array('file'));
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $onload = array('parameters' => array('instance'));
-
+	protected $onload = array( 'parameters' => array( 'instance' ) );
+    
 	/**
 	* put your comment there...
 	* 
 	*/
-	protected function __construct() {
+	protected function __construct() 
+    {
 		// Hookable!
 		parent::__construct();
+        
 		// Allow access points to utilize from CJTPlugin functionality
 		// even if the call is recursive inside getInstance/construct methods!!!
-		self::$instance = $this; 
-		// Read vars!
-		$dbVersion = $this->onloaddbversion(get_option(self::DB_VERSION_OPTION_NAME));
-		$this->installed = (($dbVersion) == self::DB_VERSION);
+		self::$instance = $this;
+        
+		// Installation version
+		$dbVersion = $this->onloaddbversion( get_option( self::DB_VERSION_OPTION_NAME ) );
+		$this->installed = ( ( $dbVersion ) == self::DB_VERSION );
+        
 		// Load plugin and all installed extensions!.
 		$this->load();
 		$this->loadExtensions();
+        
 		// Run MAIN access point!
 		$this->main();
 	}
-	
+    
 	/**
 	* put your comment there...
 	* 
 	*/
-	public function & extensions() {
+	public function & extensions() 
+    {
 		return $this->extensions;	
 	}
 	
@@ -229,26 +211,51 @@ class CJTPlugin extends CJTHookableClass {
 	* put your comment there...
 	* 
 	*/
-	public function getAccessPoint($name) {
-		return $this->accessPoints[$name];
+	public function getAccessPoint( $name ) 
+    {
+		return $this->accessPoints[ $name ];
 	}
 	
 	/**
 	* put your comment there...
 	* 
 	*/
-	public static function getInstance() {
-		if (!self::$instance) {
+	public static function getInstance() 
+    {
+        
+		if ( ! self::$instance ) 
+        {
 			self::$instance = new CJTPlugin();
 		}
+        
 		return self::$instance;
 	}
-	
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public static function isCompatibleEnvironment()
+    {
+        
+        if ( version_compare( PHP_VERSION, self::ENV_PHP_MIN_VERSION, '<' ) )
+        {
+            
+            $importHTMLFileCode = 'require "includes" . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "incompatible_environment_message.html.php";';
+            
+            add_action( 'admin_notices', create_function( '', $importHTMLFileCode ) );
+            
+            return false;
+        }
+        
+        return true;
+    }
 	/**
 	* put your comment there...
 	* 
 	*/
-	public function isInstalled() {
+	public function isInstalled() 
+    {
 		return $this->installed;	
 	}
 	
@@ -256,25 +263,34 @@ class CJTPlugin extends CJTHookableClass {
 	* put your comment there...
 	* 
 	*/
-	public function listen() {
+	public function listen() 
+    {
 		// For now we've only admin access points! Future versions might has something changed!
-		if (is_admin()) {
+		if ( is_admin() ) 
+        {
+            
 			// Import access points core classes.
 			require_once 'framework/access-points/page.class.php';
 			require_once 'framework/access-points/directory-spider.class.php';
+            
 			// Get access points!
-			$accessPoints = CJTAccessPointsDirectorySpider::getInstance('CJT', CJTOOLBOX_ACCESS_POINTS);
+			$accessPoints = CJTAccessPointsDirectorySpider::getInstance( 'CJT', CJTOOLBOX_ACCESS_POINTS );
+            
 			// For every access point create instance and LISTEN to the request!
-			foreach ($accessPoints as $name => $info) {
+			foreach ( $accessPoints as $name => $info ) 
+            {
 				/**
 				* @var CJTAccessPoint
 				*/
-				$this->accessPoints[$name] = $point = $accessPoints->point()->listen();
+				$this->accessPoints[ $name ] = $point = $accessPoints->point()->listen();
+                
 				// We need to do some work with there is a connected access point.
-				$point->onconnected = array(&$this, 'onconnected');
+				$point->onconnected = array( & $this, 'onconnected' );
+                
 			}
+            
 		}
-		// Chaining!
+        
 		return $this;
 	}
 	
@@ -282,14 +298,15 @@ class CJTPlugin extends CJTHookableClass {
 	* put your comment there...
 	* 
 	*/
-	protected function load() {
+	protected function load() 
+    {
 		// Bootstrap the Plugin!
-		require_once $this->onimportbasefile('css-js-toolbox.class.php');
 		cssJSToolbox::getInstance();
+        
 		// Load MVC framework core!
-		require_once $this->onimportmodel(CJTOOLBOX_MVC_FRAMEWOK . '/model.inc.php');
-		require_once $this->onimportcontroller(CJTOOLBOX_MVC_FRAMEWOK . '/controller.inc.php');
-		// Chaining!
+		require_once $this->onimportmodel( CJTOOLBOX_MVC_FRAMEWOK . '/model.inc.php' );
+		require_once $this->onimportcontroller( CJTOOLBOX_MVC_FRAMEWOK . '/controller.inc.php' );
+        
 		return $this;
 	}
 	
@@ -297,13 +314,14 @@ class CJTPlugin extends CJTHookableClass {
 	* put your comment there...
 	* 
 	*/
-	protected function loadExtensions() {
+	protected function loadExtensions() 
+    {
 		// Load extensions lib!
 		require_once 'framework/extensions/extensions.class.php';
+        
 		$this->extensions = new CJTExtensions();
-		// Load all extensions!
 		$this->extensions->load();
-		// Chaining!
+        
 		return $this;
 	}
 	
@@ -312,27 +330,32 @@ class CJTPlugin extends CJTHookableClass {
 	* 
 	* @return $this
 	*/
-	protected function main() {
+	protected function main() 
+    {
 		// Fire laod event
-		$this->onload($this);
+		$this->onload( $this );
+        
 		// Access point base class is a dependency!
 		require_once 'framework/access-points/access-point.class.php';
+        
 		// Run Main Acces Point!
 		include_once 'access.points/main.accesspoint.php';
+        
 		$this->mainAC = new CJTMainAccessPoint();
 		$this->mainAC->listen();
 	}
-	
+
 	/**
 	* Called When any In-Listen-State (ILS) Access point is 
 	* connected (called by Wordpress hooking system).
 	* 
 	* @return boolean TRUE.
 	*/
-	public function onconnected($observer, $state) 
+	public function onconnected( $observer, $state ) 
 	{
+        
 		// In all cases that we'll process the request load the localization file.
-		load_plugin_textdomain(CJTOOLBOX_TEXT_DOMAIN, false, CJTOOLBOX_LANGUAGES);
+		load_plugin_textdomain( CJTOOLBOX_TEXT_DOMAIN, false, CJTOOLBOX_LANGUAGES );
 		
 		do_action( CJTPluggableHelper::ACTION_CJT_TEXT_DOMAIN_LOADED );
 		
@@ -343,8 +366,14 @@ class CJTPlugin extends CJTHookableClass {
 	
 }// End Class
 
+// Dont run if environment (e.g PHP version) is incomaptible
+if ( ! CJTPlugin::isCompatibleEnvironment() )
+{
+    return;
+}
+
 // Initialize events!
-CJTPlugin::define('CJTPlugin', array('hookType' => CJTWordpressEvents::HOOK_FILTER));
+CJTPlugin::define( 'CJTPlugin', array( 'hookType' => CJTWordpressEvents::HOOK_FILTER ) );
 
 // Let's Go!
 CJTPlugin::getInstance();

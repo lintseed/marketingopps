@@ -153,13 +153,14 @@ var CJTServer;
 			var requestToken = {
 				security : CJTServer.securityToken,
 				requestTime : requestTime,
-				requestId : new Date().getTime()
+				requestId : requestTime
 			};
 			// Combine user data with request parameters data.
 			data = $.extend(requestToken, data);
 			// Set return object.
 			requestObject.url = url;
 			requestObject.data = data;
+
 			return requestObject;
 		},
 
@@ -247,7 +248,8 @@ var CJTServer;
 		* @param string Any valid http request methods.
 		* @return jqxhr
 		*/
-		send : function(controller, action, data, requestMethod, returnType, inSettings) {
+		send : function(controller, action, data, requestMethod, returnType, inSettings) 
+        {
 			var request = null;
 			var promising = null;
 			// Set default request method.
@@ -259,39 +261,30 @@ var CJTServer;
 			// Ajax Request Settings.
 			var settings = $.extend({type : requestMethod, data : request.data, dataType : returnType},
 															inSettings ? inSettings : {});
-			// Merge settings with passed settings.
-			// Request!
-			promising = $.ajax(request.url, settings)
+            // Make the call
+			settings.url = request.url;
+			promising = $.ajax( settings )
+            
 			/* @TODO: This is a temporary solution for version 6.0 to be releases! Later we'll have a full error handling system! */
 			// --- Start temporary Error handling Block ---
 			.error($.proxy(
 				function(jqXHR, textStatus, errorThrown)
 				{
 
-					//console.log("Server error: ");
-					//console.log(errorThrown);
-					//console.log(textStatus);
-					//console.log(jqXHR);
-
-					if (confirm(CJTCjtServerI18N.confirmSubmitErrorForm))
-					{
-						this.unhandledErrorSubmissionForm(jqXHR.responseText);
-          }
-
-					return;
-
-					/*
-					switch (textStatus) {
-						case 'parsererror':
+					switch (textStatus) 
+                    {
+						case 'parsererror' :
+                        
 							// For now just create a temporary element to be over any other elements!
-							if (confirm(CJTCjtServerI18N.confirmSubmitErrorForm)) {
-								this.unhandledErrorSubmissionForm(jqXHR.responseText);
+							if ( confirm( CJTCjtServerI18N.confirmSubmitErrorForm ) ) 
+                            {
+								this.unhandledErrorSubmissionForm( jqXHR.responseText );
 							}
+                            
 						break;
 					}
-					*/
 
-				}, this)
+				}, this )
 			);
 			// --- End temporary Error handling Block ---
 			return promising;

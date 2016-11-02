@@ -15,14 +15,14 @@ defined('ABSPATH') or die("Access denied");
 	<div id="custom-icon" class="icon32 blocks-icon32"></div>
 	<h2 class="cjt-main-title"><?php echo htmlentities( cssJSToolbox::getText('CSS & Javascript Toolbox') ) ?><?php echo apply_filters( 'cjt_after_main_title', '' ) ?></h2>
 	
-	<?php ob_start(); ?>
-	<span id="support-us"><?php echo cssJSToolbox::getText('Support us by purchasing') ?>: <a target="_blank" href="http://css-javascript-toolbox.com/css-javascript-toolbox-plus/"><?php echo htmlentities( cssJSToolbox::getText('CSS & Javascript Toolbox PLUS') ) ?></a></span>
-	<?php echo apply_filters( 'cjt_main_titlt_supportus_link', ob_get_clean() ); ?>
-	
 	<div id="cjt-banner-bar-right">
-		<span class="cjt-banner-link">
-			<a target="_blank" href="http://<?php echo cssJSToolbox::CJT_WEB_SITE_DOMAIN ?>/documentation/"><?php echo cssJSToolbox::getText('Online Documentation') ?></a>
-		</span>
+        <span class="cjt-banner-link">
+            <span><?php echo cssJSToolbox::getText('Upgrade to') ?></span>: <a target="_blank" href="http://<?php echo cssJSToolbox::CJT_WEB_SITE_DOMAIN ?>/pricing/"><?php echo cssJSToolbox::getText('CJT CORE and CJT PLUS') ?></a>
+        </span>
+        &nbsp;|&nbsp;
+        <span class="cjt-banner-link">
+            <span><?php echo cssJSToolbox::getText('Learn with') ?></span>: <a target="_blank" href="http://<?php echo cssJSToolbox::CJT_WEB_SITE_DOMAIN ?>/documentation"><?php echo cssJSToolbox::getText('CJT Online Help') ?></a>
+        </span>
 	</div>
 	<div id="cjtoolbox-blocks-page-form" method="post">
 		<?php wp_nonce_field('cjtoolbox'); ?>

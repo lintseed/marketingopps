@@ -46,11 +46,39 @@ class CJTStatisticsMetaboxModel {
 	* @param mixed $state
 	* @param mixed $type
 	*/
-	public function getBlocksCount($state, $type) {
-		$result = $this->dbDriver->select("SELECT count(*) blocksCount FROM #__cjtoolbox_blocks WHERE state = '{$state}' AND type='{$type}';", ARRAY_A);
-		return $result[0]['blocksCount'];
+	public function getBlocksCount($state, $type) 
+    {
+        
+        $query = "  SELECT count(*) blocksCount   
+                    FROM #__cjtoolbox_blocks 
+                    WHERE backupId IS NULL AND state = '{$state}' AND type='{$type}';";
+        
+		$result = $this->dbDriver->select($query, ARRAY_A);
+        
+        $count = $result[0]['blocksCount'];
+        
+		return $count;
 	}
 	
+    /**
+    * put your comment there...
+    * 
+    */
+    public function getCodeFilesCount()
+    {
+        
+        $query = '  SELECT count(*) codeFilesCount
+                    FROM #__cjtoolbox_blocks b LEFT JOIN #__cjtoolbox_block_files f
+                    ON b.id = f.blockId
+                    WHERE b.BackupId IS NULL AND b.type != "revision";';
+        
+        $result = $this->dbDriver->select($query, ARRAY_A);
+        
+        $count = $result[0]['codeFilesCount'];
+        
+        return $count;
+    }
+    
 	/**
 	* put your comment there...
 	* 
@@ -61,7 +89,7 @@ class CJTStatisticsMetaboxModel {
 		// Only if cache is expires read feed from server.
 		if ((time() - $widgetTransitFeed['time']) > self::LATEST_SCRIPT_EXPIRES) {
 			# INitiaize
-			$fieldsNames = array('title', 'link', 'description');
+			$fieldsNames = array('title', 'link', 'description', 'pubDate');
 			# Get Latest Scripts/Packages from feed.
 			$scriptsFeed = new CJT_Framework_Wordpress_Feed(cssJSToolbox::CJT_WEB_SITE_DOMAIN, 'category/scripts/feed/', $fieldsNames);
 			$widgetTransitFeed['scripts'] = $scriptsFeed->getLatestItems(7);

@@ -13,6 +13,7 @@ class CJTDashboardMetaboxStatisticsView extends CJTView {
 
 	protected $activeBlocks;
 	protected $activeMetaboxBlocks;
+    protected $codeFiles;
 	protected $feed;
 	protected $inactiveBlocks;
 	protected $inactiveMetaboxBlocks;
@@ -44,6 +45,7 @@ class CJTDashboardMetaboxStatisticsView extends CJTView {
 		// Prepare view vars.
 		$this->activeBlocks = $model->getBlocksCount('active', 'block');
 		$this->inactiveBlocks = $model->getBlocksCount('inactive', 'block');
+        $this->codeFiles = $model->getCodeFilesCount();
 		$this->activeMetaboxBlocks = $model->getBlocksCount('active', 'metabox');
 		$this->inactiveMetaboxBlocks = $model->getBlocksCount('inactive', 'Metabox');
 		$this->scriptsPackage = $model->getPackagesCount();

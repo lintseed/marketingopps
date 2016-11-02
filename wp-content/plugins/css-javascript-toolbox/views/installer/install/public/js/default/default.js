@@ -68,12 +68,10 @@
 							li.addClass('installed');
 						}, this)
 					).fail($.proxy( // Operation installation faild!
-						function() {
-							console.log(
-								"Installation operation '"
-								 + operation.name
-								 + "' is failed");
-						}, this)
+						function() 
+                        {
+							console.log( CJTInstallerDefaultI18N.operationInstallFaild.replace( '%s', operation.name ) );
+						}, this)         
 					).complete($.proxy(
 					  function() {
 					  	// Stop progressing!

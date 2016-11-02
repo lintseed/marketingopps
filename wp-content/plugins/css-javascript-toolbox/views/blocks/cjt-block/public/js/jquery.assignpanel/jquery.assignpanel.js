@@ -61,7 +61,7 @@
 						
 						var buttons = {};
 
-						$.each( apjp.objectsList, 
+						$.each( apjp.objectsList,
 						
 								function( index, name ) 
 								{
@@ -105,7 +105,7 @@
 						
 						var map = {};
 
-						$.each( apjp.objectsList, 
+						$.each( apjp.objectsList,
 						
 								function( index, name ) 
 								{

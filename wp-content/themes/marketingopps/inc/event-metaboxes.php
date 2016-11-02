@@ -65,7 +65,7 @@ function cmb2_register_club() {
     ) );
  		$cmb->add_field( array(
         'name'    => 'Level',
-        'id'      => 'opp_level_np',
+        'id'      => 'opp_level_club',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
@@ -85,27 +85,14 @@ function cmb2_register_worldtea() {
         'object_types' => array( 'opportunity', ), // Post type
     ) );
     $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_wt',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Package' => 'Package',
-            'Marketing' => 'Marketing',
-            'Brand Awareness' => 'Brand Awareness',
-            'Lead Generation' => 'Lead Generation',
-        ),
-    ) );
-    $cmb->add_field( array(
         'name'    => 'Level',
-        'id'      => 'opp_level_nbj',
+        'id'      => 'opp_level_tea',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
-            'Platinum' => 'Platinum',
-            'Gold' => 'Gold',
-            'Silver' => 'Silver',
-            'Media Partner' => 'Media Partner',
+            'Signature' => 'Signature',
+            'Premium' => 'Premium',
+            'Marketing' => 'Marketing',
         ),
     ) );
 }
@@ -180,6 +167,8 @@ function cmb2_register_nbj() {
         'show_option_none' => true,
         'options' => array(
             'Premier Platinum' => 'Premier Platinum',
+            'Premier Title' => 'Premier Title',
+            'Premier Program' => 'Premier Program',
             'Platinum' => 'Platinum',
             'Gold' => 'Gold',
             'Silver' => 'Silver',
@@ -254,7 +243,7 @@ function cmb2_register_ldi() {
     ) );
     $cmb->add_field( array(
         'name'    => 'Type',
-        'id'      => 'opp_type_waste',
+        'id'      => 'opp_type_ldi',
         'type'    => 'multicheck',
         'select_all_button' => false,
         'options' => array(

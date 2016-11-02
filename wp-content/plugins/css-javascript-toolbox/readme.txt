@@ -6,47 +6,51 @@ Tags: post, posts, admin, sidebar, page, pages, widget, image, shortcode, plugin
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.9
-Tested up to: 4.4
-Stable tag: 8.2
+Tested up to: 4.6.1
+Stable tag: 8.3.1
 
 Easily add custom CSS, JavaScript, HTML and PHP code to unique CJT code blocks and assign them wherever you want.
 
 == Description ==
-CSS & JavaScript Toolbox (or CJT) is a powerful code management plugin that gives you the tools to easily and safely modify or extend the functionality and appearance of your WordPress-powered website.
+CSS & JavaScript Toolbox (or CJT) is a code management plugin that gives you the tools to customise the functionality and appearance of your website. 
 
-= Perfect for WordPress website development =
-Whether it be adding free/premium scripts, creating and testing new scripts, streamlining development work, making front-end customisations, or even teaching and learning WordPress – CJT is extremely flexible and versatile.
+= CJT is great for =
+- streamlining development work
+- adding free or premium scripts
+- creating and testing your own scripts
+- adding front-end customisations
+- modifying themes
+- adding tracking code
+- teaching or learning how to code
+- and a million more uses
+
+
+= Why Upgrade? =
+Fully responsive user interface
+Works on tablets and even mobile phones so you can code on the go!
+Functions are now kept in one place called Panels
+Coding has never been easier or more enjoyable
+Higher performance and security tweaks
+Works flawlessly with the latest version of WordPress
+Plenty of premium features and tools
+
+We want everyone to upgrade so we have created affordable pricing options. [Learn about the new CJT CORE and CJT PLUS](http://css-javascript-toolbox.com/). 
 
 = How does it work? =
-Since CJT was designed to be easy, adding scripts and styles can be done in as little as two steps.
-
+CJT is extremely flexible and versatile. Since it was designed to be easy, adding scripts and styles can be done in as little as two steps:
 - adding your code directly into unique CJT code blocks
 - assigning where these code blocks go
 
 CJT code blocks can be assigned to pages, posts, custom posts, categories, URLs, expressions, and practically anywhere you want on your website. Code block shortcodes can also provide you with further placement accuracy.
 
-= Why purchase CSS & JavaScript Toolbox PLUS? =
-[CSS & JavaScript Toolbox PLUS](http://css-javascript-toolbox.com/css-javascript-toolbox-plus/) is our new premium plugin, featuring a faster and more powerful core, PLUS these features below:
-
-- Inverted Assignments (NEW FEATURE)
-- Support for Post Tags (NEW FEATURE)
-- Editor Themes
-- Editor Toolbox
-- Editor Menu Tools
-- Code Auto Completion (CAC)
-- Import Export Tool
-- Block Widget Linker
-- code optimisation and bug fixes
-- 100% compatibility with the the latest WordPress
-- PLUS more!!!
 
 = Support Us =
 The CSS & JavaScript Toolbox project is 100% developed and maintained by only two people since the very beginnings in August 2011. We have plenty of feature ideas that we want to introduce and this can only be possible with funding.
 
-You can also support us by providing a [feedback review and rating](http://wordpress.org/support/view/plugin-reviews/css-javascript-toolbox) on WordPress.org, and spreading the word and recommending CJT to others.
+You can also support us by providing a feedback review and rating on WordPress.org, and spreading the word and recommending CJT to others.
 
 = Follow the Developments =
-If you like to know more about the development state, issues and to track future versions code please follow us on [GitHub Plugin repository](https://github.com/css-javascript-toolbox/css-javascript-toolbox-plugin).
+If you like to know more about the development state, issues and to track future versions code please follow us on GitHub Plugin repository.
 
 == Installation ==
 1. If you're upgrading from older versions its highly recommended to backup your database before upgrading.
@@ -127,6 +131,19 @@ Due to the overwhelming amount of emails we get for users requesting support for
 21. See Code Block information at a glance (CJT PLUS ONLY)
 
 == Changelog ==
+
+= 8.3.1 =
+Fix: Development log files created at production
+
+= 8.3 =
+* Enahnce: CJT Won't work and admin notice displayed when PHP version < 5.3
+* Enahnce: Dashboard Statictics Metabox display more fields
+* Enahnce: Update ACE Editor
+* Fix: some commonly detected Plugins conflict compatibility
+* Fix: SQL errors commonly appears in Error log file 
+* Fix: Dashboard Statictics Metabox exception when CJT server is not reachable
+* Fix: Dashboard Statictics Metabox blocks count includs backups block
+* Enahnce: Update ACE Editor to the last version
 
 = 8.2 =
 * PHP version check on activation
