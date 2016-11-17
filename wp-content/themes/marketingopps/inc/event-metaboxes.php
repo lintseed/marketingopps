@@ -13,6 +13,8 @@ add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
 add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ldi' );
+add_action( 'cmb2_admin_init', 'cmb2_register_pes' );
+
 
 function cmb2_register_iot() {
 	$cmb = new_cmb2_box( array(
@@ -269,3 +271,41 @@ function cmb2_register_ldi() {
         ),
     ) );
 }
+
+function cmb2_register_pes() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'pes_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',	
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type_pes',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+           'Brand Awareness' => 'Brand Awareness',
+					 'Marketing' => 'Marketing',
+					 'Exclusive Opportunity' => 'Exclusive Opportunity',
+					 'Lead Generation' => 'Lead Generation',
+					 'Signature Opportunity' => 'Signature Opportunity',
+					 'Digital' => 'Digital',
+					 'Events' => 'Events',
+					 'Premium Sponsorship' => 'Premium Sponsorship'
+        ),
+    ) ); 
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_pes',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          'Platinum' => 'Platinum',
+					'Gold' => 'Gold',
+					'Silver' => 'Silver',
+					'None' => 'None'
+        ),
+    ) );
+}
+

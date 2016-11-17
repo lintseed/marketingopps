@@ -24,7 +24,9 @@
  			var mtce17 = $('#in-category-38');	
  			
  		var ldiParent = $('#in-category-43');	
- 			var ldi17 = $('#in-category-44');			
+ 			var ldi17 = $('#in-category-44');	
+ 			
+ 		var pes = $('#in-category-45');			
  		
  		/* 
  		** Edit opps
@@ -51,7 +53,7 @@
 			$('#club_metabox').show();
 			} else if (engredea17.is(':checked') ) {
 			$('#engredea_metabox').show();
-		//waste
+		// waste
 		} else if (waste17.is(':checked') ) {
 			$('#waste_metabox').show();
 		// industry week
@@ -60,6 +62,9 @@
 		// ldi
 		} else if (ldi17.is(':checked') ) {
 			$('#ldi_metabox').show();
+		// pes
+		} else if (pes.is(':checked') ) {
+			$('#pes_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -104,6 +109,10 @@
 			} else if (ldi17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#ldi_metabox').show();
+			// pes
+			} else if (pes.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#pes_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}
