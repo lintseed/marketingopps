@@ -293,11 +293,12 @@ button,
 input,
 select,
 textarea {
-	color: #1a1a1a;
+/*	color: #1a1a1a;
 	font-family: Merriweather, Georgia, serif;
 	font-size: 16px;
 	font-size: 1rem;
 	line-height: 1.75;
+	*/
 }
 
 h1,
@@ -306,9 +307,10 @@ h3,
 h4,
 h5,
 h6 {
+/*
 	clear: both;
 	font-weight: 700;
-	margin: 0;
+	margin: 0; */
 	text-rendering: optimizeLegibility;
 }
 
@@ -452,8 +454,7 @@ html {
 }
 
 body {
-	background: #1a1a1a;
-	/* Fallback for when there is no custom background color defined. */
+	background: #fff url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/themes/marketingopps/images/background.png) 0 0 repeat;
 }
 
 hr {
@@ -1505,14 +1506,8 @@ blockquote:after,
  * 11.0 - Content
  */
 
-.site {
-	background-color: #fff;
-}
-
 .site-inner {
 	margin: 0 auto;
-	max-width: 1320px;
-	position: relative;
 }
 
 .site-content {
@@ -1570,12 +1565,12 @@ blockquote:after,
 }
 
 .site-title {
-	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	/*font-family: Montserrat, "Helvetica Neue", sans-serif;
 	font-size: 23px;
 	font-size: 1.4375rem;
 	font-weight: 700;
 	line-height: 1.2173913043;
-	margin: 0;
+	margin: 0;*/
 }
 
 .site-branding .site-title a {
@@ -1671,12 +1666,12 @@ blockquote:after,
 }
 
 .entry-title {
-	font-family: Montserrat, "Helvetica Neue", sans-serif;
+/*	font-family: Montserrat, "Helvetica Neue", sans-serif;
 	font-size: 28px;
 	font-size: 1.75rem;
 	font-weight: 700;
 	line-height: 1.25;
-	margin-bottom: 1em;
+	margin-bottom: 1em;*/
 }
 
 .entry-title a {
@@ -1842,10 +1837,10 @@ a.post-thumbnail:focus {
 }
 
 body:not(.search-results) .entry-summary {
-	color: #686868;
+/*	color: #686868;
 	font-size: 19px;
 	font-size: 1.1875rem;
-	line-height: 1.4736842105;
+	line-height: 1.4736842105;*/
 	margin-bottom: 1.4736842105em;
 }
 
@@ -2032,10 +2027,10 @@ body.search-no-results .page-header {
 }
 
 .page-title {
-	font-family: Montserrat, "Helvetica Neue", sans-serif;
+/*	font-family: Montserrat, "Helvetica Neue", sans-serif;
 	font-size: 23px;
 	font-size: 1.4375rem;
-	line-height: 1.2173913043;
+	line-height: 1.2173913043;*/
 }
 
 .taxonomy-description {
@@ -2728,10 +2723,6 @@ p > video {
 
 	body:not(.custom-background-image):after {
 		bottom: 0;
-	}
-
-	.site {
-		margin: 21px;
 	}
 
 	.site-main {
@@ -3894,10 +3885,6 @@ p > video {
 	.pingback .comment-body > a {
 		box-shadow: none;
 		border-bottom: 1px solid #007acc !important; /* Make sure color schemes don't affect to print */
-	}
-
-	.site {
-		margin: 5%;
 	}
 
 	.site-inner {

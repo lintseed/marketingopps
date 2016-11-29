@@ -24,31 +24,19 @@
 				</nav><!-- .main-navigation -->
 			<?php endif; ?>
 
-			<?php if ( has_nav_menu( 'social' ) ) : ?>
-				<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'twentysixteen' ); ?>">
-					<?php
-						wp_nav_menu( array(
-							'theme_location' => 'social',
-							'menu_class'     => 'social-links-menu',
-							'depth'          => 1,
-							'link_before'    => '<span class="screen-reader-text">',
-							'link_after'     => '</span>',
-						) );
-					?>
-				</nav><!-- .social-navigation -->
-			<?php endif; ?>
-
-			<div class="site-info">
-				<?php
-					/**
-					 * Fires before the twentysixteen footer text for footer customization.
-					 *
-					 * @since Twenty Sixteen 1.0
-					 */
-					do_action( 'twentysixteen_credits' );
-				?>
-				<span class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
-				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentysixteen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentysixteen' ), 'WordPress' ); ?></a>
+			<div class="site-info row">
+				<div class="col-md-6">
+					<nav class="Nav Nav--footer-utility">
+						<ul class="Nav-menu Nav-menu--depth0 menu breadcrumbs">
+							<li class="Nav-menuItem Nav-menuItem--depth0 menu-item menu-item-type-post_type menu-item-object-page menu-item-54"><a href="/terms-of-service/" class="Nav-link">Terms of Service</a></li>
+							<li class="Nav-menuItem Nav-menuItem--depth0 menu-item menu-item-type-post_type menu-item-object-page menu-item-53"><a href="/privacy-policy/" class="Nav-link">Privacy Policy</a></li>
+							<li class="Nav-menuItem Nav-menuItem--depth0 menu-item menu-item-type-post_type menu-item-object-page menu-item-52"><a href="/sitemap/" class="Nav-link">Sitemap</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-md-6">
+					<p class="text-right footer-copyright">&copy; <?php echo date('Y'); ?> Penton. All Rights Reserved.</p>
+				</div>
 			</div><!-- .site-info -->
 		</footer><!-- .site-footer -->
 	</div><!-- .site-inner -->
