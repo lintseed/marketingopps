@@ -51,3 +51,4 @@
 [06-Sep-2016 20:51:23 UTC] PHP Fatal error:  Call to undefined function cmb2_output_file_list() in /home/penton7/public_html/opportunities/wp-content/themes/marketingopps/single-opportunity.php on line 26
 [06-Sep-2016 20:51:40 UTC] PHP Fatal error:  Call to undefined function cmb2_output_file_list() in /home/penton7/public_html/opportunities/wp-content/themes/marketingopps/single-opportunity.php on line 26
 [06-Sep-2016 20:52:29 UTC] PHP Fatal error:  Call to undefined function cmb2_output_file_list() in /home/penton7/public_html/opportunities/wp-content/themes/marketingopps/single-opportunity.php on line 26
+[21-Nov-2016 16:46:28 UTC] PHP Parse error:  syntax error, unexpected '( '/' ) ' in /home/penton7/public_html/opportunities-dev/wp-content/themes/marketingopps/header.php on line 51

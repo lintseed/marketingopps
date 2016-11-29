@@ -20,7 +20,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'penton7_marketingopps');
+define('DB_NAME', 'penton7_opps_dev');
 
 /** MySQL database username */
 define('DB_USER', 'penton7_opps');
