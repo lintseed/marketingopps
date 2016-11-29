@@ -27,6 +27,8 @@
  			var ldi17 = $('#in-category-44');	
  			
  		var pes = $('#in-category-45');			
+
+ 		var itdev = $('#in-category-47');			
  		
  		/* 
  		** Edit opps
@@ -65,6 +67,9 @@
 		// pes
 		} else if (pes.is(':checked') ) {
 			$('#pes_metabox').show();
+		// it/dev
+		} else if (itdev.is(':checked') ) {
+			$('#itdev_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -113,6 +118,10 @@
 			} else if (pes.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#pes_metabox').show();
+			// it/dev
+			} else if (itdev.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#itdev_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}

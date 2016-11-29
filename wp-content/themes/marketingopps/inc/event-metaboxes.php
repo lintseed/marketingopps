@@ -14,6 +14,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ldi' );
 add_action( 'cmb2_admin_init', 'cmb2_register_pes' );
+add_action( 'cmb2_admin_init', 'cmb2_register_itdev' );
 
 
 function cmb2_register_iot() {
@@ -305,6 +306,28 @@ function cmb2_register_pes() {
 					'Gold' => 'Gold',
 					'Silver' => 'Silver',
 					'None' => 'None'
+        ),
+    ) );
+}
+
+function cmb2_register_itdev() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'itdev_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',	
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_itdev',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Diamond',
+          2 => 'Platinum',
+					3 => 'Gold',
+					4 => 'Silver',
+					5 => 'Promotional Sponsors' 
         ),
     ) );
 }
