@@ -30,8 +30,10 @@ get_header(); ?>
 							print_r(get_post_meta(get_the_ID(), 'opp_images', true));
 							print_r(get_post_meta(get_the_ID(), 'opp_logos_paths', true));
 							print_r(get_post_meta(get_the_ID(), 'opp_document', true));
-							
-							?>
+
+							$meta = get_post_meta( get_the_ID() );
+							print_r($meta);
+						?>
 					</div><!-- .entry-content -->
 
 				</article><!-- #post-## -->

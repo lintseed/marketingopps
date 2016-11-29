@@ -435,7 +435,7 @@ function remove_menus(){
   remove_menu_page( 'edit.php' );                   //Posts
 	remove_menu_page( 'edit.php?post_type=page' );    //Pages
   remove_menu_page( 'edit-comments.php' );          //Comments
-	remove_menu_page( 'themes.php' );                 //Appearance
+	// remove_menu_page( 'themes.php' );                 //Appearance
 }
 add_action( 'admin_menu', 'remove_menus' );
 
@@ -451,7 +451,7 @@ require get_template_directory() . '/inc/event-metaboxes.php';
 function add_admin_scripts( $hook ) {
     global $post;
     if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
-        if ( 'opportunity' === $post->post_type ) {     
+        if ( 'opportunity' === $post->post_type ) {
             wp_enqueue_script(  'eventboxes', get_stylesheet_directory_uri().'/js/eventboxes.js' );
         }
     }
@@ -584,7 +584,7 @@ function cmb2_sample_metaboxes() {
 			'desc'    => 'Enter a price range or include any necessary descriptors here.',
 			'id'      => $prefix . 'total_cost',
 			'type'    => 'text',
-		) );	
+		) );
 		$cmb->add_field( array(
 	    'name'    => 'Sponsor Logo Paths',
 			'desc'    => 'Please enter the full URL for each sponsor logo stored in the Sponsor Tool. If one does not exist, please use the upload tool below.',
@@ -649,7 +649,7 @@ function cmb2_sample_metaboxes() {
 			'type'    => 'text'
 		) );
 
-	
+
 	$cmb = new_cmb2_box( array(
 			'id'            => $prefix . 'admin_notes',
 			'title'         => __( 'Admin Notes', 'cmb2' ),
@@ -814,7 +814,7 @@ function opps_register_taxonomy_metabox() {
 			'2030' => __( '2030', 'cmb2' ),
 		)
 	) );
-	// Date Range	
+	// Date Range
 		$cmb_term->add_field( array(
         'name'       => __( 'Start Date', 'cmb2' ),
         'id'         => $prefix . 'text_datetime_timestamp_timezone',
@@ -824,7 +824,7 @@ function opps_register_taxonomy_metabox() {
         'name'       => __( 'End Date', 'cmb2' ),
         'id'         => $prefix . 'text_datetime_timestamp',
         'type'       => 'text_datetime_timestamp',
-    ) ); 
+    ) );
 }
 
 add_action( 'cmb2_admin_init', 'opps_register_theme_options_metabox' );
@@ -849,7 +849,7 @@ function opps_register_theme_options_metabox() {
 			'value' => array( $option_key )
 		),
 	) );
-	
+
 
 
 	/**
@@ -894,7 +894,7 @@ function sanitize_html( $value, $field_args, $field ) {
  function slug_get_post_meta_cb( $object, $field_name, $request ) {
 	return get_post_meta( $object[ 'id' ], $field_name );
 }
- 
+
 function slug_update_post_meta_cb( $value, $object, $field_name ) {
 	return update_post_meta( $object[ 'id' ], $field_name, $value );
 }
@@ -946,11 +946,11 @@ function remove_dashboard_meta() {
         remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
         remove_meta_box( 'cjt-statistics', 'dashboard', 'normal');
 }
-add_action( 'admin_init', 'remove_dashboard_meta' ); 
+add_action( 'admin_init', 'remove_dashboard_meta' );
 //add_action( 'add_meta_boxes', 'change_cat_meta_box', 0 );
 //add_action( 'admin_menu', 'change_post_menu_label' );
-    
-    
+
+
 
 /*
 add_action( 'admin_menu', 'my_admin_menu' );
