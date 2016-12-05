@@ -17,6 +17,7 @@ function mcm_init_option_defaults() {
 	if ( mcm_get_option('wp_mcm_version') === false ) {
 		$wp_mcm_options['wp_mcm_toggle_assign']					= '1';
 		$wp_mcm_options['wp_mcm_media_taxonomy_to_use']			= WP_MCM_MEDIA_TAXONOMY;
+		$wp_mcm_options['wp_mcm_category_base']					= WP_MCM_MEDIA_TAXONOMY;
 		$wp_mcm_options['wp_mcm_custom_taxonomy_name']			= '';
 		$wp_mcm_options['wp_mcm_custom_taxonomy_name_single']	= '';
 		$wp_mcm_options['wp_mcm_use_post_taxonomy']				= '';
@@ -42,6 +43,9 @@ function mcm_init_option_defaults() {
 		}
 		if ( version_compare($version_on_start,'1.6','<') ) {
 			$wp_mcm_options['wp_mcm_search_media_library']	= '';
+		}
+		if ( version_compare($version_on_start,'1.9.1','<') ) {
+			$wp_mcm_options['wp_mcm_category_base']	= WP_MCM_MEDIA_TAXONOMY;
 		}
 	}
 

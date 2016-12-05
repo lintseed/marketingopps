@@ -435,11 +435,7 @@ function remove_menus(){
   remove_menu_page( 'edit.php' );                   //Posts
 	remove_menu_page( 'edit.php?post_type=page' );    //Pages
   remove_menu_page( 'edit-comments.php' );          //Comments
-<<<<<<< HEAD
 	// remove_menu_page( 'themes.php' );                 //Appearance
-=======
-//	remove_menu_page( 'themes.php' );                 //Appearance
->>>>>>> bb85a53a4d98676c550768855b8579ca94b4b56d
 }
 add_action( 'admin_menu', 'remove_menus' );
 
@@ -902,6 +898,16 @@ function sanitize_html( $value, $field_args, $field ) {
 function slug_update_post_meta_cb( $value, $object, $field_name ) {
 	return update_post_meta( $object[ 'id' ], $field_name, $value );
 }
+
+function themeprefix_show_cpt_archives( $query ) {
+	if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
+		$query->set( 'post_type', array(
+			'post', 'nav_menu_item', 'opportunity'
+		));
+		return $query;
+	}
+}
+add_filter( 'pre_get_posts', 'themeprefix_show_cpt_archives' );
 
 function renameCategory() {
     global $wp_taxonomies;

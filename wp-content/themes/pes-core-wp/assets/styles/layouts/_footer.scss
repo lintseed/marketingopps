@@ -1,0 +1,19 @@
+.site-footer {
+  overflow: hidden;
+  background-color: $gray-dark;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.site-footer a,
+.site-footer a:link,
+.site-footer a:active {
+  color: $brand-info;
+}
+.site-footer a:focus,
+.site-footer a:hover {
+  color: darken($brand-info, 33.5%);
+}
+.footer-margin {
+  margin-left: 10px;
+  margin-right: 10px;
+}

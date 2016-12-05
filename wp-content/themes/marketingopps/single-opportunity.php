@@ -31,8 +31,11 @@ get_header(); ?>
 							print_r(get_post_meta(get_the_ID(), 'opp_logos_paths', true));
 							print_r(get_post_meta(get_the_ID(), 'opp_document', true));
 
-							$meta = get_post_meta( get_the_ID() );
-							print_r($meta);
+							$meta = get_post_meta(get_the_ID());
+							foreach ($meta as $key => $value) {
+								echo $key . " => " . $value . "<br />";
+							}
+//							print_r($meta);
 						?>
 					</div><!-- .entry-content -->
 
@@ -45,4 +48,5 @@ get_header(); ?>
 </div><!-- #main-content -->
 
 <?php
+get_sidebar();
 get_footer();

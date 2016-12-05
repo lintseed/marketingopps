@@ -3,8 +3,8 @@ Contributors:      webdevstudios, jtsternberg, gregrickaby, tw2113, patrickgarma
 Donate link:       http://webdevstudios.com
 Tags:              metaboxes, forms, fields, options, settings
 Requires at least: 3.8.0
-Tested up to:      4.4.2
-Stable tag:        2.2.3
+Tested up to:      4.7
+Stable tag:        2.2.3.1
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,18 @@ FAQ's usually end up in the [github wiki](https://github.com/WebDevStudios/CMB2/
 
 == Changelog ==
 
+### 2.2.3.1 - 2016-11-08
+
+#### Enhancements
+
+* Better styling for disabled group "X" buttons, and add title attr. Fixes [#773](https://github.com/WebDevStudios/CMB2/issues/773).
+
+#### Bug Fixes
+
+* Use quotes for `label[for=""]` selector. Fixed `Syntax error, unrecognized expression`. Props [@anhskohbo](https://github.com/anhskohbo) ([#789](https://github.com/WebDevStudios/CMB2/pull/789)).
+* Fix `ReferenceError: tinyMCE is not defined` javascript errors (happening when trying to remove a repeatable field/group). Fixes [#790](https://github.com/WebDevStudios/CMB2/issues/790), and [#730](https://github.com/WebDevStudios/CMB2/issues/730).
+* Fix REST API `'show_in_rest'` examples in `example-functions.php`. Any REST API boxes/fields must use the `'cmb2_init'` hook (as opposed to the `'cmb2_admin_init'` hook).
+
 ### 2.2.3 - 2016-10-25
 
 #### Enhancements
@@ -138,7 +150,7 @@ FAQ's usually end up in the [github wiki](https://github.com/WebDevStudios/CMB2/
 * Update files to be compatible with PHP7 CodeSniffer standards. Props [ryanshoover](https://github.com/ryanshoover) ([#719](https://github.com/WebDevStudios/CMB2/pull/719), [#720](https://github.com/WebDevStudios/CMB2/pull/720)).
 * Make exception message translatable. Props [ramiy](https://github.com/ramiy) ([#724](https://github.com/WebDevStudios/CMB2/pull/724)).
 * Portuguese translation provided by [@alvarogois](https://github.com/alvarogois) and [@pedro-mendonca](https://github.com/pedro-mendonca) - [#709](https://github.com/WebDevStudios/CMB2/pull/709), [#727](https://github.com/WebDevStudios/CMB2/pull/727).
-* Stop using `$wp_version` global Props [ramiy](https://github.com/ramiy) ([#731](https://github.com/WebDevStudios/CMB2/pull/731)).
+* Stop using `$wp_version` global. Props [ramiy](https://github.com/ramiy) ([#731](https://github.com/WebDevStudios/CMB2/pull/731)).
 * Closures (anonymous functions) are now supported for any box/field `'*_cb'` parameters. E.g.
 ```php
 	...
@@ -620,6 +632,18 @@ It is now passed a null value vs saved value. If null is returned, default sanit
 
 == Upgrade Notice ==
 
+### 2.2.3.1 - 2016-11-08
+
+#### Enhancements
+
+* Better styling for disabled group "X" buttons, and add title attr. Fixes [#773](https://github.com/WebDevStudios/CMB2/issues/773).
+
+#### Bug Fixes
+
+* Use quotes for `label[for=""]` selector. Fixed `Syntax error, unrecognized expression`. Props [@anhskohbo](https://github.com/anhskohbo) ([#789](https://github.com/WebDevStudios/CMB2/pull/789)).
+* Fix `ReferenceError: tinyMCE is not defined` javascript errors (happening when trying to remove a repeatable field/group). Fixes [#790](https://github.com/WebDevStudios/CMB2/issues/790), and [#730](https://github.com/WebDevStudios/CMB2/issues/730).
+* Fix REST API `'show_in_rest'` examples in `example-functions.php`. Any REST API boxes/fields must use the `'cmb2_init'` hook (as opposed to the `'cmb2_admin_init'` hook).
+
 ### 2.2.3 - 2016-10-25
 
 #### Enhancements
@@ -643,7 +667,7 @@ It is now passed a null value vs saved value. If null is returned, default sanit
 * Update files to be compatible with PHP7 CodeSniffer standards. Props [ryanshoover](https://github.com/ryanshoover) ([#719](https://github.com/WebDevStudios/CMB2/pull/719), [#720](https://github.com/WebDevStudios/CMB2/pull/720)).
 * Make exception message translatable. Props [ramiy](https://github.com/ramiy) ([#724](https://github.com/WebDevStudios/CMB2/pull/724)).
 * Portuguese translation provided by [@alvarogois](https://github.com/alvarogois) and [@pedro-mendonca](https://github.com/pedro-mendonca) - [#709](https://github.com/WebDevStudios/CMB2/pull/709), [#727](https://github.com/WebDevStudios/CMB2/pull/727).
-* Stop using `$wp_version` global Props [ramiy](https://github.com/ramiy) ([#731](https://github.com/WebDevStudios/CMB2/pull/731)).
+* Stop using `$wp_version` global. Props [ramiy](https://github.com/ramiy) ([#731](https://github.com/WebDevStudios/CMB2/pull/731)).
 * Closures (anonymous functions) are now supported for any box/field `'*_cb'` parameters. E.g.
 ```php
 	...
