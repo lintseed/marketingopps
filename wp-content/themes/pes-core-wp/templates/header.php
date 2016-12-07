@@ -7,15 +7,15 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="../images/NBJS_Logo_White.png" alt="<?php bloginfo( 'name' ); ?>"></a>
 		</div>
 
 		<div class="navbar-offcanvas offcanvas-trigger">
 			<div class="offcanvas-inner right">
 
 				<!-- Your site title as branding in the menu -->
-				<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="../images//NBJS_Logo_White.png" alt="<?php bloginfo( 'name' ); ?>"></a>
-
+				<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="/wp-content/themes/pes-core-wp/dist/images/penton_wht.png" alt="<?php bloginfo( 'name' ); ?>"></a>
+				<a class="site-title" aria-haspopup="true" href="/">Opportunities</a>
+<!--
 				<?php wp_nav_menu(
 					array(
 						'theme_location'	=> 'primary',
@@ -36,13 +36,20 @@
 						// 'walker' => new wp_bootstrap_navwalker(),
 					)
 				); ?>
-
+				<?php if (is_user_logged_in()) { ?>
+					<a class="screen-reader-shortcut" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php _e('Log Out'); ?></a>
+				<?php } else { ?>
+				  Welcome, visitor!
+				<? } ?>
+-->
 			</div>
 		</div>
 
 	</div><!-- .container -->
+
+
   <?php if ( is_user_logged_in() ) : ?>
-  <a class="screen-reader-shortcut" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php _e('Log Out'); ?></a>
+
   <?php endif; ?>
 
 	<?php wp_nav_menu(array('theme_location'=>'primary', 'container'=>'div', 'fallback_cb'=>'', 'menu_class'=>'container', 'container_id'=>'subnav')); ?>

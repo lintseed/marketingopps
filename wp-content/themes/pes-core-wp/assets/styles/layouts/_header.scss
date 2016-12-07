@@ -1,3 +1,15 @@
 #wpadminbar {
   display: none;
 }
+#pes-navbar {
+  .navbar-brand {
+    padding: 11px 15px;
+  }
+  a {
+    color: #fff;
+  }
+  .site-title {
+    float: left;
+    padding: 17px 4px 0;
+  }
+}
