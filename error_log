@@ -75,3 +75,5 @@
 [09-Dec-2016 20:23:35 UTC] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) in /home/penton7/public_html/opportunities-dev/wp-includes/wp-db.php on line 1568
 [09-Dec-2016 20:25:09 UTC] PHP Warning:  opendir(/home/penton7/public_html/opportunities-dev/wp-content/themes/marketingopps): failed to open dir: No such file or directory in /home/penton7/public_html/opportunities-dev/wp-content/plugins/json-api/singletons/api.php on line 290
 [09-Dec-2016 20:25:09 UTC] PHP Warning:  readdir() expects parameter 1 to be resource, boolean given in /home/penton7/public_html/opportunities-dev/wp-content/plugins/json-api/singletons/api.php on line 291
+[09-Dec-2016 21:07:25 UTC] PHP Warning:  opendir(/home/penton7/public_html/opportunities-dev/wp-content/themes/marketingopps): failed to open dir: No such file or directory in /home/penton7/public_html/opportunities-dev/wp-content/plugins/json-api/singletons/api.php on line 290
+[09-Dec-2016 21:07:25 UTC] PHP Warning:  readdir() expects parameter 1 to be resource, boolean given in /home/penton7/public_html/opportunities-dev/wp-content/plugins/json-api/singletons/api.php on line 291

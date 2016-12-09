@@ -642,3 +642,4 @@
 [28-Nov-2016 20:36:57 UTC] PHP Parse error:  syntax error, unexpected 'Gold' (T_STRING) in /home/penton7/public_html/opportunities/wp-content/themes/marketingopps/inc/event-metaboxes.php on line 335
 [28-Nov-2016 20:37:58 UTC] PHP Parse error:  syntax error, unexpected 'Gold' (T_STRING) in /home/penton7/public_html/opportunities/wp-content/themes/marketingopps/inc/event-metaboxes.php on line 335
 [28-Nov-2016 20:38:58 UTC] PHP Parse error:  syntax error, unexpected 'Gold' (T_STRING) in /home/penton7/public_html/opportunities/wp-content/themes/marketingopps/inc/event-metaboxes.php on line 335
+[09-Dec-2016 21:07:23 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'WP_PES_Plugin' not found in /home/penton7/public_html/opportunities-dev/wp-includes/class-wp-hook.php on line 298
