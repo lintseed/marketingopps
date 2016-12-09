@@ -1,0 +1,154 @@
+//== OPPORTUNITIES
+//
+//##
+#sponsorship-opps {
+  .sort.btn {
+  	overflow: hidden;
+  }
+  .btn-default {
+  	letter-spacing: normal !important;
+  	text-transform: capitalize !important;
+  }
+  .list {
+    margin: 0;
+    padding: 20px 0 0;
+  }
+  .list > li {
+    display: block;
+    margin: 0 0 10px;
+    padding: 5px 0 0;
+    border-color: #ccc;
+    background-color: #eee;
+    padding:1 0px;
+    box-shadow: inset 0 1px 0 #fff;
+  }
+  .avatar {
+    max-width: 150px;
+  }
+  h4.opp-title a,
+  h4.opp-title a:hover {
+    color: $gray-dark;
+    text-decoration: none;
+  }
+  h4.opp-title a:hover {
+    color: #000;
+  }
+  .panel-heading.logos {
+    .opp-price,
+    h4 {
+      padding-top: 15px;
+      @media (max-width: $screen-xs) {
+        padding-top: 0px;
+      }
+    }
+    .so-label {
+      margin-top: 17px;
+      @media (max-width: $screen-xs) {
+        margin-top: 0px;
+      }
+    }
+  }
+  .panel-heading {
+    img {
+      max-width: none;
+      height: 50px;
+    }
+  }
+  h3 {
+    font-size: 16px;
+    margin:0 0 0.3rem;
+    font-weight: normal;
+    font-weight:bold;
+  }
+  p {
+    margin:0;
+  }
+  input {
+    border:solid 1px #ccc;
+    border-radius: 5px;
+    padding:7px 14px;
+    margin-bottom:10px
+  }
+  input:focus {
+    outline:none;
+    border-color:#aaa;
+  }
+  .sort:after {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    content:"";
+    position: relative;
+    top:-10px;
+    right:-5px;
+  }
+  .sort.asc:after {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #666;
+    content:"";
+    position: relative;
+    top:10px;
+    right:-5px;
+  }
+  .sort.desc:after {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #666;
+    content:"";
+    position: relative;
+    top:-10px;
+    right:-5px;
+  }
+}
+.label {
+  display: inline-block !important; /* get these puppies vertically centered */
+}
+.label.so-label.level0,
+.label.so-label.level1,
+.label.so-label.level6 {
+  color: #fff;
+}
+.label.so-label.level4 {
+    color: #fff;
+}
+.label.so-label::before {
+    content: "" !important;
+}
+@media (max-width: $screen-xs) {
+  .panel-heading h4 {
+    max-width: 70%;
+  }
+  .labels {
+    display: block;
+    clear: left;
+    .margin-sm-left {
+      margin-left: 0 !important;
+      margin-right: 10px;
+    }
+  }
+}
+.panel-body {
+  border-top: 1px solid $gray-light;
+}
+.collapse-indicator {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    transition: -webkit-transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+}
+.straight .collapse-indicator,
+.straight [data-toggle="collapse"] .collapse-indicator {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    transition: -webkit-transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+}

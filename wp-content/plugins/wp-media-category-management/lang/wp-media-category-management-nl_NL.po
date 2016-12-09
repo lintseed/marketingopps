@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Media Category Management v1.9.0\n"
+"Project-Id-Version: WP Media Category Management v1.9.1\n"
 "Report-Msgid-Bugs-To: https://www.de-baat.nl/WP_MCM\n"
 "POT-Creation-Date: 2013-08-24 11:37+0100\n"
-"PO-Revision-Date: 2016-08-27 14:02:22+0000\n"
+"PO-Revision-Date: 2016-11-24 13:51:22+0000\n"
 "Last-Translator: DeBAAT <De_BAAT@de-baat.nl>\n"
 "Language-Team: De B.A.A.T. <wp-mcm@de-baat.nl>\n"
 "MIME-Version: 1.0\n"
@@ -30,102 +30,102 @@ msgstr "Uw Instellingen zijn opgeslagen."
 msgid "Description"
 msgstr "Beschrijving"
 
-#: include/class-wp-mcm-plugin.php:350
-#: include/class-wp-mcm-plugin.php:352
+#: include/class-wp-mcm-plugin.php:354
+#: include/class-wp-mcm-plugin.php:356
 #: include/wp-mcm-widgets.php:34
 #: include/wp-mcm-widgets.php:49
 #@ wp-media-category-management
 msgid "MCM Categories"
 msgstr "MCM Categorieën"
 
-#: include/class-wp-mcm-plugin.php:351
+#: include/class-wp-mcm-plugin.php:355
 #@ wp-media-category-management
 msgid "MCM Category"
 msgstr "MCM Categorie"
 
-#: include/class-wp-mcm-plugin.php:353
+#: include/class-wp-mcm-plugin.php:357
 #@ wp-media-category-management
 msgid "All MCM Categories"
 msgstr "Alle MCM Categorieën"
 
-#: include/class-wp-mcm-plugin.php:354
+#: include/class-wp-mcm-plugin.php:358
 #@ wp-media-category-management
 msgid "Edit MCM Category"
 msgstr "Bewerk MCM Categorie"
 
-#: include/class-wp-mcm-plugin.php:355
+#: include/class-wp-mcm-plugin.php:359
 #@ wp-media-category-management
 msgid "View MCM Category"
 msgstr "Bekijk MCM Categorie"
 
-#: include/class-wp-mcm-plugin.php:356
+#: include/class-wp-mcm-plugin.php:360
 #@ wp-media-category-management
 msgid "Update MCM Category"
 msgstr "Bijwerken MCM Categorie"
 
-#: include/class-wp-mcm-plugin.php:357
+#: include/class-wp-mcm-plugin.php:361
 #@ wp-media-category-management
 msgid "Add New MCM Category"
 msgstr "MCM Categorie Toevoegen"
 
-#: include/class-wp-mcm-plugin.php:358
+#: include/class-wp-mcm-plugin.php:362
 #@ wp-media-category-management
 msgid "New MCM Category Name"
 msgstr "Nieuwe MCM Categorie Naam"
 
-#: include/class-wp-mcm-plugin.php:359
+#: include/class-wp-mcm-plugin.php:363
 #@ wp-media-category-management
 msgid "Parent MCM Category"
 msgstr "Ouder MCM Categorie"
 
-#: include/class-wp-mcm-plugin.php:360
+#: include/class-wp-mcm-plugin.php:364
 #@ wp-media-category-management
 msgid "Parent MCM Category:"
 msgstr "Ouder MCM Categorie:"
 
-#: include/class-wp-mcm-plugin.php:361
+#: include/class-wp-mcm-plugin.php:365
 #@ wp-media-category-management
 msgid "Search MCM Categories"
 msgstr "Zoek MCM Categorieën"
 
-#: include/class-wp-mcm-plugin.php:378
+#: include/class-wp-mcm-plugin.php:382
 #@ wp-media-category-management
 msgid "Custom MCM Category"
 msgstr "Persoonlijke MCM Categorie"
 
-#: include/class-wp-mcm-plugin.php:806
+#: include/class-wp-mcm-plugin.php:810
 #@ wp-media-category-management
 msgid "MCM Settings"
 msgstr "MCM Instellingen"
 
-#: include/class-wp-mcm-plugin.php:863
+#: include/class-wp-mcm-plugin.php:867
 #@ wp-media-category-management
 msgid "Set your settings below:"
 msgstr "Configureer hieronder je instellingen:"
 
-#: include/class-wp-mcm-plugin.php:870
+#: include/class-wp-mcm-plugin.php:874
 #@ wp-media-category-management
 msgid "Toggle Assign"
 msgstr "Toggle Toewijzing"
 
-#: include/class-wp-mcm-plugin.php:924
+#: include/class-wp-mcm-plugin.php:948
 #@ wp-media-category-management
 msgid "Default Media Category"
 msgstr "Default Media Categorie"
 
-#: include/class-wp-mcm-plugin.php:1041
+#: include/class-wp-mcm-plugin.php:879
 #@ wp-media-category-management
 msgid " Show category toggles in list view?"
 msgstr "Toon categorie toggles in lijst modus?"
 
-#: include/class-wp-mcm-plugin.php:1136
-#: include/class-wp-mcm-plugin.php:1167
-#: include/class-wp-mcm-plugin.php:1187
+#: include/class-wp-mcm-plugin.php:1150
+#: include/class-wp-mcm-plugin.php:1181
+#: include/class-wp-mcm-plugin.php:1201
 #@ wp-media-category-management
 msgid "No default category"
 msgstr "Geen default categorie"
 
-#: include/class-wp-mcm-plugin.php:1171
+#: include/class-wp-mcm-plugin.php:1185
 #@ wp-media-category-management
 msgid " Which post category should be used as default?"
 msgstr "Welke bericht categorie moet gebruikt worden als default?"
@@ -198,12 +198,12 @@ msgstr "WP Media Category Management"
 msgid "https://www.de-baat.nl/WP_MCM"
 msgstr "https://www.de-baat.nl/WP_MCM"
 
-#: include/class-wp-mcm-plugin.php:915
+#: include/class-wp-mcm-plugin.php:937
 #@ wp-media-category-management
 msgid "Use Default Category"
 msgstr "Gebruik Default Categorie"
 
-#: include/class-wp-mcm-plugin.php:1111
+#: include/class-wp-mcm-plugin.php:942
 #@ wp-media-category-management
 msgid " Use the default category when adding or editing an attachment?"
 msgstr "Gebruik de default categorie bij toevoegen of bewerken van een media?"
@@ -220,57 +220,57 @@ msgstr "Een plugin die het eenvoudig maakt de media categorie functionaliteit te
 msgid "wp-mcm version %s."
 msgstr "wp-mcm versie %s."
 
-#: include/class-wp-mcm-plugin.php:374
+#: include/class-wp-mcm-plugin.php:378
 #@ wp-media-category-management
 msgid "Custom MCM Categories"
 msgstr "Persoonlijke MCM Categorie"
 
-#: include/class-wp-mcm-plugin.php:888
+#: include/class-wp-mcm-plugin.php:894
 #@ wp-media-category-management
 msgid "Media Taxonomy To Use"
 msgstr "Media Taxonomie Te Gebruiken"
 
-#: include/class-wp-mcm-plugin.php:1062
+#: include/class-wp-mcm-plugin.php:1097
 #@ wp-media-category-management
 msgid " Debug info."
 msgstr " Debug info."
 
-#: include/class-wp-mcm-plugin.php:1088
+#: include/class-wp-mcm-plugin.php:1123
 #@ wp-media-category-management
 msgid "Current value:"
 msgstr "Huidige waarde:"
 
-#: include/class-wp-mcm-plugin.php:1092
+#: include/class-wp-mcm-plugin.php:1127
 #@ wp-media-category-management
 msgid "Which taxonomy should be used to manage the media?"
 msgstr "Welke taxonomie moet gebruikt worden om de media te beheren?"
 
-#: include/class-wp-mcm-plugin.php:1094
+#: include/class-wp-mcm-plugin.php:1129
 #@ wp-media-category-management
 msgid "(P) means that the taxonomy is also used for posts."
 msgstr "(P) betekent dat de taxonomie ook gebruikt wordt voor berichten."
 
-#: include/class-wp-mcm-plugin.php:1096
+#: include/class-wp-mcm-plugin.php:1131
 #@ wp-media-category-management
 msgid "(T) means that the taxonomy is also used as tags for posts."
 msgstr "(T) betekent dat de taxonomie ook gebruikt wordt als tags voor berichten."
 
-#: include/class-wp-mcm-plugin.php:1098
+#: include/class-wp-mcm-plugin.php:1133
 #@ wp-media-category-management
 msgid "(*) means that the taxonomy may have been registered previously, e.g. by another plugin."
 msgstr "(*) betekent dat de taxonomie eerder geregistreed is geweest, bv door een andere plug-in."
 
-#: include/class-wp-mcm-plugin.php:1100
+#: include/class-wp-mcm-plugin.php:1135
 #@ wp-media-category-management
 msgid "[#<strong>X</strong>] means that the taxonomy is currently assigned to <strong>X</strong> attachments."
 msgstr "[#<strong>X</strong>] betekent dat de taxonomie momenteel is toegewezen aan <strong>X</strong> media bestanden."
 
-#: include/class-wp-mcm-plugin.php:1151
+#: include/class-wp-mcm-plugin.php:1165
 #@ wp-media-category-management
 msgid "Which category of the selected media taxonomy should be used as default?"
 msgstr "Welke categorie van de geselecteerde media taxonomie moet als default worden gebruikt?"
 
-#: include/class-wp-mcm-plugin.php:1191
+#: include/class-wp-mcm-plugin.php:1205
 #@ wp-media-category-management
 msgid " Which custom media category should be used as default?"
 msgstr "Welke persoonlijke media categorie moet als default worden gebruikt?"
@@ -312,74 +312,74 @@ msgstr "Een komma-gescheiden lijst van categorie <code>slugs</code> om de te ton
 msgid "The default value is as defined in MCM Settings for <strong>Default Media Category</strong>, currently defined as <code>%s</code>."
 msgstr "De default waarde is zoals gedefinieerd in de MCM Instellingen voor <strong>Default Media Categorie</strong>, momenteel gedefinieerd als <code>%s</code>."
 
-#: include/class-wp-mcm-plugin.php:897
+#: include/class-wp-mcm-plugin.php:915
 #@ wp-media-category-management
 msgid "Name for Custom MCM Taxonomy"
 msgstr "Naam voor Persoonlijke MCM Taxonomie"
 
-#: include/class-wp-mcm-plugin.php:393
+#: include/class-wp-mcm-plugin.php:397
 #@ wp-media-category-management
 msgid "All"
 msgstr "Voeg Toe"
 
-#: include/class-wp-mcm-plugin.php:394
+#: include/class-wp-mcm-plugin.php:398
 #@ wp-media-category-management
 msgid "Edit"
 msgstr "Bewerk"
 
-#: include/class-wp-mcm-plugin.php:395
+#: include/class-wp-mcm-plugin.php:399
 #@ wp-media-category-management
 msgid "View"
 msgstr "Bekijk"
 
-#: include/class-wp-mcm-plugin.php:396
+#: include/class-wp-mcm-plugin.php:400
 #@ wp-media-category-management
 msgid "Update"
 msgstr "Werk Bij"
 
-#: include/class-wp-mcm-plugin.php:397
+#: include/class-wp-mcm-plugin.php:401
 #@ wp-media-category-management
 msgid "Add New"
 msgstr "Voeg Nieuw Toe"
 
-#: include/class-wp-mcm-plugin.php:398
+#: include/class-wp-mcm-plugin.php:402
 #, php-format
 #@ wp-media-category-management
 msgid "New %s Name"
 msgstr "Nieuwe %s Naam"
 
-#: include/class-wp-mcm-plugin.php:399
-#: include/class-wp-mcm-plugin.php:400
+#: include/class-wp-mcm-plugin.php:403
+#: include/class-wp-mcm-plugin.php:404
 #@ wp-media-category-management
 msgid "Parent"
 msgstr "Ouder"
 
-#: include/class-wp-mcm-plugin.php:401
+#: include/class-wp-mcm-plugin.php:405
 #@ wp-media-category-management
 msgid "Search"
 msgstr "Zoek"
 
-#: include/class-wp-mcm-plugin.php:906
+#: include/class-wp-mcm-plugin.php:926
 #@ wp-media-category-management
 msgid "Custom Singular Name"
 msgstr "Aangepaste Naam Enkelvoud"
 
-#: include/class-wp-mcm-plugin.php:933
+#: include/class-wp-mcm-plugin.php:957
 #@ wp-media-category-management
 msgid "Use Post Taxonomy"
 msgstr "Gebruik Bericht Taxonomie"
 
-#: include/class-wp-mcm-plugin.php:1048
+#: include/class-wp-mcm-plugin.php:920
 #@ wp-media-category-management
 msgid " What text should be used as <strong>plural</strong> name for the Custom MCM Taxonomy?"
 msgstr "Welke text moet gebruikt worden als naam <strong>meervoud</strong> voor de Aangepaste MCM Taxonomie?"
 
-#: include/class-wp-mcm-plugin.php:1055
+#: include/class-wp-mcm-plugin.php:931
 #@ wp-media-category-management
 msgid " What text should be used as <strong>singular</strong> name for the Custom MCM Taxonomy?"
 msgstr "Welke text moet gebruikt worden als naam <strong>enkelvoud</strong> voor de Aangepaste MCM Taxonomie?"
 
-#: include/class-wp-mcm-plugin.php:1118
+#: include/class-wp-mcm-plugin.php:962
 #@ wp-media-category-management
 msgid " Use the category used for posts also explicitly for attachments?"
 msgstr "Gebruik de categorie die gebruikt wordt voor berichten ook voor media bestanden?"
@@ -404,12 +404,12 @@ msgstr "De standaard waarde is <code>gallery</code>."
 msgid "See the parameters of the <code>WP_MCM</code> shortcode above."
 msgstr "Zie de parameters van de <code>WP_MCM</code> shortcode hierboven."
 
-#: include/class-wp-mcm-plugin.php:942
+#: include/class-wp-mcm-plugin.php:968
 #@ wp-media-category-management
 msgid "Search Media Library"
 msgstr "Zoek Media Bibliotheek"
 
-#: include/class-wp-mcm-plugin.php:1125
+#: include/class-wp-mcm-plugin.php:973
 #@ wp-media-category-management
 msgid " Also search the media library for matching titles when searching?"
 msgstr "Doorzoek ook de media bibliotheek naar matchende titels?"
@@ -460,29 +460,29 @@ msgstr "Instellingen"
 msgid "Filter by"
 msgstr "Filter op"
 
-#: include/class-wp-mcm-plugin.php:749
-#: include/wp-mcm-functions.php:407
+#: include/class-wp-mcm-plugin.php:753
+#: include/wp-mcm-functions.php:411
 #@ wp-media-category-management
 msgid "View all"
 msgstr "Toon alle"
 
-#: include/class-wp-mcm-plugin.php:750
-#: include/wp-mcm-functions.php:408
+#: include/class-wp-mcm-plugin.php:754
+#: include/wp-mcm-functions.php:412
 #@ wp-media-category-management
 msgid "No"
 msgstr "Zonder"
 
-#: include/wp-mcm-functions.php:380
+#: include/wp-mcm-functions.php:384
 #@ wp-media-category-management
 msgid "tags"
 msgstr "tags"
 
-#: include/wp-mcm-functions.php:383
+#: include/wp-mcm-functions.php:387
 #@ wp-media-category-management
 msgid "Post categories"
 msgstr "Post categorieën"
 
-#: include/wp-mcm-functions.php:386
+#: include/wp-mcm-functions.php:390
 #@ wp-media-category-management
 msgid "MCM categories"
 msgstr "MCM categorieën"
@@ -523,9 +523,21 @@ msgstr "De tekst \"br\" geeft aan dat iedere categorie link getoond wordt, gevol
 msgid "The default value is an empty string (<strong>\"\"</strong>) indicating that the category links should not be shown."
 msgstr "De default waarde is een lege string (<strong>\"\"</strong>) die aangeeft dat de categorie links niet getoond mogen worden."
 
+#: include/class-wp-mcm-plugin.php:903
+#@ wp-media-category-management
+msgid "MCM Category base"
+msgstr "MCM Categorie basis"
+
+#. translators: %s is a placeholder that must come at the start of the URL.
+#: include/class-wp-mcm-plugin.php:909
+#, php-format
+#@ wp-media-category-management
+msgid "If you like, you may enter a custom structure for your MCM category URL here. For example, using <code>media</code> as your category base would make your category links look like <code>%s/media/uncategorized/</code>. If you leave it blank the default will be used."
+msgstr "Als je wilt kun je aangepaste structuren maken voor je MCM categorie URL's. <code>media</code> als categoriebasis levert bijvoorbeeld categorielinks op als <code>%s/media/geencategorie/</code>. Als je deze leeg laat, worden de standaardwaardes gebruikt."
+
 #. translators: plugin header field 'Version'
 #: wp-media-category-management.php:0
 #@ wp-media-category-management
-msgid "1.9.0"
-msgstr "1.9.0"
+msgid "1.9.1"
+msgstr "1.9.1"
 

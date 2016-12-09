@@ -335,6 +335,10 @@ class WP_MCM_Plugin {
 		$media_taxonomy = mcm_get_media_taxonomy();
 		$this->debugMP('msg',__FUNCTION__ . ' taxonomy = ' . $media_taxonomy);
 
+		// Set the category_base to use for the taxonomy rewrite rule
+		$wp_mcm_category_base = mcm_get_option('wp_mcm_category_base');
+		$wp_mcm_category_base = empty( $wp_mcm_category_base ) ? WP_MCM_MEDIA_TAXONOMY : $wp_mcm_category_base;
+
 		// Register WP_MCM_MEDIA_TAXONOMY
 		$use_media_taxonomy = $media_taxonomy == WP_MCM_MEDIA_TAXONOMY;
 		$args = array(
@@ -344,7 +348,7 @@ class WP_MCM_Plugin {
 			'public'				=> $use_media_taxonomy,
 			'show_in_nav_menus'		=> $use_media_taxonomy,
 			'query_var'				=> true,
-//			'rewrite'				=> array( 'slug' => WP_MCM_MEDIA_TAXONOMY, 'ep_mask' => EP_ALL ),
+			'rewrite'				=> array( 'slug' => $wp_mcm_category_base ),
 			'update_count_callback'	=> 'mcm_update_count_callback',
 			'labels' => array(
 				'name'				=> __('MCM Categories', 'wp-media-category-management'),
@@ -868,10 +872,12 @@ class WP_MCM_Plugin {
 		add_settings_field(
 			'wp_mcm_toggle_assign',
 			__('Toggle Assign', 'wp-media-category-management'), 
-			array( $this, 'create_wp_mcm_toggle_assign_field' ), 
+			array( $this, 'create_wp_mcm_checkbox_field' ), 
 			'wp-mcm-setting-admin',
 			'wp_mcm_section_id',
-			array( 'label_for' => 'wp_mcm_toggle_assign', 'field' => 'wp_mcm_toggle_assign' )
+			array(	'field' => 'wp_mcm_toggle_assign',
+					'description' => __(' Show category toggles in list view?', 'wp-media-category-management'),
+				)
 		);
 
 //		add_settings_field(
@@ -893,30 +899,48 @@ class WP_MCM_Plugin {
 		);
 
 		add_settings_field(
-			'wp_mcm_custom_taxonomy_name',
-			__('Name for Custom MCM Taxonomy', 'wp-media-category-management'),
-			array( $this, 'create_wp_mcm_custom_taxonomy_name_field' ),
+			'wp_mcm_category_base',
+			__('MCM Category base', 'wp-media-category-management'),
+			array( $this, 'create_wp_mcm_text_field' ),
 			'wp-mcm-setting-admin',
 			'wp_mcm_section_id',
-			array( 'label_for' => 'wp_mcm_custom_taxonomy_name', 'field' => 'wp_mcm_custom_taxonomy_name' )
+			array(	'field' => 'wp_mcm_category_base',
+					'description' => /* translators: %s is a placeholder that must come at the start of the URL. */
+							sprintf( __( 'If you like, you may enter a custom structure for your MCM category URL here. For example, using <code>media</code> as your category base would make your category links look like <code>%s/media/uncategorized/</code>. If you leave it blank the default will be used.', 'wp-media-category-management' ), get_option( 'home' ) ),
+				)
+		);
+
+		add_settings_field(
+			'wp_mcm_custom_taxonomy_name',
+			__('Name for Custom MCM Taxonomy', 'wp-media-category-management'),
+			array( $this, 'create_wp_mcm_text_field' ),
+			'wp-mcm-setting-admin',
+			'wp_mcm_section_id',
+			array(	'field' => 'wp_mcm_custom_taxonomy_name',
+					'description' => __(' What text should be used as <strong>plural</strong> name for the Custom MCM Taxonomy?', 'wp-media-category-management'),
+				)
 		);
 
 		add_settings_field(
 			'wp_mcm_custom_taxonomy_name_single',
 			__('Custom Singular Name', 'wp-media-category-management'),
-			array( $this, 'create_wp_mcm_custom_taxonomy_name_single_field' ),
+			array( $this, 'create_wp_mcm_text_field' ),
 			'wp-mcm-setting-admin',
 			'wp_mcm_section_id',
-			array( 'label_for' => 'wp_mcm_custom_taxonomy_name_single', 'field' => 'wp_mcm_custom_taxonomy_name_single' )
+			array(	'field' => 'wp_mcm_custom_taxonomy_name_single',
+					'description' => __(' What text should be used as <strong>singular</strong> name for the Custom MCM Taxonomy?', 'wp-media-category-management'),
+				)
 		);
 
 		add_settings_field(
 			'wp_mcm_use_default_category',
 			__('Use Default Category', 'wp-media-category-management'),
-			array( $this, 'create_wp_mcm_use_default_category_field' ),
+			array( $this, 'create_wp_mcm_checkbox_field' ),
 			'wp-mcm-setting-admin',
 			'wp_mcm_section_id',
-			array( 'label_for' => 'wp_mcm_use_default_category', 'field' => 'wp_mcm_use_default_category' )
+			array(	'field' => 'wp_mcm_use_default_category',
+					'description' => __(' Use the default category when adding or editing an attachment?', 'wp-media-category-management'),
+				)
 		);
 
 		add_settings_field(
@@ -931,19 +955,23 @@ class WP_MCM_Plugin {
 		add_settings_field(
 			'wp_mcm_use_post_taxonomy',
 			__('Use Post Taxonomy', 'wp-media-category-management'),
-			array( $this, 'create_wp_mcm_use_post_taxonomy_field' ),
+			array( $this, 'create_wp_mcm_checkbox_field' ),
 			'wp-mcm-setting-admin',
 			'wp_mcm_section_id',
-			array( 'label_for' => 'wp_mcm_use_post_taxonomy', 'field' => 'wp_mcm_use_post_taxonomy' )
+			array(	'field' => 'wp_mcm_use_post_taxonomy',
+					'description' => __(' Use the category used for posts also explicitly for attachments?', 'wp-media-category-management'),
+				)
 		);
 
 		add_settings_field(
 			'wp_mcm_search_media_library',
 			__('Search Media Library', 'wp-media-category-management'),
-			array( $this, 'create_wp_mcm_search_media_library_field' ),
+			array( $this, 'create_wp_mcm_checkbox_field' ),
 			'wp-mcm-setting-admin',
 			'wp_mcm_section_id',
-			array( 'label_for' => 'wp_mcm_search_media_library', 'field' => 'wp_mcm_search_media_library' )
+			array(	'field' => 'wp_mcm_search_media_library',
+					'description' => __(' Also search the media library for matching titles when searching?', 'wp-media-category-management'),
+				)
 		);
 
 //		add_settings_field(
@@ -992,6 +1020,9 @@ class WP_MCM_Plugin {
 		// Check value of wp_mcm_media_taxonomy_to_use
 		$newinput['wp_mcm_media_taxonomy_to_use'] = sanitize_key(trim($input['wp_mcm_media_taxonomy_to_use']));
 
+		// Check value of wp_mcm_category_base
+		$newinput['wp_mcm_category_base'] = trim($input['wp_mcm_category_base']);
+
 		// Check value of wp_mcm_custom_taxonomy_name
 		$newinput['wp_mcm_custom_taxonomy_name'] = trim($input['wp_mcm_custom_taxonomy_name']);
 		$newinput['wp_mcm_custom_taxonomy_name_single'] = trim($input['wp_mcm_custom_taxonomy_name_single']);
@@ -1034,25 +1065,29 @@ class WP_MCM_Plugin {
 //		print __('Set your settings below:', 'wp-media-category-management');
 	}
 
-	public function create_wp_mcm_toggle_assign_field(){
-		$wp_mcm_toggle_assign = mcm_get_option('wp_mcm_toggle_assign');
-		$wp_mcm_toggle_assign_name = WP_MCM_OPTIONS_NAME . '[wp_mcm_toggle_assign]';
-		?><input type="checkbox" id="input_wp_mcm_toggle_assign" name="<?php echo $wp_mcm_toggle_assign_name; ?>" value="1" <?php checked('1', $wp_mcm_toggle_assign);?> />
-		<?php  echo __(' Show category toggles in list view?', 'wp-media-category-management');
+	public function create_wp_mcm_text_field( $args ){
+		$input_text  = '';
+		$input_text .= '<input type="text" ';
+		$input_text .= 'class="regular-text code" ';
+		$input_text .= 'id="input_' . $args['field'] . '" ';
+		$input_text .= 'name="' . WP_MCM_OPTIONS_NAME . '[' . $args['field'] . ']" ';
+		$input_text .= 'value="' . mcm_get_option($args['field']) . '" ';
+		$input_text .= ' />';
+		$input_text .= '<br/>';
+		$input_text .= '<p>' . $args['description'] . '</p>';
+		echo $input_text;
 	}
 
-	public function create_wp_mcm_custom_taxonomy_name_field(){
-		$wp_mcm_custom_taxonomy_name = mcm_get_option('wp_mcm_custom_taxonomy_name');
-		$wp_mcm_custom_taxonomy_name_name = WP_MCM_OPTIONS_NAME . '[wp_mcm_custom_taxonomy_name]';
-		?><input type="text" id="input_wp_mcm_custom_taxonomy_name" name="<?php echo $wp_mcm_custom_taxonomy_name_name; ?>" value="<?php echo $wp_mcm_custom_taxonomy_name;?>" />
-		<?php  echo __(' What text should be used as <strong>plural</strong> name for the Custom MCM Taxonomy?', 'wp-media-category-management');
-	}
-
-	public function create_wp_mcm_custom_taxonomy_name_single_field(){
-		$wp_mcm_custom_taxonomy_name_single = mcm_get_option('wp_mcm_custom_taxonomy_name_single');
-		$wp_mcm_custom_taxonomy_name_single_name = WP_MCM_OPTIONS_NAME . '[wp_mcm_custom_taxonomy_name_single]';
-		?><input type="text" id="input_wp_mcm_custom_taxonomy_name_single" name="<?php echo $wp_mcm_custom_taxonomy_name_single_name; ?>" value="<?php echo $wp_mcm_custom_taxonomy_name_single;?>" />
-		<?php  echo __(' What text should be used as <strong>singular</strong> name for the Custom MCM Taxonomy?', 'wp-media-category-management');
+	public function create_wp_mcm_checkbox_field( $args ){
+		$input_text  = '';
+		$input_text .= '<input type="checkbox" ';
+		$input_text .= 'id="input_' . $args['field'] . '" ';
+		$input_text .= 'name="' . WP_MCM_OPTIONS_NAME . '[' . $args['field'] . ']" ';
+		$input_text .= 'value="1" ';
+		$input_text .= checked(mcm_get_option($args['field']), '1', false);
+		$input_text .= ' />';
+		$input_text .= $args['description'];
+		echo $input_text;
 	}
 
 	public function create_wp_mcm_debug_field(){
@@ -1102,27 +1137,6 @@ class WP_MCM_Plugin {
 		echo $HTML;
 		return;
 
-	}
-
-	public function create_wp_mcm_use_default_category_field(){
-		$wp_mcm_use_default_category = mcm_get_option('wp_mcm_use_default_category');
-		$wp_mcm_use_default_category_name = WP_MCM_OPTIONS_NAME . '[wp_mcm_use_default_category]';
-		?><input type="checkbox" id="input_wp_mcm_use_default_category" name="<?php echo $wp_mcm_use_default_category_name; ?>" value="1" <?php checked('1', $wp_mcm_use_default_category);?> />
-			<?php  echo __(' Use the default category when adding or editing an attachment?', 'wp-media-category-management');
-	}
-
-	public function create_wp_mcm_use_post_taxonomy_field(){
-		$wp_mcm_use_post_taxonomy = mcm_get_option('wp_mcm_use_post_taxonomy');
-		$wp_mcm_use_post_taxonomy_name = WP_MCM_OPTIONS_NAME . '[wp_mcm_use_post_taxonomy]';
-		?><input type="checkbox" id="input_wp_mcm_use_post_taxonomy" name="<?php echo $wp_mcm_use_post_taxonomy_name; ?>" value="1" <?php checked('1', $wp_mcm_use_post_taxonomy);?> />
-			<?php  echo __(' Use the category used for posts also explicitly for attachments?', 'wp-media-category-management');
-	}
-
-	public function create_wp_mcm_search_media_library_field(){
-		$wp_mcm_search_media_library = mcm_get_option('wp_mcm_search_media_library');
-		$wp_mcm_search_media_library_name = WP_MCM_OPTIONS_NAME . '[wp_mcm_search_media_library]';
-		?><input type="checkbox" id="input_wp_mcm_search_media_library" name="<?php echo $wp_mcm_search_media_library_name; ?>" value="1" <?php checked('1', $wp_mcm_search_media_library);?> />
-			<?php  echo __(' Also search the media library for matching titles when searching?', 'wp-media-category-management');
 	}
 
 	public function create_wp_mcm_default_media_category_field(){

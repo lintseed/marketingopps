@@ -642,3 +642,6 @@
 [28-Nov-2016 20:36:57 UTC] PHP Parse error:  syntax error, unexpected 'Gold' (T_STRING) in /home/penton7/public_html/opportunities/wp-content/themes/marketingopps/inc/event-metaboxes.php on line 335
 [28-Nov-2016 20:37:58 UTC] PHP Parse error:  syntax error, unexpected 'Gold' (T_STRING) in /home/penton7/public_html/opportunities/wp-content/themes/marketingopps/inc/event-metaboxes.php on line 335
 [28-Nov-2016 20:38:58 UTC] PHP Parse error:  syntax error, unexpected 'Gold' (T_STRING) in /home/penton7/public_html/opportunities/wp-content/themes/marketingopps/inc/event-metaboxes.php on line 335
+[09-Dec-2016 21:44:37 UTC] PHP Warning:  mysqli_real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/penton7/public_html/opportunities/wp-includes/wp-db.php on line 1538
+[09-Dec-2016 21:44:37 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/penton7/public_html/opportunities/wp-includes/wp-db.php on line 1568
+[09-Dec-2016 21:44:37 UTC] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) in /home/penton7/public_html/opportunities/wp-includes/wp-db.php on line 1568
