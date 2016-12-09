@@ -62,7 +62,7 @@
   	            <?php if ($meta['opp_numeric_cost'][0]) { echo '<span class="opp-price hidden">'.number_format($meta['opp_numeric_cost'][0]).'</span>'; } ?>
 
   	            <?php /* display price */ ?>
-  	            <div class="opp-price pull-right margin-left">
+  	            <div class="opp-price pull-right margin-lg-left">
   	              <?php if ($meta['opp_total_cost'][0]) { ?>
   	                <?php echo $meta['opp_total_cost'][0]; ?>
   	              <?php } elseif ($meta['opp_numeric_cost'][0]) { ?>
@@ -72,12 +72,12 @@
 
   	            <?php /* title, featured? */ ?>
   	            <h4 class="opp-title media-heading pull-left">
+                  <?php if($meta['opp_featured'][0]) { ?><i class="fa fa-star-o" aria-hidden="true"></i><?php } ?>
   	              <a data-toggle="collapse" data-parent="#base-sponsor-opp-accordion" href="#<?php echo $post->post_name; ?>" class="collapsed title">
-  	                <?php if($meta['opp_featured'][0]) { ?><i class="fa fa-star-o" aria-hidden="true"></i><?php } ?>
   	                <?php echo get_the_title(); ?> <span class="collapse-indicator fa fa-chevron-down"></span>
-                    <?php /* editors, edit! */ ?>
-                    <?php edit_post_link( __('<i class="fa fa-pencil" aria-hidden="true"></i>')); ?>
   	              </a>
+                  <?php /* editors, edit! */ ?>
+                  <?php edit_post_link( __('<i class="fa fa-pencil text-gray-light" aria-hidden="true"></i>')); ?>
   	            </h4>
 
   	            <?php /* sponsor logo fields: uploaded */ ?>
@@ -133,13 +133,13 @@
   	            } ?>
 
   	            <?php /* do the content  */ ?>
-  	            <?php if($meta['opp_excerpt']) { echo '<p>'.$meta['opp_excerpt'][0].'</p>'; } ?>
+  	            <?php if($meta['opp_excerpt']) { echo '<p class="margin-lg-bottom">'.$meta['opp_excerpt'][0].'</p>'; } ?>
   	            <?php if(the_content()) { echo the_content(); } ?>
 
                 <?php /* types */ ?>
                 <?php if ($meta['opp_type_pes']) { ?>
                   <p><b>Types:</b></p>
-                  <ul>
+                  <ul class="margin-lg-bottom">
                     <?php foreach($meta['opp_type_pes'] as $type) {
                       $opptype = unserialize($type);
                       foreach($opptype as $k => $v) {
@@ -151,7 +151,7 @@
 
   	            <?php /* supporting documents */ ?>
   	            <?php if($meta['opp_document']) {
-  	              echo '<p><b>Supporting Documents:</b><br>	';
+  	              echo '<p class="margin-lg-bottom"><b>Supporting Documents:</b><br>	';
   	              $i = -1;
   	              foreach($meta['opp_document'] as $key => $value) {
                     $doc = unserialize($value);
@@ -172,11 +172,11 @@
   	            } ?>
 
                 <?php /* Output the deadline */ ?>
-                <?php if($meta['opp_deadline']) { echo '<p><b>Deadline:</b>'.$meta['opp_deadline'][0].'</p>'; } ?>
+                <?php if($meta['opp_deadline']) { echo '<p class="margin-lg-bottom"><b>Deadline:</b>'.$meta['opp_deadline'][0].'</p>'; } ?>
 
   	            <?php /* finally, contact info. */ ?>
   	            <?php if($meta['opp_contact']) { ?>
-  	              <p>
+  	              <p class="margin-lg-bottom">
   	                <b><i class="fa fa-user" aria-hidden="true"></i> Contact:</b><br>
   	                <?php
   	                  echo $meta['opp_contact'][0];
@@ -202,6 +202,14 @@
   		      };
   		      var hackerList = new List('base-sponsor-opp-accordion', options);
   		    </script>
+          <script>
+            jQuery('#base-sponsor-opp-accordion').on('shown.bs.collapse', function (e) {
+              jQuery(this).find('.in').prev('.panel-heading').addClass('straight');
+            });
+            jQuery('#base-sponsor-opp-accordion').on('hide.bs.collapse', function (e) {
+              jQuery(this).find('.in').prev('.panel-heading').removeClass('straight');
+            });
+          </script>
   			</div><!-- /#sponsorship-opps -->
 
 <?php

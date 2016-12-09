@@ -1,5 +1,5 @@
 <?php
-// Copyright 2014 RealFaviconGenerator
+// Copyright 2014-2016 RealFaviconGenerator
 
 require_once plugin_dir_path( __FILE__ ) . '../public/class-favicon-by-realfavicongenerator-common.php';
 

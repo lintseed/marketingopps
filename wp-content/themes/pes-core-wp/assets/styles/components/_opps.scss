@@ -10,9 +10,8 @@
   	text-transform: capitalize !important;
   }
   .list {
-    font-family:sans-serif;
-    margin:0;
-    padding:20px 0 0;
+    margin: 0;
+    padding: 20px 0 0;
   }
   .list > li {
     display: block;
@@ -25,6 +24,14 @@
   }
   .avatar {
     max-width: 150px;
+  }
+  h4.opp-title a,
+  h4.opp-title a:hover {
+    color: $gray-dark;
+    text-decoration: none;
+  }
+  h4.opp-title a:hover {
+    color: #000;
   }
   .panel-heading.logos {
     .opp-price,
@@ -126,4 +133,22 @@
       margin-right: 10px;
     }
   }
+}
+.panel-body {
+  border-top: 1px solid $gray-light;
+}
+.collapse-indicator {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    transition: -webkit-transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+}
+.straight .collapse-indicator,
+.straight [data-toggle="collapse"] .collapse-indicator {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    transition: -webkit-transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }

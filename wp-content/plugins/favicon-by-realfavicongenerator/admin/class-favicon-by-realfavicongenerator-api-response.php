@@ -1,5 +1,5 @@
 <?php
-// Copyright 2014 RealFaviconGenerator
+// Copyright 2014-2016 RealFaviconGenerator
 
 define( 'RFG_PACKAGE_URL',                  'package_url' );
 define( 'RFG_COMPRESSION',                  'compression' );
