@@ -417,7 +417,6 @@ function add_admin_scripts( $hook ) {
 
 /**
  * trim the fat
- * what's this doing tho
  */
  function slug_get_post_meta_cb( $object, $field_name, $request ) {
 	return get_post_meta( $object[ 'id' ], $field_name );
