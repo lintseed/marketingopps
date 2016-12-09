@@ -44,8 +44,6 @@
   				<?php
   				// Start the Loop.
   				while ( have_posts() ) : the_post();
-
-
   					/*
   					 * Include the Post-Format-specific template for the content.
   					 * If you want to override this in a child theme, then include a file
@@ -105,13 +103,8 @@
 
   	            <?php /* levels, types, sold, deadline  */ ?>
   	            <div class="clearfix labels">
-                  <?php /* NOT GOING TO WORK YO   */ ?>
   	              <?php if (!empty($meta['opp_level_pes'][0])) { ?><span class="margin-sm-left label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
   	              <?php if (!empty($meta['opp_sold'][0])) { ?><span class="margin-sm-left label label-danger">Sold</span><?php } ?>
-  	              <?php
-  	                // $opp_date = $meta['opp_deadline'];
-  	                // pastDeadline($opp_date);
-  	              ?>
   	            </div>
 
   	          </div><?php /* /.panel-heading */ ?>
@@ -216,7 +209,7 @@
           </script>
   			</div><!-- /#sponsorship-opps -->
 
-<?php
+    <?php
 
 			// Previous/next page navigation.
 			the_posts_pagination( array(

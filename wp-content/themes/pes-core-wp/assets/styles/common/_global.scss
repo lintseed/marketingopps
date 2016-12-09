@@ -65,6 +65,10 @@ body {
 .width-one-half          { width: 50%; }
 .width-three-quarters    { width: 75%; }
 
+.clear {
+  clear: both;
+}
+
 hr {
   border-color: $gray-dark;
 }
