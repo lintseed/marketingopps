@@ -133,8 +133,12 @@
   	            } ?>
 
   	            <?php /* do the content  */ ?>
-  	            <?php if($meta['opp_excerpt']) { echo '<p class="margin-lg-bottom">'.$meta['opp_excerpt'][0].'</p>'; } ?>
-  	            <?php if(the_content()) { echo the_content(); } ?>
+  	            <?php if($meta['opp_excerpt']) { echo '<div class="margin-lg-bottom">'.$meta['opp_excerpt'][0].'</div>'; } ?>
+  	            <?php if(get_the_content()) {
+                  echo '<div class="margin-lg-bottom">';
+                  echo the_content();
+                  echo '</div>';
+                } ?>
 
                 <?php /* types */ ?>
                 <?php if ($meta['opp_type_pes']) { ?>
@@ -172,7 +176,7 @@
   	            } ?>
 
                 <?php /* Output the deadline */ ?>
-                <?php if($meta['opp_deadline']) { echo '<p class="margin-lg-bottom"><b>Deadline:</b>'.$meta['opp_deadline'][0].'</p>'; } ?>
+                <?php if($meta['opp_deadline']) { echo '<p class="margin-lg-bottom"><b>Deadline:</b> '.$meta['opp_deadline'][0].'</p>'; } ?>
 
   	            <?php /* finally, contact info. */ ?>
   	            <?php if($meta['opp_contact']) { ?>
