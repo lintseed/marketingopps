@@ -1,4 +1,5 @@
 !.gitignore
+error_log
 .htaccess
 .DS_Store
 .svn

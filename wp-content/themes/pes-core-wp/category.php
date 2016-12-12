@@ -35,7 +35,7 @@
             </div>
             <div class="col-sm-8">
               <div><label>Sort</label></div>
-              <span class="sort btn btn-sm btn-default" data-sort="opp-title">Sort by name</span>
+              <span class="sort btn btn-sm btn-default asc" data-sort="opp-title">Sort by name</span>
               <span class="sort btn btn-sm btn-default" data-sort="opp-price">Sort by price</span>
             </div>
           </div>
