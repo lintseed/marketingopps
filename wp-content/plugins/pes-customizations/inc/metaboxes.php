@@ -774,9 +774,10 @@ function cmb2_register_escabona() {
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
-          1 => 'Innovation Partner',
-          2 => 'Influence Partner',
-					3 => 'Growth Partner'
+          1 => 'Innovation Sponsor',
+          2 => 'Influence Sponsor',
+					3 => 'Growth Sponsor',
+					4 => 'Marketing'
         ),
     ) );
 }
