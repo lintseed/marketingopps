@@ -1,43 +1,43 @@
 ( function( $ ) {
 	$( document ).ready( function() {
-
-		/*
+		
+		/* 
  		** Define Event ID's
  		*/
 		var iotParent = $('#in-category-27');
 			var iot16 = $('#in-category-2');
-
+			
 		var teaParent = $('#in-category-28');
 			var tea17 = $('#in-category-12');
-
-		var naturalProducts = $('#in-category-29');
+		
+		var naturalProducts = $('#in-category-29');	
 			var ee17 = $('#in-category-11');
 			var ew17 = $('#in-category-40');
 			var nbj17 = $('#in-category-31');
 			var club17 = $('#in-category-42');
 			var engredea17 = $('#in-category-41');
-
-		var wasteParent = $('#in-category-36');
+			
+		var wasteParent = $('#in-category-36');	
 			var waste17 = $('#in-category-37');
+ 
+ 		var industryParent = $('#in-category-39');	
+ 			var mtce17 = $('#in-category-38');	
+ 			
+ 		var ldiParent = $('#in-category-43');	
+ 			var ldi17 = $('#in-category-44');	
+ 			
+ 		var pes = $('#in-category-45');			
 
- 		var industryParent = $('#in-category-39');
- 			var mtce17 = $('#in-category-38');
+ 		var itdev = $('#in-category-47');			
 
- 		var ldiParent = $('#in-category-43');
- 			var ldi17 = $('#in-category-44');
-
- 		var pes = $('#in-category-45');
-
- 		var itdev = $('#in-category-47');
-
- 		var escabona = $('#in-category-48');
-
- 		/*
+ 		var escabona = $('#in-category-48');			
+ 		
+ 		/* 
  		** Edit opps
- 		** But first, hide them
+ 		** But first, hide them 
  		*/
  		$('.types-levels').parents('div.postbox').hide();
-
+ 		
  		// iot
 		if (iot16.is(':checked') || iotParent.is(':checked')) {
 			$('#iot_metabox').show();
@@ -78,8 +78,8 @@
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
-
-		/*
+		
+		/* 
  		** Display event meta boxes
  		*/
 		$('#taxonomy-category :checkbox').change(function() {
