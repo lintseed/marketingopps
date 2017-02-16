@@ -501,6 +501,7 @@ function cmb2_register_club() {
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
+						'Premier Platinum' => 'Premier Platinum',
             'Platinum' => 'Platinum',
             'Gold' => 'Gold',
             'Silver' => 'Silver',
