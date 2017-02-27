@@ -77,3 +77,13 @@
 [09-Dec-2016 20:25:09 UTC] PHP Warning:  readdir() expects parameter 1 to be resource, boolean given in /home/penton7/public_html/opportunities-dev/wp-content/plugins/json-api/singletons/api.php on line 291
 [09-Dec-2016 21:07:25 UTC] PHP Warning:  opendir(/home/penton7/public_html/opportunities-dev/wp-content/themes/marketingopps): failed to open dir: No such file or directory in /home/penton7/public_html/opportunities-dev/wp-content/plugins/json-api/singletons/api.php on line 290
 [09-Dec-2016 21:07:25 UTC] PHP Warning:  readdir() expects parameter 1 to be resource, boolean given in /home/penton7/public_html/opportunities-dev/wp-content/plugins/json-api/singletons/api.php on line 291
+[15-Feb-2017 03:48:00 UTC] PHP Parse error:  syntax error, unexpected 'endif' (T_ENDIF) in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 50
+[15-Feb-2017 03:48:33 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 57
+[15-Feb-2017 03:49:00 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 56
+[15-Feb-2017 03:49:02 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 56
+[15-Feb-2017 03:49:18 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 55
+[15-Feb-2017 04:33:08 UTC] PHP Fatal error:  Call to undefined function post_title() in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 42
+[15-Feb-2017 04:43:38 UTC] PHP Fatal error:  Call to undefined function twentyseventeen_edit_link() in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 39
+[15-Feb-2017 04:58:51 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 40
+[15-Feb-2017 05:18:22 UTC] PHP Parse error:  syntax error, unexpected '">;       ' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 48
+[15-Feb-2017 05:18:40 UTC] PHP Parse error:  syntax error, unexpected '">;       ' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 49

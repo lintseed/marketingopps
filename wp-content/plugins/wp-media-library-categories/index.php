@@ -3,7 +3,7 @@
  * Plugin Name: Media Library Categories
  * Plugin URI: https://wordpress.org/plugins/wp-media-library-categories/
  * Description: Adds the ability to use categories in the media library.
- * Version: 1.5.3
+ * Version: 1.5.4
  * Author: Jeffrey-WP
  * Text Domain: wp-media-library-categories
  * Domain Path: /languages
@@ -47,15 +47,15 @@ function wpmediacategory_init() {
 	// Add filter to change the default taxonomy
 	$taxonomy = apply_filters( 'wpmediacategory_taxonomy', $taxonomy );
 
-	if ( $taxonomy != 'category' ) {
+	if ( taxonomy_exists( $taxonomy ) ) {
+		register_taxonomy_for_object_type( $taxonomy, 'attachment' );
+	} else {
 		$args = array(
 			'hierarchical'          => true,  // hierarchical: true = display as categories, false = display as tags
 			'show_admin_column'     => true,
 			'update_count_callback' => 'wpmediacategory_update_count_callback'
 		);
 		register_taxonomy( $taxonomy, array( 'attachment' ), $args );
-	} else {
-		register_taxonomy_for_object_type( $taxonomy, 'attachment' );
 	}
 }
 add_action( 'init', 'wpmediacategory_init' );
@@ -224,12 +224,12 @@ if ( is_admin() ) {
 			}
 
 			$value = ( $args['value']=='slug' ? $category->slug : $category->term_id );
-			if ( 0 == $args['selected'] && isset( $_GET['category_media'] ) && '' != $_GET['category_media'] ) {
+			if ( 0 == $args['selected'] && isset( $_GET['category_media'] ) && '' != $_GET['category_media'] ) {  // custom taxonomy
 				$args['selected'] = $_GET['category_media'];
 			}
 
 			$output .= '<option class="level-' . $depth . '" value="' . $value . '"';
-			if ( $value === (string) $args['selected'] ) {
+			if ( (string) $value === (string) $args['selected'] ) {
 				$output .= ' selected="selected"';
 			}
 			$output .= '>';
@@ -450,49 +450,32 @@ if ( is_admin() ) {
 
 
 	/** Changing categories in the 'grid view' */
-	function wpmediacategory_ajax_query_attachments() {
-
-		if ( ! current_user_can( 'upload_files' ) ) {
-			wp_send_json_error();
-		}
+	function wpmediacategory_ajax_query_attachments_args( $query = array() ) {
+		// grab original query, the given query has already been filtered by WordPress
+		$taxquery = isset( $_REQUEST['query'] ) ? (array) $_REQUEST['query'] : array();
 
 		$taxonomies = get_object_taxonomies( 'attachment', 'names' );
+		$taxquery = array_intersect_key( $taxquery, array_flip( $taxonomies ) );
 
-		$query = isset( $_REQUEST['query'] ) ? (array) $_REQUEST['query'] : array();
+		// merge our query into the WordPress query
+		$query = array_merge( $query, $taxquery );
 
-		$defaults = array(
-			's', 'order', 'orderby', 'posts_per_page', 'paged', 'post_mime_type',
-			'post_parent', 'post__in', 'post__not_in'
-		);
-		$query = array_intersect_key( $query, array_flip( array_merge( $defaults, $taxonomies ) ) );
-
-		$query['post_type'] = 'attachment';
-		$query['post_status'] = 'inherit';
-		if ( current_user_can( get_post_type_object( 'attachment' )->cap->read_private_posts ) )
-			$query['post_status'] .= ',private';
-			
 		$query['tax_query'] = array( 'relation' => 'AND' );
 
-		foreach ( $taxonomies as $taxonomy ) {				
+		foreach ( $taxonomies as $taxonomy ) {
 			if ( isset( $query[$taxonomy] ) && is_numeric( $query[$taxonomy] ) ) {
 				array_push( $query['tax_query'], array(
 					'taxonomy' => $taxonomy,
 					'field'    => 'id',
 					'terms'    => $query[$taxonomy]
-				));	
+				) );
 			}
-			unset ( $query[$taxonomy] );
+			unset( $query[$taxonomy] );
 		}
 
-		$query = apply_filters( 'ajax_query_attachments_args', $query );
-		$query = new WP_Query( $query );
-
-		$posts = array_map( 'wp_prepare_attachment_for_js', $query->posts );
-		$posts = array_filter( $posts );
-
-		wp_send_json_success( $posts );
+		return $query;
 	}
-	add_action( 'wp_ajax_query-attachments', 'wpmediacategory_ajax_query_attachments', 0 );
+	add_filter( 'ajax_query_attachments_args', 'wpmediacategory_ajax_query_attachments_args' );
 
 
 	/** Enqueue admin scripts and styles */
@@ -538,9 +521,9 @@ if ( is_admin() ) {
 			echo '/* ]]> */';
 			echo '</script>';
 
-			wp_enqueue_script( 'wpmediacategory-media-views', plugins_url( 'js/wpmediacategory-media-views.min.js', __FILE__ ), array( 'media-views' ), '1.5.2', true );
+			wp_enqueue_script( 'wpmediacategory-media-views', plugins_url( 'js/wpmediacategory-media-views.min.js', __FILE__ ), array( 'media-views' ), '1.5.4', true );
 		}
-		wp_enqueue_style( 'wpmediacategory', plugins_url( 'css/wpmediacategory.min.css', __FILE__ ), array(), '1.5.2' );
+		wp_enqueue_style( 'wpmediacategory', plugins_url( 'css/wpmediacategory.min.css', __FILE__ ), array(), '1.5.4' );
 	}
 	add_action( 'admin_enqueue_scripts', 'wpmediacategory_enqueue_media_action' );
 
