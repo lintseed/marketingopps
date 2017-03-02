@@ -7,6 +7,8 @@ function themeprefix_show_cpt_archives( $query ) {
 		$query->set( 'post_type', array(
 			'post', 'nav_menu_item', 'opportunity'
 		));
+		$query->set('orderby', 'title');
+		$query->set('order', 'ASC');
 		return $query;
 	}
 }

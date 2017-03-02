@@ -30,6 +30,8 @@
 
  		var itdev = $('#in-category-47');
 
+ 		var escabona = $('#in-category-48');
+
  		/*
  		** Edit opps
  		** But first, hide them
@@ -70,6 +72,9 @@
 		// it/dev
 		} else if (itdev.is(':checked') ) {
 			$('#itdev_metabox').show();
+		// esca bona
+		} else if (escabona.is(':checked') ) {
+			$('#escabona_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -122,6 +127,10 @@
 			} else if (itdev.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#itdev_metabox').show();
+			// escabona
+			} else if (escabona.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#escabona_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}

@@ -1,4 +1,5 @@
 !.gitignore
+error_log
 .htaccess
 .DS_Store
 *.DS_Store
@@ -7,6 +8,7 @@
 *.bak
 *.swp
 Thumbs.db
+wp-admin/error_log
 wp-config.php
 *wp-config.php
 wp-content/uploads/

@@ -3,8 +3,8 @@ Contributors: jeffrey-wp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SSNQMST6R28Q2
 Tags: category, categories, media, library, medialibrary, image, images, media category, media categories
 Requires at least: 3.1
-Tested up to: 4.6
-Stable tag: 1.5.3
+Tested up to: 4.7.2
+Stable tag: 1.5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,13 @@ Maintaining a plugin and keeping it up to date is hard work. Please support me b
 
 == Changelog ==
 
+= 1.5.4 =
+* Before creating custom taxonomy check if taxonomy exists. Thanks @drpratten
+* Use filter instead of action for the displayed attachments. Thanks @clearsite
+* Japanese translations. Thanks @katsushi-kawamori
+* On some servers the active category was not selected in the dropdown in media list view.
+* Support PHP 7.1
+
 = 1.5.3 =
 * Added some default languages en_US, nl_NL, de_DE
 * Updated all links to use https://
@@ -89,7 +96,7 @@ Maintaining a plugin and keeping it up to date is hard work. Please support me b
 = 1.5.1 =
 * Support for WordPress 4.2
 * Security enhancement for add_query_arg
-* remember selected category
+* Remember selected category
 
 = 1.5 =
 * Support for WordPress 4.1
