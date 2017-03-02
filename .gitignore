@@ -1,12 +1,14 @@
 !.gitignore
 .htaccess
 .DS_Store
+*.DS_Store
 .svn
 .cvs
 *.bak
 *.swp
 Thumbs.db
 wp-config.php
+*wp-config.php
 wp-content/uploads/
 wp-content/blogs.dir/
 wp-content/upgrade/
