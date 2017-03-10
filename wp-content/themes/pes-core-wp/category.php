@@ -34,9 +34,54 @@
               <input class="search" />
             </div>
             <div class="col-sm-8">
-              <div><label>Sort</label></div>
-              <span class="sort btn btn-sm btn-default asc" data-sort="opp-title">Sort by name</span>
-              <span class="sort btn btn-sm btn-default" data-sort="opp-price">Sort by price</span>
+              <div class="pull-left margin-lg-right">
+                <div><label>Sort</label></div>
+                <span class="sort btn btn-sm btn-default asc" data-sort="opp-title">Sort by name</span>
+                <span class="sort btn btn-sm btn-default" data-sort="opp-price">Sort by price</span>
+              </div>
+
+              <?php
+              /* Is this is a parent category?
+               * We'll want more filter options.
+    					 */ ?>
+               <?php $this_category = get_category($cat); ?>
+               <?php if ($this_category->category_parent == 0) { ?>
+                 <!-- display child categories -->
+                 <div class="pull-left margin-lg-left">
+                   <div><label>Filter Events</label></div>
+                   <ul>
+                     <?php
+                       wp_list_categories( array(
+                         'child_of'           => $this_category->term_id,
+                         'orderby'            => 'id',
+                         'show_count'         => true,
+                         'use_desc_for_title' => false,
+                         'title_li'           => ''
+                       ) );
+                     ?>
+                   </ul>
+                 </div>
+               <?php } else { ?>
+                 <!-- display same level categories  -->
+                 <div class="pull-left margin-lg-left">
+                   <div><label>Filter Events</label></div>
+                   <ul>
+                     <?php
+                      // print_r($this_category);
+                       wp_list_categories( array(
+                         'child_of'           => $this_category->category_parent,
+                         'orderby'            => 'id',
+                         'show_count'         => true,
+                         'use_desc_for_title' => false,
+                         'current_category'   => $this_category->term_id,
+                         'title_li'           => ''
+                       ) );
+                     ?>
+                   </ul>
+                 </div>
+               <?php } ?>
+
+
             </div>
           </div>
 
@@ -67,6 +112,15 @@
   	                <?php echo '$'.number_format($meta['opp_numeric_cost'][0]); ?>
   	              <?php } ?>
   	            </div>
+
+                <?php /* parent? display category (event) */ ?>
+                <?php $this_category = $wp_query->get_queried_object(); ?>
+                <?php
+                if ($this_category->category_parent == 0) {
+                  $child = get_the_category();
+                ?>
+                  <h3><a href="<?php echo $child[0]->slug; ?>" class="text-gray-light"> <?php echo $child[0]->name; ?></a></h3>
+                <?php } ?>
 
   	            <?php /* title, featured? */ ?>
   	            <h4 class="opp-title media-heading pull-left">
