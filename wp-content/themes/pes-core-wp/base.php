@@ -4,6 +4,7 @@ use Roots\Sage\Setup;
 use Roots\Sage\Wrapper;
 
 ?>
+
 <!doctype html>
 <html <?php language_attributes(); ?>>
   <?php get_template_part('templates/head'); ?>
@@ -17,8 +18,8 @@ use Roots\Sage\Wrapper;
       do_action('get_header');
       get_template_part('templates/header');
     ?>
-    <div class="wrap" role="document">
-      <div class="content container">
+    <div class="wrap container" role="document">
+      <div class="content row">
         <main class="main">
           <?php include Wrapper\template_path(); ?>
         </main><!-- /.main -->

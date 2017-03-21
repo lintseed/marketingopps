@@ -7,15 +7,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "handlebars": "4.0.5",
     "font-awesome": "4.5.0",
-    "bootstrap": "git://github.com/twbs/bootstrap.git#v3.3.7",
     "bootstrap-sass": "3.3.7"
   },
   "overrides": {
     "bootstrap-sass": {
       "main": [
         "./assets/stylesheets/_bootstrap.scss",
+        "./assets/styles/components/_variables.scss",
         "./assets/javascripts/bootstrap/transition.js",
         "./assets/javascripts/bootstrap/alert.js",
         "./assets/javascripts/bootstrap/button.js",
@@ -36,8 +35,6 @@
       ]
     }
   },
-  "description": "",
-  "main": "",
   "ignore": [
     "**/.*",
     "node_modules",

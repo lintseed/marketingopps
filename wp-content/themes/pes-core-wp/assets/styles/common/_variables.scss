@@ -47,6 +47,7 @@ $bg-primary:         $brand-primary;
 $bg-secondary:       $brand-secondary;
 $bg-success:         $brand-success;
 $bg-info:            $brand-info;
+$state-info-bg:      $brand-info;
 $bg-warning:         $brand-warning;
 $bg-danger:          $brand-danger;
 
@@ -554,7 +555,7 @@ $state-success-bg:               #7abdbc;
 $state-success-border:           darken($state-success-bg, 5%);
 
 $state-info-text:                $brand-white;
-$state-info-bg:                  #231f20;
+$state-info-bg:                  $brand-info;
 
 $state-info-border:              darken($state-info-bg, 7%);
 

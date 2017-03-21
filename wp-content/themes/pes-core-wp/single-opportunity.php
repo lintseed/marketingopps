@@ -23,7 +23,7 @@
 					<header class="entry-header cleafix">
 						<?php the_title( '<h1 class="entry-title pull-left">', '</h1>' ); ?>
 						<?php /* editors, edit! */ ?>
-						<?php edit_post_link( __('<i class="fa fa-pencil text-gray-light margin-lg-top margin-sm-left pull-left" aria-hidden="true"></i>')); ?>
+						<button type="button" class="margin-lg-top margin-sm-left pull-left" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil text-gray-light" aria-hidden="true"></i></button>
 					</header><!-- .entry-header -->
 
 					<div class="entry-content clearfix clear">
@@ -154,3 +154,117 @@
 		</div><!-- #content -->
 	</div><!-- #primary -->
 </div><!-- #main-content -->
+
+
+<!-- Modal ... move this to an include -->
+<?php
+//Admin functions required to show taxonomy lists
+	require_once(ABSPATH.'wp-admin/includes/template.php');
+	$meta = get_post_meta(get_the_ID());
+
+	$custom = get_post_custom(get_the_ID());
+	$excerpt = @$custom["opp_excerpt"][0];
+	$sold = @$custom["opp_sold"][0];
+	$enabled = @$custom["opp_enabled"][0];
+	$featured = @$custom["opp_featured"][0];
+	$deadline = @$custom["opp_deadline"][0];
+	$current_quantity = @$custom["opp_current_quantity"][0];
+	$total_quantity = @$custom["opp_total_quantity"][0];
+	$numeric_cost = @$custom["opp_numeric_cost"][0];
+	$total_cost = @$custom["opp_total_cost"][0];
+
+?>
+
+<div id="editModal" class="modal fade" role="dialog" aria-labelledby="editLabel" style="display: none;">
+
+	<div class="modal-dialog" role="document">
+
+		<div class="modal-content">
+
+			<form method="post" action="" enctype="multipart/form-data">
+
+				<input type='hidden' name='frontend' value="true" />
+				<input type='hidden' name='ID' value="<?php echo get_the_ID(); ?>" />
+				<input type='hidden' name='post_type' value="<?php echo $post->post_type ?>" />
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 id="editLabel">Edit Opportunity</h3>
+				</div>
+
+				<div class="modal-body">
+					<?php /* descriptors */ ?>
+					<div class="form-group">
+						<label for="inputTitle">Title</label>
+						<input type="text" id="inputTitle" name="post_title" placeholder="Title" value="<?php echo get_the_title() ?>" />
+					</div>
+					<div class="form-group">
+						<label for="inputContent">Description</label>
+						<?php wp_editor( get_the_content(), 'post_content', array(
+							'media_buttons' => false,
+						)); ?>
+					</div>
+					<div class="form-group">
+						<label for="excerpt">Excerpt</label>
+						<textarea id="opp_excerpt" name="opp_excerpt" rows="5"><?php echo $meta['opp_excerpt'][0]; ?></textarea>
+					</div>
+
+					<?php /* levels & types */ ?>
+					<hr>
+					levels & types
+
+					<?php /* options */ ?>
+					<hr>
+					<div class="form-group">
+						<label for="sold" class="text-danger">Sold</label>
+						<input type="checkbox" id="opp_sold" name="sold" checked="<?php echo $meta['opp_sold'][0]; ?>" />
+					</div>
+					<div class="form-group">
+						<label for="sold" class="text-success">Enabled</label>
+						<input type="checkbox" id="opp_enabled" name="opp_enabled" checked="<?php echo $meta['opp_enabled'][0]; ?>" />
+					</div>
+					<div class="form-group">
+						<label for="sold"><i class="fa fa-star-o" aria-hidden="true"></i> Featured</label>
+						<input type="checkbox" id="opp_featured" name="opp_featured" checked="<?php echo $meta['opp_featured'][0]; ?>" />
+					</div>
+					<div class="form-group">
+						<label for="opp_total_cost">Sale Deadline</label>
+						<input type="text" id="opp_deadline" name="opp_deadline" value="<?php echo $meta['opp_deadline'][0]; ?>" />
+					</div>
+
+					<?php /* details */ ?>
+					<hr>
+					<div class="form-group">
+						<label for="opp_current_quantity">Current Quantity</label>
+						<input type="text" id="opp_current_quantity" name="opp_current_quantity" value="<?php echo $meta['opp_current_quantity'][0]; ?>" />
+					</div>
+					<div class="form-group">
+						<label for="opp_total_quantity">Total Quantity</label>
+						<input type="text" id="opp_total_quantity" name="opp_total_quantity" value="<?php echo $meta['opp_total_quantity'][0]; ?>" />
+					</div>
+					<hr>
+					<div class="form-group">
+						<label for="opp_current_quantity">Cost<br><em class="text-gray">Enter the minimum value for price sorting.</em></label>
+						<input type="text" id="opp_numeric_cost" name="opp_numeric_cost" value="<?php echo $meta['opp_numeric_cost'][0]; ?>" />
+					</div>
+					<div class="form-group">
+						<label for="opp_total_cost">Text Cost<br><em class="text-gray">Enter a price range or include any necessary descriptors here.</em></label>
+						<input type="text" id="opp_total_cost" name="opp_total_cost" value="<?php echo $meta['opp_total_cost'][0]; ?>" />
+					</div>
+
+					<?php /* more */ ?>
+					<hr>
+					<a href="/wp-admin/post.php?post=<?php echo get_the_ID(); ?> &action=edit" class="btn btn-primary" target="_blank"><i class="fa fa-pencil" aria-hidden="true"></i> More Options</a>
+					<!-- <?php edit_post_link('<i class="fa fa-pencil" aria-hidden="true"></i> More Options','<p>','</p>',get_the_ID(),'btn btn-primary'); ?> -->
+				</div>
+
+				<div class="modal-footer">
+					<button data-dismiss="modal">Close</button>
+					<button>Save changes</button>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+</div>

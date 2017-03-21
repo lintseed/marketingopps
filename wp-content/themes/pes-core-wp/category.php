@@ -15,6 +15,7 @@
  * @subpackage pes-core-wp
  */
  ?>
+
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
@@ -38,35 +39,40 @@
                 <div><label>Sort</label></div>
                 <span class="sort btn btn-sm btn-default asc" data-sort="opp-title">Sort by name</span>
                 <span class="sort btn btn-sm btn-default" data-sort="opp-price">Sort by price</span>
+                <?php if ($wp_query->queried_object->category_parent == 0) { ?>
+                  <span class="sort btn btn-sm btn-default" data-sort="opp-event">Sort by event</span>
+                <?php } ?>
               </div>
 
               <?php
               /* Is this is a parent category?
-               * We'll want more filter options.
+               * We'll want more display options.
     					 */ ?>
-               <?php $this_category = get_category($cat); ?>
-               <?php if ($this_category->category_parent == 0) { ?>
-                 <!-- display child categories -->
-                 <div class="pull-left margin-lg-left">
-                   <div><label>Filter Events</label></div>
-                   <ul>
+              <?php /* filter */ ?>
+              <?php $this_category = get_category($cat); ?>
+              <?php if ($this_category->category_parent == 0) { ?>
+                <!-- display child categories -->
+                <div class="pull-left margin-lg-left">
+                  <div><label>Filter Events</label></div>
+                  <ul class="dropdown">
                      <?php
                        wp_list_categories( array(
                          'child_of'           => $this_category->term_id,
                          'orderby'            => 'id',
                          'show_count'         => true,
                          'use_desc_for_title' => false,
-                         'title_li'           => ''
+                         'title_li'           => '',
+                         'walker'             => new catWalker()
                        ) );
                      ?>
-                   </ul>
-                 </div>
-               <?php } else { ?>
-                 <!-- display same level categories  -->
-                 <div class="pull-left margin-lg-left">
-                   <div><label>Filter Events</label></div>
-                   <ul>
-                     <?php
+                  </ul>
+                </div>
+              <?php } else { ?>
+                <!-- display same level categories  -->
+                <div class="pull-left margin-lg-left">
+                  <div><label>Filter Events</label></div>
+                  <ul>
+                    <?php
                       // print_r($this_category);
                        wp_list_categories( array(
                          'child_of'           => $this_category->category_parent,
@@ -74,7 +80,8 @@
                          'show_count'         => true,
                          'use_desc_for_title' => false,
                          'current_category'   => $this_category->term_id,
-                         'title_li'           => ''
+                         'title_li'           => '',
+                         'walker'             => new catWalker()
                        ) );
                      ?>
                    </ul>
@@ -89,17 +96,24 @@
   				<?php
   				// Start the Loop.
   				while ( have_posts() ) : the_post();
-  					/*
-  					 * Include the Post-Format-specific template for the content.
-  					 * If you want to override this in a child theme, then include a file
-  					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-  					 */
-  					// get_template_part( 'template-parts/content', get_post_format() );
-            // move the following into something like template-parts/opp-category
 
-  	      	$meta = get_post_meta(get_the_ID()); ?>
-  	        <li class="panel item">
-  	          <?php if (!empty($meta['opp_sponsor_logos'])) { ?><div class="panel-heading logos"><?php } else { ?><div class="panel-heading"><?php } ?>
+
+            /* Levels & Types
+             */
+          	$meta = get_post_meta(get_the_ID());
+            foreach($meta as $key=>$value) {
+              if("opp_level_" == substr($key,0,10)) {
+                $suffix = substr($key,strrpos($key,'_'));
+                $type = 'opp_type'.$suffix;
+                $level = 'opp_level'.$suffix;
+              }
+            }
+            $oppType = unserialize($meta[$type][0]);
+            $oppLevel = unserialize($meta[$level][0]);
+
+          ?>
+  	        <li class="panel item" style="overflow: hidden">
+  	          <?php if (!empty($meta['opp_sponsor_logos'])) { ?><div class="panel-heading logos clearfix"><?php } else { ?><div class="panel-heading clearfix"><?php } ?>
 
                 <?php /* sort: price value */ ?>
   	            <?php if (!empty($meta['opp_numeric_cost'][0])) { echo '<span class="opp-price hidden">'.number_format($meta['opp_numeric_cost'][0]).'</span>'; } ?>
@@ -113,24 +127,43 @@
   	              <?php } ?>
   	            </div>
 
-                <?php /* parent? display category (event) */ ?>
-                <?php $this_category = $wp_query->get_queried_object(); ?>
-                <?php
-                if ($this_category->category_parent == 0) {
-                  $child = get_the_category();
-                ?>
-                  <h3><a href="<?php echo $child[0]->slug; ?>" class="text-gray-light"> <?php echo $child[0]->name; ?></a></h3>
-                <?php } ?>
+                <div class="pull-left">
 
-  	            <?php /* title, featured? */ ?>
-  	            <h4 class="opp-title media-heading pull-left">
-                  <?php if(!empty($meta['opp_featured'][0])) { ?><i class="fa fa-star-o" aria-hidden="true"></i><?php } ?>
-  	              <a data-toggle="collapse" data-parent="#base-sponsor-opp-accordion" href="#<?php echo $post->post_name; ?>" class="collapsed title">
-  	                <?php echo get_the_title(); ?> <span class="collapse-indicator fa fa-chevron-down"></span>
-  	              </a>
-                  <?php /* editors, edit! */ ?>
-                  <?php edit_post_link( __('<i class="fa fa-pencil text-gray-light" aria-hidden="true"></i>')); ?>
-  	            </h4>
+                  <?php /* parent? display child category/sub-event */ ?>
+                  <?php
+                  $my_post_categories = get_the_category();
+                  $my_post_child_cats = array();
+                  foreach ( $my_post_categories as $post_cat ) {
+                    if ( 0 != $post_cat->category_parent ) {
+                      $my_post_child_cats[] = $post_cat;
+                    }
+                  }
+                  if ($wp_query->queried_object->category_parent == 0) { ?>
+                    <h3 class="opp-event"><a href="<?php echo $my_post_child_cats[0]->slug; ?>" class="text-gray-light"><?php echo $my_post_child_cats[0]->name; ?></a></h3>
+                  <?php } ?>
+
+
+    	            <?php /* title, featured? */ ?>
+    	            <h4 class="opp-title media-heading">
+                    <?php if(!empty($meta['opp_featured'][0])) { ?><i class="fa fa-star-o" aria-hidden="true"></i><?php } ?>
+    	              <a data-toggle="collapse" data-parent="#base-sponsor-opp-accordion" href="#<?php echo $post->post_name; ?>" class="collapsed title">
+    	                <?php echo get_the_title(); ?> <span class="collapse-indicator fa fa-chevron-down"></span>
+    	              </a>
+                    <?php /* editors, edit! */ ?>
+                    <span class="btn btn-primary btn-lg" data-toggle="modal" data-target="editModal"><< Edit >></span>
+
+                    <!-- <?php edit_post_link( __('<i class="fa fa-pencil text-gray-light" aria-hidden="true"></i>')); ?> -->
+    	            </h4>
+
+                  <?php /* levels, types, sold, deadline  */ ?>
+    	            <div class="labels pull-left">
+                    <?php if (!empty($meta[$level][0])) { ?><span class="margin-sm-left label label-default so-label <?php echo $meta[$level][0]; ?>"><?php echo $meta[$level][0]; ?></span><?php } ?>
+                    <?php if (!empty($oppType[0])) { ?><span class="margin-sm-left label label-default so-label <?php echo $type[0]; ?>"><?php echo $oppType[0]; ?></span><?php } ?>
+                    <?php if (!empty($meta['opp_level_pes'][0])) { ?><span class="margin-sm-left label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
+    	              <?php if (!empty($meta['opp_sold'][0])) { ?><span class="margin-sm-left label label-danger">Sold</span><?php } ?>
+    	            </div>
+
+                </div>
 
   	            <?php /* sponsor logo fields: uploaded */ ?>
   	            <?php if(!empty($meta['opp_sponsor_logos'])) {
@@ -154,12 +187,6 @@
                   }
   	              echo '</div>';
   	            } ?>
-
-  	            <?php /* levels, types, sold, deadline  */ ?>
-  	            <div class="clearfix labels">
-  	              <?php if (!empty($meta['opp_level_pes'][0])) { ?><span class="margin-sm-left label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
-  	              <?php if (!empty($meta['opp_sold'][0])) { ?><span class="margin-sm-left label label-danger">Sold</span><?php } ?>
-  	            </div>
 
   	          </div><?php /* /.panel-heading */ ?>
 
@@ -192,8 +219,8 @@
                   <p><b>Types:</b></p>
                   <ul class="margin-lg-bottom">
                     <?php foreach($meta['opp_type_pes'] as $type) {
-                      $opptype = unserialize($type);
-                      foreach($opptype as $k => $v) {
+                      $oppType = unserialize($type);
+                      foreach($oppType as $k => $v) {
                         echo '<li>'.$v.'</li>';
                       }
                     } ?>
@@ -204,8 +231,11 @@
   	            <?php if(!empty($meta['opp_document'])) {
   	              echo '<p class="margin-lg-bottom"><b>Supporting Documents:</b><br>	';
   	              $i = -1;
+                  // print_r($meta['opp_document']);
+
   	              foreach($meta['opp_document'] as $key => $value) {
                     $doc = unserialize($value);
+                    print_r($doc);
                     foreach($doc as $file => $path) {
                       $i++;
                       if($meta['opp_documentLabel']) {
@@ -214,9 +244,11 @@
                         }
                       }
                       if ($labels[$i] === null) {
-                        $labels[$i] = 'View Document';
+                        $labels[$i] = 'View g';
                       }
   	                  echo '<i class="fa fa-file-o" aria-hidden="true"></i> <a href="'.$path.'" target="_blank">'.$labels[$i].'</a><br>';
+                      $attachment_title = get_the_title($file);
+                      echo $attachment_title;
                     }
   	              }
   	              echo '</p>';
@@ -249,7 +281,7 @@
   		    <script src="http://listjs.com/assets/javascripts/list.min.js"></script>
   		    <script type="text/javascript">
   		      var options = {
-  		          valueNames: [ 'opp-title', 'opp-price' ]
+  		          valueNames: [ 'opp-title', 'opp-price', 'opp-event' ]
   		      };
   		      var hackerList = new List('base-sponsor-opp-accordion', options);
   		    </script>
@@ -278,3 +310,68 @@
 
 		endif;
 		?>
+
+    <!-- Modal -->
+    <form method="post" action="" enctype="multipart/form-data">
+    	<div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    		<div>
+    			<button type="button" data-dismiss="modal">×</button>
+    			<h3 id="myModalLabel">Edit Opportunity</h3>
+    		</div>
+    		<div>
+    			<input type='hidden' name='frontend' value="true" />
+    			<input type='hidden' name='ID' value="<?= get_the_ID() ?>" />
+    			<input type='hidden' name='post_type' value="<?= $post->post_type ?>" />
+
+    			<div>
+    				<label for="inputTitle">Title</label>
+    				<div>
+    					<input type="text" id="inputTitle" name='post_title' placeholder="Title" value="<?= get_the_title() ?>" />
+    				</div>
+    			</div>
+    			<div>
+    				<label for="inputContent">Description</label>
+    				<div>
+    					<?php wp_editor( get_the_content(), 'post_content', array(
+    						'media_buttons' => false,
+    					)); ?>
+    				</div>
+    			</div>
+    			<div>
+    				<label for="inputImages">Images</label>
+    				<div>
+    					<?php
+    						$attachments = get_posts(array(
+    							'post_type' => 'attachment',
+    							'numberposts' => -1,
+    							'post_status' => null,
+    							'post_parent' => $post->ID
+    						));
+    						if ( !$attachments )
+    							echo "No images";
+    						else
+    						{
+    							?>
+    							<ul>
+    								<?php foreach ( $attachments as $attachment ) { ?>
+    									<li>
+    										<div>
+    											<?php the_attachment_link( $attachment->ID , false ); ?>
+    											<h3><?php echo apply_filters( 'the_title' , $attachment->post_title ); ?></h3>
+    										</div>
+    									</li>
+    								<?php } ?>
+    							</ul>
+    							<?php
+    						}
+    					?>
+    					<input type="file" name="image" />
+    				</div>
+    			</div>
+    		</div>
+    		<div>
+    			<button data-dismiss="modal">Close</button>
+    			<button>Save changes</button>
+    		</div>
+    	</div>
+    </form>
