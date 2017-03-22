@@ -11,7 +11,7 @@
  */
 
  /**
- * Frontend post editing
+ * Frontend post editing MOVE THIS
  */
 function frontend_update_cafe() {
 	if ( empty($_POST['frontend']) || empty($_POST['ID']) || empty($_POST['post_type']) || $_POST['post_type'] != 'opportunity' ) {
@@ -29,19 +29,18 @@ function save_cafe_custom_fields(){
   global $post;
 
   if ($post) {
-    update_post_meta($post->ID, "excerpt", @$_POST["excerpt"]);
-    update_post_meta($post->ID, "sold", @$_POST["sold"]);
-    update_post_meta($post->ID, "enabled", @$_POST["enabled"]);
-    update_post_meta($post->ID, "featured", @$_POST["featured"]);
-    update_post_meta($post->ID, "deadline", @$_POST["deadline"]);
-    update_post_meta($post->ID, "current_quantity", @$_POST["opp_current_quantity"]);
-    update_post_meta($post->ID, "total_quantity", @$_POST["total_quantity"]);
-    update_post_meta($post->ID, "numeric_cost", @$_POST["numeric_cost"]);
-    update_post_meta($post->ID, "total_cost", @$_POST["total_cost"]);
+    update_post_meta($post->ID, "opp_excerpt", @$_POST["opp_excerpt"]);
+    update_post_meta($post->ID, "opp_sold", @$_POST["opp_sold"]);
+    update_post_meta($post->ID, "opp_enabled", @$_POST["opp_enabled"]);
+    update_post_meta($post->ID, "opp_featured", @$_POST["opp_featured"]);
+    update_post_meta($post->ID, "opp_deadline", @$_POST["opp_deadline"]);
+    update_post_meta($post->ID, "opp_current_quantity", @$_POST["opp_current_quantity"]);
+    update_post_meta($post->ID, "opp_total_quantity", @$_POST["opp_total_quantity"]);
+    update_post_meta($post->ID, "opp_numeric_cost", @$_POST["opp_numeric_cost"]);
+    update_post_meta($post->ID, "opp_total_cost", @$_POST["opp_total_cost"]);
 
   }
 }
-add_action( 'admin_init', 'add_cafe_meta_boxes' );
 add_action( 'save_post', 'save_cafe_custom_fields' );
 
 

@@ -62,7 +62,7 @@
                          'show_count'         => true,
                          'use_desc_for_title' => false,
                          'title_li'           => '',
-                         'walker'             => new catWalker()
+                        //  'walker'             => new catWalker()
                        ) );
                      ?>
                   </ul>
@@ -81,7 +81,7 @@
                          'use_desc_for_title' => false,
                          'current_category'   => $this_category->term_id,
                          'title_li'           => '',
-                         'walker'             => new catWalker()
+                        //  'walker'             => new catWalker()
                        ) );
                      ?>
                    </ul>
@@ -98,20 +98,23 @@
   				while ( have_posts() ) : the_post();
 
 
-            /* Levels & Types
-             */
+            /*
+            * Levels & Types
+            * todo: create a callback function
+            */
           	$meta = get_post_meta(get_the_ID());
             foreach($meta as $key=>$value) {
-              if("opp_level_" == substr($key,0,10)) {
+              if("opp_level_" == substr($key,0,10) || "opp_type_" == substr($key,0,9)) {
                 $suffix = substr($key,strrpos($key,'_'));
+                echo 'suff- '.$suffix;
                 $type = 'opp_type'.$suffix;
                 $level = 'opp_level'.$suffix;
               }
             }
-            $oppType = unserialize($meta[$type][0]);
+            $theTypes = unserialize($meta[$type][0]);
             $oppLevel = unserialize($meta[$level][0]);
-
           ?>
+
   	        <li class="panel item" style="overflow: hidden">
   	          <?php if (!empty($meta['opp_sponsor_logos'])) { ?><div class="panel-heading logos clearfix"><?php } else { ?><div class="panel-heading clearfix"><?php } ?>
 
@@ -150,17 +153,26 @@
     	                <?php echo get_the_title(); ?> <span class="collapse-indicator fa fa-chevron-down"></span>
     	              </a>
                     <?php /* editors, edit! */ ?>
-                    <span class="btn btn-primary btn-lg" data-toggle="modal" data-target="editModal"><< Edit >></span>
+                    <span class="margin-lg-top margin-sm-left" data-toggle="modal" data-target="#editModal<?php echo get_the_ID(); ?>"><i class="fa fa-pencil text-gray-light" aria-hidden="true"></i></span>
+                    <?php include(locate_template('templates/editpost-cat.php')); ?>
+
 
                     <!-- <?php edit_post_link( __('<i class="fa fa-pencil text-gray-light" aria-hidden="true"></i>')); ?> -->
     	            </h4>
 
-                  <?php /* levels, types, sold, deadline  */ ?>
+                  <?php /* levels, types, sold  */ ?>
     	            <div class="labels pull-left">
+                    <?php if (!empty($meta['opp_sold'][0])) { ?><span class="label label-danger">Sold</span><?php } ?>
                     <?php if (!empty($meta[$level][0])) { ?><span class="margin-sm-left label label-default so-label <?php echo $meta[$level][0]; ?>"><?php echo $meta[$level][0]; ?></span><?php } ?>
-                    <?php if (!empty($oppType[0])) { ?><span class="margin-sm-left label label-default so-label <?php echo $type[0]; ?>"><?php echo $oppType[0]; ?></span><?php } ?>
-                    <?php if (!empty($meta['opp_level_pes'][0])) { ?><span class="margin-sm-left label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
-    	              <?php if (!empty($meta['opp_sold'][0])) { ?><span class="margin-sm-left label label-danger">Sold</span><?php } ?>
+                    <?php
+                      if(is_array($theTypes)) {
+                        echo '<strong class="small text-gray">Type/s:</strong><br>';
+                        foreach($theTypes as $test=>$oppType) {
+                          echo '<span class="margin-sm-right label label-default so-label '.$oppType.'">'.$oppType.'</span>';
+                        }
+                      }
+                    ?>
+                    <?php if (!empty($meta['opp_level_pes'][0])) { ?><span class="margin-sm-right label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
     	            </div>
 
                 </div>
@@ -310,68 +322,3 @@
 
 		endif;
 		?>
-
-    <!-- Modal -->
-    <form method="post" action="" enctype="multipart/form-data">
-    	<div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    		<div>
-    			<button type="button" data-dismiss="modal">×</button>
-    			<h3 id="myModalLabel">Edit Opportunity</h3>
-    		</div>
-    		<div>
-    			<input type='hidden' name='frontend' value="true" />
-    			<input type='hidden' name='ID' value="<?= get_the_ID() ?>" />
-    			<input type='hidden' name='post_type' value="<?= $post->post_type ?>" />
-
-    			<div>
-    				<label for="inputTitle">Title</label>
-    				<div>
-    					<input type="text" id="inputTitle" name='post_title' placeholder="Title" value="<?= get_the_title() ?>" />
-    				</div>
-    			</div>
-    			<div>
-    				<label for="inputContent">Description</label>
-    				<div>
-    					<?php wp_editor( get_the_content(), 'post_content', array(
-    						'media_buttons' => false,
-    					)); ?>
-    				</div>
-    			</div>
-    			<div>
-    				<label for="inputImages">Images</label>
-    				<div>
-    					<?php
-    						$attachments = get_posts(array(
-    							'post_type' => 'attachment',
-    							'numberposts' => -1,
-    							'post_status' => null,
-    							'post_parent' => $post->ID
-    						));
-    						if ( !$attachments )
-    							echo "No images";
-    						else
-    						{
-    							?>
-    							<ul>
-    								<?php foreach ( $attachments as $attachment ) { ?>
-    									<li>
-    										<div>
-    											<?php the_attachment_link( $attachment->ID , false ); ?>
-    											<h3><?php echo apply_filters( 'the_title' , $attachment->post_title ); ?></h3>
-    										</div>
-    									</li>
-    								<?php } ?>
-    							</ul>
-    							<?php
-    						}
-    					?>
-    					<input type="file" name="image" />
-    				</div>
-    			</div>
-    		</div>
-    		<div>
-    			<button data-dismiss="modal">Close</button>
-    			<button>Save changes</button>
-    		</div>
-    	</div>
-    </form>
