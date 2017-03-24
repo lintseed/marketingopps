@@ -431,7 +431,7 @@ function slug_update_post_meta_cb( $value, $object, $field_name ) {
  * levels & types
  */
 
- add_action( 'cmb2_admin_init', 'cmb2_register_iot' );
+add_action( 'cmb2_admin_init', 'cmb2_register_iot' );
 add_action( 'cmb2_admin_init', 'cmb2_register_worldtea' );
 add_action( 'cmb2_admin_init', 'cmb2_register_naturalproducts' );
 add_action( 'cmb2_admin_init', 'cmb2_register_club' );

@@ -6,6 +6,8 @@ body {
 
 // url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/themes/marketingopps/images/penton_wht.png)
 
+.page-header      { border-bottom-color: $gray-dark; }
+
 .text-gray        { color: $gray; }
 .text-gray-light  { color: $gray-light; }
 
@@ -23,6 +25,10 @@ body {
 .margin-sm-bottom { margin-bottom: $gutter-sm !important; }
 .margin-sm-left   { margin-left: $gutter-sm !important; }
 .margin-lg        { margin: $gutter-lg !important; }
+.padding-sm-top   { padding-top: $gutter-sm !important; }
+.padding-sm-right { padding-right: $gutter-sm !important; }
+.padding-sm-bottom{ padding-bottom: $gutter-sm !important; }
+.padding-sm-left  { padding-sm-left: $gutter-sm !important; }
 .padding-lg       { padding: $gutter-lg !important; }
 .padding-lg-top   { padding-top: $gutter-lg !important; }
 .padding-lg-right { padding-right: $gutter-lg !important; }

@@ -37,7 +37,7 @@
             <div class="col-sm-8">
               <div class="pull-left margin-lg-right">
                 <div><label>Sort</label></div>
-                <span class="sort btn btn-sm btn-default asc" data-sort="opp-title">Sort by name</span>
+                <span class="sort btn btn-sm btn-default asc" data-sort="opp-title">Sort by title</span>
                 <span class="sort btn btn-sm btn-default" data-sort="opp-price">Sort by price</span>
                 <?php if ($wp_query->queried_object->category_parent == 0) { ?>
                   <span class="sort btn btn-sm btn-default" data-sort="opp-event">Sort by event</span>
@@ -106,7 +106,6 @@
             foreach($meta as $key=>$value) {
               if("opp_level_" == substr($key,0,10) || "opp_type_" == substr($key,0,9)) {
                 $suffix = substr($key,strrpos($key,'_'));
-                echo 'suff- '.$suffix;
                 $type = 'opp_type'.$suffix;
                 $level = 'opp_level'.$suffix;
               }
@@ -147,35 +146,49 @@
 
 
     	            <?php /* title, featured? */ ?>
-    	            <h4 class="opp-title media-heading">
+    	            <h4 class="media-heading">
                     <?php if(!empty($meta['opp_featured'][0])) { ?><i class="fa fa-star-o" aria-hidden="true"></i><?php } ?>
-    	              <a data-toggle="collapse" data-parent="#base-sponsor-opp-accordion" href="#<?php echo $post->post_name; ?>" class="collapsed title">
+
+                    <a data-toggle="collapse" data-parent="#base-sponsor-opp-accordion" data-field="opp-title" href="#<?php echo $post->post_name; ?>" class="collapsed title opp-title">
     	                <?php echo get_the_title(); ?> <span class="collapse-indicator fa fa-chevron-down"></span>
     	              </a>
+
                     <?php /* editors, edit! */ ?>
                     <span class="margin-lg-top margin-sm-left" data-toggle="modal" data-target="#editModal<?php echo get_the_ID(); ?>"><i class="fa fa-pencil text-gray-light" aria-hidden="true"></i></span>
-                    <?php include(locate_template('templates/editpost-cat.php')); ?>
+                    <a class="margin-lg-top margin-sm-left" href="<?php the_permalink(); ?>"><i class="fa fa-eye text-gray-light" aria-hidden="true"></i></a>
+                  </h4>
+                  <?php include(locate_template('templates/editpost-cat.php')); ?>
 
 
-                    <!-- <?php edit_post_link( __('<i class="fa fa-pencil text-gray-light" aria-hidden="true"></i>')); ?> -->
-    	            </h4>
+                  <?php /* sold status, level, types */ ?>
+    	            <div class="labels pull-left margin-lg-right">
+                    <strong class="small text-gray">Status:</strong><br>
+                    <?php if (!empty($meta['opp_sold'][0])) { ?>
+                      <span class="label label-danger">Sold</span>
+                    <?php } else { ?>
+                      <span class="label label-success">Available</span>
+                    <?php } ?>
+                  </div>
 
-                  <?php /* levels, types, sold  */ ?>
-    	            <div class="labels pull-left">
-                    <?php if (!empty($meta['opp_sold'][0])) { ?><span class="label label-danger">Sold</span><?php } ?>
-                    <?php if (!empty($meta[$level][0])) { ?><span class="margin-sm-left label label-default so-label <?php echo $meta[$level][0]; ?>"><?php echo $meta[$level][0]; ?></span><?php } ?>
-                    <?php
-                      if(is_array($theTypes)) {
-                        echo '<strong class="small text-gray">Type/s:</strong><br>';
-                        foreach($theTypes as $test=>$oppType) {
-                          echo '<span class="margin-sm-right label label-default so-label '.$oppType.'">'.$oppType.'</span>';
-                        }
+                  <?php if (!empty($meta[$level][0])) { ?>
+                    <div class="pull-left margin-lg-right">
+                      <strong class="small text-gray">Level:</strong><br>
+                      <span class="margin-sm-right label label-default <?php echo $meta[$level][0]; ?>"><?php echo $meta[$level][0]; ?></span>
+                    </div>
+                  <?php } ?>
+
+                  <?php
+                    if(is_array($theTypes)) {
+                      echo '<div class="pull-left"><strong class="small text-gray">Type/s:</strong><br>';
+                      foreach($theTypes as $test=>$oppType) {
+                        echo '<span class="margin-sm-right label label-default '.$oppType.'">'.$oppType.'</span>';
                       }
-                    ?>
-                    <?php if (!empty($meta['opp_level_pes'][0])) { ?><span class="margin-sm-right label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
-    	            </div>
+                      echo '</div>';
+                    }
+                  ?>
+                  <?php if (!empty($meta['opp_level_pes'][0])) { ?><br><span class="pull-left margin-sm-right label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
 
-                </div>
+                </div><? /* done floating this section */ ?>
 
   	            <?php /* sponsor logo fields: uploaded */ ?>
   	            <?php if(!empty($meta['opp_sponsor_logos'])) {
@@ -247,7 +260,7 @@
 
   	              foreach($meta['opp_document'] as $key => $value) {
                     $doc = unserialize($value);
-                    print_r($doc);
+                    // print_r($doc);
                     foreach($doc as $file => $path) {
                       $i++;
                       if($meta['opp_documentLabel']) {

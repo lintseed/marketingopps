@@ -13,19 +13,19 @@
  /**
  * Frontend post editing MOVE THIS
  */
-function frontend_update_cafe() {
+function frontend_update_opp() {
 	if ( empty($_POST['frontend']) || empty($_POST['ID']) || empty($_POST['post_type']) || $_POST['post_type'] != 'opportunity' ) {
 		return;
   }
-	// $post global is required so save_cafe_custom_fields() doesn't error out
+	// $post global is required so save_opp_custom_fields() doesn't error out
 	global $post;
 	$post = get_post($_POST['ID']);
 	global $wpdb;
 	$post_id = wp_update_post( $_POST );
 }
-add_action('init', 'frontend_update_cafe');
+add_action('init', 'frontend_update_opp');
 
-function save_cafe_custom_fields(){
+function save_opp_custom_fields(){
   global $post;
 
   if ($post) {
@@ -38,10 +38,9 @@ function save_cafe_custom_fields(){
     update_post_meta($post->ID, "opp_total_quantity", @$_POST["opp_total_quantity"]);
     update_post_meta($post->ID, "opp_numeric_cost", @$_POST["opp_numeric_cost"]);
     update_post_meta($post->ID, "opp_total_cost", @$_POST["opp_total_cost"]);
-
   }
 }
-add_action( 'save_post', 'save_cafe_custom_fields' );
+add_action( 'save_post', 'save_opp_custom_fields' );
 
 
 

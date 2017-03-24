@@ -25,38 +25,43 @@
   .avatar {
     max-width: 150px;
   }
-  h4.opp-title a,
-  h4.opp-title a:hover {
+  a.opp-title,
+  a.opp-title:hover {
     color: $gray-dark;
     text-decoration: none;
-  }
-  h4.opp-title a:hover {
     color: #000;
   }
+  a.opp-title:hover {
+    color: $brand-info;
+  }
   .panel-heading.logos {
-    .opp-price,
-    h4 {
-      padding-top: 15px;
-      @media (max-width: $screen-xs) {
-        padding-top: 0px;
-      }
-    }
-    .so-label {
-      margin-top: 17px;
-      @media (max-width: $screen-xs) {
-        margin-top: 0px;
-      }
-    }
+    // .opp-price,
+    // h4 {
+    //   padding-top: 15px;
+    //   @media (max-width: $screen-xs) {
+    //     padding-top: 0px;
+    //   }
+    // }
+    // .so-label {
+    //   margin-top: 17px;
+    //   @media (max-width: $screen-xs) {
+    //     margin-top: 0px;
+    //   }
+    // }
   }
   .panel-heading {
     img {
       max-width: none;
       height: 50px;
     }
+    .opp-price {
+      max-width: 200px;
+      text-align: right;
+    }
   }
   h3 {
     font-size: 16px;
-    margin:0 0 0.3rem;
+    margin:0 0 0.3em;
     font-weight: normal;
     font-weight:bold;
   }
@@ -109,6 +114,7 @@
 }
 .label {
   display: inline-block !important; /* get these puppies vertically centered */
+  padding: .3em .6em .3em; /* override the top padding */
 }
 .label.so-label.level0,
 .label.so-label.level1,
@@ -151,4 +157,7 @@
     transform: rotate(180deg);
     transition: -webkit-transform 0.1s ease-in-out;
     transition: transform 0.1s ease-in-out;
+}
+.modal-body {
+  overflow: hidden;
 }

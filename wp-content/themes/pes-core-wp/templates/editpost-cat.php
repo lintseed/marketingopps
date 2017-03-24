@@ -1,6 +1,5 @@
 <?php
 	global $post;
-// print_r($post);
 	require_once(ABSPATH.'wp-admin/includes/template.php');
 	$custom = $post->ID;
 	$excerpt = @$custom["opp_excerpt"][0];
@@ -32,71 +31,77 @@
 				</div>
 
 				<div class="modal-body">
+
 					<?php /* descriptors */ ?>
 					<div class="form-group">
 						<label for="inputTitle">Title</label>
-						<input type="text" id="inputTitle" name="post_title" placeholder="Title" value="<?php echo get_the_title() ?>" />
-					</div>
-					<div class="form-group">
-						<label for="inputContent">Description</label>
-						<?php wp_editor( get_the_content(), 'post_content', array(
-							'media_buttons' => false,
-						)); ?>
-					</div>
-					<div class="form-group">
-						<label for="excerpt">Excerpt</label>
-						<textarea id="opp_excerpt" name="opp_excerpt" rows="5"><?php echo $excerpt; ?></textarea>
+						<input type="text" class="form-control" id="inputTitle" name="post_title" placeholder="Title" value="<?php echo get_the_title() ?>" />
 					</div>
 
-					<?php /* levels & types */ ?>
-					<hr>
-					levels & types<br>
-					<?php if (!empty($meta[$level][0])) { ?><span class="margin-sm-left label label-default so-label <?php echo $meta[$level][0]; ?>"><?php echo $meta[$level][0]; ?></span><?php } ?>
-					<?php if (!empty($oppType[0])) { ?><span class="margin-sm-left label label-default so-label <?php echo $type[0]; ?>"><?php echo $oppType[0]; ?></span><?php } ?>
+					<?php /* nah for now
+					<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#descriptors-<?php echo $post->ID; ?>" aria-expanded="false" aria-controls="descriptors-<?php echo $post->ID; ?>">Toggle Description, Excerpt <span class="collapse-indicator fa fa-chevron-down"></span></button>
+					<div id="descriptors-<?php echo $post->ID; ?>" class="collapse" data-field="descriptors-<?php echo $post->ID; ?>" aria-expanded="false">
+						<div class="well">
+							<div class="form-group">
+								<label for="inputContent">Description</label>
+								<?php wp_editor( get_the_content(), 'post_content', array(
+									'media_buttons' => false,
+								)); ?>
+							</div>
+							<div class="form-group"><br>
+								<label for="excerpt">Excerpt</label><br>
+								<textarea id="opp_excerpt" name="opp_excerpt" rows="5" cols="20"><?php echo $excerpt; ?></textarea>
+							</div>
+						</div>
+					</div>
+					*/ ?>
 
+					<?php
+						/* levels & types */
+					?>
 
 					<?php /* options */ ?>
-					<hr>
-					<div class="margin-sm-bottom">
-						<div class="form-group col-sm-4 btn-default border-gray-light border-right-none padding-sm pull-left">
-							<label for="opp_sold" class="text-danger">Sold</label>
-							<input type="checkbox" id="opp_sold" name="sold" checked="<?php if(!empty($sold)) { echo 'checked'; } else { echo 'false'; } ?>" />
+					<?php /* HOW TO MAKE THESE CHECKBOXES SAVE */ ?>
+					<div class="margin-sm-bottom" style="margin-left: -3px;">
+						<div class="form-group col-sm-4 border-gray-lighter border-right-none pull-left text-center padding-sm-top padding-sm-bottom">
+							<input type="checkbox" id="opp_sold-<?php echo $post->ID; ?>" name="opp_sold"<?php if(!empty($meta['opp_sold'][0])) { echo ' checked="checked"'; } else { echo 'null="null"'; } ?> />
+							<label for="opp_sold-<?php echo $post->ID; ?>" class="text-danger">Sold</label>
 						</div>
-						<div class="form-group col-sm-4 btn-default border-gray-light border-right-none padding-sm pull-left">
-							<label for="opp_enabled" class="text-success">Enabled</label>
-							<input type="checkbox" id="opp_enabled" name="opp_enabled" checked="<?php if(!empty($enabled)) { echo 'checked'; } else { echo 'false'; } ?>" />
+						<div class="form-group col-sm-4 border-gray-lighter border-right-none pull-left text-center padding-sm-top padding-sm-bottom">
+							<input type="checkbox" id="opp_enabled-<?php echo $post->ID; ?>" name="opp_enabled"<?php if(!empty($meta['opp_enabled'][0])) { echo ' checked="checked"'; } ?> />
+							<label for="opp_enabled-<?php echo $post->ID; ?>" class="text-success">Enabled</label>
 						</div>
-						<div class="form-group col-sm-4 border-gray-light border-right-none padding-sm pull-left">
-							<label for="opp_featured"><i class="fa fa-star-o" aria-hidden="true"></i> Featured</label>
-							<input type="checkbox" id="opp_featured" name="opp_featured" checked="<?php if(!empty($featured)) { echo 'checked'; } else { echo 'false'; } ?>" />
+						<div class="form-group col-sm-4 border-gray-lighter pull-left text-center padding-sm-top padding-sm-bottom">
+							<input type="checkbox" id="opp_featured-<?php echo $post->ID; ?>" name="opp_featured"<?php if(!empty($meta['opp_featured'][0])) { echo ' checked="checked"'; } ?> />
+							<label for="opp_featured-<?php echo $post->ID; ?>"><i class="fa fa-star-o" aria-hidden="true"></i> Featured</label>
 						</div>
 					</div>
 
 					<?php /* details */ ?>
-					<div class="margin-sm-bottom">
-						<div class="form-group col-sm-4 btn-default border-gray-light border-right-none padding-sm pull-left">
+					<div class="margin-sm-bottom" style="margin-left: -3px;">
+						<div class="form-group col-sm-4 border-gray-lighter border-right-none padding-sm-top padding-sm-bottom pull-left">
 							<label for="opp_total_cost">Sale Deadline</label>
-							<input type="text" id="opp_deadline" name="opp_deadline" value="<?php echo $deadline; ?>" />
+							<input type="date" class="form-control" id="opp_deadline" name="opp_deadline" value="<?php echo date('Y-m-d', strtotime($meta['opp_deadline'][0])); ?>" />
 						</div>
-						<div class="form-group col-sm-4 btn-default border-gray-light border-right-none padding-sm pull-left">
+						<div class="form-group col-sm-4 border-gray-lighter border-right-none padding-sm-top padding-sm-bottom pull-left">
 							<label for="opp_current_quantity">Current Quantity</label>
-							<input type="text" id="opp_current_quantity" name="opp_current_quantity" value="<?php echo $current_quantity; ?>" />
+							<input type="text" class="form-control" id="opp_current_quantity" name="opp_current_quantity" value="<?php echo $meta['opp_current_quantity'][0]; ?>" />
 						</div>
-						<div class="form-group col-sm-4 btn-default border-gray-light border-right-none padding-sm pull-left">
+						<div class="form-group col-sm-4 border-gray-lighter padding-sm-top padding-sm-bottom pull-left">
 							<label for="opp_total_quantity">Total Quantity</label>
-							<input type="text" id="opp_total_quantity" name="opp_total_quantity" value="<?php echo $total_quantity; ?>" />
+							<input type="text" class="form-control" id="opp_total_quantity" name="opp_total_quantity" value="<?php echo $meta['opp_total_quantity'][0]; ?>" />
 						</div>
 					</div>
 
 					<?php /* cost */ ?>
-					<div class="margin-sm-bottom">
-						<div class="form-group col-sm-6 btn-default border-gray-light border-right-none padding-sm pull-left">
+					<div class="margin-sm-bottom" style="margin-left: -4px;">
+						<div class="form-group col-sm-6 border-gray-lighter border-right-none padding-sm-top padding-sm-bottom">
 							<label for="opp_current_quantity">Cost<br><em class="text-gray small">(minimum, numeric value for sorting)</em></label>
-							<input type="text" id="opp_numeric_cost" name="opp_numeric_cost" value="<?php echo $meta['opp_numeric_cost'][0]; ?>" />
+							<input type="text" class="form-control" id="opp_numeric_cost" name="opp_numeric_cost" value="<?php echo $meta['opp_numeric_cost'][0]; ?>" />
 						</div>
-						<div class="form-group col-sm-6 btn-default border-gray-light border-right-none padding-sm pull-left">
+						<div class="form-group col-sm-6 border-gray-lighter border-right-none padding-sm-top padding-sm-bottom">
 							<label for="opp_total_cost">Text Cost<br><em class="text-gray small">(range or descriptive text)</em></label>
-							<input type="text" id="opp_total_cost" name="opp_total_cost" value="<?php echo $meta['opp_total_cost'][0]; ?>" />
+							<input type="text" class="form-control" id="opp_total_cost" name="opp_total_cost" value="<?php echo $meta['opp_total_cost'][0]; ?>" />
 						</div>
 					</div>
 
