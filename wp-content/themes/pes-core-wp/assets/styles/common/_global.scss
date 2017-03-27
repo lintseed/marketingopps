@@ -47,6 +47,11 @@ body {
 .margin-right     { margin-right: 10px !important; }
 .margin-bottom    { margin-bottom: 10px !important; }
 .margin-left      { margin-left: 10px !important; }
+.padding-top       { padding-top: 10px !important; }
+.padding-right     { padding-right: 10px !important; }
+.padding-bottom    { padding-bottom: 10px !important; }
+.padding-left      { padding-left: 10px !important; }
+.padding          { padding: 10px !important; }
 .margin-lg        { margin: $gutter-lg !important; }
 .padding-sm-top   { padding-top: $gutter-sm !important; }
 .padding-sm-right { padding-right: $gutter-sm !important; }
@@ -66,7 +71,7 @@ body {
 .border-gray-dark          { border: 1px solid $gray-dark; }
 .border-gray               { border: 1px solid $gray; }
 .border-gray-light         { border: 1px solid $gray-light; }
-.border-gray-lighter       { border: 1px solid $gray-light; }
+.border-gray-lighter       { border: 1px solid $gray-lighter; }
 .border-primary            { border: 1px solid $brand-primary; }
 .border-success            { border: 1px solid $brand-success; }
 .border-info               { border: 1px solid $brand-info; }

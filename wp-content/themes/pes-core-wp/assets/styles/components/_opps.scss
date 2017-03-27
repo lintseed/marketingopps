@@ -52,7 +52,7 @@
   .panel-heading {
     img {
       max-width: none;
-      height: 50px;
+      height: 75px;
     }
     .opp-price {
       max-width: 200px;
@@ -166,4 +166,7 @@ h5 {
   font-size: 12px;
   font-weight: bolder;
   color: $gray-dark;
+}
+h5.border-bottom {
+  border-bottom: 1px solid $gray-light;
 }

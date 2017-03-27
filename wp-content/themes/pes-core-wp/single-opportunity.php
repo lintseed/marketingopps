@@ -74,7 +74,7 @@
 
 						<?php /* display quantities */ ?>
 						<?php if (!empty($meta['opp_current_quantity'][0]) || !empty($meta['opp_total_quantity'][0])) { ?>
-							<div class="opp-quantities text-right">
+							<div class="opp-quantities">
 								<h5>Quanitity:</h5>
 								<?php if (!empty($meta['opp_current_quantity'][0])) { echo $meta['opp_current_quantity'][0]; } ?>
 								<?php if (!empty($meta['opp_total_quantity'][0])) { echo '/'.$meta['opp_total_quantity'][0]; } ?>
@@ -187,12 +187,12 @@
 					<div class="col-sm-4">
 						<?php /* sponsor logo fields: uploaded */ ?>
 						<?php if(!empty($meta['opp_sponsor_logos'])) {
-							echo '<div class="clear margin-lg-bottom"><h5 class="text-center block margin-bottom">Logos</h5><br>';
+							echo '<div class="clear margin-lg-bottom text-center"><h5 class="text-center block margin-bottom">Logos</h5><br>';
 							foreach($meta['opp_sponsor_logos'] as $logo) {
 								$array = unserialize($logo);
 								foreach($array as $img => $src) {
 									foreach($src as $imgpath) {
-										echo '<img src="'. $imgpath .'" alt="" class="margin-lg-right pull-left" height="75">';
+										echo '<img src="'. $imgpath .'" alt="" class="margin-bottom" height="75">';
 									}
 								}
 							}
@@ -200,22 +200,22 @@
 						} ?>
 						<?php /* sponsor logo fields:linked */ ?>
 						<?php if(!empty($meta['opp_logos_paths'])) {
-							echo '<div class="margin-lg-bottom"><h5 class="text-center block margin-bottom">Logo via Paths</h5><br>';
+							echo '<div class="margin-lg-bottom text-center"><h5 class="text-center block margin-bottom">Logo via Paths</h5><br>';
 							foreach($meta['opp_logos_paths'] as $logo) {
 								$array = unserialize($logo);
-								echo '<img src="'. $array[0] .'" alt="" class="margin-lg-right pull-left" height="75">';
+								echo '<img src="'. $array[0] .'" alt="" class="margin-bottom" height="75">';
 							}
 							echo '</div>';
 						} ?>
 
 						<?php /* opp images  */ ?>
 						<?php if(!empty($meta['opp_images'])) {
-							echo '<div class="pull-right"><h5 class="text-center block margin-bottom">Images</h5><br>';
+							echo '<div class="pull-right text-center"><h5 class="text-center block margin-bottom">Images</h5><br>';
 								foreach($meta['opp_images'] as $oppimg) {
 									$image = unserialize($oppimg);
 									foreach($image as $img => $src) {
 										foreach($src as $imgpath) {
-											echo '<img src="'. $imgpath .'" alt="" class="pull-right margin-lg-left margin-lg-bottom" width="200">';
+											echo '<img src="'. $imgpath .'" alt="" class="margin-bottom" width="200">';
 										}
 									}
 								}

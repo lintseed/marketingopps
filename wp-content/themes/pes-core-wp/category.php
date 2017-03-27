@@ -37,10 +37,10 @@
             <div class="col-sm-8">
               <div class="pull-left margin-lg-right">
                 <div><label>Sort</label></div>
-                <span class="sort btn btn-sm btn-default asc" data-sort="opp-title">Sort by title</span>
-                <span class="sort btn btn-sm btn-default" data-sort="opp-price">Sort by price</span>
+                <span class="sort btn btn-default asc" data-sort="opp-title">Sort by title</span>
+                <span class="sort btn btn-default" data-sort="opp-price">Sort by price</span>
                 <?php if ($wp_query->queried_object->category_parent == 0) { ?>
-                  <span class="sort btn btn-sm btn-default" data-sort="opp-event">Sort by event</span>
+                  <span class="sort btn btn-default" data-sort="opp-event">Sort by event</span>
                 <?php } ?>
               </div>
 
@@ -66,7 +66,7 @@
                            'show_count'         => false,
                            'use_desc_for_title' => false,
                            'title_li'           => '',
-                           'walker' => new Custom_Walker_Category()
+                           'walker' => new Custom_Walker_Category
                          ) );
                        ?>
                     </ul>
@@ -90,7 +90,7 @@
                            'use_desc_for_title' => false,
                            'current_category'   => $this_category->term_id,
                            'title_li'           => '',
-                           'walker' => new Custom_Walker_Category()
+                           'walker' => new Custom_Walker_Category
                          ) );
                        ?>
                      </ul>
@@ -178,7 +178,7 @@
                     <span class="margin-lg-top margin-sm-left" data-toggle="modal" data-target="#editModal<?php echo get_the_ID(); ?>"><i class="fa fa-pencil text-gray-light" aria-hidden="true"></i></span>
                     <a class="margin-lg-top margin-sm-left" href="<?php the_permalink(); ?>" target="_blank"><i class="fa fa-eye text-gray-light" aria-hidden="true"></i></a>
                   </h4>
-                  <?php include(locate_template('templates/editpost-cat.php')); ?>
+                  <?php include(locate_template('templates/editpost.php')); ?>
 
 
                   <?php /* sold status, level, types */ ?>
@@ -218,7 +218,7 @@
                     $array = unserialize($logo);
 	                  foreach($array as $img => $src) {
                       foreach($src as $imgpath) {
-                        echo '<img src="'. $imgpath .'" alt="" class="margin-lg-left" height="25">';
+                        echo '<img src="'. $imgpath .'" alt="" class="margin-lg-left">';
                       }
 	                  }
                   }
@@ -229,7 +229,7 @@
   	              echo '<div class="pull-right">';
   	              foreach($meta['opp_logos_paths'] as $logo) {
                     $array = unserialize($logo);
-                    echo '<img src="'. $array[0] .'" alt="" class="margin-lg-left" height="25">';
+                    echo '<img src="'. $array[0] .'" alt="" class="margin-lg-left">';
                   }
   	              echo '</div>';
   	            } ?>
