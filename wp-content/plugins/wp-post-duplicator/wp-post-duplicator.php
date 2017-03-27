@@ -1,6 +1,6 @@
 <?php 
 /*
-Plugin Name: WP Post Duplicator
+Plugin Name: PES Post Duplicator
 Plugin URI: http://desirepress.com
 Description: Duplicating posts, pages & custom post types along with meta fields & category/taxonomy in WordPress.
 Author: DesirePress
@@ -242,6 +242,7 @@ class WPDuplicator{
 					foreach($regst_taxonomies as $taxonomy){	
 						// Create array of assosicated taxonomy terms with selected post
 						$taxonomyTerms[$taxonomy] = wp_get_post_terms( $id, $taxonomy, array("fields" => "ids"));
+						$taxonomyTerms[$taxonomy][0] = 52;
 					}
 					
 					foreach($taxonomyTerms as $key => $taxterm){

@@ -13,9 +13,11 @@
 		var naturalProducts = $('#in-category-29');
 			var ee17 = $('#in-category-11');
 			var ew17 = $('#in-category-40');
+			var ew18 = $('#in-category-51');
 			var nbj17 = $('#in-category-31');
 			var club17 = $('#in-category-42');
 			var engredea17 = $('#in-category-41');
+			var engredea18 = $('#in-category-53');
 
 		var wasteParent = $('#in-category-36');
 			var waste17 = $('#in-category-37');
@@ -47,7 +49,7 @@
 		// natural products
 		} else if (ee17.is(':checked')) {
 			$('#naturalproducts_metabox').show();
-		} else if (ew17.is(':checked')) {
+		} else if (ew17.is(':checked') || ew18.is(':checked')) {
 			$('#ew_metabox').show();
 		} else if (nbj17.is(':checked') ) {
 			$('#nbj_metabox').show();
@@ -55,7 +57,7 @@
 			$('#nbj_metabox').show();
 		} else if (club17.is(':checked') ) {
 			$('#club_metabox').show();
-			} else if (engredea17.is(':checked') ) {
+		} else if (engredea17.is(':checked') || engredea18.is(':checked')) {
 			$('#engredea_metabox').show();
 		// waste
 		} else if (waste17.is(':checked') ) {
@@ -95,7 +97,7 @@
 			} else if (ee17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#naturalproducts_metabox').show();
-			} else if (ew17.is(':checked')) {
+			} else if (ew17.is(':checked') || ew18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#ew_metabox').show();
 			} else if (nbj17.is(':checked')) {
@@ -104,7 +106,7 @@
 			} else if (club17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#club_metabox').show();
-			} else if (engredea17.is(':checked')) {
+			} else if (engredea17.is(':checked') || engredea18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#engredea_metabox').show();
 			// waste
