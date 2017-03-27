@@ -1,0 +1,120 @@
+<?php
+	global $post;
+	require_once(ABSPATH.'wp-admin/includes/template.php');
+	$custom = $post->ID;
+	$excerpt = @$custom["opp_excerpt"][0];
+	$sold = @$custom["opp_sold"][0];
+	$enabled = @$custom["opp_enabled"][0];
+	$featured = @$custom["opp_featured"][0];
+	$deadline = @$custom["opp_deadline"][0];
+	$current_quantity = @$custom["opp_current_quantity"][0];
+	$total_quantity = @$custom["opp_total_quantity"][0];
+	$numeric_cost = @$custom["opp_numeric_cost"][0];
+	$total_cost = @$custom["opp_total_cost"][0];
+
+?>
+
+<div id="editModal<?php echo $post->ID; ?>" class="modal fade" role="dialog" aria-labelledby="editLabel" style="display: none;">
+
+	<div class="modal-dialog" role="document">
+
+		<div class="modal-content">
+			<form method="post" action="" enctype="multipart/form-data">
+
+				<input type='hidden' name='frontend' value="true" />
+				<input type='hidden' name='ID' value="<?php echo $post->ID; ?>" />
+				<input type='hidden' name='post_type' value="<?php echo $post->post_type ?>" />
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 id="editLabel">Edit Opportunity</h3>
+				</div>
+
+				<div class="modal-body">
+
+					<?php /* descriptors */ ?>
+					<div class="form-group">
+						<label for="inputTitle">Title</label>
+						<input type="text" class="form-control" id="inputTitle" name="post_title" placeholder="Title" value="<?php echo get_the_title() ?>" />
+					</div>
+
+					<?php /* nah for now
+					<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#descriptors-<?php echo $post->ID; ?>" aria-expanded="false" aria-controls="descriptors-<?php echo $post->ID; ?>">Toggle Description, Excerpt <span class="collapse-indicator fa fa-chevron-down"></span></button>
+					<div id="descriptors-<?php echo $post->ID; ?>" class="collapse" data-field="descriptors-<?php echo $post->ID; ?>" aria-expanded="false">
+						<div class="well">
+							<div class="form-group">
+								<label for="inputContent">Description</label>
+								<?php wp_editor( get_the_content(), 'post_content', array(
+									'media_buttons' => false,
+								)); ?>
+							</div>
+							<div class="form-group"><br>
+								<label for="excerpt">Excerpt</label><br>
+								<textarea id="opp_excerpt" name="opp_excerpt" rows="5" cols="20"><?php echo $excerpt; ?></textarea>
+							</div>
+						</div>
+					</div>
+					*/ ?>
+
+					<?php
+						/* levels & types */
+					?>
+
+					<?php /* options */ ?>
+					<?php /* HOW TO MAKE THESE CHECKBOXES SAVE */ ?>
+					<div class="margin-sm-bottom" style="margin-left: -3px;">
+						<div class="form-group col-sm-4 border-gray-lighter border-right-none pull-left text-center padding-sm-top padding-sm-bottom">
+							<input type="checkbox" id="opp_sold-<?php echo $post->ID; ?>" name="opp_sold"<?php if(!empty($meta['opp_sold'][0])) { echo ' checked="checked"'; } else { echo 'null="null"'; } ?> />
+							<label for="opp_sold-<?php echo $post->ID; ?>" class="text-danger">Sold</label>
+						</div>
+						<div class="form-group col-sm-4 border-gray-lighter border-right-none pull-left text-center padding-sm-top padding-sm-bottom">
+							<input type="checkbox" id="opp_enabled-<?php echo $post->ID; ?>" name="opp_enabled"<?php if(!empty($meta['opp_enabled'][0])) { echo ' checked="checked"'; } ?> />
+							<label for="opp_enabled-<?php echo $post->ID; ?>" class="text-success">Enabled</label>
+						</div>
+						<div class="form-group col-sm-4 border-gray-lighter pull-left text-center padding-sm-top padding-sm-bottom">
+							<input type="checkbox" id="opp_featured-<?php echo $post->ID; ?>" name="opp_featured"<?php if(!empty($meta['opp_featured'][0])) { echo ' checked="checked"'; } ?> />
+							<label for="opp_featured-<?php echo $post->ID; ?>"><i class="fa fa-star-o" aria-hidden="true"></i> Featured</label>
+						</div>
+					</div>
+
+					<?php /* details */ ?>
+					<div class="margin-sm-bottom" style="margin-left: -3px;">
+						<div class="form-group col-sm-4 border-gray-lighter border-right-none padding-sm-top padding-sm-bottom pull-left">
+							<label for="opp_total_cost">Sale Deadline</label>
+							<input type="date" class="form-control" id="opp_deadline" name="opp_deadline" value="<?php echo date('Y-m-d', strtotime($meta['opp_deadline'][0])); ?>" />
+						</div>
+						<div class="form-group col-sm-4 border-gray-lighter border-right-none padding-sm-top padding-sm-bottom pull-left">
+							<label for="opp_current_quantity">Current Quantity</label>
+							<input type="text" class="form-control" id="opp_current_quantity" name="opp_current_quantity" value="<?php echo $meta['opp_current_quantity'][0]; ?>" />
+						</div>
+						<div class="form-group col-sm-4 border-gray-lighter padding-sm-top padding-sm-bottom pull-left">
+							<label for="opp_total_quantity">Total Quantity</label>
+							<input type="text" class="form-control" id="opp_total_quantity" name="opp_total_quantity" value="<?php echo $meta['opp_total_quantity'][0]; ?>" />
+						</div>
+					</div>
+
+					<?php /* cost */ ?>
+					<div class="margin-sm-bottom" style="margin-left: -4px;">
+						<div class="form-group col-sm-6 border-gray-lighter border-right-none padding-sm-top padding-sm-bottom">
+							<label for="opp_current_quantity">Cost<br><em class="text-gray small">(minimum, numeric value for sorting)</em></label>
+							<input type="text" class="form-control" id="opp_numeric_cost" name="opp_numeric_cost" value="<?php echo $meta['opp_numeric_cost'][0]; ?>" />
+						</div>
+						<div class="form-group col-sm-6 border-gray-lighter border-right-none padding-sm-top padding-sm-bottom">
+							<label for="opp_total_cost">Text Cost<br><em class="text-gray small">(range or descriptive text)</em></label>
+							<input type="text" class="form-control" id="opp_total_cost" name="opp_total_cost" value="<?php echo $meta['opp_total_cost'][0]; ?>" />
+						</div>
+					</div>
+
+				</div><?php /*  end modal body */ ?>
+
+				<div class="modal-footer">
+					<button data-dismiss="modal" class="btn btn-default"><i class="fa fa-close" aria-hidden="true"></i>&nbsp;&nbsp;Cancel</button>
+					<a href="/wp-admin/post.php?post=<?php echo get_the_ID(); ?> &action=edit" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;More Options</a>
+					<button class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;&nbsp;Save Opportunity</button>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+</div>

@@ -2,6 +2,7 @@
 error_log
 .htaccess
 .DS_Store
+*.DS_Store
 .svn
 .cvs
 *.bak
@@ -9,6 +10,7 @@ error_log
 Thumbs.db
 wp-admin/error_log
 wp-config.php
+*wp-config.php
 wp-content/uploads/
 wp-content/blogs.dir/
 wp-content/upgrade/

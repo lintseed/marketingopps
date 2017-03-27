@@ -1,6 +1,6 @@
 {
   "name": "sage",
-  "version": "8.5.0",
+  "version": "8.5.1",
   "author": "Ben Word <ben@benword.com>",
   "homepage": "https://roots.io/sage/",
   "private": true,
@@ -54,8 +54,5 @@
     "run-sequence": "^1.1.2",
     "traverse": "^0.6.6",
     "wiredep": "^4.0.0"
-  },
-  "description": "[![Build Status](https://travis-ci.org/roots/sage.svg)](https://travis-ci.org/roots/sage) [![devDependency Status](https://david-dm.org/roots/sage/dev-status.svg)](https://david-dm.org/roots/sage#info=devDependencies)",
-  "main": "gulpfile.js",
-  "license": "ISC"
+  }
 }
