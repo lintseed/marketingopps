@@ -6,10 +6,29 @@ body {
 
 // url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/themes/marketingopps/images/penton_wht.png)
 
-.page-header      { border-bottom-color: $gray-dark; }
+.page-header      { overflow: hidden; border-bottom-color: $gray-dark; }
 
-.text-gray        { color: $gray; }
-.text-gray-light  { color: $gray-light; }
+.oppay            { color: $gray; }
+
+.text-gray-darker {
+  color: $gray-darker;
+}
+.text-gray-dark {
+  color: $gray-dark;
+}
+.text-gray {
+  color: $gray-base;
+}
+.text-gray-light {
+  color: $gray-light;
+}
+.text-gray-lighter {
+  color: $gray-lighter;
+}
+.text-gray-light,
+.text-gray-light a  {
+  color: $gray-light !important;
+}
 
 // Padding, margin, border, etc.
 .clear            { clear: both; }
@@ -24,6 +43,10 @@ body {
 .margin-sm-right  { margin-right: $gutter-sm !important; }
 .margin-sm-bottom { margin-bottom: $gutter-sm !important; }
 .margin-sm-left   { margin-left: $gutter-sm !important; }
+.margin-top       { margin-top: 10px !important; }
+.margin-right     { margin-right: 10px !important; }
+.margin-bottom    { margin-bottom: 10px !important; }
+.margin-left      { margin-left: 10px !important; }
 .margin-lg        { margin: $gutter-lg !important; }
 .padding-sm-top   { padding-top: $gutter-sm !important; }
 .padding-sm-right { padding-right: $gutter-sm !important; }
@@ -74,6 +97,10 @@ body {
 
 .clear {
   clear: both;
+}
+
+.block {
+  display: block;
 }
 
 hr {

@@ -7,6 +7,20 @@
  * @since Twenty Fourteen 1.0
  */
 
+ /*
+ * Levels & Types
+ * todo: create a callback function
+ */
+ $meta = get_post_meta(get_the_ID());
+ foreach($meta as $key=>$value) {
+	 if("opp_level_" == substr($key,0,10) || "opp_type_" == substr($key,0,9)) {
+		 $suffix = substr($key,strrpos($key,'_'));
+		 $type = 'opp_type'.$suffix;
+		 $level = 'opp_level'.$suffix;
+	 }
+ }
+ $theTypes = unserialize($meta[$type][0]);
+ $oppLevel = unserialize($meta[$level][0]);
 ?>
 
 <div id="main-content" class="main-content">
@@ -21,84 +35,102 @@
 				<?php $meta = get_post_meta(get_the_ID()); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<header class="entry-header cleafix">
-						<?php the_title( '<h1 class="entry-title pull-left">', '</h1>' ); ?>
-						<?php /* editors, edit! */ ?>
-						<button type="button" class="margin-lg-top margin-sm-left pull-left" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil text-gray-light" aria-hidden="true"></i></button>
+					<header class="page-header">
+						<div class="pull-right">
+							<?php
+								$categories = get_the_category();
+								$separator = ' &raquo; ';
+								$category = $categories[0]->cat_ID;
+								$parent_id = $categories[0]->category_parent;
+								$ancestors = get_category_parents($parent_id, true, $separator);
+								if ($ancestors) {
+	      					$breadcrumb = $ancestors.'<a href="'.get_category_link($category).'">'.$categories[0]->cat_name.'</a>';
+	 							} else {
+	      					$breadcrumb = '<span class="active-cat">'.single_cat_title().'</span>';
+	 							}
+	     					echo '<div class="padding-lg-top"><h3 class="opp-event margin-top text-gray-light">'.$breadcrumb.'</h3></div>';
+							?>
+						</div>
+						<div class="pull-left">
+							<?php the_title( '<h1 class="entry-title pull-left"><span class="text-gray">Opportunity:</span> ', '</h1>' ); ?>
+							<?php /* editors, edit! */ ?>
+							<?php edit_post_link('<i class="fa fa-pencil text-gray-light" aria-hidden="true"></i>', '<span class="margin-lg-top margin-left pull-left">', '</span>'); ?>
+						</div>
 					</header><!-- .entry-header -->
 
-					<div class="entry-content clearfix clear">
+					<div class="row">
+					<div class="entry-content col-sm-8">
 
 						<?php /* display price */ ?>
 						<?php if (!empty($meta['opp_total_cost'][0])) { ?>
-							<p class="margin-lg-bottom"><b>Display Price:</b>
+							<p class="margin-bottom"><h5>Display Price:</h5>
 								<?php echo $meta['opp_total_cost'][0]; ?>
 							</p>
 						<?php } elseif ($meta['opp_numeric_cost'][0]) { ?>
-							<p class="margin-lg-bottom"><b>Numeric Price:</b>
+							<p class="margin-bottom"><h5>Numeric Price:</h5>
 								<?php echo '$'.number_format($meta['opp_numeric_cost'][0]); ?>
 							</p>
 						<?php } ?>
 
-						<?php /* title, featured? */ ?>
-						<?php if(!empty($meta['opp_featured'][0])) { ?><i class="fa fa-star-o" aria-hidden="true"></i> <b>Featured Opportunity</b><?php } ?>
+						<?php /* display quantities */ ?>
+						<?php if (!empty($meta['opp_current_quantity'][0]) || !empty($meta['opp_total_quantity'][0])) { ?>
+							<div class="opp-quantities text-right">
+								<h5>Quanitity:</h5>
+								<?php if (!empty($meta['opp_current_quantity'][0])) { echo $meta['opp_current_quantity'][0]; } ?>
+								<?php if (!empty($meta['opp_total_quantity'][0])) { echo '/'.$meta['opp_total_quantity'][0]; } ?>
+							</div>
+						<?php } ?>
 
-						<?php /* levels, types, sold, deadline  */ ?>
+						<?php /*  featured? */ ?>
+						<?php if(!empty($meta['opp_featured'][0])) { ?><p class="margin-bottom"><h5><i class="fa fa-star-o" aria-hidden="true"></i> Featured Opportunity</h5></p><?php } ?>
+
+						<?php /* sold status, level, types */ ?>
 						<div class="clear clearfix labels">
-							<?php if (!empty($meta['opp_level_pes'][0])) { ?><span class="margin-sm-right label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
-							<?php if (!empty($meta['opp_sold'][0])) { ?><span class="label label-danger">Sold</span><?php } ?>
-						</div>
 
-						<?php /* sponsor logo fields: uploaded */ ?>
-						<?php if(!empty($meta['opp_sponsor_logos'])) {
-							echo '<div class="clear margin-lg-bottom">';
-							foreach($meta['opp_sponsor_logos'] as $logo) {
-								$array = unserialize($logo);
-								foreach($array as $img => $src) {
-									foreach($src as $imgpath) {
-										echo '<img src="'. $imgpath .'" alt="" class="margin-lg-right pull-left" height="75">';
+							<div class="margin-bottom">
+								<h5>Status: </h5>
+								<?php if (!empty($meta['opp_sold'][0])) { ?>
+									<span class="label label-danger">Sold</span>
+								<?php } else { ?>
+									<span class="label label-success">Available</span>
+								<?php } ?>
+							</div>
+
+							<?php
+
+							if (!empty($meta['opp_level_pes'][0])) { ?><span class="margin-sm-right label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
+
+							<?php if (!empty($meta[$level][0])) { ?>
+								<div class="margin-bottom">
+									<h5>Level:</h5>
+									<span class="margin-sm-right label label-default <?php echo $meta[$level][0]; ?>"><?php echo $meta[$level][0]; ?></span>
+								</div>
+							<?php } ?>
+
+							<?php
+								if(is_array($theTypes)) {
+									echo '<div class="margin-bottom"><h5>Type/s: </h5>';
+									foreach($theTypes as $test=>$oppType) {
+										echo '<span class="margin-sm-right label label-default '.$oppType.'">'.$oppType.'</span>';
 									}
+									echo '</div>';
 								}
-							}
-							echo '</div>';
-						} ?>
-						<?php /* sponsor logo fields:linked */ ?>
-						<?php if(!empty($meta['opp_logos_paths'])) {
-							echo '<div class="margin-lg-bottom">';
-							foreach($meta['opp_logos_paths'] as $logo) {
-								$array = unserialize($logo);
-								echo '<img src="'. $array[0] .'" alt="" class="margin-lg-right pull-left" height="75">';
-							}
-							echo '</div>';
-						} ?>
+							?>
+							<?php if (!empty($meta['opp_level_pes'][0])) { ?><br><span class="pull-left margin-sm-right label label-default so-label <?php //echo levelClass($meta['opp_level_pes'][0]); ?>"><?php echo $meta['opp_level_pes'][0]; ?></span><?php } ?>
 
-					</div><?php /* /.heading */ ?>
-
-						<?php /* opp images  */ ?>
-						<?php if(!empty($meta['opp_images'])) {
-							echo '<div class="pull-right">';
-								foreach($meta['opp_images'] as $oppimg) {
-									$image = unserialize($oppimg);
-									foreach($image as $img => $src) {
-										foreach($src as $imgpath) {
-											echo '<img src="'. $imgpath .'" alt="" class="pull-right margin-lg-left margin-lg-bottom" width="200">';
-										}
-									}
-								}
-							echo '</div>';
-						} ?>
+						</div><?php /* labels */ ?>
 
 						<?php /* do the content  */ ?>
-						<?php if(!empty($meta['opp_excerpt'])) { echo '<div class="margin-lg-bottom">'.$meta['opp_excerpt'][0].'</div>'; } ?>
+						<?php if(!empty($meta['opp_excerpt'][0])) { echo '<h5>Excerpt:</h5><div class="margin-lg-bottom well">'.$meta['opp_excerpt'][0].'</div>'; } ?>
 						<?php if(get_the_content()) {
-							echo '<div class="margin-lg-bottom">';
+							echo '<h5>Content:</h5><br><div class="margin-lg-bottom well">';
 							echo the_content();
 							echo '</div>';
 						} ?>
 
 						<?php /* types */ ?>
 						<?php if (!empty($meta['opp_type_pes'])) { ?>
-							<p><b>Types:</b></p>
+							<h5>Types:</h5>
 							<ul class="margin-lg-bottom">
 								<?php foreach($meta['opp_type_pes'] as $type) {
 									$opptype = unserialize($type);
@@ -111,10 +143,13 @@
 
 						<?php /* supporting documents */ ?>
 						<?php if(!empty($meta['opp_document'])) {
-							echo '<p class="margin-lg-bottom"><b>Supporting Documents:</b><br>	';
+							echo '<p class="margin-lg-bottom"><h5>Supporting Documents:</h5><br>	';
 							$i = -1;
+							// print_r($meta['opp_document']);
+
 							foreach($meta['opp_document'] as $key => $value) {
 								$doc = unserialize($value);
+								// print_r($doc);
 								foreach($doc as $file => $path) {
 									$i++;
 									if($meta['opp_documentLabel']) {
@@ -123,7 +158,8 @@
 										}
 									}
 									if ($labels[$i] === null) {
-										$labels[$i] = 'View Document';
+										$attachment_title = get_the_title($file);
+										$labels[$i] = $attachment_title;
 									}
 									echo '<i class="fa fa-file-o" aria-hidden="true"></i> <a href="'.$path.'" target="_blank">'.$labels[$i].'</a><br>';
 								}
@@ -132,12 +168,12 @@
 						} ?>
 
 						<?php /* Output the deadline */ ?>
-						<?php if(!empty($meta['opp_deadline'])) { echo '<p class="margin-lg-bottom"><b>Deadline:</b> '.$meta['opp_deadline'][0].'</p>'; } ?>
+						<?php if(!empty($meta['opp_deadline'])) { echo '<p class="margin-lg-bottom"><h5><i class="fa fa-calendar" aria-hidden="true"></i> Sale Deadline:</h5> '.$meta['opp_deadline'][0].'</p>'; } ?>
 
 						<?php /* finally, contact info. */ ?>
 						<?php if(!empty($meta['opp_contact'])) { ?>
 							<p class="margin-lg-bottom">
-								<b><i class="fa fa-user" aria-hidden="true"></i> Contact:</b><br>
+								<h5><i class="fa fa-user" aria-hidden="true"></i> Contact:</h5><br>
 								<?php
 									echo $meta['opp_contact'][0];
 									if ($meta['opp_contact_2']) {
@@ -146,7 +182,47 @@
 							</p>
 						<?php } ?>
 
-					</div><!-- .entry-content -->
+					</div><?php /* .entry-content */ ?>
+
+					<div class="col-sm-4">
+						<?php /* sponsor logo fields: uploaded */ ?>
+						<?php if(!empty($meta['opp_sponsor_logos'])) {
+							echo '<div class="clear margin-lg-bottom"><h5 class="text-center block margin-bottom">Logos</h5><br>';
+							foreach($meta['opp_sponsor_logos'] as $logo) {
+								$array = unserialize($logo);
+								foreach($array as $img => $src) {
+									foreach($src as $imgpath) {
+										echo '<img src="'. $imgpath .'" alt="" class="margin-lg-right pull-left" height="75">';
+									}
+								}
+							}
+							echo '</div>';
+						} ?>
+						<?php /* sponsor logo fields:linked */ ?>
+						<?php if(!empty($meta['opp_logos_paths'])) {
+							echo '<div class="margin-lg-bottom"><h5 class="text-center block margin-bottom">Logo via Paths</h5><br>';
+							foreach($meta['opp_logos_paths'] as $logo) {
+								$array = unserialize($logo);
+								echo '<img src="'. $array[0] .'" alt="" class="margin-lg-right pull-left" height="75">';
+							}
+							echo '</div>';
+						} ?>
+
+						<?php /* opp images  */ ?>
+						<?php if(!empty($meta['opp_images'])) {
+							echo '<div class="pull-right"><h5 class="text-center block margin-bottom">Images</h5><br>';
+								foreach($meta['opp_images'] as $oppimg) {
+									$image = unserialize($oppimg);
+									foreach($image as $img => $src) {
+										foreach($src as $imgpath) {
+											echo '<img src="'. $imgpath .'" alt="" class="pull-right margin-lg-left margin-lg-bottom" width="200">';
+										}
+									}
+								}
+							echo '</div>';
+						} ?>
+					</div><!-- col -->
+				</div><!-- row -->
 
 				</article><!-- #post-## -->
 <?php
@@ -155,7 +231,5 @@
 		</div><!-- #content -->
 	</div><!-- #primary -->
 </div><!-- #main-content -->
-
-<?php include('templates/editpost.php') ?>
 
 <!-- Modal ... move this to an include -->
