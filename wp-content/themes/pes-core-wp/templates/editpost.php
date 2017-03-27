@@ -21,9 +21,16 @@
 						$categories = get_the_category();
 						$separator = ' &raquo; ';
 						$category = $categories[0]->cat_ID;
+						// print_r($category);
+						// die;
 						$parent_id = $categories[0]->category_parent;
-						$ancestors = get_category_parents($parent_id, true, $separator);
-						if ($ancestors) {
+
+						if (!empty($parent_id)) {
+							$ancestors = get_category_parents($parent_id, true, $separator);
+						} else {
+							$ancestors = '';
+						}
+						if (!empty($ancestors)) {
 							$breadcrumb = $ancestors.'<a href="'.get_category_link($category).'">'.$categories[0]->cat_name.'</a>';
 						} else {
 							$breadcrumb = '<span class="active-cat">'.single_cat_title().'</span>';
@@ -85,7 +92,11 @@
 						<div class="margin-sm-bottom">
 							<div class="form-group col-sm-4 border-gray-lighter border-right-none padding-sm-top pull-left">
 								<label for="opp_total_cost">Sale Deadline</label>
-								<input type="date" class="form-control" id="opp_deadline" name="opp_deadline" value="<?php echo date('Y-m-d', strtotime($meta['opp_deadline'][0])); ?>" />
+								<?php if (!empty($meta['opp_deadline'][0])) { ?>
+									<input type="date" class="form-control" id="opp_deadline" name="opp_deadline" value="<?php echo date('Y-m-d', strtotime($meta['opp_deadline'][0])); ?>" />
+								<?php } else { ?>
+									<input type="date" class="form-control" id="opp_deadline" name="opp_deadline" value="" />
+								<?php } ?>
 							</div>
 							<div class="form-group col-sm-4 border-gray-lighter border-right-none padding-sm-top pull-left">
 								<label for="opp_current_quantity">Current Quantity</label>

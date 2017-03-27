@@ -21,7 +21,7 @@
 						<?php if (!empty($current_user->first_name)) {
 							echo $current_user->first_name;
 						} else {
-							echo $current_user->nicename;
+							echo $current_user->user_nicename;
 						} ?>
 						&nbsp;&nbsp;|&nbsp;&nbsp;<a class="screen-reader-shortcut" href="<?php echo esc_url( get_dashboard_url() ); ?>"><?php _e('dashboard'); ?></a>
 						 &nbsp;&nbsp;|&nbsp;&nbsp;<a class="screen-reader-shortcut" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php _e('log out'); ?></a>

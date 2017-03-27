@@ -121,7 +121,11 @@
               }
             }
             $theTypes = unserialize($meta[$type][0]);
-            $oppLevel = unserialize($meta[$level][0]);
+            if (!empty($meta[$level][0])) {
+              $oppLevel = unserialize($meta[$level][0]);
+            } else {
+              $oppLevel = '';
+            }
           ?>
 
   	        <li class="panel item" style="overflow: hidden">
