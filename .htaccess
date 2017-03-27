@@ -1,4 +1,6 @@
+SetEnv MAGICK_THREAD_LIMIT 1
 Header set Access-Control-Allow-Origin "*"
+
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
