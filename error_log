@@ -87,3 +87,8 @@
 [15-Feb-2017 04:58:51 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 40
 [15-Feb-2017 05:18:22 UTC] PHP Parse error:  syntax error, unexpected '">;       ' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 48
 [15-Feb-2017 05:18:40 UTC] PHP Parse error:  syntax error, unexpected '">;       ' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/archive-directory.php on line 49
+[27-Mar-2017 17:37:34 UTC] PHP Catchable fatal error:  Object of class WP_Error could not be converted to string in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/templates/editpost.php on line 27
+[27-Mar-2017 17:37:38 UTC] PHP Catchable fatal error:  Object of class WP_Error could not be converted to string in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/templates/editpost.php on line 27
+[27-Mar-2017 17:37:42 UTC] PHP Catchable fatal error:  Object of class WP_Error could not be converted to string in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/templates/editpost.php on line 27
+[27-Mar-2017 17:37:58 UTC] PHP Catchable fatal error:  Object of class WP_Error could not be converted to string in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/templates/editpost.php on line 27
+[27-Mar-2017 17:38:26 UTC] PHP Catchable fatal error:  Object of class WP_Error could not be converted to string in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/templates/editpost.php on line 27

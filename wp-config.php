@@ -20,16 +20,17 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'opps');
+define('DB_NAME', 'penton7_marketingopps');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'penton7_opps');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'dimmer');
+define('DB_PASSWORD', ']HLh\;Z4k)G)+!$(iR1e');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
+
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
