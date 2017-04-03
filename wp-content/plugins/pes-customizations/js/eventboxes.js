@@ -35,6 +35,8 @@
  		var escabona = $('#in-category-48');
 
  		var mro = $('#in-category-54');
+ 		
+ 		var cll = $('#in-category-57');
 
  		/*
  		** Edit opps
@@ -79,8 +81,12 @@
 		// esca bona
 		} else if (escabona.is(':checked') ) {
 			$('#escabona_metabox').show();
+		// mro	
 		} else if (mro.is(':checked') ) {
 			$('#mro_metabox').show();
+		// Contractor Leadership Live
+		} else if (cll.is(':checked')) {
+			$('#cll_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -137,9 +143,14 @@
 			} else if (escabona.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#escabona_metabox').show();
+			// mro	
 			} else if (mro.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#mro_metabox').show();
+			// Contractor Leadership Live
+			} else if (cll.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#cll_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}

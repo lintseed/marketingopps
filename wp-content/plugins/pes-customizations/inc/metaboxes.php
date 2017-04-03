@@ -445,6 +445,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_pes' );
 add_action( 'cmb2_admin_init', 'cmb2_register_itdev' );
 add_action( 'cmb2_admin_init', 'cmb2_register_escabona' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mro' );
+add_action( 'cmb2_admin_init', 'cmb2_register_cll' );
 
 
 function cmb2_register_iot() {
@@ -802,6 +803,26 @@ function cmb2_register_mro() {
 					3 => 'Sponsor',
 					4 => 'Supporter',
 					5 => 'Tabletop'
+        ),
+    ) );
+}
+
+function cmb2_register_cll() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'cll_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_cll',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Platinum',
+          2 => 'Premier Partner',
+					3 => 'Industry Partner'
         ),
     ) );
 }
