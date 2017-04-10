@@ -38,6 +38,8 @@
  		
  		var cll = $('#in-category-57');
 
+ 		var tse = $('#in-category-50');
+
  		/*
  		** Edit opps
  		** But first, hide them
@@ -87,6 +89,9 @@
 		// Contractor Leadership Live
 		} else if (cll.is(':checked')) {
 			$('#cll_metabox').show();
+		// TSE
+		} else if (tse.is(':checked')) {
+			$('#tse_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -151,6 +156,10 @@
 			} else if (cll.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#cll_metabox').show();
+			// TSE
+			} else if (tse.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#tse_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}

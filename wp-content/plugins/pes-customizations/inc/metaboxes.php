@@ -446,6 +446,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_itdev' );
 add_action( 'cmb2_admin_init', 'cmb2_register_escabona' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mro' );
 add_action( 'cmb2_admin_init', 'cmb2_register_cll' );
+add_action( 'cmb2_admin_init', 'cmb2_register_tse' );
 
 
 function cmb2_register_iot() {
@@ -823,6 +824,37 @@ function cmb2_register_cll() {
           1 => 'Platinum',
           2 => 'Premier Partner',
 					3 => 'Industry Partner'
+        ),
+    ) );
+}
+
+function cmb2_register_tse() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'tse_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type_tse',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+					 'Brand' => 'Brand',
+					 'Events' => 'Events',
+					 'Sponsorships' => 'Sponsorships'
+        ),
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_tse',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Diamond',
+          2 => 'Premier',
+					3 => 'Exhibitor'
         ),
     ) );
 }
