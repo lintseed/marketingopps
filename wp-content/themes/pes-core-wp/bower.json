@@ -8,7 +8,8 @@
   "private": true,
   "dependencies": {
     "font-awesome": "4.5.0",
-    "bootstrap-sass": "3.3.7"
+    "bootstrap-sass": "3.3.7",
+    "ekko-lightbox": "^5.1.1"
   },
   "overrides": {
     "bootstrap-sass": {
