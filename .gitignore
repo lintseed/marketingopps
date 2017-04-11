@@ -3,6 +3,7 @@ error_log
 .htaccess
 .DS_Store
 *.DS_Store
+*wp-config.php`
 .svn
 .cvs
 *.bak
