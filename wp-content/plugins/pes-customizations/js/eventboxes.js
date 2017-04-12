@@ -9,6 +9,7 @@
 
 		var teaParent = $('#in-category-28');
 			var tea17 = $('#in-category-12');
+			var tea18 = $('#in-category-60');
 
 		var naturalProducts = $('#in-category-29');
 			var ee17 = $('#in-category-11');
@@ -35,7 +36,7 @@
  		var escabona = $('#in-category-48');
 
  		var mro = $('#in-category-54');
- 		
+
  		var cll = $('#in-category-57');
 
  		var tse = $('#in-category-50');
@@ -50,7 +51,11 @@
 		if (iot16.is(':checked') || iotParent.is(':checked')) {
 			$('#iot_metabox').show();
 		// tea
-		} else if (tea17.is(':checked') || teaParent.is(':checked')) {
+		} else if (
+			tea17.is(':checked') ||
+			tea18.is(':checked') ||
+			teaParent.is(':checked')
+		) {
 			$('#worldtea_metabox').show();
 		// natural products
 		} else if (ee17.is(':checked')) {
@@ -83,7 +88,7 @@
 		// esca bona
 		} else if (escabona.is(':checked') ) {
 			$('#escabona_metabox').show();
-		// mro	
+		// mro
 		} else if (mro.is(':checked') ) {
 			$('#mro_metabox').show();
 		// Contractor Leadership Live
@@ -105,7 +110,11 @@
 				$('.types-levels').parents('div.postbox').hide();
 				$('#iot_metabox').show();
 			// tea
-			} else if (tea17.is(':checked') || teaParent.is(':checked')) {
+			} else if (
+				tea17.is(':checked') ||
+				tea18.is(':checked') ||
+				teaParent.is(':checked')
+			) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#worldtea_metabox').show();
 			// natural products
@@ -148,7 +157,7 @@
 			} else if (escabona.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#escabona_metabox').show();
-			// mro	
+			// mro
 			} else if (mro.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#mro_metabox').show();
