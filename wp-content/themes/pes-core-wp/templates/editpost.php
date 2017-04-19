@@ -45,28 +45,26 @@
 					<?php /* descriptors */ ?>
 					<div class="form-group">
 						<label for="inputTitle">Title</label>
-						<input type="text" class="form-control lead padding" id="inputTitle" name="post_title" placeholder="Title" value="<?php echo get_the_title() ?>" />
+						<input type="text" class="form-control lead padding text-bold" id="inputTitle" name="post_title" placeholder="Title" value="<?php echo get_the_title() ?>" />
 					</div>
 
 					<?php /* wrapper */ ?>
 					<div class="modal-container">
-						<?php /* nah for now
-						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#descriptors-<?php echo $post->ID; ?>" aria-expanded="false" aria-controls="descriptors-<?php echo $post->ID; ?>">Toggle Description, Excerpt <span class="collapse-indicator fa fa-chevron-down"></span></button>
-						<div id="descriptors-<?php echo $post->ID; ?>" class="collapse" data-field="descriptors-<?php echo $post->ID; ?>" aria-expanded="false">
+						<div id="descriptors-<?php echo $post->ID; ?>" data-field="descriptors-<?php echo $post->ID; ?>" aria-expanded="false">
 							<div class="well">
 								<div class="form-group">
 									<label for="inputContent">Description</label>
-									<?php wp_editor( get_the_content(), 'post_content', array(
+										<?php wp_editor( get_the_content(), 'post_content', array(
 										'media_buttons' => false,
+										'textarea_rows' => 28,
 									)); ?>
 								</div>
 								<div class="form-group"><br>
 									<label for="excerpt">Excerpt</label><br>
-									<textarea id="opp_excerpt" name="opp_excerpt" rows="5" cols="20"><?php echo $excerpt; ?></textarea>
+									<textarea id="opp_excerpt" name="opp_excerpt" rows="5" cols="85"><?php echo $meta['opp_excerpt'][0]; ?></textarea>
 								</div>
 							</div>
 						</div>
-						*/ ?>
 
 						<?php
 							/* levels & types */

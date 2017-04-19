@@ -4,8 +4,6 @@ body {
   background: url(../images/background.png) 0 0 repeat;
 }
 
-// url(http://pentonweb.com/sandbox/MarketingOpps/wp-content/themes/marketingopps/images/penton_wht.png)
-
 .page-header      { overflow: hidden; border-bottom-color: $gray-dark; }
 
 .oppay            { color: $gray; }
@@ -108,6 +106,11 @@ body {
   display: block;
 }
 
+.lead.bold,
+.lead.text-bold {
+  font-weight: bold !important;
+}
+
 hr {
   border-color: $gray-dark;
 }
@@ -116,4 +119,11 @@ hr {
   .width-one-quarter-sm    { width: 25%; }
   .width-one-half-sm       { width: 50%; }
   .width-three-quarters-sm { width: 75%; }
+  .modal-dialog {
+    width: 615px !important;
+  }
+}
+
+.wp-editor-container {
+  border: 1px solid #e5e5e5;
 }

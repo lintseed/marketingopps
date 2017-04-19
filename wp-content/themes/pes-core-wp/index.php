@@ -1,7 +1,7 @@
 <?php get_template_part('templates/page', 'header'); ?>
 
 <p>Please select an event to browse opportunities:</p>
-<ul class="lead">
+<ul id="cat-nav" class="lead list-group">
    <?php
      wp_list_categories( array(
        'orderby'            => 'id',
