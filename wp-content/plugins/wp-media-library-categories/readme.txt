@@ -3,8 +3,8 @@ Contributors: jeffrey-wp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SSNQMST6R28Q2
 Tags: category, categories, media, library, medialibrary, image, images, media category, media categories
 Requires at least: 3.1
-Tested up to: 4.7.2
-Stable tag: 1.5.4
+Tested up to: 4.7.4
+Stable tag: 1.5.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,12 +54,16 @@ Or if you have an older PHP version:
 
 
 = How to use category in the [gallery] shortcode? =
-To only show images from one category in the gallery you have to add the '`category`' parameter to the `[gallery]` shortcode.
-The value passed to the '`category`' parameter can be either the `category slug` or the `term_id`, for example with the category slug:
+To only show images from one category in the gallery you have to add the '`category`' attribute to the `[gallery]` shortcode.
+The value passed to the '`category`' attribute can be either the `category slug` or the `term_id`, for example with the category slug:
 `[gallery category="my-category-slug"]
 Or with term_id:
 [gallery category="14"]`
-If you use an incorrect slug by default WordPress shows the images that are attached to the page / post that is displayed. If you use an incorrect term_id no images are shown. Aside from this behavior, the `[gallery]` shortcode works as it does by default with the built-in shortcode from WordPress ([see the WordPress gallery shortcode codex page](https://codex.wordpress.org/Gallery_Shortcode)). Some plugins that also use the gallery shortcode (like Jetpack) disable the category option on the gallery shortcode.
+If you use an incorrect slug by default WordPress shows the images that are attached to the page / post that is displayed. If you use an incorrect term_id no images are shown. Aside from this behavior, the `[gallery]` shortcode works as it does by default with the built-in shortcode from WordPress ([see the WordPress gallery shortcode codex page](https://codex.wordpress.org/Gallery_Shortcode)). If you only want to show attachments uploaded to the page and filtered by category than use the '`id`' in combination with the '`category`' attribute. For example (the id of the post is 123):
+`[gallery category="my-category-slug" id="123"]
+Or leave id empty for current page / post:
+[gallery category="my-category-slug" id=""]`
+In this example the slug is used, but you could also use the term_id.
 
 
 = How can I filter on categories when inserting media into a post or page? =
@@ -77,6 +81,11 @@ Maintaining a plugin and keeping it up to date is hard work. Please support me b
 3. Filter by category when inserting media [(premium version)](https://codecanyon.net/item/media-library-categories-premium/6691290?ref=jeffrey-wp)
 
 == Changelog ==
+
+= 1.5.5 =
+* Better detection if category is empty in gallery shortcode.
+* Use id attribute in gallery shortcode and show attachments in selected category and uploaded to post ID. `[gallery category="my-category-slug" id="123"]`
+* Leave id attribute empty in gallery shortcode to show attachments in selected category and upload to current post. `[gallery category="my-category-slug" id=""]`
 
 = 1.5.4 =
 * Before creating custom taxonomy check if taxonomy exists. Thanks @drpratten

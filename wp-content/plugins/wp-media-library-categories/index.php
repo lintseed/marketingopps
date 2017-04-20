@@ -3,7 +3,7 @@
  * Plugin Name: Media Library Categories
  * Plugin URI: https://wordpress.org/plugins/wp-media-library-categories/
  * Description: Adds the ability to use categories in the media library.
- * Version: 1.5.4
+ * Version: 1.5.5
  * Author: Jeffrey-WP
  * Text Domain: wp-media-library-categories
  * Domain Path: /languages
@@ -84,7 +84,7 @@ add_action( 'init', 'wpmediacategory_change_category_update_count_callback', 100
 /** custom gallery shortcode */
 function wpmediacategory_gallery_atts( $result, $defaults, $atts ) {
 
-    if ( isset( $atts['category'] ) ) {
+	if ( isset( $atts['category'] ) ) {
 
 		// Default taxonomy
 		$taxonomy = 'category';
@@ -148,6 +148,16 @@ function wpmediacategory_gallery_atts( $result, $defaults, $atts ) {
 				);
 
 			}
+
+			// use id attribute and show attachments in selected category and uploaded to post ID
+			if ( isset( $atts['id'] ) ) {
+				if ( empty( $atts['id'] ) ) {
+					$args['post_parent'] = get_the_ID(); // get ID of the current post if id attribute is empty
+				} else {
+					$args['post_parent'] = $atts['id'];	
+				}
+			}
+
 			$attachments = get_posts( $args );
 
 			if ( ! empty( $attachments ) ) {
@@ -169,7 +179,7 @@ function wpmediacategory_gallery_atts( $result, $defaults, $atts ) {
 
 				$atts['ids'] = $ids_new;
 			} else {
-				$atts['ids'] = -1; // don't display images if category is empty
+				$atts['ids'] = array(-1); // don't display images if category is empty
 			}
 
 		}
@@ -521,9 +531,9 @@ if ( is_admin() ) {
 			echo '/* ]]> */';
 			echo '</script>';
 
-			wp_enqueue_script( 'wpmediacategory-media-views', plugins_url( 'js/wpmediacategory-media-views.min.js', __FILE__ ), array( 'media-views' ), '1.5.4', true );
+			wp_enqueue_script( 'wpmediacategory-media-views', plugins_url( 'js/wpmediacategory-media-views.min.js', __FILE__ ), array( 'media-views' ), '1.5.5', true );
 		}
-		wp_enqueue_style( 'wpmediacategory', plugins_url( 'css/wpmediacategory.min.css', __FILE__ ), array(), '1.5.4' );
+		wp_enqueue_style( 'wpmediacategory', plugins_url( 'css/wpmediacategory.min.css', __FILE__ ), array(), '1.5.5' );
 	}
 	add_action( 'admin_enqueue_scripts', 'wpmediacategory_enqueue_media_action' );
 
