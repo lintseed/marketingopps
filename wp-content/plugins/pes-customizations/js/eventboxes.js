@@ -102,7 +102,7 @@
 			$('#tse_metabox').show();
 		}
 		// IWCE
-		} else if (iwce18.is(':checked')) {
+		else if (iwce18.is(':checked')) {
 			$('#iwce_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
