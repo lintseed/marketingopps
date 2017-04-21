@@ -55,7 +55,7 @@
                 <div class="pull-left margin-lg-left">
                   <div><label>Filter Events</label></div>
                   <div class="dropdown show">
-                    <a class="btn btn-sm btn-default dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn btn-default dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <?php echo $this_category->cat_name; ?> <i class="fa fa-sort-desc text-gray" style="position: relative; top: -2px;" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu">
