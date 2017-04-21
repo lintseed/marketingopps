@@ -41,6 +41,9 @@
 
  		var tse = $('#in-category-50');
 
+		var iwceParent = $('#in-category-61');
+			var iwce18 = $('#in-category-62');
+
  		/*
  		** Edit opps
  		** But first, hide them
@@ -97,6 +100,10 @@
 		// TSE
 		} else if (tse.is(':checked')) {
 			$('#tse_metabox').show();
+		}
+		// IWCE
+		} else if (iwce18.is(':checked')) {
+			$('#iwce_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}

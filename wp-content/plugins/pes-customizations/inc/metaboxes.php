@@ -447,6 +447,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_escabona' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mro' );
 add_action( 'cmb2_admin_init', 'cmb2_register_cll' );
 add_action( 'cmb2_admin_init', 'cmb2_register_tse' );
+add_action( 'cmb2_admin_init', 'cmb2_register_iwce' );
 
 
 function cmb2_register_iot() {
@@ -855,6 +856,25 @@ function cmb2_register_tse() {
           1 => 'Diamond',
           2 => 'Premier',
 					3 => 'Exhibitor'
+        ),
+    ) );
+}
+
+function cmb2_register_iwce() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'iwce_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_iwce',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Sponsorship',
+          2 => 'Advertising'
         ),
     ) );
 }
