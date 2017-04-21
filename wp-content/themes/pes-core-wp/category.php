@@ -19,7 +19,12 @@
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<?php
+        <?php if (is_user_logged_in()) { ?>
+          <div class="pull-right margin-top">
+            <a href="http://local.opps/wp-admin/post-new.php?post_type=opportunity" class="btn btn-primary btn-sm margin-lg-top"><i class="fa fa-plus" aria-hidden="true"></i> Add New Opportunity</a>
+          </div>
+        <?php }
+
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
           // <span class="text-gray">
 					the_archive_description( '<div class="taxonomy-description">', '</div>' );
@@ -55,7 +60,7 @@
                 <div class="pull-left margin-lg-left">
                   <div><label>Filter Events</label></div>
                   <div class="dropdown show">
-                    <a class="btn btn-sm btn-default dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn btn-default dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <?php echo $this_category->cat_name; ?> <i class="fa fa-sort-desc text-gray" style="position: relative; top: -2px;" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -77,7 +82,7 @@
                 <div class="pull-left margin-lg-left">
                   <div><label>Filter Events</label></div>
                   <div class="dropdown show">
-                    <a class="btn btn-sm btn-default dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn btn-default dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <?php echo $this_category->cat_name; ?> <i class="fa fa-sort-desc text-gray" style="position: relative; top: -2px;" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu">

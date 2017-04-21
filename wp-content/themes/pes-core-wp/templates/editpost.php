@@ -56,7 +56,13 @@
 									<label for="inputContent">Description</label>
 										<?php wp_editor( get_the_content(), 'post_content', array(
 										'media_buttons' => false,
-										'textarea_rows' => 28,
+										'textarea_rows' => 20,
+										'quicktags' => true,
+										'tinymce' => array(
+							        'plugins' => 'wordpress, wplink, wpdialogs',
+							        'theme_advanced_buttons1' => 'bold, italic, underline, strikethrough, forecolor, separator, bullist, numlist, separator, link, unlink, image',
+							        'theme_advanced_buttons2' => ''
+						        ),
 									)); ?>
 								</div>
 								<div class="form-group"><br>
