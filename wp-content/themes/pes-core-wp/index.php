@@ -8,6 +8,8 @@
        'show_count'         => false,
        'use_desc_for_title' => false,
        'title_li'           => '',
+       'walker'             => new WPQuestions_Walker,
+       'show_count'=> 1,
      ) );
    ?>
 </ul>

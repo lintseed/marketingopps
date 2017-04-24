@@ -21,7 +21,7 @@
 			<header class="page-header">
         <?php if (is_user_logged_in()) { ?>
           <div class="pull-right margin-top">
-            <a href="http://local.opps/wp-admin/post-new.php?post_type=opportunity" class="btn btn-primary btn-sm margin-lg-top"><i class="fa fa-plus" aria-hidden="true"></i> Add New Opportunity</a>
+            <a href="/wp-admin/post-new.php?post_type=opportunity" class="btn btn-primary btn-sm margin-lg-top"><i class="fa fa-plus" aria-hidden="true"></i> Add New Opportunity</a>
           </div>
         <?php }
 
