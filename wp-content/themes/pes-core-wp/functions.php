@@ -77,59 +77,6 @@
  } // class Custom_Walker_Category
 
 
-class WPQuestions_Walker extends Walker_Category {
-  function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
-    extract($args);
-
-    $cat_name = esc_attr( $category->name );
-    $cat_name = apply_filters( 'list_cats', $cat_name, $category );
-
-
-    $termchildren = get_term_children( $category->term_id, $category->taxonomy );
-    if (count($termchildren)>0) {
-      // do something here
-      $output .= '<div style="overflow: hidden; border: 1px dotted blue">';
-      $aclass = ' class="parent" ';
-    }
-    $link = '<a '.$aclass.' href="' . esc_url( get_term_link($category) ) . '" ';
-
-    if ( $use_desc_for_title == 0 || empty($category->description) )
-      $link .= 'title="' . esc_attr( sprintf(__( 'View all posts filed under %s' ), $cat_name) ) . '"';
-    else
-      $link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"';
-      $link .= '>';
-      $link .= $cat_name . '</a>';
-
-    if ( !empty($show_count) )
-      $link .= ' (' . intval($category->count) . ')';
-
-    if ( 'list' == $args['style'] ) {
-      $output .= '<ul style="border:1px solid red">';
-      $output .= "\t<li";
-      $class = 'cat-item cat-item-' . $category->term_id;
-
-      if ( !empty($current_category) ) {
-        $_current_category = get_term( $current_category, $category->taxonomy );
-        if ( $category->term_id == $current_category )
-          $class .= ' current-cat';
-        elseif ( $category->term_id == $_current_category->parent )
-          $class .= ' current-cat-parent';
-      }
-
-      $output .= ' class="' . $class . '"';
-      $output .= ">$link\n";
-      $output .= '</ul>';
-      if (count($termchildren)>0) {
-        $output .= '</div>';
-      }
-    } else {
-      $output .= "\t$link<br />\n";
-    }
-
-
-  }
-}
-
 class cat_walker extends Walker
 {
    public $tree_type = 'category';
@@ -160,6 +107,13 @@ class cat_walker extends Walker
       $output .= '</a></li>';
    }
 }
+
+add_filter( 'get_the_archive_title', function ( $title ) {
+    if( is_category() ) {
+        $title = single_cat_title( 'Event: ', false );
+    }
+    return $title;
+});
 
 
 /**
