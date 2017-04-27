@@ -87,6 +87,8 @@ class WPQuestions_Walker extends Walker_Category {
 
     $termchildren = get_term_children( $category->term_id, $category->taxonomy );
     if (count($termchildren)>0) {
+      // do something here
+      $output .= '<div style="overflow: hidden; border: 1px dotted blue">';
       $aclass = ' class="parent" ';
     }
     $link = '<a '.$aclass.' href="' . esc_url( get_term_link($category) ) . '" ';
@@ -117,12 +119,48 @@ class WPQuestions_Walker extends Walker_Category {
       $output .= ' class="' . $class . '"';
       $output .= ">$link\n";
       $output .= '</ul>';
+      if (count($termchildren)>0) {
+        $output .= '</div>';
+      }
     } else {
       $output .= "\t$link<br />\n";
     }
 
+
   }
 }
+
+class cat_walker extends Walker
+{
+   public $tree_type = 'category';
+
+   public $db_fields = array ('parent' => 'parent', 'id' => 'term_id');
+
+   public function start_lvl( &$output, $depth = 0, $args = array() ) {
+      $output .= '<ul class="children list-unstyled panel-body">';
+   }
+
+   public function end_lvl( &$output, $depth = 0, $args = array() ) {
+      $output .= '</ul>';
+   }
+
+   public function start_el( &$output, $category, $depth = 0, $args = array(), $current_object_id = 0 ) {
+     // add panel heading to parent only
+
+      if ($depth == 0) {
+        $output .= '<li class="panel panel-default">';
+        $output .= '<a class="panel-heading" href="' . esc_url(get_term_link($category)) . '">' . $category->name .' <span class="small text-gray-light">('. $category->count .')</span>';
+      } else {
+        $output .= '<li class="children">';
+        $output .= '<a href="' . esc_url(get_term_link($category)) . '">'  . $category->name .' <span class="small text-gray-light">('. $category->count .')</span>';
+      }
+   }
+
+   public function end_el( &$output, $category, $depth = 0, $args = array() ) {
+      $output .= '</a></li>';
+   }
+}
+
 
 /**
 * Frontend post editing

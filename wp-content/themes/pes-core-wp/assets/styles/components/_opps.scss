@@ -173,3 +173,27 @@ h5 {
 h5.border-bottom {
   border-bottom: 1px solid $gray-light;
 }
+
+// Home
+#cat-nav {
+  list-style: none;
+  a,
+  a:hover,
+  a:active {
+    text-decoration: none;
+  }
+  ul {
+    list-style: none;
+  }
+  .panel-heading {
+    display: block;
+  }
+  .panel-body {
+    .panel-heading {
+      display: none !important;
+    }
+  }
+  ul li.panel-default {
+    border-width: 0;
+  }
+}

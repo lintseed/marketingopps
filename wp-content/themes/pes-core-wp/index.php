@@ -5,10 +5,10 @@
    <?php
      wp_list_categories( array(
        'orderby'            => 'id',
-       'show_count'         => false,
+       'show_count'         => true,
        'use_desc_for_title' => false,
        'title_li'           => '',
-       'walker'             => new WPQuestions_Walker,
+       'walker'             => new cat_walker,
        'show_count'=> 1,
      ) );
    ?>
