@@ -25,6 +25,7 @@
 
  		var industryParent = $('#in-category-39');
  			var mtce17 = $('#in-category-38');
+ 			var sl = $('#in-category-63');
 
  		var ldiParent = $('#in-category-43');
  			var ldi17 = $('#in-category-44');
@@ -79,6 +80,9 @@
 		// industry week
 		} else if (mtce17.is(':checked') ) {
 			$('#mtce_metabox').show();
+		// safety leadership
+		} else if (sl.is(':checked') ) {
+			$('#sl_metabox').show();
 		// ldi
 		} else if (ldi17.is(':checked') ) {
 			$('#ldi_metabox').show();
@@ -148,6 +152,10 @@
 			} else if (mtce17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#mtce_metabox').show();
+			// safety leadership
+			} else if (sl.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#sl_metabox').show();
 			// ldi
 			} else if (ldi17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
