@@ -7,7 +7,8 @@ function simple_csv_xls_exporter_csv_xls(){
     if (!ini_get('display_errors') || ini_get('display_errors') == '1') {
         ini_set('display_errors', '0');
     }
-    
+	//error_reporting(E_ERROR | E_PARSE);
+
     global  $ccsve_export_check,
             $export_only;
 
@@ -127,7 +128,9 @@ function simple_csv_xls_exporter_csv_xls(){
                         // add an apostrophe before ID
                         //$ccsve_generate_value_arr["'".$key][$i] = $post->$key;
                         // or make it lower-case
-                        $ccsve_generate_value_arr[strtolower($key)][$i] = $post->$key;
+						//$low_id = strtolower($key);
+						$low_id = 'id';
+                        $ccsve_generate_value_arr[$low_id][$i] = $post->$key;
                     } else {
                         $ccsve_generate_value_arr[$key][$i] = $post->$key;
                     }

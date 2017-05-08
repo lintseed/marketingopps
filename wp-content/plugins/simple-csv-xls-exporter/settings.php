@@ -6,7 +6,8 @@ if(!class_exists('SIMPLE_CSV_EXPORTER_SETTINGS')) {
             // register actions
             add_action('admin_init', array(&$this, 'admin_init'));
             add_action('admin_menu', array(&$this, 'add_menu'));
-        } // END public function __construct
+			//error_reporting(E_ERROR | E_PARSE);
+        }
 
         public function admin_init()    {
             register_setting('wp_ccsve-group', 'ccsve_admin_only');
@@ -129,6 +130,7 @@ if(!class_exists('SIMPLE_CSV_EXPORTER_SETTINGS')) {
         }
 
         public function settings_field_select_post_status() {
+			error_reporting(E_ERROR | E_PARSE);
             //global $items;
             //$post_types = get_option('ccsve_post_type');
             $args = array();
@@ -203,7 +205,7 @@ if(!class_exists('SIMPLE_CSV_EXPORTER_SETTINGS')) {
 
             echo '<select multiple="multiple" size="'.$ccsve_std_fields_num.'" name="ccsve_std_fields[selectinput][]">';
             foreach ($fields as $field) {
-                if (in_array($field, $ccsve_std_fields['selectinput'])) {
+                if ($ccsve_std_fields['selectinput'] != null && in_array($field, $ccsve_std_fields['selectinput'])) {
                     echo '\n\t<option selected="selected" value="'. $field . '">'.$field.'</option>';
                 } else {
                     echo '\n\t\<option value="'.$field .'">'.$field.'</option>';
