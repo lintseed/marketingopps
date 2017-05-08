@@ -440,6 +440,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_ew' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
 add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
+add_action( 'cmb2_admin_init', 'cmb2_register_sl' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ldi' );
 add_action( 'cmb2_admin_init', 'cmb2_register_pes' );
 add_action( 'cmb2_admin_init', 'cmb2_register_itdev' );
@@ -658,6 +659,29 @@ function cmb2_register_mtce() {
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_mtce',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+            'Premium' => 'Premium',
+            'Content Related' => 'Content Related',
+            'Hospitality' => 'Hospitality',
+            'Product Branded' => 'Product Branded',
+            'Exhibit Hall' => 'Exhibit Hall',
+            'Tech-Focused' => 'Tech-Focused',
+        ),
+    ) );
+}
+
+function cmb2_register_sl() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'sl_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_sl',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
