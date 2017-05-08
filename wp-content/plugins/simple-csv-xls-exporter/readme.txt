@@ -16,13 +16,14 @@ Export any content to CSV or XLS, through a link/button, from backend / frontend
 This plugin allows you to export your posts to CSV or XLS file, through a simple link/button, from either backend or frontend.
 
 **Supports**
->   	* any custom post type
-    * custom post status
-    * custom taxonomies
-    * custom fields
-    * WooCommerce products, orders, status, categories and fields
-    * export only current user posts
-    * export specific user ID posts
+
+* any custom post type
+* custom post status
+* custom taxonomies
+* custom fields
+* WooCommerce products, orders, status, categories and fields
+* export only current user posts
+* export specific user ID posts
 
 You can set the default post type, with its taxonomies and custom fields, that you wish to export, from the Settings page.
 
@@ -123,6 +124,9 @@ Eg. `https://yoursite.com/?export=xls&post_type=portfolio&user`
 3. Settings Page
 
 == Changelog ==
+
+= 1.4.4 =
+* Minor fixes
 
 = 1.4.3 =
 * Set error_display to 0 during process

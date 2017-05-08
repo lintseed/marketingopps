@@ -42,8 +42,12 @@
 								$separator = ' &raquo; ';
 								$category = $categories[0]->cat_ID;
 								$parent_id = $categories[0]->category_parent;
-								$ancestors = get_category_parents($parent_id, true, $separator);
-								if ($ancestors) {
+                $ancestors = 0;
+                if ($parent_id) {
+								  $ancestors = get_category_parents($parent_id, true, $separator);
+                }
+								if (!empty($ancestors)) {
+                  print_r($ancestors);
 	      					$breadcrumb = $ancestors.'<a href="'.get_category_link($category).'">'.$categories[0]->cat_name.'</a>';
 	 							} else {
 	      					$breadcrumb = '<span class="active-cat">'.single_cat_title().'</span>';

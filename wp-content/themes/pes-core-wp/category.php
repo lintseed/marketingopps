@@ -184,10 +184,12 @@
     	              </a>
 
                     <?php /* editors, edit! */ ?>
-                    <span class="margin-lg-top margin-sm-left" data-toggle="modal" data-target="#editModal<?php echo get_the_ID(); ?>"><i class="fa fa-pencil text-gray-light" aria-hidden="true"></i></span>
-                    <a class="margin-lg-top margin-sm-left" href="<?php the_permalink(); ?>" target="_blank"><i class="fa fa-eye text-gray-light" aria-hidden="true"></i></a>
+                    <?php if (is_user_logged_in() && current_user_can('edit_posts')) { ?>
+											<span class="margin-lg-top margin-sm-left" data-toggle="modal" data-target="#editModal<?php echo get_the_ID(); ?>"><i class="fa fa-pencil text-gray-light" aria-hidden="true"></i></span>
+										<?php } ?>
+										<a class="margin-lg-top margin-sm-left" href="<?php the_permalink(); ?>" target="_blank"><i class="fa fa-eye text-gray-light" aria-hidden="true"></i></a>
                   </h4>
-                  <?php include(locate_template('templates/editpost.php')); ?>
+                  <?php if (is_user_logged_in() && current_user_can('edit_posts')) { ?><?php include(locate_template('templates/editpost.php')); ?><?php } ?>
 
 
                   <?php /* sold status, level, types */ ?>
