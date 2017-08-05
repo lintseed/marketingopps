@@ -44,6 +44,8 @@
 
 		var iwceParent = $('#in-category-61');
 			var iwce18 = $('#in-category-62');
+			
+ 		var dcw = $('#in-category-59');
 
  		/*
  		** Edit opps
@@ -104,10 +106,12 @@
 		// TSE
 		} else if (tse.is(':checked')) {
 			$('#tse_metabox').show();
-		}
 		// IWCE
-		else if (iwce18.is(':checked')) {
+		} else if (iwce18.is(':checked')) {
 			$('#iwce_metabox').show();
+		// DCW
+		} else if (dcw.is(':checked')) {
+			$('#dcw_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -184,6 +188,10 @@
 			} else if (tse.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#tse_metabox').show();
+			// DCW
+			} else if (dcw.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#dcw_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}

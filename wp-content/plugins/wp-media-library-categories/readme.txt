@@ -3,8 +3,8 @@ Contributors: jeffrey-wp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SSNQMST6R28Q2
 Tags: category, categories, media, library, medialibrary, image, images, media category, media categories
 Requires at least: 3.1
-Tested up to: 4.7.4
-Stable tag: 1.5.5
+Tested up to: 4.8
+Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,11 @@ Maintaining a plugin and keeping it up to date is hard work. Please support me b
 3. Filter by category when inserting media [(premium version)](https://codecanyon.net/item/media-library-categories-premium/6691290?ref=jeffrey-wp)
 
 == Changelog ==
+
+= 1.5.6 =
+* Remember pagenumber when using bulk actions
+* Only use wp_safe_redirect instead of wp_redirect
+* Changed donation information. [Donations are still possible and very welcome ;-)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SSNQMST6R28Q2)
 
 = 1.5.5 =
 * Better detection if category is empty in gallery shortcode.

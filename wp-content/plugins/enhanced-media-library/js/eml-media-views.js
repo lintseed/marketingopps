@@ -693,8 +693,9 @@ window.eml = window.eml || { l10n: {} };
                 ! this.controller.isModeActive( 'eml-bulk-edit' ) &&
                 'gallery-edit' !== this.controller._state &&
                 'playlist-edit' !== this.controller._state &&
-                'video-playlist-edit' !== this.controller._state ) || 
-                'customize' === eml.l10n.current_screen ) {
+                'video-playlist-edit' !== this.controller._state ) ||
+                'customize' === eml.l10n.current_screen ||
+                'widgets' === eml.l10n.current_screen ) {
 
                 if ( this.controller.isModeActive( 'grid' ) ||
                     this.controller.isModeActive( 'eml-grid' ) ) {
@@ -980,7 +981,7 @@ window.eml = window.eml || { l10n: {} };
                 canClose:   this.controller.isModeActive( 'grid' ) || this.controller.isModeActive( 'eml-grid' )
             });
 
-            this.uploader.hide();
+            this.uploader.$el.addClass( 'hidden' );
             this.views.add( this.uploader );
         },
 

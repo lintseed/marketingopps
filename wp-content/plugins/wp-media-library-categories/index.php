@@ -3,7 +3,7 @@
  * Plugin Name: Media Library Categories
  * Plugin URI: https://wordpress.org/plugins/wp-media-library-categories/
  * Description: Adds the ability to use categories in the media library.
- * Version: 1.5.5
+ * Version: 1.5.6
  * Author: Jeffrey-WP
  * Text Domain: wp-media-library-categories
  * Domain Path: /languages
@@ -358,7 +358,7 @@ if ( is_admin() ) {
 
 		// remember pagenumber
 		$pagenum = isset( $_REQUEST['paged'] ) ? absint( $_REQUEST['paged'] ) : 0;
-		$sendback = esc_url( add_query_arg( 'paged', $pagenum, $sendback ) );
+		$sendback = add_query_arg( 'paged', $pagenum, $sendback );
 
 		// remember orderby
 		if ( isset( $_REQUEST['orderby'] ) ) {
@@ -425,7 +425,7 @@ if ( is_admin() ) {
 
 		wpmediacategory_update_count_callback();
 
-		wp_redirect( $sendback );
+		wp_safe_redirect( $sendback ); // perform a safe (local) redirect
 		exit();
 	}
 	add_action( 'load-upload.php', 'wpmediacategory_custom_bulk_action' );
@@ -531,9 +531,9 @@ if ( is_admin() ) {
 			echo '/* ]]> */';
 			echo '</script>';
 
-			wp_enqueue_script( 'wpmediacategory-media-views', plugins_url( 'js/wpmediacategory-media-views.min.js', __FILE__ ), array( 'media-views' ), '1.5.5', true );
+			wp_enqueue_script( 'wpmediacategory-media-views', plugins_url( 'js/wpmediacategory-media-views.min.js', __FILE__ ), array( 'media-views' ), '1.5.6', true );
 		}
-		wp_enqueue_style( 'wpmediacategory', plugins_url( 'css/wpmediacategory.min.css', __FILE__ ), array(), '1.5.5' );
+		wp_enqueue_style( 'wpmediacategory', plugins_url( 'css/wpmediacategory.min.css', __FILE__ ), array(), '1.5.6' );
 	}
 	add_action( 'admin_enqueue_scripts', 'wpmediacategory_enqueue_media_action' );
 

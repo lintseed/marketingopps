@@ -125,6 +125,9 @@ Eg. `https://yoursite.com/?export=xls&post_type=portfolio&user`
 
 == Changelog ==
 
+= 1.4.5 =
+* Fixed PHP 7.1 Fatal error 7.1 bug (Uncaught ArgumentCountError: Too few arguments to function do_settings_fields() )
+
 = 1.4.4 =
 * Minor fixes
 

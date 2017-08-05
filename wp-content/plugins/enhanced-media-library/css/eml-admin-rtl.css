@@ -124,6 +124,11 @@ body.upload-php.eml-grid #wpbody-content > .wrap {
     left: 0;
     bottom: 0;
 }
+body.upload-php.eml-grid #wpbody-content > #screen-meta-links,
+body.upload-php.eml-grid #wpbody-content > #screen-meta {
+    position: relative;
+    z-index: 999;
+}
 
 
 .eml-grid .wrap .notice,

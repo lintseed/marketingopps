@@ -361,7 +361,7 @@ if(!class_exists('SIMPLE_CSV_EXPORTER_SETTINGS')) {
                 <form method="post" action="options.php">
 
                   <?php @settings_fields('wp_ccsve-group'); ?>
-                  <?php @do_settings_fields('wp_ccsve-group'); ?>
+                  <?php @do_settings_fields('wp_ccsve-group', 'simple_csv_exporter_settings-section'); ?>
                   <?php do_settings_sections('simple_csv_exporter_settings'); ?>
                   <?php @submit_button(); ?>
 

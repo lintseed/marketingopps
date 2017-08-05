@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enhanced Media Library PRO\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-11 15:16+0200\n"
-"PO-Revision-Date: 2017-02-11 15:16+0200\n"
+"POT-Creation-Date: 2017-01-19 22:33+0200\n"
+"PO-Revision-Date: 2017-01-19 22:33+0200\n"
 "Last-Translator: wpUXsolutions <wpUXsolutions@gmail.com>\n"
 "Language-Team: Korean (Republic of Korea)\n"
 "Language: ko_KR\n"
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Edit"
 msgstr "편집"
 
-#: core/options-pages.php:475
+#: core/options-pages.php:475 pro/enhanced-media-library-pro.php:125
 msgid "Close"
 msgstr "닫기"
 
@@ -250,10 +250,11 @@ msgstr ""
 
 #: core/options-pages.php:503 core/options-pages.php:508
 #: core/options-pages.php:552 core/options-pages.php:597
+#: pro/enhanced-media-library-pro.php:133
 msgid "Cancel"
 msgstr ""
 
-#: core/options-pages.php:505
+#: core/options-pages.php:505 pro/core/options-pages.php:189
 msgid "Synchronize Now"
 msgstr ""
 
@@ -435,15 +436,18 @@ msgstr ""
 msgid "Order media items by"
 msgstr ""
 
-#: core/options-pages.php:1113
+#: core/options-pages.php:1113 pro/core/medialist.php:28
+#: pro/core/medialist.php:73
 msgid "Date"
 msgstr ""
 
-#: core/options-pages.php:1114
+#: core/options-pages.php:1114 pro/core/medialist.php:31
+#: pro/core/medialist.php:76
 msgid "Title"
 msgstr ""
 
-#: core/options-pages.php:1115
+#: core/options-pages.php:1115 pro/core/medialist.php:34
+#: pro/core/medialist.php:79
 msgid "Custom Order"
 msgstr ""
 
@@ -459,11 +463,13 @@ msgstr ""
 msgid "Sort order"
 msgstr ""
 
-#: core/options-pages.php:1126
+#: core/options-pages.php:1126 pro/core/medialist.php:47
+#: pro/core/medialist.php:92
 msgid "Ascending"
 msgstr ""
 
-#: core/options-pages.php:1127
+#: core/options-pages.php:1127 pro/core/medialist.php:50
+#: pro/core/medialist.php:95
 msgid "Descending"
 msgstr ""
 
@@ -686,7 +692,7 @@ msgstr "업로드 허용"
 msgid "Delete MIME Type"
 msgstr "MIME 유형 삭제"
 
-#: core/options-pages.php:1653
+#: core/options-pages.php:1653 pro/enhanced-media-library-pro.php:124
 msgid "Save Changes"
 msgstr "변경 사항 저장"
 
@@ -847,8 +853,272 @@ msgstr ""
 msgid "Search Media Categories"
 msgstr ""
 
+#: pro/core/bulk-edit.php:51
+msgid "Attachments Details"
+msgstr "첨부 파일 세부 정보"
+
+#: pro/core/bulk-edit.php:104
+msgid "Select All"
+msgstr "모두 선택"
+
+#: pro/core/bulk-edit.php:105
+msgid "Deselect All"
+msgstr "모두 선택 해제"
+
+#: pro/core/bulk-edit.php:106 pro/core/bulk-edit.php:109
+msgid "Delete Selected"
+msgstr "선택 삭제"
+
+#: pro/core/bulk-edit.php:107
+msgid "Trash Selected"
+msgstr ""
+
+#: pro/core/bulk-edit.php:108
+msgid "Untrash Selected"
+msgstr ""
+
+#: pro/core/bulk-edit.php:529 pro/core/options-pages.php:212
+#: pro/enhanced-media-library-pro.php:127
+msgid "Bulk Edit"
+msgstr "일괄 편집"
+
+#: pro/core/medialist.php:24 pro/core/medialist.php:69
+msgid "Order By"
+msgstr ""
+
+#: pro/core/medialist.php:37 pro/core/medialist.php:82
+msgid "Random"
+msgstr ""
+
+#: pro/core/medialist.php:43 pro/core/medialist.php:88
+msgid "Order"
+msgstr ""
+
+#: pro/core/medialist.php:60 pro/core/medialist.php:101
+msgid "Limit"
+msgstr ""
+
+#: pro/core/options-pages.php:78
+msgid "Your license has been deactivated."
+msgstr ""
+
+#: pro/core/options-pages.php:87
+msgid "Please check if your license key is correct and try again."
+msgstr ""
+
+#: pro/core/options-pages.php:103
+#, php-format
+msgid ""
+"Activation failed with the error: %s. Please <a href=\"%s\">contact plugin "
+"authors</a>."
+msgstr ""
+
+#: pro/core/options-pages.php:120
+#, php-format
+msgid ""
+"Your license key is incorrect or canceled. Please <a href=\"%s\">contact "
+"plugin authors</a>."
+msgstr ""
+
+#: pro/core/options-pages.php:133
+msgid "You license has been activated."
+msgstr ""
+
+#: pro/core/options-pages.php:188
+#, php-format
+msgid "Auto-assign media items to parent %s %s on upload"
+msgstr ""
+
+#: pro/core/options-pages.php:189
+#, php-format
+msgid ""
+"%sWarning:%s As a result of clicking \"Synchronize Now\" all media items "
+"attached to a %s will be assigned to %s of their parent %s. Currently "
+"assigned %s will not be saved. Media items that are not attached to any %s "
+"will not be affected."
+msgstr ""
+
+#: pro/core/options-pages.php:220 pro/core/options-pages.php:223
+msgid "Turn off 'Save Changes' button"
+msgstr "'변경 사항 저장' 버튼 해제"
+
+#: pro/core/options-pages.php:224
+msgid "Save changes on the fly"
+msgstr "변경 사항 즉시 저장"
+
+#: pro/core/options-pages.php:225
+msgid ""
+"Any click on a taxonomy checkbox during media files bulk editing will lead "
+"to an <strong style=\"color:red\">immediate saving</strong> of the data. "
+"Please, be careful! You have much greater chance to <strong style=\"color:red"
+"\">accidentally perform wrong re-assigning</strong> of a lot of your media "
+"files / taxonomies with this option turned on."
+msgstr ""
+
+#: pro/core/options-pages.php:226
+msgid "NOT recommended if you work with more than hundred files at a time."
+msgstr ""
+
+#: pro/core/options-pages.php:265 pro/core/options-pages.php:288
+msgid "License Key"
+msgstr "라이센스 키"
+
+#: pro/core/options-pages.php:272
+msgid "Your license is active!"
+msgstr "라이센스가 활성화되었습니다!"
+
+#: pro/core/options-pages.php:276
+msgid "Deactivate License"
+msgstr ""
+
+#: pro/core/options-pages.php:281
+#, php-format
+msgid ""
+"To unlock updates please enter your license key below. You can get your "
+"license key in <a href=\"%s\">Your Account</a>. If you do not have a "
+"license, you are welcome to <a href=\"%s\">purchase it</a>."
+msgstr ""
+
+#: pro/core/options-pages.php:291
+msgid "Activate License"
+msgstr "라이센스 활성화"
+
 #. Plugin Name of the plugin/theme
+#: pro/core/update.php:102
 msgid "Enhanced Media Library PRO"
+msgstr ""
+
+#: pro/core/update.php:115
+#, php-format
+msgid ""
+"%1$s could not establish a secure connection to request information about "
+"available updates. An error occurred: %2$s. Please <a href=\"%3$s\">contact "
+"plugin authors</a>."
+msgstr ""
+
+#: pro/core/update.php:168 pro/core/update.php:174 pro/core/update.php:180
+msgid ""
+"An unexpected error occurred. Something may be wrong with WordPress.org or "
+"this server&#8217;s configuration. If you continue to have problems, please "
+"try the <a href=\"https://wordpress.org/support/\">support forums</a>."
+msgstr ""
+"예기치 않은 오류가 발생했습니다. WordPress.org 또는 이 서버의 구성에 문제가 "
+"있을 수 있습니다. 문제가 계속될 경우, <a href=\"https://wordpress.org/"
+"support/\">지원 포럼</a>을 시도해 보시기 바랍니다."
+
+#: pro/core/update.php:168
+msgid ""
+"(WordPress could not establish a secure connection to WordPress.org. Please "
+"contact your server administrator.)"
+msgstr ""
+"(워드프레스가 WordPress.org에 보안 연결을 설정할 수 없습니다. 서버 관리자에"
+"게 문의하세요.)"
+
+#: pro/core/update.php:232
+#, php-format
+msgid ""
+"To unlock updates, please <a href=\"%s\">activate your license</a>. You can "
+"get your license key in <a href=\"%s\">Your Account</a>. If you do not have "
+"a license, you are welcome to <a href=\"%s\">purchase it</a>."
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:119
+msgid "ALL files belong to this item"
+msgstr "이 항목에 모든 파일이 속합니다"
+
+#: pro/enhanced-media-library-pro.php:120
+msgid "SOME files belong to this item"
+msgstr "이 항목에 SOME 파일이 속합니다"
+
+#: pro/enhanced-media-library-pro.php:121
+msgid "NO files belong to this item"
+msgstr "이 항목에 속한 파일이 없습니다"
+
+#: pro/enhanced-media-library-pro.php:122
+msgid "Changes saved."
+msgstr "변경 사항이 저장됨."
+
+#: pro/enhanced-media-library-pro.php:123
+msgid "Something went wrong."
+msgstr "문제가 발생했습니다."
+
+#: pro/enhanced-media-library-pro.php:126
+msgid "Edit Media Files"
+msgstr "미디어 파일 편집"
+
+#: pro/enhanced-media-library-pro.php:129
+msgid "Selecting"
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:130
+msgid "Delete Selected Permanently"
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:131
+msgid "You are about to permanently delete all selected items."
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:132
+msgid "Delete"
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:134
+msgid "Moving to Trash"
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:135
+msgid "Restoring"
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:136
+msgid "Deleting"
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:160
+msgid "Create a filter-based gallery"
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:161
+msgid "Create a filter-based playlist"
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:162
+msgid "Create a filter-based video playlist"
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:240
+msgid ""
+"Please deactivate and <strong>remove</strong> the old FREE version prior to "
+"the <strong>Enhanced Media Library PRO</strong> activation. All your data "
+"will remain intact."
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:240
+msgid "Return to Plugins"
+msgstr "플러그인으로 돌아가기"
+
+#: pro/enhanced-media-library-pro.php:291
+msgid ""
+"Both FREE and PRO versions of the Enhanced Media Library are network active. "
+"<strong>Enhanced Media Library PRO</strong> does not require free version to "
+"be active. Please network deactivate and delete the free versions of the "
+"plugin. All your data will remain intact."
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:308
+msgid ""
+"<strong>Enhanced Media Library PRO</strong> does not require free version to "
+"be active. Please deactivate and delete the free version of the plugin. All "
+"your data will remain intact."
+msgstr ""
+
+#: pro/enhanced-media-library-pro.php:324
+msgid ""
+"Both FREE and PRO versions of the Enhanced Media Library are active for this "
+"site. <strong>Enhanced Media Library PRO</strong> does not require free "
+"version to be active. Please deactivate (or network deactivate) and delete "
+"the free version of the plugin for this site. All your data will remail "
+"intact."
 msgstr ""
 
 #. Plugin URI of the plugin/theme
