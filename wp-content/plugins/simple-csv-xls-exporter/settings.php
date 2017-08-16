@@ -10,6 +10,7 @@ if(!class_exists('SIMPLE_CSV_EXPORTER_SETTINGS')) {
         }
 
         public function admin_init()    {
+            register_setting('wp_ccsve-group', 'ccsve_delimiter');
             register_setting('wp_ccsve-group', 'ccsve_admin_only');
             register_setting('wp_ccsve-group', 'ccsve_post_type');
             register_setting('wp_ccsve-group', 'ccsve_post_status');
@@ -24,6 +25,14 @@ if(!class_exists('SIMPLE_CSV_EXPORTER_SETTINGS')) {
                 '',
                 array(&$this, 'settings_section_simple_csv_exporter_settings'),
                 'simple_csv_exporter_settings'
+            );
+
+            add_settings_field(
+                'ccsve_delimiter',
+                'Set the CSV delimiter',
+                array(&$this, 'settings_field_input_delimiter'),
+                'simple_csv_exporter_settings',
+                'simple_csv_exporter_settings-section'
             );
 
             add_settings_field(
@@ -84,6 +93,12 @@ if(!class_exists('SIMPLE_CSV_EXPORTER_SETTINGS')) {
             );*/
 
         } // END public static function activate
+
+        public function settings_field_input_delimiter() {
+            $csv_delimiter = get_option('ccsve_delimiter');
+            if($csv_delimiter == '') $csv_delimiter = '|';
+            echo '<input type="text" id="csv_delimiter" name="ccsve_delimiter" value="'.$csv_delimiter.'" />';
+        }
 
         public function settings_field_select_admin() {
             // Get the value of this setting
@@ -393,18 +408,12 @@ if(!class_exists('SIMPLE_CSV_EXPORTER_SETTINGS')) {
                             <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3UR3E5PL3TW3E" target="_blank"><img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif"></a>
                         </p>
                     </div>
-                    <!-- <div class="block">
-                        <p></p>
-                    </div> -->
+
                 </div>
 
-                <!-- https://httpsimage.com/img/shambix_banner_750x90.jpg
-                https://httpsimage.com/img/shambix_banner_918x104.jpg -->
-
                 <div class="footer">
-                    <!-- <p>Plugin developed by <a href="http://www.shambix.com" target="blank">Shambix</a> | Need to customize it? <a href="mailto:info@shambix.com">Email me</a>! | Like the plugin? Give it a good <a href="https://wordpress.org/support/plugin/simple-csv-xls-exporter/reviews#new-topic-0" target="=_blank">review</a>, so other people can enjoy it too!</p> -->
                     <br/>
-                    <a href="http://www.shambix.com" target="blank"><img src="https://httpsimage.com/img/shambix_banner_918x104.jpg"></a>
+                    <a href="http://www.shambix.com" target="blank"><img src="https://preview.ibb.co/dxWxUv/shambix_banner_918x104.jpg"></a>
                 </div>
 
             </div>

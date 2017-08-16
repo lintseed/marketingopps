@@ -4,7 +4,7 @@ Contributors: Shambix, Dukessa
 Author URL: http://www.shambix.com
 Tags: csv, xls, export, excel, custom fields, custom post types, export products, export posts
 Requires at least: 4
-Tested up to: 4.7.2
+Tested up to: 4.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -124,6 +124,10 @@ Eg. `https://yoursite.com/?export=xls&post_type=portfolio&user`
 3. Settings Page
 
 == Changelog ==
+
+= 1.4.6 =
+* Added option to set custom Delimiter
+* Fixed issue with html entities
 
 = 1.4.5 =
 * Fixed PHP 7.1 Fatal error 7.1 bug (Uncaught ArgumentCountError: Too few arguments to function do_settings_fields() )

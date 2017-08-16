@@ -153,7 +153,7 @@ function simple_csv_xls_exporter_csv_xls(){
                     if (!is_wp_error( $terms ) ) {
                         foreach($terms as $t) {
                             //echo $t->name;
-                            $names[] = $t->name;
+                            $names[] = htmlspecialchars_decode($t->name);
                         }
                     } else {
                         $names[] = '- error -';
@@ -246,6 +246,9 @@ function simple_csv_xls_exporter_csv_xls(){
 
     if ($ccsve_export_check == 'csv') {
 
+        // Delimiter
+        $csv_delimiter = get_option('ccsve_delimiter');
+
         // build a filename based on the post type and the data/time
         $ccsve_generate_csv_filename = SIMPLE_CSV_XLS_EXPORTER_EXTRA_FILE_NAME.$ccsve_generate_post_type.'-'.date('dMY_Hi').'-export.csv';
 
@@ -279,7 +282,7 @@ function simple_csv_xls_exporter_csv_xls(){
             if(strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';*/
 
             // Put the data from the new multi-dimensional array into the stream
-            fputcsv($fh, $data, '|');
+            fputcsv($fh, $data, $csv_delimiter);
         }
 
         // Close the file stream
