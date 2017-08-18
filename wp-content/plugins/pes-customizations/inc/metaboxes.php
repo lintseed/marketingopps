@@ -437,6 +437,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_naturalproducts' );
 add_action( 'cmb2_admin_init', 'cmb2_register_club' );
 add_action( 'cmb2_admin_init', 'cmb2_register_engredea' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ew' );
+add_action( 'cmb2_admin_init', 'cmb2_register_ee' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
 add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
@@ -568,6 +569,28 @@ function cmb2_register_ew() {
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_ew',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+					'Platinum' => 'Platinum',
+					'Gold' => 'Gold',
+					'Silver' => 'Silver',
+					'Marketing' => 'Marketing',
+					'Title' => 'Title'
+        ),
+    ) );
+}
+
+function cmb2_register_ee() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'ee_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_ee',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
