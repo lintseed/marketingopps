@@ -944,8 +944,10 @@ function cmb2_register_dcw() {
           2 => 'Platinum',
           3 => 'Gold',
           4 => 'Silver',
-          5 => 'Media Partner',
-          6 => 'Promotional'
+          5 => 'Speaking',
+          6 => 'Events',
+          7 => 'Marketing Promotions',
+          8 => 'Media Partner'
         ),
     ) );
 }
