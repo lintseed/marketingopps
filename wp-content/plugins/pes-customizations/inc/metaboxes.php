@@ -669,6 +669,7 @@ function cmb2_register_waste() {
             'Silver' => 'Silver',
             'Bronze' => 'Bronze',
             'Green' => 'Green',
+            'Mobile App Upgrades' => 'Mobile App Upgrades'
         ),
     ) );
 }
