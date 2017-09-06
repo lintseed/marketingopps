@@ -23,6 +23,7 @@
 
 		var wasteParent = $('#in-category-36');
 			var waste17 = $('#in-category-37');
+			var waste18 = $('#in-category-68');
 
  		var industryParent = $('#in-category-39');
  			var mtce17 = $('#in-category-38');
@@ -80,7 +81,7 @@
 		} else if (engredea17.is(':checked') || engredea18.is(':checked')) {
 			$('#engredea_metabox').show();
 		// waste
-		} else if (waste17.is(':checked') ) {
+		} else if (waste17.is(':checked') || waste18.is(':checked')) {
 			$('#waste_metabox').show();
 		// industry week
 		} else if (mtce17.is(':checked') ) {
@@ -155,7 +156,7 @@
 				$('.types-levels').parents('div.postbox').hide();
 				$('#engredea_metabox').show();
 			// waste
-			} else if (waste17.is(':checked')) {
+			} else if (waste17.is(':checked') || waste18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#waste_metabox').show();
 			// industry week

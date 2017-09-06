@@ -2,8 +2,8 @@
 /*
 Plugin Name: CSS & JavaScript Toolbox
 Plugin URI: http://css-javascript-toolbox.com/
-Description: CJT Plugin for WordPress to easily add custom CSS and JavaScript to individual pages
-Version: 8.3.1
+Description: The CSS & JavaScript Toolbox plugin on WordPress.org is no longer supported. This has been replaced by our new code management plugin also on WordPress.org called <a href="https://wordpress.org/plugins/easy-code-manager">Easy Code Manager</a>.
+Version: 8.3.2
 Author: Wipeout Media
 Author URI: http://css-javascript-toolbox.com
 License:
@@ -98,7 +98,7 @@ class CJTPlugin extends CJTHookableClass
 	/**
 	* 
 	*/
-	const VERSION = '8.3.1'	;
+	const VERSION = '8.3.2'	;
 	
 	/**
 	* 

@@ -1,56 +1,35 @@
 === CSS & JavaScript Toolbox ===
 Contributors: wipeoutmedia
-Author URL: http://css-javascript-toolbox.com
+Author URL: https://easy-code-manager.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EWDWF75JHT9Q6
 Tags: post, posts, admin, sidebar, page, pages, widget, image, shortcode, plugin, google, customise, style, scripts, hack, Wordpress, HTML, CSS, JavaScript, HTML5, jQuery, PHP, code, script, scripts, manage, management, display, output, header, footer, apply, requests, match, hook, execute, run
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.9
-Tested up to: 4.6.1
-Stable tag: 8.3.1
+Tested up to: 4.8.1
+Stable tag: 8.3.2
 
 Easily add custom CSS, JavaScript, HTML and PHP code to unique CJT code blocks and assign them wherever you want.
 
 == Description ==
-CSS & JavaScript Toolbox (or CJT) is a code management plugin that gives you the tools to customise the functionality and appearance of your website. 
 
-= CJT is great for =
-- streamlining development work
-- adding free or premium scripts
-- creating and testing your own scripts
-- adding front-end customisations
-- modifying themes
-- adding tracking code
-- teaching or learning how to code
-- and a million more uses
+= IMPORTANT NOTE: =
+The CSS & JavaScript Toolbox plugin on WordPress.org is no longer supported. This has been replaced by our new code management plugin called Easy Code Manager, which you can download for free here: [Easy Code Manager on WordPress.org](https://wordpress.org/plugins/easy-code-manager)
 
+This free version has been fully redesigned and does not have a number of features you would expect in CSS & JavaScript Toolbox. That said, you may wish to stay on CSS & JavaScript Toolbox unless you intend to update to our premium Easy Code Manager PLUS plugin.
 
-= Why Upgrade? =
-Fully responsive user interface
-Works on tablets and even mobile phones so you can code on the go!
-Functions are now kept in one place called Panels
-Coding has never been easier or more enjoyable
-Higher performance and security tweaks
-Works flawlessly with the latest version of WordPress
-Plenty of premium features and tools
+= Easy Code Manager PLUS =
+This is our premium plugin that extends the free version of Easy Code Manager - adding an amazing amount of features. Why not take a look to see if it suits your needs.  Click here: [Easy Code Manager PLUS](https://easy-code-manager.com)
 
-We want everyone to upgrade so we have created affordable pricing options. [Learn about the new CJT CORE and CJT PLUS](http://css-javascript-toolbox.com/). 
+= Compatibility =
+At this stage CSS & JavaScript Toolbox and Easy Code Manager cannot be installed and activated at the same time. It is advised to BACKUP all your CSS & JavaScript Toolbox code blocks, code files and template data, and take note of all your assignments and shortcode placements. This is a precautionary recommendation so you don’t lose your work.
 
-= How does it work? =
-CJT is extremely flexible and versatile. Since it was designed to be easy, adding scripts and styles can be done in as little as two steps:
-- adding your code directly into unique CJT code blocks
-- assigning where these code blocks go
+Once CSS & JavaScript Toolbox is deactivated, then you should be able to install and activate Easy Code Manager. Currently, both plugins share the same database structure and depending on your current version of CSS & JavaScript Toolbox, you may just see all your original CJT code blocks intact in the Easy Code Manager main dashboard. However, please do not rely on this and BACKUP all of your work before trying to install the Easy Code Manager plugins on your site.
 
-CJT code blocks can be assigned to pages, posts, custom posts, categories, URLs, expressions, and practically anywhere you want on your website. Code block shortcodes can also provide you with further placement accuracy.
+= CSS & JavaScript Toolbox premium license holders =
+If you are a premium CSS & JavaScript Toolbox (CJT) license holder with a valid license key that has NOT expired, you will be eligible to receive Easy Code Manager for free with one year of premium updates. Please send us a message along with your valid license key via our Contact page OR via: info (at) easy-code-manager.com
 
-
-= Support Us =
-The CSS & JavaScript Toolbox project is 100% developed and maintained by only two people since the very beginnings in August 2011. We have plenty of feature ideas that we want to introduce and this can only be possible with funding.
-
-You can also support us by providing a feedback review and rating on WordPress.org, and spreading the word and recommending CJT to others.
-
-= Follow the Developments =
-If you like to know more about the development state, issues and to track future versions code please follow us on GitHub Plugin repository.
+Thanks for your support.
 
 == Installation ==
 1. If you're upgrading from older versions its highly recommended to backup your database before upgrading.
@@ -58,82 +37,13 @@ If you like to know more about the development state, issues and to track future
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. Click 'CSS & JavaScript Toolbox' link in the main navigation (left side of your Dashboard).
 
-== Frequently Asked Questions ==
-= Why was the CJT plugin developed and what is it used for? =
-The CJT plugin was created to help website authors write their own code. The plugin allows you to contribute to your Wordpress installation code via a simple web interface, where you can modify and extend the functionality and appearance of your website by writing code directly into CJT code blocks. A typical example of using the plugin can include changing the the way a specific Wordpress page is displayed, or making a page more interactive by adding some JavaScript (Dynamic HTML).
-
-= What is a CJT 'code block'? =
-The CJT code block is the basic unit for writing code and to associate it with specific Wordpress requests.
-
-= What is the Assignment Panel? =
-The Assignment Panel is a tabs window, which appears on the right side of the code block editor and is used to assign/apply the code block into specific requests.
-
-= Can you select more than one item from the Assignment Panel? = 
-Yes. You can select any number of items you need, there is no limitation regarding this.
-
-= Can you assign multiple blocks to the same items from the Assignment Panel? =
-Yes. It's one of the most useful features that CJT supports as it allows you to manage/split your codes into several code blocks, allowing you to override code in a former (or lower ordered) code block.
-
-= What is Pages, Posts, Categories and Custom Posts tabs? =
-These lists with checkboxes represent all of your WordPress Pages, Posts, Categories and Custom Posts that your entire website contains.  It also supports subpages and sub-categories, which you will also find in there. 
-
-= What is the Auxiliary tab? =
-As there are a number of requests that are not available as normal Wordpress items (e.g. Pages, Posts, etc) but since it's commonly required and most likely be used, you will find them pre-defined in the Auxiliary tab. In the Auxiliary tab you can find pages like: Home, Blog Index, Author, 404 error, Tag, Archive, Entire website, Front-end, Admin backend and much more!
-
-= Is it better to use the URLs tab, or select items if found through other tabs?  =
-Pages, Posts, Custom Posts and Categories tabs are created to simplify the assignment process for all types of users. Using URLs is great for fast performance as it requires less time to evaluate/identify the request! However, not all things can be done through the URLs tab.  For example, applying a single block to a Category index page and all its sub-categories.
-
-= What is the Advanced Expressions tab? =
-The Advanced Expression tab allows you to fully control what requests to integrate into the code block by using Regular Expressions. In other words, allowing CJT users to define more requests to assign the code block to.
-
-= Can I move the blocks around? =
-Yes by hovering your mouse cursor over the code block title bar until it turns into a four-sided arrow, this allow you to move the blocks.  Clicking the block title bar allows you to open and close the blocks.
-
-= Is block saved after I click 'Create' in 'Create New Code Block' form? =
-Yes. The block is created and saved in your database. In order to discard the block, you have to delete it.
-
-= Is block orders immediately saved after drag-and-drop block box?  =
-No. In order to save blocks order you need to press 'Save All Changes' button.
-
-= Is block immediately deleted after removed from the blocks list page? =
-No. After delete block you need to click 'Save All Changes' button.
-
-= I'm using the URLs tab and my code is not working? =
-Make sure you have copied and pasted the Page, Post, or Category URL exactly as it appears in the address bar.  For example, you may have inadvertently included an extra forward slash at the end of your URL.
-
-= Why use the Footer switch in Location/Hook? =
-Hook location feature gives you control over the location of outputting the CSS/JS code. This is useful in case overriding another plugins' CSS is required. Also sometimes its better to put your JS code in the footer to avoid slowing down your page load.
-
-= I received a weird error, what do I do now? =
-Due to the overwhelming amount of emails we get for users requesting support for our CJT plugins, we cannot provide support for the CJT Free plugin (hosted here on WordPress.org) at this stage unfortunately. If you wish to receive priority support, please visit our CJT website and [purchase a license for any of our products](http://css-javascript-toolbox.com/pricing).
-
-== Screenshots ==
-1. Add your code, then assign where it goes
-2. Create New Code Block dialog box
-3. Master Admin Toolbar at top, and minimised Code Blocks below
-4. Change editor language for syntax highlighting and error checking
-5. Assigning WordPress Pages and sub-pages
-6. Assigning WordPress Posts
-7. Assigning Custom Posts
-8. Assigning Categories and sub-categories
-9. Auxiliary Assignments
-10. Advanced Assignments (URLs and Regular Expressions)
-11. Change State batch tools (CJT PLUS ONLY)
-12. Change Location/Hook batch tools (CJT PLUS ONLY)
-13. Delete and Backup Tools
-14. Code-Files management within each Code Block (CJT PLUS ONLY)
-15. Templates Manager form to store all of your Code Templates 
-16. Templates Lookup form to embed or link Code Templates to Code Blocks
-17. Insert Code Block shortcodes via TinyMCE button (CJT PLUS ONLY)
-18. Metabox Code Block at the Edit Page/Post level
-19. Create backups of all your existing Code Blocks
-20. Create/Restore Code Block revisions (CJT PLUS ONLY)
-21. See Code Block information at a glance (CJT PLUS ONLY)
-
 == Changelog ==
 
+= 8.3.2 =
+* Warning: Add CJT Plugin "not longer supported" notice
+
 = 8.3.1 =
-Fix: Development log files created at production
+* Fix: Development log files created at production
 
 = 8.3 =
 * Enahnce: CJT Won't work and admin notice displayed when PHP version < 5.3
@@ -367,8 +277,8 @@ Fix: Development log files created at production
 * This is the very first release.
 
 == Credits ==
-	
-Copyright © 2015, Wipeout Media.
+    
+Copyright © 2017, Wipeout Media.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
