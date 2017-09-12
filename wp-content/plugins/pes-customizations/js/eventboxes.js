@@ -17,6 +17,7 @@
 			var ew17 = $('#in-category-40');
 			var ew18 = $('#in-category-51');
 			var nbj17 = $('#in-category-31');
+			var nbj18 = $('#in-category-72');
 			var club17 = $('#in-category-42');
 			var engredea17 = $('#in-category-41');
 			var engredea18 = $('#in-category-53');
@@ -74,8 +75,8 @@
 			$('#ew_metabox').show();
 		} else if (nbj17.is(':checked') ) {
 			$('#nbj_metabox').show();
-		} else if (nbj17.is(':checked') ) {
-			$('#nbj_metabox').show();
+		} else if (nbj18.is(':checked') ) {
+			$('#nbj18_metabox').show();
 		} else if (club17.is(':checked') ) {
 			$('#club_metabox').show();
 		} else if (engredea17.is(':checked') || engredea18.is(':checked')) {
@@ -149,6 +150,9 @@
 			} else if (nbj17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#nbj_metabox').show();
+			} else if (nbj18.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#nbj18_metabox').show();
 			} else if (club17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#club_metabox').show();
