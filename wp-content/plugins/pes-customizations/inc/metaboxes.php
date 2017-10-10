@@ -442,6 +442,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
+add_action( 'cmb2_admin_init', 'cmb2_register_mtce18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_sl' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ldi' );
 add_action( 'cmb2_admin_init', 'cmb2_register_pes' );
@@ -718,6 +719,29 @@ function cmb2_register_mtce() {
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_mtce',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+            'Premium' => 'Premium',
+            'Content Related' => 'Content Related',
+            'Hospitality' => 'Hospitality',
+            'Product Branded' => 'Product Branded',
+            'Exhibit Hall' => 'Exhibit Hall',
+            'Tech-Focused' => 'Tech-Focused',
+        ),
+    ) );
+}
+
+function cmb2_register_mtce18() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'mtce18_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_mtce18',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
