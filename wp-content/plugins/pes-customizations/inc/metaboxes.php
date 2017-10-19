@@ -668,7 +668,9 @@ function cmb2_register_nbj18() {
           1 => 'Platinum',
           2 => 'Gold',
           3 => 'Silver',
-          4 => 'Media Partner'
+          4 => 'Media Partner',
+          5 => 'Media Partner',
+          6 => 'Media Partner'
         ),
     ) );
 }

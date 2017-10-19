@@ -115,3 +115,4 @@
 [03-May-2017 17:49:33 UTC] PHP Catchable fatal error:  Object of class WP_Error could not be converted to string in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/single-opportunity.php on line 47
 [03-May-2017 17:49:33 UTC] PHP Catchable fatal error:  Object of class WP_Error could not be converted to string in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/single-opportunity.php on line 47
 [12-Sep-2017 21:44:52 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/penton7/public_html/opportunities/wp-content/plugins/pes-customizations/inc/metaboxes.php on line 704
+[19-Oct-2017 16:28:48 UTC] PHP Parse error:  syntax error, unexpected '5' (T_LNUMBER), expecting ')' in /home/penton7/public_html/opportunities/wp-content/plugins/pes-customizations/inc/metaboxes.php on line 672
