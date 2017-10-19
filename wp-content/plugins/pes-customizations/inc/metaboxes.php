@@ -665,12 +665,13 @@ function cmb2_register_nbj18() {
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
-          1 => 'Platinum',
-          2 => 'Gold',
-          3 => 'Silver',
-          4 => 'Media Partner',
-          5 => 'Media Partner',
-          6 => 'Media Partner'
+          1 => 'Premier Title',
+          2 => 'Premier Program',
+          3 => 'Premier Platinum',
+          4 => 'Platinum',
+          5 => 'Gold',
+          6 => 'Silver',
+					7 => 'Media Partner'
         ),
     ) );
 }
