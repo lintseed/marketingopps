@@ -19,6 +19,7 @@
 			var nbj17 = $('#in-category-31');
 			var nbj18 = $('#in-category-72');
 			var club17 = $('#in-category-42');
+			var club18 = $('#in-category-75');
 			var engredea17 = $('#in-category-41');
 			var engredea18 = $('#in-category-53');
 
@@ -80,6 +81,8 @@
 			$('#nbj18_metabox').show();
 		} else if (club17.is(':checked') ) {
 			$('#club_metabox').show();
+		} else if (club18.is(':checked') ) {
+			$('#club18_metabox').show();
 		} else if (engredea17.is(':checked') || engredea18.is(':checked')) {
 			$('#engredea_metabox').show();
 		// waste
@@ -160,6 +163,9 @@
 			} else if (club17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#club_metabox').show();
+			} else if (club18.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#club18_metabox').show();
 			} else if (engredea17.is(':checked') || engredea18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#engredea_metabox').show();

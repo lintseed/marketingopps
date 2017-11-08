@@ -435,6 +435,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_iot' );
 add_action( 'cmb2_admin_init', 'cmb2_register_worldtea' );
 add_action( 'cmb2_admin_init', 'cmb2_register_naturalproducts' );
 add_action( 'cmb2_admin_init', 'cmb2_register_club' );
+add_action( 'cmb2_admin_init', 'cmb2_register_club18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_engredea' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ew' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ee' );
@@ -514,7 +515,45 @@ function cmb2_register_club() {
             'Platinum' => 'Platinum',
             'Gold' => 'Gold',
             'Silver' => 'Silver',
+						'Certifying Organizations' => 'Certifying Organizations',
             'Marketing' => 'Marketing',
+        ),
+    ) );
+}
+
+function cmb2_register_club18() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'club18_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type_club18',
+        'type'    => 'multicheck',
+        'select_all_button' => true,
+        'options' => array(
+            'Premier Platinum' => 'Premier Platinum',
+            'Platinum' => 'Platinum',
+            'Gold' => 'Gold',
+						'Silver' => 'Silver',
+						'Certifying Organizations' => 'Certifying Organizations',
+            'Marketing' => 'Marketing',
+        ),
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_club18',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Premier Platinum',
+          2 => 'Platinum',
+          3 => 'Gold',
+          4 => 'Silver',
+          5 => 'Certifying Organizations',
+          6 => 'Media Partner'
         ),
     ) );
 }
