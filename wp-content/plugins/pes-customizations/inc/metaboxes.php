@@ -551,7 +551,7 @@ function cmb2_register_club18() {
           3 => 'Gold',
           4 => 'Silver',
           5 => 'Certifying Organizations',
-          6 => 'Media Partner'
+          6 => 'Media Partner',
         ),
     ) );
 }
