@@ -531,15 +531,13 @@ function cmb2_register_club18() {
     $cmb->add_field( array(
         'name'    => 'Type',
         'id'      => 'opp_type_club18',
-        'type'    => 'multicheck',
-        'select_all_button' => true,
+				'type'    => 'multicheck',
+        'select_all_button' => false,
         'options' => array(
-            'Premier Platinum' => 'Premier Platinum',
-            'Platinum' => 'Platinum',
-            'Gold' => 'Gold',
-						'Silver' => 'Silver',
-						'Certifying Organizations' => 'Certifying Organizations',
-            'Marketing' => 'Marketing',
+            'Brand' => 'Brand',
+            'Exclusive' => 'Exclusive',
+            'Event' => 'Event',
+            'Lead Generation' => 'Lead Generation',
         ),
     ) );
     $cmb->add_field( array(
