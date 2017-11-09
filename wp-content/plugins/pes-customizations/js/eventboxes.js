@@ -19,6 +19,7 @@
 			var nbj17 = $('#in-category-31');
 			var nbj18 = $('#in-category-72');
 			var club17 = $('#in-category-42');
+			var club18 = $('#in-category-75');
 			var engredea17 = $('#in-category-41');
 			var engredea18 = $('#in-category-53');
 
@@ -50,6 +51,9 @@
 			var iwce18 = $('#in-category-62');
 
  		var dcw = $('#in-category-59');
+ 		
+ 		var mdtxParent = $('#in-category-76');
+ 			var mdtx18 = $('#in-category-77');
 
  		/*
  		** Edit opps
@@ -80,6 +84,8 @@
 			$('#nbj18_metabox').show();
 		} else if (club17.is(':checked') ) {
 			$('#club_metabox').show();
+		} else if (club18.is(':checked') ) {
+			$('#club18_metabox').show();
 		} else if (engredea17.is(':checked') || engredea18.is(':checked')) {
 			$('#engredea_metabox').show();
 		// waste
@@ -121,6 +127,9 @@
 		// DCW
 		} else if (dcw.is(':checked')) {
 			$('#dcw_metabox').show();
+		// MDTX18
+		} else if (mdtx18.is(':checked')) {
+			$('#mdtx18_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -160,6 +169,9 @@
 			} else if (club17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#club_metabox').show();
+			} else if (club18.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#club18_metabox').show();
 			} else if (engredea17.is(':checked') || engredea18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#engredea_metabox').show();
@@ -210,7 +222,11 @@
 			// DCW
 			} else if (dcw.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
-				$('#dcw_metabox').show();
+				$('#dcw_metabox').show();	
+			// MDTX18
+			} else if (mdtx18.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#mdtx18_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}
