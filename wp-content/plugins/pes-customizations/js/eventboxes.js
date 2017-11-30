@@ -16,6 +16,7 @@
 			var ee18 = $('#in-category-70');
 			var ew17 = $('#in-category-40');
 			var ew18 = $('#in-category-51');
+			var ew19 = $('#in-category-81');
 			var nbj17 = $('#in-category-31');
 			var nbj18 = $('#in-category-72');
 			var club17 = $('#in-category-42');
@@ -46,6 +47,7 @@
  		var cll = $('#in-category-57');
 
  		var tse = $('#in-category-50');
+ 			var mese18 = $('#in-category-80');
 
 		var iwceParent = $('#in-category-61');
 			var iwce18 = $('#in-category-62');
@@ -80,6 +82,8 @@
 			$('#ee_metabox').show();
 		} else if (ew17.is(':checked') || ew18.is(':checked')) {
 			$('#ew_metabox').show();
+		} else if (ew19.is(':checked') ) {
+			$('#ew19_metabox').show();
 		} else if (nbj17.is(':checked') ) {
 			$('#nbj_metabox').show();
 		} else if (nbj18.is(':checked') ) {
@@ -123,6 +127,8 @@
 		// TSE
 		} else if (tse.is(':checked')) {
 			$('#tse_metabox').show();
+		} else if (mese18.is(':checked')) {
+			$('#mese18_metabox').show();
 		// IWCE
 		} else if (iwce18.is(':checked')) {
 			$('#iwce_metabox').show();
@@ -165,6 +171,9 @@
 			} else if (ew17.is(':checked') || ew18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#ew_metabox').show();
+			} else if (ew19.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#ew19_metabox').show();
 			} else if (nbj17.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#nbj_metabox').show();
@@ -224,6 +233,9 @@
 			} else if (tse.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#tse_metabox').show();
+			} else if (mese18.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#mese18_metabox').show();
 			// DCW
 			} else if (dcw.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
