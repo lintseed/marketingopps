@@ -58,6 +58,8 @@
  			var mdtx18 = $('#in-category-77');
 
  		var monday = $('#in-category-79');
+ 		
+ 		var uas = $('#in-category-82');
 
  		/*
  		** Edit opps
@@ -127,6 +129,7 @@
 		// TSE
 		} else if (tse.is(':checked')) {
 			$('#tse_metabox').show();
+		// MESE
 		} else if (mese18.is(':checked')) {
 			$('#mese18_metabox').show();
 		// IWCE
@@ -141,6 +144,9 @@
 		// MONDAY
 		} else if (monday.is(':checked')) {
 			$('#monday_metabox').show();
+		// UAS
+		} else if (uas.is(':checked')) {
+			$('#uas_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -233,6 +239,7 @@
 			} else if (tse.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#tse_metabox').show();
+			//MESE
 			} else if (mese18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#mese18_metabox').show();
@@ -248,6 +255,10 @@
 			} else if (monday.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#monday_metabox').show();
+			// UAS
+			} else if (uas.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#uas_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}

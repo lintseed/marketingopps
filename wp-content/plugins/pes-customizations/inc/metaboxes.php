@@ -458,6 +458,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_dcw' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mdtx18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_monday' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mese18' );
+add_action( 'cmb2_admin_init', 'cmb2_register_uas' );
 
 
 function cmb2_register_iot() {
@@ -1106,7 +1107,7 @@ function cmb2_register_monday() {
         'type'    => 'multicheck',
         'select_all_button' => false,
         'options' => array(
-					 1 => 'Strategic Partner',
+					1 => 'Strategic Partner',
 					2 => 'Platinum',
 					3 => 'Gold',
 					4 => 'Silver',
@@ -1155,6 +1156,26 @@ function cmb2_register_mese18() {
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_mese18',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Diamond',
+          2 => 'Premier',
+					3 => 'Exhibitor'
+        ),
+    ) );
+}
+
+function cmb2_register_uas() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'uas_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_uas',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
