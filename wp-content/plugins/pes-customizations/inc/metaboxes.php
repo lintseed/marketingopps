@@ -873,8 +873,16 @@ function cmb2_register_ldi() {
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
-            'Front Row' => 'Front Row',
-            'Association' => 'Association',
+            1 => 'Front Row',
+            2 => 'Association',
+						3 => 'Headline Sponsor',
+	          4 => 'Front of House',
+	          5 => 'Opening Act Sponsor',
+	          6 => 'En Espanol',
+						7 => 'Live Design Awards',
+						8 => 'Live Outside Sponsors',
+						9 => 'ETCP Renewal Credits',
+						10 => 'ETCP Renewal Credits'
         ),
     ) );
 }
