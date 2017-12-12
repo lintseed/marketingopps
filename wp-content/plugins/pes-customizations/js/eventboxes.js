@@ -35,6 +35,7 @@
 
  		var ldiParent = $('#in-category-43');
  			var ldi17 = $('#in-category-44');
+			var ldi18 = $('#in-category-83');
 
  		var pes = $('#in-category-45');
 
@@ -53,12 +54,12 @@
 			var iwce18 = $('#in-category-62');
 
  		var dcw = $('#in-category-59');
- 		
+
  		var mdtxParent = $('#in-category-76');
  			var mdtx18 = $('#in-category-77');
 
  		var monday = $('#in-category-79');
- 		
+
  		var uas = $('#in-category-82');
 
  		/*
@@ -109,7 +110,7 @@
 		} else if (sl.is(':checked') ) {
 			$('#sl_metabox').show();
 		// ldi
-		} else if (ldi17.is(':checked') ) {
+		} else if (ldi17.is(':checked') || ldi18.is(':checked')) {
 			$('#ldi_metabox').show();
 		// pes
 		} else if (pes.is(':checked') ) {
@@ -212,7 +213,7 @@
 				$('.types-levels').parents('div.postbox').hide();
 				$('#sl_metabox').show();
 			// ldi
-			} else if (ldi17.is(':checked')) {
+			} else if (ldi17.is(':checked') || ldi18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#ldi_metabox').show();
 			// pes
@@ -246,12 +247,12 @@
 			// DCW
 			} else if (dcw.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
-				$('#dcw_metabox').show();	
+				$('#dcw_metabox').show();
 			// MDTX18
 			} else if (mdtx18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#mdtx18_metabox').show();
-			// MONDAY	
+			// MONDAY
 			} else if (monday.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#monday_metabox').show();
