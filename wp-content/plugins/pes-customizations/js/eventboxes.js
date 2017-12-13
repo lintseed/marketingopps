@@ -57,6 +57,7 @@
 
  		var mdtxParent = $('#in-category-76');
  			var mdtx18 = $('#in-category-77');
+ 			var elecdesign = $('#in-category-84');
 
  		var monday = $('#in-category-79');
 
@@ -142,6 +143,9 @@
 		// MDTX18
 		} else if (mdtx18.is(':checked')) {
 			$('#mdtx18_metabox').show();
+		// Electronic Design Connect
+		} else if (elecdesign.is(':checked')) {
+			$('#elecdesign_metabox').show();
 		// MONDAY
 		} else if (monday.is(':checked')) {
 			$('#monday_metabox').show();
@@ -252,6 +256,10 @@
 			} else if (mdtx18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#mdtx18_metabox').show();
+			// Electronic Design Connect
+			} else if (elecdesign.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#elecdesign_metabox').show();
 			// MONDAY
 			} else if (monday.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();

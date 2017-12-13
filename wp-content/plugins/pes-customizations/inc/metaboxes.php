@@ -456,6 +456,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_tse' );
 add_action( 'cmb2_admin_init', 'cmb2_register_iwce' );
 add_action( 'cmb2_admin_init', 'cmb2_register_dcw' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mdtx18' );
+add_action( 'cmb2_admin_init', 'cmb2_register_elecdesign' );
 add_action( 'cmb2_admin_init', 'cmb2_register_monday' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mese18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_uas' );
@@ -1101,6 +1102,25 @@ function cmb2_register_mdtx18() {
         ),
     ) );
 }
+
+function cmb2_register_elecdesign() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'elecdesign_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_elecdesign',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Sponsor',
+        ),
+    ) );
+}
+
 
 function cmb2_register_monday() {
 	$cmb = new_cmb2_box( array(
