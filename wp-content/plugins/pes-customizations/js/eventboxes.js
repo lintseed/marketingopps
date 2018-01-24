@@ -52,6 +52,7 @@
 
 		var iwceParent = $('#in-category-61');
 			var iwce18 = $('#in-category-62');
+			var iwce19 = $('#in-category-86');
 
  		var dcw = $('#in-category-59');
 
@@ -136,6 +137,8 @@
 			$('#mese18_metabox').show();
 		// IWCE
 		} else if (iwce18.is(':checked')) {
+			$('#iwce_metabox').show();
+		} else if (iwce19.is(':checked')) {
 			$('#iwce_metabox').show();
 		// DCW
 		} else if (dcw.is(':checked')) {
@@ -248,6 +251,10 @@
 			} else if (mese18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#mese18_metabox').show();
+			//IWCE
+			} else if (iwce18.is(':checked') || iwce19.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#iwce_metabox').show();
 			// DCW
 			} else if (dcw.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
