@@ -32,6 +32,7 @@
  			var mtce17 = $('#in-category-38');
  			var mtce18 = $('#in-category-73');
  			var sl = $('#in-category-63');
+			var sl18 = $('#in-category-85');
 
  		var ldiParent = $('#in-category-43');
  			var ldi17 = $('#in-category-44');
@@ -111,6 +112,8 @@
 		// safety leadership
 		} else if (sl.is(':checked') ) {
 			$('#sl_metabox').show();
+		} else if (sl18.is(':checked') ) {
+			$('#sl18_metabox').show();
 		// ldi
 		} else if (ldi17.is(':checked') || ldi18.is(':checked')) {
 			$('#ldi_metabox').show();
@@ -219,6 +222,9 @@
 			} else if (sl.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#sl_metabox').show();
+			} else if (sl18.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#sl18_metabox').show();
 			// ldi
 			} else if (ldi17.is(':checked') || ldi18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();

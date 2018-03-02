@@ -446,6 +446,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_sl' );
+add_action( 'cmb2_admin_init', 'cmb2_register_sl18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ldi' );
 add_action( 'cmb2_admin_init', 'cmb2_register_pes' );
 add_action( 'cmb2_admin_init', 'cmb2_register_itdev' );
@@ -840,6 +841,26 @@ function cmb2_register_sl() {
             'Product Branded' => 'Product Branded',
             'Exhibit Hall' => 'Exhibit Hall',
             'Tech-Focused' => 'Tech-Focused',
+        ),
+    ) );
+}
+
+function cmb2_register_sl18() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'sl18_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_sl18',
+        'type'    => 'select',
+        'show_option_none' => true,
+				'options' => array(
+            1 => 'Platinum',
+            2 => 'Gold',
+						3 => 'Other'
         ),
     ) );
 }
