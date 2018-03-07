@@ -461,6 +461,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_elecdesign' );
 add_action( 'cmb2_admin_init', 'cmb2_register_monday' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mese18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_uas' );
+add_action( 'cmb2_admin_init', 'cmb2_register_ssw18' );
 
 
 function cmb2_register_iot() {
@@ -1231,6 +1232,27 @@ function cmb2_register_uas() {
           1 => 'Diamond',
           2 => 'Premier',
 					3 => 'Exhibitor'
+        ),
+    ) );
+}
+
+function cmb2_register_ssw18() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'ssw18_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_ssw18',
+        'type'    => 'select',
+        'show_option_none' => true,
+				'options' => array(
+            1 => 'Platinum',
+            2 => 'Gold',
+						3 => 'Silver',
+						4 => 'Marketing'
         ),
     ) );
 }
