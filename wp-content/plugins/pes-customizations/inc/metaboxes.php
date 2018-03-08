@@ -1249,10 +1249,9 @@ function cmb2_register_ssw18() {
         'type'    => 'select',
         'show_option_none' => true,
 				'options' => array(
-            1 => 'Platinum',
-            2 => 'Gold',
-						3 => 'Silver',
-						4 => 'Marketing'
+						1 => 'Major Sponsor',
+						2 => 'General Sponsor',
+						3 => 'Marketing',
         ),
     ) );
 }
