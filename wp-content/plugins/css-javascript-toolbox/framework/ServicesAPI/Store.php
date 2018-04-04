@@ -160,7 +160,7 @@ class CJTStore extends CJTServicesClientModule {
 	*/
 	public function hasUpdate() {
 		# Get Version
-		$pluginUpdate = $this->getPluginUpdate();
+		$pluginUpdate = $this->getPluginInformation();
 		$version = $pluginUpdate[ 'currentVersion' ];
 		# Get Plugin version
 		$pluginData = get_plugin_data( $this->getPluginFile() );

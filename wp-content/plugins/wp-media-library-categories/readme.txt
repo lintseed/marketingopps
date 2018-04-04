@@ -3,8 +3,8 @@ Contributors: jeffrey-wp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SSNQMST6R28Q2
 Tags: category, categories, media, library, medialibrary, image, images, media category, media categories
 Requires at least: 3.1
-Tested up to: 4.8
-Stable tag: 1.5.6
+Tested up to: 4.9.5
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,21 @@ Adds the ability to use categories in the media library.
 == Description ==
 
 Adds the ability to use categories in the WordPress Media Library. When activated a dropdown of categories will show up in the media library.
-You can change the category of multiple items at once with bulk actions.
+You can change / add / remove the category of multiple items at once with bulk actions.
+There is even an option to filter on categories when using the gallery shortcode.
+
+= Features WordPress Media Library Categories =
+* add / edit / remove categories from media items
+* change the category of multiple items at once with bulk actions
+* category options & management in the Media Library
+* filter on categories in the media library
+* filter on categories in the gallery shortcode
+* taxonomy filter
+* support for WordPress 3.1 – 4.9
+
+> <strong>Try Premium version - 100% money back guarantee</strong>
+> WordPress Media Library Categories Premium adds the option to filter on categories when inserting media into a post or page.
+> [Try now - 100% money back guarantee](https://codecanyon.net/item/media-library-categories-premium/6691290?ref=jeffrey-wp)
 
 == Installation ==
 
@@ -42,7 +56,6 @@ To upload the plugin through WordPress, instead of FTP:
 
 = How to use separate categories for the WordPress Media Library (and don't use the same categories as in posts & pages)? =
 By default the WordPress Media Library uses the same categories as WordPress does (such as in posts & pages). If you want to use separate categories for the WordPress Media Library add this code to the file functions.php located in your theme or child-theme:
-Add this code to the file functions.php located in your theme or child-theme:
 `/**
 * separate media categories from post categories
 * use a custom category called 'category_media' for the categories in the media library
@@ -81,6 +94,15 @@ Maintaining a plugin and keeping it up to date is hard work. Please support me b
 3. Filter by category when inserting media [(premium version)](https://codecanyon.net/item/media-library-categories-premium/6691290?ref=jeffrey-wp)
 
 == Changelog ==
+
+= 1.6.1 =
+* Support for SCRIPT_DEBUG.
+* Only load CSS when needed.
+
+= 1.6 =
+* Notice for first time users how to separate media categories.
+* Rewrite entire plugin to improve quality and make it ready for future development.
+* Move language files to GlotPress.
 
 = 1.5.6 =
 * Remember pagenumber when using bulk actions

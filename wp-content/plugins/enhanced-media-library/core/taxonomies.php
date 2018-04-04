@@ -696,7 +696,7 @@ if ( ! function_exists( 'wpuxss_eml_get_media_term_count' ) ) {
         if ( ! empty( $children ) ) {
 
             foreach ( $children as $child ) {
-            	$terms[] = $child->term_taxonomy_id;
+                $terms[] = $child->term_taxonomy_id;
             }
         }
 
@@ -933,17 +933,17 @@ if ( ! function_exists( 'wpuxss_eml_delete_post' ) ) {
     function wpuxss_eml_delete_post() {
 
         if ( empty( $action ) )
-    		$action = 'delete-post';
+            $action = 'delete-post';
 
-    	$id = isset( $_POST['id'] ) ? (int) $_POST['id'] : 0;
+        $id = isset( $_POST['id'] ) ? (int) $_POST['id'] : 0;
 
-    	check_ajax_referer( "{$action}_$id" );
+        check_ajax_referer( "{$action}_$id" );
 
-    	if ( ! current_user_can( 'delete_post', $id ) )
-    		wp_die( -1 );
+        if ( ! current_user_can( 'delete_post', $id ) )
+            wp_die( -1 );
 
-    	if ( ! $post = get_post( $id ) )
-    		wp_die( 1 );
+        if ( ! $post = get_post( $id ) )
+            wp_die( 1 );
 
 
         if ( 'attachment' === $post->post_type ) {
@@ -968,9 +968,9 @@ if ( ! function_exists( 'wpuxss_eml_delete_post' ) ) {
                 wp_send_json_error();
         }
         elseif ( wp_delete_post( $id ) )
-    		wp_die( 1 );
-    	else
-    		wp_die( 0 );
+            wp_die( 1 );
+        else
+            wp_die( 0 );
     }
 }
 
@@ -1206,6 +1206,51 @@ if ( ! function_exists( '_eml_update_post_term_count' ) ) {
 //         return $actions;
 //     }
 // }
+
+
+
+/**
+ *  wpuxss_eml_the_posts
+ *
+ *  Natural sort order for titles (list view)
+ *
+ *  @since    2.5
+ *  @created  12/01/18
+ */
+
+add_filter( 'the_posts', 'wpuxss_eml_the_posts', 10, 2);
+
+if ( ! function_exists( 'wpuxss_eml_the_posts' ) ) {
+
+    function wpuxss_eml_the_posts ( $posts, $query ) {
+
+        $wpuxss_eml_lib_options = get_option('wpuxss_eml_lib_options');
+
+
+        if ( ! (bool) $wpuxss_eml_lib_options['natural_sort'] ||
+             ! isset($query->query_vars['orderby']) ||
+             'title' !== $query->query_vars['orderby'] ||
+             'attachment' !== $query->query_vars['post_type'] ) {
+
+            return $posts;
+        }
+
+
+        $sort_posts = array();
+
+        foreach( $posts as $post ) {
+            $sort_posts[$post->post_title] = $post;
+        }
+
+        uksort( $sort_posts, 'strnatcmp' );
+
+        if ( strtolower( $query->query_vars['order'] ) == "desc" ) {
+            $sort_posts = array_reverse( $sort_posts );
+        }
+
+        return array_values( $sort_posts );
+    }
+}
 
 
 

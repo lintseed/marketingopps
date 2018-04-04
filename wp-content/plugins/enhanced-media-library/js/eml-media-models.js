@@ -50,6 +50,26 @@ window.eml = window.eml || { l10n: {} };
 
     _.extend( Attachments.prototype, {
 
+        validate: function( attachment, options ) {
+
+            var valid = this.validator( attachment ),
+                hasAttachment = !! this.get( attachment.cid );
+
+            if ( ! valid && hasAttachment ) {
+                this.remove( attachment, options );
+            }
+            else if ( valid && ! hasAttachment ) {
+
+                if ( wp.Uploader.queue.length ) {
+                    this.unshift( attachment, options );
+                }
+                else {
+                    this.add( attachment, options );
+                }
+            }
+            return this;
+        },
+
         saveMenuOrder: function() {
 
             var nonce = wp.media.model.settings.post.nonce || eml.l10n.bulk_edit_nonce;
@@ -95,16 +115,6 @@ window.eml = window.eml || { l10n: {} };
 
             this.args     = options.args;
             this._hasMore = true;
-            this.created  = new Date();
-
-            this.filters.order = function( attachment ) {
-
-                if ( ! this.comparator ) {
-                    return true;
-                }
-
-                return attachment.get( 'menuOrder' ) === 0;
-            };
 
             // Observe the central `wp.Uploader.queue` collection to watch for
             // new matches for the query.
@@ -213,10 +223,75 @@ window.eml = window.eml || { l10n: {} };
 
         return new Attachments( null, {
             props: _.extend( _.defaults( props || {}, {
-                orderby: eml.l10n.media_orderby,
-                order: eml.l10n.media_order
+                orderby: eml.l10n.media_orderby || 'date',
+                order: eml.l10n.media_order || 'DESC'
             } ), { query: true } )
         });
     };
+
+
+
+    media.compare = function( a, b, ac, bc ) {
+
+        if ( parseInt( eml.l10n.natural_sort ) &&
+             'title' === eml.l10n.media_orderby ) {
+            return this.natCompare( a, b );
+        }
+        else if ( _.isEqual( a, b ) ) {
+            return ac === bc ? 0 : (ac > bc ? -1 : 1);
+        }
+        else {
+            return a > b ? -1 : 1;
+        }
+    };
+
+
+
+    // many thanks to
+    // https://github.com/litejs/natural-compare-lite
+    // for the natural compare code!
+    media.natCompare = function(a, b) {
+
+        var i,
+            codeA,
+            codeB = 1,
+            posA = 0,
+            posB = 0,
+            alphabet = String.alphabet;
+
+
+        function getCode( str, pos, code ) {
+            if (code) {
+                for (i = pos; code = getCode(str, i), code < 76 && code > 65;) ++i;
+                return +str.slice(pos - 1, i);
+            }
+            code = alphabet && alphabet.indexOf(str.charAt(pos));
+            return code > -1 ? code + 76 : ((code = str.charCodeAt(pos) || 0), code < 45 || code > 127) ? code
+                : code < 46 ? 65               // -
+                : code < 48 ? code - 1
+                : code < 58 ? code + 18        // 0-9
+                : code < 65 ? code - 11
+                : code < 91 ? code + 11        // A-Z
+                : code < 97 ? code - 37
+                : code < 123 ? code + 5        // a-z
+                : code - 63;
+        }
+
+
+        if ((a+="") != (b+="")) for (;codeB;) {
+            codeA = getCode(a, posA++);
+            codeB = getCode(b, posB++);
+
+            if (codeA < 76 && codeB < 76 && codeA > 66 && codeB > 66) {
+                codeA = getCode(a, posA, posA);
+                codeB = getCode(b, posB, posA = i);
+                posB = i;
+            }
+
+            if (codeA != codeB) return (codeA > codeB) ? -1 : 1;
+        }
+        return 0;
+    }
+
 
 })( jQuery, _ );

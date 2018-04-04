@@ -3,7 +3,7 @@
 	sometimes we need to use it instead of postbox class
 	like affecting only block box while running as Metabox inside edit post page!
 */
-.cjt-block {min-width: 1000px;}
+.cjt-block {min-width: 730px;}
 
 .waitingToLoad{display: none !important;}
 
@@ -85,9 +85,9 @@
 }
 .cjt-toolbox .icons-group .popup-menu.templates-lookup { /* Override default for Templates Lookup*/
 	border: 1px solid #ccc;
-	width: 346px;
+	width: auto;
 	height: 357px;
-	left: 154px;
+	left: 140px;
 	top: 31px;
 	margin-top: 2px;
 	margin-left: 1px;

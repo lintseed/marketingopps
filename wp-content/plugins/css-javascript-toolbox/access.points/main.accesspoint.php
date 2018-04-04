@@ -30,29 +30,6 @@ class CJTMainAccessPoint extends CJTAccessPoint {
         // Needed for calling from nuinstall static method!
         self::$instance = $this;
     }
-
-    /**
-    * put your comment there...
-    * 
-    */
-    public function _OnCJTDeadNotice()
-    {
-        require CJTOOLBOX_PATH . DIRECTORY_SEPARATOR . 'includes' .
-                DIRECTORY_SEPARATOR . 'html' . 
-                DIRECTORY_SEPARATOR . 'CJTDeadNotice.html.php';
-    }
-    
-    /**
-    * put your comment there...
-    * 
-    */
-    public function _OnDismissCJTDeadNotice()
-    {
-        
-        update_option('cjt-dead-notice-dismissed', true);
-        
-        die();
-    }
     
     /**
     * put your comment there...
@@ -79,16 +56,6 @@ class CJTMainAccessPoint extends CJTAccessPoint {
     */
     public function main() 
     {
-        
-        if (!get_option('cjt-dead-notice-dismissed'))
-        {
-            
-            add_action('wp_ajax_cjt-dead-notice', array($this, '_OnDismissCJTDeadNotice'));
-            
-            add_action('admin_notices', array($this, '_OnCJTDeadNotice'));
-            add_action('network_admin_notices', array($this, '_OnCJTDeadNotice'));            
-        }
-
         
         // Run the coupling only if installed!
         if (CJTPlugin::getInstance()->isInstalled())

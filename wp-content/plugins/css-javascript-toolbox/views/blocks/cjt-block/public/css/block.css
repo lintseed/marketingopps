@@ -9,7 +9,7 @@
 
 .pagelist {
 	padding:10px;
-	height: 248px; 
+	height: 278px; 
 	overflow:auto;
 	border:1px solid #bbb; 
 	margin-bottom: 0px;
@@ -109,7 +109,7 @@ a.acc-header.ui-accordion-header-active {color: #652200 !important;}
 .custom-posts-container {
 	border: 1px solid #bbb;
 	margin-top: 9px;
-	height: 256px;
+	height: 286px;
 	padding: 6px;
 	overflow: auto;
 }
@@ -124,13 +124,13 @@ a.acc-header.ui-accordion-header-active {color: #652200 !important;}
 /**
 * Advanced Tab jQuery Accordion
 */
-.advanced-accordion {border: 1px solid #ccc}
-.advanced-accordion .ui-accordion-content {height: 204px; padding: 0px !important; background: none !important; border: none !important}}
+.advanced-accordion {border: 1px solid #ccc; height: 298px;}
+.advanced-accordion .ui-accordion-content {height: 230px; padding: 0px !important; background: none !important; border: none !important}}
 .advanced-accordion .ui-accordion-header-active {color: #a5581b !important;}
 .advanced-accordion textarea {
-	height: 196px;
-	width: 282px;
-	max-width: 282px;
+	height: 210px;
+	width: 300px;
+	max-width: 300px;
 	margin-top: 4px;
 	overflow: auto;
 	white-space: nowrap;
@@ -170,11 +170,11 @@ a.acc-header.ui-accordion-header-active {color: #652200 !important;}
 .cjpageblock .ui-tabs .ui-tabs-nav li { border: none !important; position: static !important; float: none !important; list-style: none; top: 1px; margin: 0 .2em 1px 0; padding: 0; white-space: nowrap; }
 
 /*-moz-border-radius:3px 3px 0 0;-webkit-border-top-right-radius:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-right-radius:3px;-khtml-border-top-left-radius:3px;border-top-right-radius:3px;border-top-left-radius:3px;*/
-.cjpageblock .ui-tabs .ui-tabs-nav li a {font-family: "Open Sans",sans-serif; height:18px;margin:1px 1px 0 0;float:right;cursor:pointer;border: 1px solid #bbb;border-bottom: 0 !important;  font-size: 12px; float: left; padding: 6px 17px; text-decoration: none;}
+.cjpageblock .ui-tabs .ui-tabs-nav li a {font-family: "Open Sans",sans-serif; height:18px;margin:1px 1px 0 0;float:right;cursor:pointer;border: 1px solid #bbb;border-bottom: 0 !important;  font-size: 12px; float: left; padding: 8px; text-decoration: none;}
 .cjpageblock .ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
 
 .cjpageblock .ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
 .cjpageblock .ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; background:#E9E9E9; border-color:#CCCCCC #CCCCCC #E9E9E9; color:#333333; }
 
-.cjpageblock .ui-tabs .ui-tabs-panel {height: 300px; display: block; clear:both; padding: 0px !important;}
+.cjpageblock .ui-tabs .ui-tabs-panel {height: 330px; display: block; clear:both; padding: 0px !important;}
 .cjpageblock .ui-tabs .ui-tabs-hide { display: none !important; }

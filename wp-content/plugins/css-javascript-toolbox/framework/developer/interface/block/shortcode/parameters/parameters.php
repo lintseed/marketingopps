@@ -132,7 +132,7 @@ extends CJT_Framework_Developer_Interface_Block_Parameters_Parameters {
 	*/
 	public function shortcode($blockName) {
 		// Initialize.
-		$shortcode = "[cjtoolbox name='{$blockName}'\n\t\t%s]%s\n[/cjtoolbox]";
+		$shortcode = "[cjtoolbox name='{$blockName}'%s]%s[/cjtoolbox]"; // <-- CODE MODIFIED BY RBJ
 		$shortcodeContent = '';
 		$params = $this->getParams();
 		$attributes = array();		

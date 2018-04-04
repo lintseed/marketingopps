@@ -15,12 +15,14 @@
     $( document ).on( 'change', '#wpuxss_eml_lib_options_media_orderby', function( event ) {
 
         var isMenuOrder = 'menuOrder' === $( event.target ).val(),
+            isTitleOrder = 'title' === $( event.target ).val(),
             value;
 
         orderValue = isMenuOrder ? $('#wpuxss_eml_lib_options_media_order').val() : orderValue;
         value = isMenuOrder ? 'ASC' : orderValue;
 
         $('#wpuxss_eml_lib_options_media_order').prop( 'disabled', isMenuOrder ).val( value );
+        $('#wpuxss_eml_lib_options_natural_sort').prop( 'hidden', ! isTitleOrder );
     });
 
 })( jQuery );

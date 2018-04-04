@@ -3,7 +3,7 @@
 Plugin Name: Enhanced Media Library
 Plugin URI: http://wpUXsolutions.com
 Description: This plugin will be handy for those who need to manage a lot of media files.
-Version: 2.4.5
+Version: 2.5
 Author: wpUXsolutions
 Author URI: http://wpUXsolutions.com
 Text Domain: enhanced-media-library
@@ -27,7 +27,7 @@ global $wp_version,
 
 
 
-$wpuxss_eml_version = '2.4.5';
+$wpuxss_eml_version = '2.5';
 
 
 
@@ -134,7 +134,7 @@ if ( is_admin() ) {
  *  @created  03/08/13
  */
 
-add_action('init', 'wpuxss_eml_on_init', 12);
+add_action( 'init', 'wpuxss_eml_on_init', 12 );
 
 if ( ! function_exists( 'wpuxss_eml_on_init' ) ) {
 
@@ -485,7 +485,8 @@ if ( ! function_exists( 'wpuxss_eml_enqueue_media' ) ) {
         $media_models_l10n = array(
             'media_orderby'   => $wpuxss_eml_lib_options['media_orderby'],
             'media_order'     => $wpuxss_eml_lib_options['media_order'],
-            'bulk_edit_nonce' => wp_create_nonce( 'eml-bulk-edit-nonce' )
+            'bulk_edit_nonce' => wp_create_nonce( 'eml-bulk-edit-nonce' ),
+            'natural_sort'    => $wpuxss_eml_lib_options['natural_sort']
         );
 
         wp_localize_script(
@@ -604,13 +605,14 @@ if ( ! function_exists( 'wpuxss_eml_on_activation' ) ) {
         $wpuxss_eml_lib_options = array(
             'enhance_media_shortcodes' => 0,
             'media_orderby' => 'date',
-            'media_order' => 'DESC'
+            'media_order' => 'DESC',
+            'natural_sort' => 0
         );
 
         $wpuxss_eml_tax_options = array(
             'tax_archives' => 1,
             'edit_all_as_hierarchical' => 0,
-            'force_filters' => 0,
+            'force_filters' => 1, // since 2.5
             'show_count' => 1
         );
 
@@ -718,7 +720,7 @@ if ( ! function_exists( 'wpuxss_eml_on_update' ) ) {
             $wpuxss_eml_tax_options = array(
                 'tax_archives' => 1,
                 'edit_all_as_hierarchical' => 0,
-                'force_filters' => 0,
+                'force_filters' => 1,
                 'show_count' => 1
             );
         }
@@ -767,7 +769,8 @@ if ( ! function_exists( 'wpuxss_eml_on_update' ) ) {
                 $wpuxss_eml_lib_options = array(
                     'enhance_media_shortcodes' => 0,
                     'media_orderby' => 'date',
-                    'media_order' => 'DESC'
+                    'media_order' => 'DESC',
+                    'natural_sort' => 0
                 );
             }
         }
@@ -777,6 +780,10 @@ if ( ! function_exists( 'wpuxss_eml_on_update' ) ) {
             $wpuxss_eml_lib_options['media_orderby'] = 'date';
         if ( ! isset( $wpuxss_eml_lib_options['media_order'] ) )
             $wpuxss_eml_lib_options['media_order'] = 'DESC';
+
+        // since 2.5
+        if ( ! isset( $wpuxss_eml_lib_options['natural_sort'] ) )
+            $wpuxss_eml_lib_options['natural_sort'] = 0;
 
 
         update_option( 'wpuxss_eml_taxonomies', $wpuxss_eml_taxonomies );

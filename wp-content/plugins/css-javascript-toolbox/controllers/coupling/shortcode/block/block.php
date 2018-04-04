@@ -94,7 +94,11 @@ class CJT_Controllers_Coupling_Shortcode_Block extends CJTHookableClass {
 					$blockCode = CJTPHPCodeEvaluator::getInstance($block)->exec(array('cb' => $spi))->getOutput();
 					// CJT Shortcode markup interface (CSMI)!
 					// CSMI is HTML markup to identify the CJT block Shortcode replacement.
-					$replacement = "<{$this->options['tag']} id='{$spi->containerElementId()}' class='csmi csmi-bid-{$block->id} csmi-{$block->name}'>{$this->content}{$blockCode}</{$this->options['tag']}>";
+
+					// CODE UPDATED BY RBJ -- START
+                    $replacement = "\n\n<!-- CJT Shortcode Block ({$block->id}) - {$block->name} - START -->\n<{$this->options['tag']} id='{$spi->containerElementId()}' class='csmi csmi-bid-{$block->id} csmi-{$block->name}'>{$this->content}{$blockCode}</{$this->options['tag']}>\n<!-- CJT Shortcode Block ({$block->id}) - {$block->name} - END -->\n\n";
+                    // CODE UPDATED BY RBJ -- END
+
 					// Get linked templates.
 					$linkedStylesheets = '';
 					$templates = $model->getLinkedTemplates($block->id);
@@ -116,7 +120,7 @@ class CJT_Controllers_Coupling_Shortcode_Block extends CJTHookableClass {
 						}
 					}
 					// Prepend linked Stylesheets to the replacement.
-					if (isset($linkedStylesheets)) {
+					if (isset($linkedStylesheets) && !empty($linkedStylesheets)) {
 						$replacement = "<style type='text/css'>{$linkedStylesheets}</style>{$replacement}";
 					}
 				}

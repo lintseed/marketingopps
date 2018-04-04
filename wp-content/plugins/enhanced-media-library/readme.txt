@@ -2,8 +2,8 @@
 Contributors: webbistro
 Tags: media library, media category, media categories, media gallery, gallery shortcode, media tag, media tags, media taxonomy, media taxonomies, media uploader, mime type, mime, mime types, file types, media types, media filter, attachment, gallery, image, images, media, ux, user experience, wp-admin, admin, taxonomy, taxonomies
 Requires at least: 4.5
-Tested up to: 4.8
-Stable tag: 2.4.5
+Tested up to: 4.9.3
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,6 +168,27 @@ Please notice that you use Enhanced Media Library with other plugins which add m
 
 == Changelog ==
 
+= 2.5.1 (PRO only) =
+* A bug causing "Test Error" on searching for update fixed
+
+
+&nbsp;
+= 2.5 =
+*Release Date - February 5, 2018*
+
+= Improvements =
+* Natural sort order added to the media library (Settings > Media > Media Library tab)
+* "Force filters" for third-parties is now set by default for new installations
+* Update mechanism is significantly improved (PRO only)
+
+= Bugfixes =
+* A few minor bugs fixed
+
+= Compatibility =
+* WordPress 4.9 compatibility ensured
+
+
+&nbsp;
 = 2.4.5 =
 *Release Date - June 8, 2017*
 
@@ -312,54 +333,6 @@ Please notice that you use Enhanced Media Library with other plugins which add m
 * Typos and absent localizations fixed, spaces added to the text of filters
 * Settings backup is not being performed if a user doesn't submit any file in the import operation (thanks Enrico for your contribution https://plugins.trac.wordpress.org/ticket/2506)
 * Various minor bugs fixed
-
-
-&nbsp;
-= 2.2.2 =
-*Release Date - April 30, 2016*
-
-= Improvements =
-* Many typos corrected
-* Localization added for default taxonomy Media Categories and credits
-* CSS for RTL improved
-* Encoding for Japanese translation fixed
-* Taxonomy queries (filtering) improved for List mode of the media library
-* Count number added to filters for List and Grid modes
-* Media Taxonomy tab: various CSS and JS improvements, minor bugs fixed
-* Media taxonomy 'year' is now being renamed to 'media_year' automatically on creation to avoid issues with WP queries
-* Performance: enhanced media library loading time reduced for about 40%
-
-
-&nbsp;
-= 2.2.1 =
-*Release Date - April 13, 2016*
-
-= Improvements =
-* Enhanced media library settings moved under Settings > Media
-* Text domain changed to match the plugin slug
-* Better CSS for media library grid mode, addressing some minor issues as well
-
-= Compatibility =
-* WordPress 4.5 compatibility ensured
-
-
-&nbsp;
-= 2.2 =
-*Release Date - March 19, 2016*
-
-= New =
-* Option "Auto-assign media items to parent post categories on upload" added per non-media taxonomy [PRO only]
-* Options and database cleanup added
-
-= Improvements =
-* Few security improvements
-* Few CSS, UI and behavior improvements
-* Slight performance improvement
-
-= Bugfixes =
-* A bug with non-saved drag and drop order in media library fixed
-* A bug with "Reset All Filters" button fixed
-* Custom order works now correctly on upload
 
 
 &nbsp;

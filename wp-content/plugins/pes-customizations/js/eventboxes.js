@@ -65,6 +65,7 @@
  		var monday = $('#in-category-79');
 
  		var uas = $('#in-category-82');
+ 		var uaw = $('#in-category-87');
 
  		/*
  		** Edit opps
@@ -161,6 +162,9 @@
 		// UAS
 		} else if (uas.is(':checked')) {
 			$('#uas_metabox').show();
+		// UAW
+		} else if (uaw.is(':checked')) {
+			$('#uaw_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -287,6 +291,10 @@
 			} else if (uas.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#uas_metabox').show();
+			// UAW
+			} else if (uaw.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#uaw_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}

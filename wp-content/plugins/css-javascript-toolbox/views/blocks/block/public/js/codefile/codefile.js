@@ -98,7 +98,15 @@
 					this.file.activeFileId = rCodeFile.id;
 					this.file.name = rCodeFile.name;
 					this.file.type = rCodeFile.type;
-					// Re-Initialize ACE Code Editor.
+					
+                    // CODE ADDED BY RBJ -- START
+                    if (!rCodeFile.code) {
+                        rCodeFile.code = '';
+                    }
+                    model.aceEditor.$blockScrolling = Infinity;
+                    // CODE ADDED BY RBJ -- START
+
+                    // Re-Initialize ACE Code Editor.
 					model.aceEditor.getSession().setValue(rCodeFile.code);
 					model.aceEditor.cjtSyncInputField();
 					// Make sure to recalculate changes after force ace editor to be unchanged.

@@ -2,8 +2,8 @@
 /*
 Plugin Name: CSS & JavaScript Toolbox
 Plugin URI: http://css-javascript-toolbox.com/
-Description: The CSS & JavaScript Toolbox plugin on WordPress.org is no longer supported. This has been replaced by our new code management plugin also on WordPress.org called <a href="https://wordpress.org/plugins/easy-code-manager">Easy Code Manager</a>.
-Version: 8.3.2
+Description: Easily add CSS, JavaScript, HTML and PHP code to unique CJT code blocks and assign them anywhere on your website.
+Version: 8.4.1
 Author: Wipeout Media
 Author URI: http://css-javascript-toolbox.com
 License:

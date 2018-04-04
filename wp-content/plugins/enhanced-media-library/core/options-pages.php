@@ -331,9 +331,9 @@ if ( ! function_exists( 'wpuxss_eml_print_media_settings' ) ) {
         <label for="thumbnail_size_w"><?php _e('Width'); ?></label>
         <input name="thumbnail_size_w" type="number" step="1" min="0" id="thumbnail_size_w" value="<?php form_option('thumbnail_size_w'); ?>" class="small-text" />
         <label for="thumbnail_size_h"><?php _e('Height'); ?></label>
-        <input name="thumbnail_size_h" type="number" step="1" min="0" id="thumbnail_size_h" value="<?php form_option('thumbnail_size_h'); ?>" class="small-text" /><br />
-        <input name="thumbnail_crop" type="checkbox" id="thumbnail_crop" value="1" <?php checked('1', get_option('thumbnail_crop')); ?>/>
-        <label for="thumbnail_crop"><?php _e('Crop thumbnail to exact dimensions (normally thumbnails are proportional)'); ?></label>
+        <input name="thumbnail_size_h" type="number" step="1" min="0" id="thumbnail_size_h" value="<?php form_option('thumbnail_size_h'); ?>" class="small-text" />
+        <p><input name="thumbnail_crop" type="checkbox" id="thumbnail_crop" value="1" <?php checked('1', get_option('thumbnail_crop')); ?>/>
+        <label for="thumbnail_crop"><?php _e('Crop thumbnail to exact dimensions (normally thumbnails are proportional)'); ?></label></p>
         </td>
         </tr>
 
@@ -342,6 +342,7 @@ if ( ! function_exists( 'wpuxss_eml_print_media_settings' ) ) {
         <td><fieldset><legend class="screen-reader-text"><span><?php _e('Medium size'); ?></span></legend>
         <label for="medium_size_w"><?php _e('Max Width'); ?></label>
         <input name="medium_size_w" type="number" step="1" min="0" id="medium_size_w" value="<?php form_option('medium_size_w'); ?>" class="small-text" />
+        <br />
         <label for="medium_size_h"><?php _e('Max Height'); ?></label>
         <input name="medium_size_h" type="number" step="1" min="0" id="medium_size_h" value="<?php form_option('medium_size_h'); ?>" class="small-text" />
         </fieldset></td>
@@ -352,6 +353,7 @@ if ( ! function_exists( 'wpuxss_eml_print_media_settings' ) ) {
         <td><fieldset><legend class="screen-reader-text"><span><?php _e('Large size'); ?></span></legend>
         <label for="large_size_w"><?php _e('Max Width'); ?></label>
         <input name="large_size_w" type="number" step="1" min="0" id="large_size_w" value="<?php form_option('large_size_w'); ?>" class="small-text" />
+        <br />
         <label for="large_size_h"><?php _e('Max Height'); ?></label>
         <input name="large_size_h" type="number" step="1" min="0" id="large_size_h" value="<?php form_option('large_size_h'); ?>" class="small-text" />
         </fieldset></td>
@@ -552,7 +554,7 @@ if ( ! function_exists( 'wpuxss_eml_mimetype_options_page_scripts' ) ) {
             'cancel' => __( 'Cancel', 'enhanced-media-library' ),
 
             'mime_error_empty_fields' => __( 'Please fill into all fields.', 'enhanced-media-library' ),
-            'mime_error_duplicate' => __( 'Duplicate extensions or MIME types. Please chose other one.', 'enhanced-media-library' )
+            'mime_error_duplicate' => __( 'Duplicate extensions or MIME types. Please choose other one.', 'enhanced-media-library' )
         );
 
         wp_localize_script(
@@ -857,7 +859,7 @@ if ( ! function_exists( 'wpuxss_eml_settings_import' ) ) {
         update_option( 'wpuxss_eml_tax_options', $settings['tax_options'] );
         update_option( 'wpuxss_eml_mimes', $settings['mimes'] );
 
-        do_action( 'wpuxss_eml_pro_import_settings', $settings );
+        do_action( 'wpuxss_eml_pro_set_settings', $settings );
 
         add_settings_error(
             'eml-settings',
@@ -865,10 +867,6 @@ if ( ! function_exists( 'wpuxss_eml_settings_import' ) ) {
             __('Plugin settings imported.', 'enhanced-media-library'),
             'updated'
         );
-
-        // TODO: not sure if we actually need this
-        //wp_safe_redirect( admin_url( 'options-general.php?page=eml-settings' ) );
-        //exit;
     }
 }
 
@@ -903,6 +901,8 @@ if ( ! function_exists( 'wpuxss_eml_settings_restoring' ) ) {
         update_option( 'wpuxss_eml_lib_options', $wpuxss_eml_backup['lib_options'] );
         update_option( 'wpuxss_eml_tax_options', $wpuxss_eml_backup['tax_options'] );
         update_option( 'wpuxss_eml_mimes', $wpuxss_eml_backup['mimes'] );
+
+        do_action( 'wpuxss_eml_pro_set_settings', $wpuxss_eml_backup );
 
         update_option( 'wpuxss_eml_backup', '' );
 
@@ -1010,16 +1010,23 @@ if ( ! function_exists( 'wpuxss_eml_settings_cleanup' ) ) {
             'wpuxss_eml_tax_options',
             'wpuxss_eml_mimes_backup',
             'wpuxss_eml_mimes',
-            'wpuxss_eml_backup',
-            'wpuxss_eml_pro_bulkedit_savebutton_off',
-            'wpuxss_eml_pro_license_key',
+            'wpuxss_eml_backup'
         );
+
+        $options = apply_filters( 'wpuxss_eml_pro_add_options', $options );
 
         foreach ( $options as $option ) {
             delete_option( $option );
         }
 
-        delete_site_transient( 'eml_license_active' );
+
+        $transients = array();
+
+        $transients = apply_filters( 'wpuxss_eml_pro_add_transients', $transients );
+
+        foreach ( $transients as $transient ) {
+            delete_site_transient( $transient );
+        }
 
 
         deactivate_plugins( wpuxss_get_eml_basename() );
@@ -1127,6 +1134,17 @@ if ( ! function_exists( 'wpuxss_eml_print_media_library_options' ) ) {
                                                     <option value="DESC" <?php selected( $wpuxss_eml_lib_options['media_order'], 'DESC' ); ?>><?php _e('Descending','enhanced-media-library'); ?></option>
                                                 </select>
                                                 <?php _e('For media library and media popups','enhanced-media-library'); ?>
+                                            </td>
+                                        </tr>
+
+                                        <tr id="wpuxss_eml_lib_options_natural_sort">
+                                            <th scope="row"><?php _e('Natural sort order','enhanced-media-library'); ?></th>
+                                            <td>
+                                                <fieldset>
+                                                    <legend class="screen-reader-text"><span><?php _e('Natural sort order','enhanced-media-library'); ?></span></legend>
+                                                    <label><input name="wpuxss_eml_lib_options[natural_sort]" type="hidden" value="0" /><input name="wpuxss_eml_lib_options[natural_sort]" type="checkbox" value="1" <?php checked( true, $wpuxss_eml_lib_options['natural_sort'], true ); ?> /> <?php _e('Apply human-friendly sort order to the media library and galleries.','enhanced-media-library'); ?></label>
+                                                    <p class="description"><?php _e( 'Example: [1, 2, 3, 10, 18, 22, abc-2, abc-11] instead of [1, 10, 18, 2, 22, 3, abc-11, abc-2]', 'enhanced-media-library' );  ?></p>
+                                                </fieldset>
                                             </td>
                                         </tr>
                                     </table>
