@@ -1243,6 +1243,22 @@ function cmb2_register_ssw18() {
         'title'        => 'Opportunity Options',
         'object_types' => array( 'opportunity', ), // Post type
     ) );
+		$cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type_ssw18',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+					 'Activities & Events' => 'Activities & Events',
+					 'Convention Center & Bayside Foyer Branding' => 'Convention Center & Bayside Foyer Branding',
+					 'Expo Hall Opportunities' => 'Expo Hall Opportunities',
+					 'Multi-Media Sponsorships' => 'Multi-Media Sponsorships',
+					 'Promotional Items' => 'Promotional Items',
+					 'Registration Sponsorships' => 'Registration Sponsorships',
+					 'Underwriter Opportunties' => 'Underwriter Opportunties',
+					 'Additional Sponsorship Opportunities' => 'Additional Sponsorship Opportunities'
+        ),
+    ) );
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_ssw18',
@@ -1250,8 +1266,7 @@ function cmb2_register_ssw18() {
         'show_option_none' => true,
 				'options' => array(
 						1 => 'Major Sponsor',
-						2 => 'General Sponsor',
-						3 => 'Marketing',
+						2 => 'General Sponsor'
         ),
     ) );
 }
