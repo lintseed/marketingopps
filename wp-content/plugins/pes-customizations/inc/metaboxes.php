@@ -1272,11 +1272,12 @@ function cmb2_register_ssw18() {
         'options' => array(
 					 'Activities & Events' => 'Activities & Events',
 					 'Convention Center & Bayside Foyer Branding' => 'Convention Center & Bayside Foyer Branding',
+					 'Digital Advertising' => 'Print Advertising',
+					 'Education Session Underwriting' => 'Education Session Underwriting',
 					 'Expo Hall Opportunities' => 'Expo Hall Opportunities',
 					 'Multi-Media Sponsorships' => 'Multi-Media Sponsorships',
 					 'Promotional Items' => 'Promotional Items',
 					 'Registration Sponsorships' => 'Registration Sponsorships',
-					 'Underwriter Opportunties' => 'Underwriter Opportunties',
 					 'Additional Sponsorship Opportunities' => 'Additional Sponsorship Opportunities'
         ),
     ) );
@@ -1287,7 +1288,7 @@ function cmb2_register_ssw18() {
         'show_option_none' => true,
 				'options' => array(
 						1 => 'Major Sponsor',
-						2 => 'General Sponsor'
+						2 => 'Sponsor'
         ),
     ) );
 }
