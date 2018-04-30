@@ -1271,14 +1271,16 @@ function cmb2_register_ssw18() {
         'select_all_button' => false,
         'options' => array(
 					 'Activities & Events' => 'Activities & Events',
+					 'Additional Sponsorship Opportunities' => 'Additional Sponsorship Opportunities',
 					 'Convention Center & Bayside Foyer Branding' => 'Convention Center & Bayside Foyer Branding',
 					 'Digital Advertising' => 'Print Advertising',
 					 'Education Session Underwriting' => 'Education Session Underwriting',
 					 'Expo Hall Opportunities' => 'Expo Hall Opportunities',
 					 'Multi-Media Sponsorships' => 'Multi-Media Sponsorships',
+					 'Print Advertising' => 'Print Advertising',
 					 'Promotional Items' => 'Promotional Items',
 					 'Registration Sponsorships' => 'Registration Sponsorships',
-					 'Additional Sponsorship Opportunities' => 'Additional Sponsorship Opportunities'
+					 'Sponsored Content' => 'Sponsored Content',
         ),
     ) );
     $cmb->add_field( array(
