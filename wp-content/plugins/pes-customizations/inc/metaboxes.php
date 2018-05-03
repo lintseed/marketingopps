@@ -1278,7 +1278,7 @@ function cmb2_register_ssw18() {
 					 'Activities & Events' => 'Activities & Events',
 					 'Additional Sponsorship Opportunities' => 'Additional Sponsorship Opportunities',
 					 'Convention Center & Bayside Foyer Branding' => 'Convention Center & Bayside Foyer Branding',
-					 'Digital Advertising' => 'Print Advertising',
+					 'Digital Advertising' => 'Digital Advertising',
 					 'Education Session Underwriting' => 'Education Session Underwriting',
 					 'Expo Hall Opportunities' => 'Expo Hall Opportunities',
 					 'Multi-Media Sponsorships' => 'Multi-Media Sponsorships',
