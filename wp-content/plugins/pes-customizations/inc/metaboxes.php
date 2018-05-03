@@ -9,6 +9,11 @@ if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/CMB2/init.php';
 }
 
+// set default checkbox value only on new post screen
+function cmb2_sample_metaboxes_checkbox_default( $default ) {
+	return isset( $_GET['post'] ) ? '' : ( $default ? (string) $default : '' );
+}
+
 function cmb2_sample_metaboxes() {
 
     // Start with an underscore to hide fields from custom fields list
@@ -41,7 +46,7 @@ function cmb2_sample_metaboxes() {
 			'name'             => '<span style="color:green">Enabled</span>',
 			'id'               => $prefix . 'enabled',
 			'type'             => 'checkbox',
-			'default' => 'enabled',
+			'default'          => cmb2_sample_metaboxes_checkbox_default('enabled'),
 			'options'          => array(
 					'enabled' => __( 'Enabled', 'cmb2' ),
 			),
