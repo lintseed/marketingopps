@@ -44,6 +44,7 @@
  		var itdev = $('#in-category-47');
 
  		var escabona = $('#in-category-48');
+			var escabona18 = $('#in-category-74');
 
  		var mro = $('#in-category-54');
 
@@ -129,6 +130,9 @@
 			$('#itdev_metabox').show();
 		// esca bona
 		} else if (escabona.is(':checked') ) {
+			$('#escabona_metabox').show();
+		// esca bona 2018
+		} else if (escabona18.is(':checked') ) {
 			$('#escabona_metabox').show();
 		// mro
 		} else if (mro.is(':checked') ) {
