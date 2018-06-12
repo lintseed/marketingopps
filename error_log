@@ -116,3 +116,13 @@
 [03-May-2017 17:49:33 UTC] PHP Catchable fatal error:  Object of class WP_Error could not be converted to string in /home/penton7/public_html/opportunities/wp-content/themes/pes-core-wp/single-opportunity.php on line 47
 [12-Sep-2017 21:44:52 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/penton7/public_html/opportunities/wp-content/plugins/pes-customizations/inc/metaboxes.php on line 704
 [19-Oct-2017 16:28:48 UTC] PHP Parse error:  syntax error, unexpected '5' (T_LNUMBER), expecting ')' in /home/penton7/public_html/opportunities/wp-content/plugins/pes-customizations/inc/metaboxes.php on line 672
+[12-Jun-2018 15:47:36 UTC] PHP Warning:  mysqli_query(): (HY000/1030): Got error 28 from storage engine in /home/penton7/public_html/opportunities/wp-includes/wp-db.php on line 1924
+[12-Jun-2018 15:47:36 UTC] WordPress database error Got error 28 from storage engine for query SELECT SQL_CALC_FOUND_ROWS  wp_posts.ID FROM wp_posts  LEFT JOIN wp_term_relationships ON (wp_posts.ID = wp_term_relationships.object_id) WHERE 1=1  AND ( 
+  wp_term_relationships.term_taxonomy_id IN (72)
+) AND wp_posts.post_type IN ('post', 'nav_menu_item', 'opportunity') AND (wp_posts.post_status = 'publish') GROUP BY wp_posts.ID ORDER BY wp_posts.post_title ASC LIMIT 0, 10 made by require('wp-blog-header.php'), wp, WP->main, WP->query_posts, WP_Query->query, WP_Query->get_posts
+[12-Jun-2018 15:47:36 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/penton7/public_html/opportunities/wp-includes/wp-db.php:1924) in /home/penton7/public_html/opportunities/wp-includes/feed-rss2.php on line 8
+[12-Jun-2018 15:47:48 UTC] PHP Warning:  mysqli_query(): (HY000/1030): Got error 28 from storage engine in /home/penton7/public_html/opportunities/wp-includes/wp-db.php on line 1924
+[12-Jun-2018 15:47:48 UTC] WordPress database error Got error 28 from storage engine for query SELECT SQL_CALC_FOUND_ROWS  wp_posts.ID FROM wp_posts  LEFT JOIN wp_term_relationships ON (wp_posts.ID = wp_term_relationships.object_id) WHERE 1=1  AND ( 
+  wp_term_relationships.term_taxonomy_id IN (72)
+) AND wp_posts.post_type IN ('post', 'nav_menu_item', 'opportunity') AND (wp_posts.post_status = 'publish') GROUP BY wp_posts.ID ORDER BY wp_posts.post_title ASC LIMIT 0, 10 made by require('wp-blog-header.php'), wp, WP->main, WP->query_posts, WP_Query->query, WP_Query->get_posts
+[12-Jun-2018 15:47:48 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/penton7/public_html/opportunities/wp-includes/wp-db.php:1924) in /home/penton7/public_html/opportunities/wp-includes/feed-rss2.php on line 8
