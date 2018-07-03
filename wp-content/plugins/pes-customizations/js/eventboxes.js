@@ -68,6 +68,8 @@
  		var uas = $('#in-category-82');
  		var uaw = $('#in-category-87');
 
+ 		var wfx = $('#in-category-94');
+
  		/*
  		** Edit opps
  		** But first, hide them
@@ -169,6 +171,9 @@
 		// UAW
 		} else if (uaw.is(':checked')) {
 			$('#uaw_metabox').show();
+		// WFX
+		} else if (wfx.is(':checked')) {
+			$('#wfx_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -299,6 +304,10 @@
 			} else if (uaw.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#uaw_metabox').show();
+			// WFX
+			} else if (wfx.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#wfx_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}
