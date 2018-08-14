@@ -126,3 +126,5 @@
   wp_term_relationships.term_taxonomy_id IN (72)
 ) AND wp_posts.post_type IN ('post', 'nav_menu_item', 'opportunity') AND (wp_posts.post_status = 'publish') GROUP BY wp_posts.ID ORDER BY wp_posts.post_title ASC LIMIT 0, 10 made by require('wp-blog-header.php'), wp, WP->main, WP->query_posts, WP_Query->query, WP_Query->get_posts
 [12-Jun-2018 15:47:48 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/penton7/public_html/opportunities/wp-includes/wp-db.php:1924) in /home/penton7/public_html/opportunities/wp-includes/feed-rss2.php on line 8
+[13-Aug-2018 18:42:03 UTC] PHP Warning:  Error while sending QUERY packet. PID=28773 in /home/penton7/public_html/opportunities/wp-includes/wp-db.php on line 1924
+[13-Aug-2018 18:42:13 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/penton7/public_html/opportunities/wp-includes/wp-db.php:1924) in /home/penton7/public_html/opportunities/wp-includes/functions.php on line 3769

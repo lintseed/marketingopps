@@ -69,6 +69,10 @@
  		var uaw = $('#in-category-87');
 
  		var wfx = $('#in-category-94');
+ 		
+ 		var vfeu = $('#in-category-97');
+ 		
+ 		
 
  		/*
  		** Edit opps
@@ -174,6 +178,9 @@
 		// WFX
 		} else if (wfx.is(':checked')) {
 			$('#wfx_metabox').show();
+		// Vitafoods EU
+		} else if (vfeu.is(':checked')) {
+			$('#vfeu_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -308,6 +315,10 @@
 			} else if (wfx.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#wfx_metabox').show();
+			// VFEU
+			} else if (vfeu.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#vfeu_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}
