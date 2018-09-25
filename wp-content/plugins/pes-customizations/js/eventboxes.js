@@ -33,7 +33,6 @@
  		var industryParent = $('#in-category-39');
  			var mtce17 = $('#in-category-38');
  			var mtce18 = $('#in-category-73');
-			var mtce19 = $('#in-category-100');
  			var sl = $('#in-category-63');
 			var sl18 = $('#in-category-85');
 
@@ -63,6 +62,7 @@
 
  		var mdtxParent = $('#in-category-76');
  			var mdtx18 = $('#in-category-77');
+			var mdtx19 = $('#in-category-100');
  			var elecdesign = $('#in-category-84');
 
  		var monday = $('#in-category-79');
