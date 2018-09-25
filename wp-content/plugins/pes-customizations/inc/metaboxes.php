@@ -445,6 +445,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_engredea' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ew' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ew19' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ee' );
+add_action( 'cmb2_admin_init', 'cmb2_register_ee19' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
@@ -462,6 +463,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_tse' );
 add_action( 'cmb2_admin_init', 'cmb2_register_iwce' );
 add_action( 'cmb2_admin_init', 'cmb2_register_dcw' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mdtx18' );
+add_action( 'cmb2_admin_init', 'cmb2_register_mdtx19' );
 add_action( 'cmb2_admin_init', 'cmb2_register_elecdesign' );
 add_action( 'cmb2_admin_init', 'cmb2_register_monday' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mese18' );
@@ -674,6 +676,27 @@ function cmb2_register_ee() {
 					'Silver' => 'Silver',
 					'Marketing' => 'Marketing',
 					'Title' => 'Title'
+        ),
+    ) );
+}
+
+function cmb2_register_ee19() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'ee19_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+		$cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_ee19',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Platinum',
+          2 => 'Gold',
+          3 => 'Silver',
+          4 => 'Marketing Partners'
         ),
     ) );
 }
@@ -1125,6 +1148,23 @@ function cmb2_register_mdtx18() {
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_mdtx18',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Sponsor',
+        ),
+    ) );
+}
+function cmb2_register_mdtx19() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'mdtx19_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_mdtx19',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
