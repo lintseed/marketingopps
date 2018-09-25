@@ -14,6 +14,7 @@
 		var naturalProducts = $('#in-category-29');
 			var ee17 = $('#in-category-11');
 			var ee18 = $('#in-category-70');
+			var ee19 = $('#in-category-98');
 			var ew17 = $('#in-category-40');
 			var ew18 = $('#in-category-51');
 			var ew19 = $('#in-category-81');
@@ -94,6 +95,8 @@
 		} else if (ee17.is(':checked')) {
 			$('#naturalproducts_metabox').show();
 		} else if (ee18.is(':checked')) {
+			$('#ee_metabox').show();
+		} else if (ee19.is(':checked')) {
 			$('#ee_metabox').show();
 		} else if (ew17.is(':checked') || ew18.is(':checked')) {
 			$('#ew_metabox').show();
@@ -206,6 +209,9 @@
 				$('.types-levels').parents('div.postbox').hide();
 				$('#naturalproducts_metabox').show();
 			} else if (ee18.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#ee_metabox').show();
+			} else if (ee19.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#ee_metabox').show();
 			} else if (ew17.is(':checked') || ew18.is(':checked')) {

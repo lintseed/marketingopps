@@ -415,7 +415,7 @@ function add_admin_scripts( $hook ) {
     global $post;
     if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
         if ( 'opportunity' === $post->post_type ) {
-            wp_enqueue_script(  'eventboxes', plugins_url().'/pes-customizations/js/eventboxes.js' );
+            wp_enqueue_script(  'eventboxes', plugins_url().'/pes-customizations/js/eventboxes.js?v=5.0.0' );
         }
     }
 }
