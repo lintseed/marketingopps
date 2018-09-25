@@ -62,6 +62,7 @@
 
  		var mdtxParent = $('#in-category-76');
  			var mdtx18 = $('#in-category-77');
+			var mdtx19 = $('#in-category-100');
  			var elecdesign = $('#in-category-84');
 
  		var monday = $('#in-category-79');
@@ -70,10 +71,10 @@
  		var uaw = $('#in-category-87');
 
  		var wfx = $('#in-category-94');
- 		
+
  		var vfeu = $('#in-category-97');
- 		
- 		
+
+
 
  		/*
  		** Edit opps
@@ -96,8 +97,13 @@
 			$('#naturalproducts_metabox').show();
 		} else if (ee18.is(':checked')) {
 			$('#ee_metabox').show();
+<<<<<<< HEAD
 		} else if (ee19.is(':checked')) {
 			$('#ee_metabox').show();
+=======
+		} else if (ee19.is(':checked') ) {
+			$('#ee19_metabox').show();
+>>>>>>> 0bfee98471a8c76990583f1e4daf75b453bd6c73
 		} else if (ew17.is(':checked') || ew18.is(':checked')) {
 			$('#ew_metabox').show();
 		} else if (ew19.is(':checked') ) {
@@ -166,6 +172,9 @@
 		// MDTX18
 		} else if (mdtx18.is(':checked')) {
 			$('#mdtx18_metabox').show();
+			// MDTX19
+		} else if (mdtx19.is(':checked')) {
+			$('#mdtx19_metabox').show();
 		// Electronic Design Connect
 		} else if (elecdesign.is(':checked')) {
 			$('#elecdesign_metabox').show();
@@ -213,7 +222,11 @@
 				$('#ee_metabox').show();
 			} else if (ee19.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
+<<<<<<< HEAD
 				$('#ee_metabox').show();
+=======
+				$('#ee19_metabox').show();
+>>>>>>> 0bfee98471a8c76990583f1e4daf75b453bd6c73
 			} else if (ew17.is(':checked') || ew18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#ew_metabox').show();
@@ -301,6 +314,10 @@
 			} else if (mdtx18.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#mdtx18_metabox').show();
+				// MDTX19
+			} else if (mdtx19.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#mdtx19_metabox').show();
 			// Electronic Design Connect
 			} else if (elecdesign.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
