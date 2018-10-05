@@ -448,6 +448,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_ee' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ee19' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj18' );
+add_action( 'cmb2_admin_init', 'cmb2_register_nbj19' );
 add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce18' );
@@ -758,6 +759,43 @@ function cmb2_register_nbj18() {
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_nbj18',
+        'type'    => 'select',
+        'show_option_none' => true,
+        'options' => array(
+          1 => 'Premier Title',
+          2 => 'Premier Program',
+          3 => 'Premier Platinum',
+          4 => 'Platinum',
+          5 => 'Gold',
+          6 => 'Silver',
+					7 => 'Media Partner'
+        ),
+    ) );
+}
+
+
+function cmb2_register_nbj19() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'nbj19_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type_nbj19',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+            'Brand' => 'Brand',
+            'Exclusive' => 'Exclusive',
+            'Event' => 'Event',
+            'Lead Generation' => 'Lead Generation',
+        ),
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_nbj19',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
