@@ -69,6 +69,7 @@
  		var monday = $('#in-category-79');
 
  		var uas = $('#in-category-82');
+ 		var uas19 = $('#in-category-101');
  		var uaw = $('#in-category-87');
 
  		var wfx = $('#in-category-94');
@@ -181,6 +182,8 @@
 			$('#monday_metabox').show();
 		// UAS
 		} else if (uas.is(':checked')) {
+			$('#uas_metabox').show();
+		} else if (uas19.is(':checked')) {
 			$('#uas_metabox').show();
 		// UAW
 		} else if (uaw.is(':checked')) {
@@ -325,6 +328,9 @@
 				$('#monday_metabox').show();
 			// UAS
 			} else if (uas.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#uas_metabox').show();
+			} else if (uas19.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#uas_metabox').show();
 			// UAW
