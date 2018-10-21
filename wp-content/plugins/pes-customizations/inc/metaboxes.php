@@ -471,6 +471,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_mese18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_uas' );
 add_action( 'cmb2_admin_init', 'cmb2_register_uaw' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ssw18' );
+add_action( 'cmb2_admin_init', 'cmb2_register_sse19' );
 add_action( 'cmb2_admin_init', 'cmb2_register_wfx' );
 add_action( 'cmb2_admin_init', 'cmb2_register_vfeu' );
 
@@ -1371,6 +1372,47 @@ function cmb2_register_ssw18() {
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_ssw18',
+        'type'    => 'select',
+        'show_option_none' => true,
+				'options' => array(
+						1 => 'Major Sponsor',
+						2 => 'Sponsor'
+        ),
+    ) );
+}
+
+
+function cmb2_register_sse19() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'sse19_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+		$cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type_sse19',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+					 1 => 'Activities & Events',
+					 2 => 'Additional Sponsorship Opportunities',
+					 3 => 'Exterior Building Branding',
+					 4 => 'Lobby Registration Area Branding',
+					 5 => 'Mobile App Opportunities',
+					 6 => 'Digital Advertising',
+					 7 => 'Education Session Underwriting',
+					 8 => 'Expo Hall Opportunities',
+					 9 => 'Multi-Media Sponsorships',
+					 10 => 'Print Advertising',
+					 11 => 'Promotional Items',
+					 12 => 'Registration Sponsorships',
+					 13 => 'Sponsored Content'
+        ),
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_sse19',
         'type'    => 'select',
         'show_option_none' => true,
 				'options' => array(
