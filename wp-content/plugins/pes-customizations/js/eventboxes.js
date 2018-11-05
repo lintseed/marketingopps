@@ -76,6 +76,7 @@
  		var wfx = $('#in-category-94');
 
  		var vfeu = $('#in-category-97');
+ 		var vfas = $('#in-category-103');
 
 
 
@@ -197,6 +198,9 @@
 		// Vitafoods EU
 		} else if (vfeu.is(':checked')) {
 			$('#vfeu_metabox').show();
+		// Vitafoods Asia
+		} else if (vfas.is(':checked')) {
+			$('#vfas_metabox').show();
 		} else {
 			$('.types-levels').parents('div.postbox').hide();
 		}
@@ -351,6 +355,10 @@
 			} else if (vfeu.is(':checked')) {
 				$('.types-levels').parents('div.postbox').hide();
 				$('#vfeu_metabox').show();
+			// VFAS
+			} else if (vfas.is(':checked')) {
+				$('.types-levels').parents('div.postbox').hide();
+				$('#vfas_metabox').show();
 			} else {
 				$('.types-levels').parents('div.postbox').hide();
 			}

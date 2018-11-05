@@ -474,6 +474,7 @@ add_action( 'cmb2_admin_init', 'cmb2_register_ssw18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_sse19' );
 add_action( 'cmb2_admin_init', 'cmb2_register_wfx' );
 add_action( 'cmb2_admin_init', 'cmb2_register_vfeu' );
+add_action( 'cmb2_admin_init', 'cmb2_register_vfas' );
 
 
 function cmb2_register_iot() {
@@ -1471,6 +1472,42 @@ function cmb2_register_vfeu() {
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_vfeu',
+        'type'    => 'select',
+        'show_option_none' => true,
+				'options' => array(
+						1 => 'Official Sponsor',
+						2 => 'Major Sponsor',
+						3 => 'Sponsor'
+        ),
+    ) );
+}
+
+function cmb2_register_vfas() {
+	$cmb = new_cmb2_box( array(
+        'id'           => 'vfas_metabox',
+        'classes'    => 'options-box types-levels',
+        'title'        => 'Opportunity Options',
+        'object_types' => array( 'opportunity', ), // Post type
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Type',
+        'id'      => 'opp_type_vfas',
+        'type'    => 'multicheck',
+        'select_all_button' => false,
+        'options' => array(
+					 1 => 'Lead Generation',
+					 2 => 'Brand Awareness',
+					 3 => 'Thought Leadership',
+					 4 => 'Digital',
+					 5 => 'Product Demonstration/Sampling',
+					 6 => 'Additional Events/Community Events',
+					 7 => 'Visitor Attractions',
+					 8 => 'Exclusive'
+        ),
+    ) );
+    $cmb->add_field( array(
+        'name'    => 'Level',
+        'id'      => 'opp_level_vfas',
         'type'    => 'select',
         'show_option_none' => true,
 				'options' => array(
