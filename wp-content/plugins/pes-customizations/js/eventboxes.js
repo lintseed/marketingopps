@@ -10,6 +10,7 @@
 		var teaParent = $('#in-category-28');
 			var tea17 = $('#in-category-12');
 			var tea18 = $('#in-category-60');
+			var tea19 = $('#in-category-104');
 
 		var naturalProducts = $('#in-category-29');
 			var ee17 = $('#in-category-11');
@@ -93,6 +94,7 @@
 		} else if (
 			tea17.is(':checked') ||
 			tea18.is(':checked') ||
+			tea19.is(':checked') ||
 			teaParent.is(':checked')
 		) {
 			$('#worldtea_metabox').show();
@@ -217,6 +219,7 @@
 			} else if (
 				tea17.is(':checked') ||
 				tea18.is(':checked') ||
+				tea19.is(':checked') ||
 				teaParent.is(':checked')
 			) {
 				$('.types-levels').parents('div.postbox').hide();
