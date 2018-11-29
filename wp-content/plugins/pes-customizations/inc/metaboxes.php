@@ -9,11 +9,6 @@ if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/CMB2/init.php';
 }
 
-// set default checkbox value only on new post screen
-function cmb2_sample_metaboxes_checkbox_default( $default ) {
-	return isset( $_GET['post'] ) ? '' : ( $default ? (string) $default : '' );
-}
-
 function cmb2_sample_metaboxes() {
 
     // Start with an underscore to hide fields from custom fields list
@@ -41,12 +36,14 @@ function cmb2_sample_metaboxes() {
 					'sold'   => __( 'sold', 'cmb2' ),
 			),
 	) );
+	// Selling Fast ?
+
 	// Enabled?
 	$cmb->add_field( array(
 			'name'             => '<span style="color:green">Enabled</span>',
 			'id'               => $prefix . 'enabled',
 			'type'             => 'checkbox',
-			'default'          => cmb2_sample_metaboxes_checkbox_default('enabled'),
+			'default' => 'enabled',
 			'options'          => array(
 					'enabled' => __( 'Enabled', 'cmb2' ),
 			),
@@ -60,6 +57,30 @@ function cmb2_sample_metaboxes() {
 			'options'          => array(
 					'featured' => __( 'Featured', 'cmb2' ),
 			),
+	) );
+	// Inclusions
+		$cmb->add_field( array(
+			'name'             => '<span style="color:#ffcd00">✩</span> Display Inclusions Button?',
+			'id'               => $prefix . 'inclusions',
+			'type'             => 'checkbox',
+			'default' => '',
+			'options'          => array(
+					'featured' => __( 'Featured', 'cmb2' ),
+			),
+	) );
+	// Custom Inclusions Label
+	$cmb->add_field( array(
+		'name'    => 'Custom Inclusions Label?<br><em>e.g. "View Benefits"</em>',
+		'default' => '',
+		'id'      => $prefix . 'inclusions_path',
+		'type'    => 'text',
+	) );
+	// Custom Inclusions URL
+	$cmb->add_field( array(
+		'name'    => 'Custom Inclusions URL?',
+		'default' => '',
+		'id'      => $prefix . 'inclusions_url',
+		'type'    => 'text',
 	) );
 	// Current Quantity Available
 		$cmb->add_field( array(
@@ -415,7 +436,7 @@ function add_admin_scripts( $hook ) {
     global $post;
     if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
         if ( 'opportunity' === $post->post_type ) {
-            wp_enqueue_script(  'eventboxes', plugins_url().'/pes-customizations/js/eventboxes.js?v=5.0.0' );
+            wp_enqueue_script(  'eventboxes', plugins_url().'/pes-customizations/js/eventboxes.js' );
         }
     }
 }
@@ -440,20 +461,12 @@ add_action( 'cmb2_admin_init', 'cmb2_register_iot' );
 add_action( 'cmb2_admin_init', 'cmb2_register_worldtea' );
 add_action( 'cmb2_admin_init', 'cmb2_register_naturalproducts' );
 add_action( 'cmb2_admin_init', 'cmb2_register_club' );
-add_action( 'cmb2_admin_init', 'cmb2_register_club18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_engredea' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ew' );
-add_action( 'cmb2_admin_init', 'cmb2_register_ew19' );
-add_action( 'cmb2_admin_init', 'cmb2_register_ee' );
-add_action( 'cmb2_admin_init', 'cmb2_register_ee19' );
 add_action( 'cmb2_admin_init', 'cmb2_register_nbj' );
-add_action( 'cmb2_admin_init', 'cmb2_register_nbj18' );
-add_action( 'cmb2_admin_init', 'cmb2_register_nbj19' );
 add_action( 'cmb2_admin_init', 'cmb2_register_waste' );
 add_action( 'cmb2_admin_init', 'cmb2_register_mtce' );
-add_action( 'cmb2_admin_init', 'cmb2_register_mtce18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_sl' );
-add_action( 'cmb2_admin_init', 'cmb2_register_sl18' );
 add_action( 'cmb2_admin_init', 'cmb2_register_ldi' );
 add_action( 'cmb2_admin_init', 'cmb2_register_pes' );
 add_action( 'cmb2_admin_init', 'cmb2_register_itdev' );
@@ -462,19 +475,6 @@ add_action( 'cmb2_admin_init', 'cmb2_register_mro' );
 add_action( 'cmb2_admin_init', 'cmb2_register_cll' );
 add_action( 'cmb2_admin_init', 'cmb2_register_tse' );
 add_action( 'cmb2_admin_init', 'cmb2_register_iwce' );
-add_action( 'cmb2_admin_init', 'cmb2_register_dcw' );
-add_action( 'cmb2_admin_init', 'cmb2_register_mdtx18' );
-add_action( 'cmb2_admin_init', 'cmb2_register_mdtx19' );
-add_action( 'cmb2_admin_init', 'cmb2_register_elecdesign' );
-add_action( 'cmb2_admin_init', 'cmb2_register_monday' );
-add_action( 'cmb2_admin_init', 'cmb2_register_mese18' );
-add_action( 'cmb2_admin_init', 'cmb2_register_uas' );
-add_action( 'cmb2_admin_init', 'cmb2_register_uaw' );
-add_action( 'cmb2_admin_init', 'cmb2_register_ssw18' );
-add_action( 'cmb2_admin_init', 'cmb2_register_sse19' );
-add_action( 'cmb2_admin_init', 'cmb2_register_wfx' );
-add_action( 'cmb2_admin_init', 'cmb2_register_vfeu' );
-add_action( 'cmb2_admin_init', 'cmb2_register_vfas' );
 
 
 function cmb2_register_iot() {
@@ -536,43 +536,7 @@ function cmb2_register_club() {
             'Platinum' => 'Platinum',
             'Gold' => 'Gold',
             'Silver' => 'Silver',
-						'Certifying Organizations' => 'Certifying Organizations',
             'Marketing' => 'Marketing',
-        ),
-    ) );
-}
-
-function cmb2_register_club18() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'club18_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_club18',
-				'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Brand' => 'Brand',
-            'Exclusive' => 'Exclusive',
-            'Event' => 'Event',
-            'Lead Generation' => 'Lead Generation',
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_club18',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Premier Platinum',
-          2 => 'Platinum',
-          3 => 'Gold',
-          4 => 'Silver',
-          5 => 'Certifying Organizations',
-          6 => 'Media Partner',
         ),
     ) );
 }
@@ -640,69 +604,6 @@ function cmb2_register_ew() {
         ),
     ) );
 }
-function cmb2_register_ew19() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'ew19_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-		$cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_ew19',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Platinum',
-          2 => 'Gold',
-          3 => 'Silver',
-          4 => 'Marketing Partners'
-        ),
-    ) );
-}
-
-function cmb2_register_ee() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'ee_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_ee',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-					'Platinum' => 'Platinum',
-					'Gold' => 'Gold',
-					'Silver' => 'Silver',
-					'Marketing' => 'Marketing',
-					'Title' => 'Title'
-        ),
-    ) );
-}
-
-function cmb2_register_ee19() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'ee19_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-		$cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_ee19',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Platinum',
-          2 => 'Gold',
-          3 => 'Silver',
-          4 => 'Marketing Partners'
-        ),
-    ) );
-}
 
 function cmb2_register_nbj() {
 	$cmb = new_cmb2_box( array(
@@ -739,79 +640,6 @@ function cmb2_register_nbj() {
     ) );
 }
 
-function cmb2_register_nbj18() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'nbj18_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_nbj18',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Brand' => 'Brand',
-            'Exclusive' => 'Exclusive',
-            'Event' => 'Event',
-            'Lead Generation' => 'Lead Generation',
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_nbj18',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Premier Title',
-          2 => 'Premier Program',
-          3 => 'Premier Platinum',
-          4 => 'Platinum',
-          5 => 'Gold',
-          6 => 'Silver',
-					7 => 'Media Partner'
-        ),
-    ) );
-}
-
-
-function cmb2_register_nbj19() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'nbj19_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_nbj19',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-            'Brand' => 'Brand',
-            'Exclusive' => 'Exclusive',
-            'Event' => 'Event',
-            'Lead Generation' => 'Lead Generation',
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_nbj19',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Premier Title',
-          2 => 'Premier Program',
-          3 => 'Premier Platinum',
-          4 => 'Platinum',
-          5 => 'Gold',
-          6 => 'Silver',
-					7 => 'Media Partner'
-        ),
-    ) );
-}
-
 function cmb2_register_waste() {
 	$cmb = new_cmb2_box( array(
         'id'           => 'waste_metabox',
@@ -843,7 +671,6 @@ function cmb2_register_waste() {
             'Silver' => 'Silver',
             'Bronze' => 'Bronze',
             'Green' => 'Green',
-            'Mobile App Upgrades' => 'Mobile App Upgrades'
         ),
     ) );
 }
@@ -858,29 +685,6 @@ function cmb2_register_mtce() {
     $cmb->add_field( array(
         'name'    => 'Level',
         'id'      => 'opp_level_mtce',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-            'Premium' => 'Premium',
-            'Content Related' => 'Content Related',
-            'Hospitality' => 'Hospitality',
-            'Product Branded' => 'Product Branded',
-            'Exhibit Hall' => 'Exhibit Hall',
-            'Tech-Focused' => 'Tech-Focused',
-        ),
-    ) );
-}
-
-function cmb2_register_mtce18() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'mtce18_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_mtce18',
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
@@ -917,26 +721,6 @@ function cmb2_register_sl() {
     ) );
 }
 
-function cmb2_register_sl18() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'sl18_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_sl18',
-        'type'    => 'select',
-        'show_option_none' => true,
-				'options' => array(
-            1 => 'Platinum',
-            2 => 'Gold',
-						3 => 'Other'
-        ),
-    ) );
-}
-
 function cmb2_register_ldi() {
 	$cmb = new_cmb2_box( array(
         'id'           => 'ldi_metabox',
@@ -967,16 +751,8 @@ function cmb2_register_ldi() {
         'type'    => 'select',
         'show_option_none' => true,
         'options' => array(
-            1 => 'Front Row',
-            2 => 'Association',
-						3 => 'Headline Sponsor',
-	          4 => 'Front of House',
-	          5 => 'Opening Act Sponsor',
-	          6 => 'En Espanol',
-						7 => 'Live Design Awards',
-						8 => 'Live Outside Sponsors',
-						9 => 'ETCP Renewal Credits',
-						10 => 'ETCP Renewal Credits'
+            'Front Row' => 'Front Row',
+            'Association' => 'Association',
         ),
     ) );
 }
@@ -1149,371 +925,6 @@ function cmb2_register_iwce() {
         'options' => array(
           1 => 'Sponsorship',
           2 => 'Advertising'
-        ),
-    ) );
-}
-
-function cmb2_register_dcw() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'dcw_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_dcw',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Strategic Partner',
-          2 => 'Platinum',
-          3 => 'Gold',
-          4 => 'Silver',
-          5 => 'Speaking',
-          6 => 'Events',
-          7 => 'Marketing Promotions',
-          8 => 'Media Partner'
-        ),
-    ) );
-}
-
-function cmb2_register_mdtx18() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'mdtx18_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_mdtx18',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Sponsor',
-        ),
-    ) );
-}
-function cmb2_register_mdtx19() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'mdtx19_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_mdtx19',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Sponsor',
-        ),
-    ) );
-}
-
-function cmb2_register_elecdesign() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'elecdesign_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_elecdesign',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Sponsor',
-        ),
-    ) );
-}
-
-
-function cmb2_register_monday() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'monday_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_monday',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-					1 => 'Strategic Partner',
-					2 => 'Platinum',
-					3 => 'Gold',
-					4 => 'Silver',
-					5 => 'Speaking',
-					6 => 'Events',
-					7 => 'Marketing Promotions',
-					8 => 'Media Partner'
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_monday',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Strategic Partner',
-          2 => 'Platinum',
-          3 => 'Gold',
-          4 => 'Silver',
-          5 => 'Speaking',
-          6 => 'Events',
-          7 => 'Marketing Promotions',
-          8 => 'Media Partner'
-        ),
-    ) );
-}
-
-function cmb2_register_mese18() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'mese18_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_mese18',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-					 'Brand' => 'Brand',
-					 'Events' => 'Events',
-					 'Sponsorships' => 'Sponsorships'
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_mese18',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Diamond',
-          2 => 'Premier',
-					3 => 'Exhibitor'
-        ),
-    ) );
-}
-
-function cmb2_register_uas() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'uas_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_uas',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Diamond',
-          2 => 'Premier',
-					3 => 'Exhibitor'
-        ),
-    ) );
-}
-
-function cmb2_register_uaw() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'uaw_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_uaw',
-        'type'    => 'select',
-        'show_option_none' => true,
-        'options' => array(
-          1 => 'Diamond',
-          2 => 'Premier',
-					3 => 'Exhibitor'
-        ),
-    ) );
-}
-
-function cmb2_register_ssw18() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'ssw18_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-		$cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_ssw18',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-					 'Activities & Events' => 'Activities & Events',
-					 'Additional Sponsorship Opportunities' => 'Additional Sponsorship Opportunities',
-					 'Convention Center & Bayside Foyer Branding' => 'Convention Center & Bayside Foyer Branding',
-					 'Digital Advertising' => 'Digital Advertising',
-					 'Education Session Underwriting' => 'Education Session Underwriting',
-					 'Expo Hall Opportunities' => 'Expo Hall Opportunities',
-					 'Multi-Media Sponsorships' => 'Multi-Media Sponsorships',
-					 'Print Advertising' => 'Print Advertising',
-					 'Promotional Items' => 'Promotional Items',
-					 'Registration Sponsorships' => 'Registration Sponsorships',
-					 'Sponsored Content' => 'Sponsored Content',
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_ssw18',
-        'type'    => 'select',
-        'show_option_none' => true,
-				'options' => array(
-						1 => 'Major Sponsor',
-						2 => 'Sponsor'
-        ),
-    ) );
-}
-
-
-function cmb2_register_sse19() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'sse19_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-		$cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_sse19',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-					 1 => 'Activities & Events',
-					 2 => 'Additional Sponsorship Opportunities',
-					 3 => 'Exterior Building Branding',
-					 4 => 'Lobby Registration Area Branding',
-					 5 => 'Mobile App Opportunities',
-					 6 => 'Digital Advertising',
-					 7 => 'Education Session Underwriting',
-					 8 => 'Expo Hall Opportunities',
-					 9 => 'Multi-Media Sponsorships',
-					 10 => 'Print Advertising',
-					 11 => 'Promotional Items',
-					 12 => 'Registration Sponsorships',
-					 13 => 'Sponsored Content'
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_sse19',
-        'type'    => 'select',
-        'show_option_none' => true,
-				'options' => array(
-						1 => 'Major Sponsor',
-						2 => 'Sponsor'
-        ),
-    ) );
-}
-
-function cmb2_register_wfx() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'wfx_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_wfx',
-        'type'    => 'select',
-        'show_option_none' => true,
-				'options' => array(
-						1 => '1',
-						2 => '2',
-						3 => '3',
-						4 => '4',
-						5 => '5',
-        ),
-    ) );
-}
-
-
-function cmb2_register_vfeu() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'vfeu_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_vfeu',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-					 1 => 'Lead Generation',
-					 2 => 'Brand Awareness',
-					 3 => 'Thought Leadership',
-					 4 => 'Digital',
-					 5 => 'Product Demonstration/Sampling',
-					 6 => 'Additional Events/Community Events',
-					 7 => 'Visitor Attractions',
-					 8 => 'Exclusive'
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_vfeu',
-        'type'    => 'select',
-        'show_option_none' => true,
-				'options' => array(
-						1 => 'Official Sponsor',
-						2 => 'Major Sponsor',
-						3 => 'Sponsor'
-        ),
-    ) );
-}
-
-function cmb2_register_vfas() {
-	$cmb = new_cmb2_box( array(
-        'id'           => 'vfas_metabox',
-        'classes'    => 'options-box types-levels',
-        'title'        => 'Opportunity Options',
-        'object_types' => array( 'opportunity', ), // Post type
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Type',
-        'id'      => 'opp_type_vfas',
-        'type'    => 'multicheck',
-        'select_all_button' => false,
-        'options' => array(
-					 1 => 'Lead Generation',
-					 2 => 'Brand Awareness',
-					 3 => 'Thought Leadership',
-					 4 => 'Digital',
-					 5 => 'Product Demonstration/Sampling',
-					 6 => 'Additional Events/Community Events',
-					 7 => 'Visitor Attractions',
-					 8 => 'Exclusive'
-        ),
-    ) );
-    $cmb->add_field( array(
-        'name'    => 'Level',
-        'id'      => 'opp_level_vfas',
-        'type'    => 'select',
-        'show_option_none' => true,
-				'options' => array(
-						1 => 'Official Sponsor',
-						2 => 'Major Sponsor',
-						3 => 'Sponsor'
         ),
     ) );
 }
