@@ -72,7 +72,7 @@ function cmb2_sample_metaboxes() {
 	$cmb->add_field( array(
 		'name'    => 'Custom Inclusions Label?<br><em>e.g. "View Benefits"</em>',
 		'default' => '',
-		'id'      => $prefix . 'inclusions_path',
+		'id'      => $prefix . 'inclusions_label',
 		'type'    => 'text',
 	) );
 	// Custom Inclusions URL
